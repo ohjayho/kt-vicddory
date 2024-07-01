@@ -27,25 +27,33 @@ const CardFront: React.FC<CardFrontProps> = ({ player, size = 'medium' }) => {
         className={`bg-black rounded-lg overflow-hidden relative m-4 shadow-lg items-center justify-center transform transition-transform ${sizeClass}`}
       >
         {/* 선수 이미지 */}
-        <div className="items-center justify-center rounded-2xl w-[228px] h-[316px]">
+        <div className="relative w-[228px] h-[316px] mx-auto">
           <img
             src={`/images/playerCardFront/${player.playerImg}`}
             alt={`${player.korName} Image`}
-            className="w-full h-full object-cover"
+            className="absolute left-0 top-3 w-full h-full object-cover rounded-2xl"
           />
         </div>
         {/*프레임 이미지*/}
-        <div className="rounded-2xl bg-frontCardFrame w-[228px] h-[316px]"></div>
-        {/* 선수 번호 */}
-        <div className="text-white text-sm font-extrabold leading-5">
-          {player.backNum}
+        <div className="absolute inset-0">
+          <img
+            src={'/images/frontCardFrame.png'}
+            alt={'Front Card Frame'}
+            className="w-full h-full object-cover"
+          />
         </div>
-        {/* 선수 국문 이름 */}
-        <div className="text-white text-lg font-extrabold leading-relaxed">
-          {player.korName}
+        <div className="absolute inset-0 flex flex-col justify-end p-6 text-white text-sm font-extrabold right-3 bottom-0">
+          {/* 선수 번호 */}
+          <div className="leading-5 text-right text-lg ">{`No. ${player.backNum}`}</div>
+          <div className="">
+            {/* 선수 국문 이름 */}
+            <div className="text-2xl leading-relaxed text-right pr-12 pt-1">
+              {player.korName}
+            </div>
+            {/* 선수 영문 이름 */}
+            <div className="font-bold">{player.engName}</div>
+          </div>
         </div>
-        {/* 선수 영문 이름 */}
-        <div className="text-white text-sm font-bold">{player.engName}</div>
       </div>
     </>
   );
