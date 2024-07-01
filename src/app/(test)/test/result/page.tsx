@@ -1,7 +1,7 @@
-export default function page () {
+export default function page() {
   return (
     <>
-      reault
+      <h1>result</h1>
     </>
-  )
+  );
 }

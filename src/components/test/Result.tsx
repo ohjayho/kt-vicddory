@@ -1,7 +1,7 @@
-export default function Result () {
+export default function Result() {
   return (
     <>
-      result
+      <h1>result</h1>
     </>
-  )
+  );
 }
