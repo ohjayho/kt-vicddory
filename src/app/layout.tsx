@@ -15,4 +15,8 @@ export default function RootLayout({
       <body>{children}</body>
     </html>
   );
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> week2
