@@ -71,7 +71,7 @@ export default function Pitcher() {
         <div>
           <div className="text-2xl font-extrabold">투수</div>
           <div className="text-lg">
-            kt wiz의 자랑스런 '첫 번째 선수단'을 소개합니다
+            kt wiz의 자랑스런 첫 번째 선수단을 소개합니다
           </div>
         </div>
         <div className="flex justify-around">

@@ -5,8 +5,8 @@ export default function NewsBalloon({
   direction: 'left' | 'right';
   content: string;
 }) {
-  let position = direction === 'right' ? 'justify-end' : 'justify-start';
-  let setDirection =
+  const position = direction === 'right' ? 'justify-end' : 'justify-start';
+  const setDirection =
     direction === 'right' ? 'rounded-ee-none' : 'rounded-es-none';
   return (
     <>

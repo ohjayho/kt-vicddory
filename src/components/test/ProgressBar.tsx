@@ -13,7 +13,7 @@ export default function ProgressBar ({ progress } : TProgressBarProps) {
           style={{ width: `${progress}%`}}
         >
           <Image
-            src='/images/svgs/baseballIcon.svg'
+            src='/svgs/baseballIcon.svg'
             alt='baseballIcon'
             width={30}height={30}
             className="absolute right-0 top-1/2 transform -translate-y-1/2"
