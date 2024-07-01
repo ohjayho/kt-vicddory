@@ -45,13 +45,13 @@ const CardFront: React.FC<CardFrontProps> = ({ player, size = 'medium' }) => {
         <div className="absolute inset-0 flex flex-col justify-end p-6 text-white text-sm font-extrabold right-3 bottom-0">
           {/* 선수 번호 */}
           <div className="leading-5 text-right text-lg ">{`No. ${player.backNum}`}</div>
-          <div className="">
+          <div className="flex justify-end items-center space-x-4 pt-1 pr-5">
             {/* 선수 국문 이름 */}
-            <div className="text-2xl leading-relaxed text-right pr-12 pt-1">
+            <div className="text-2xl leading-relaxed text-right pl-8 pt-1">
               {player.korName}
             </div>
-            {/* 선수 영문 이름 */}
-            <div className="font-bold">{player.engName}</div>
+            {/* 선수 영문 이름
+            <div className="font-bold pt-3">{player.engName}</div> */}
           </div>
         </div>
       </div>
