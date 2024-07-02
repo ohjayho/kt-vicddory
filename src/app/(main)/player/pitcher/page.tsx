@@ -18,7 +18,7 @@ const pitcherData = [
     korName: '강현우',
     engName: 'Kang Hyun Woo',
     backNum: 55,
-    playerImg: 'kt11.png',
+    playerImg: 'backKt11.png',
   },
   {
     korName: '강현민',
