@@ -1,16 +1,26 @@
+import Link from 'next/link';
 import { ReactNode } from 'react';
 
 type bannerBtnType = {
   children: ReactNode;
   buttonStyle?: string;
+  url: string;
 };
 
-export default function BannerBtn({ children, buttonStyle }: bannerBtnType) {
+export default function BannerBtn({
+  children,
+  buttonStyle,
+  url,
+}: bannerBtnType) {
   return (
     <>
-      <button className={`w-[116px] h-[42px] border-white ${buttonStyle}`}>
-        {children}
-      </button>
+      <Link href={url}>
+        <button
+          className={`w-[116px] h-[42px]  text-[#BBB5B5] border-white ${buttonStyle}`}
+        >
+          {children}
+        </button>
+      </Link>
     </>
   );
 }
