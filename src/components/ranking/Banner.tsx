@@ -1,6 +1,11 @@
+'use client';
+
 import BannerBtn from '../BannerBtn';
+import { usePathname } from 'next/navigation';
 
 export default function Banner() {
+  const pathname = usePathname().split('/')[2];
+
   return (
     <>
       <div className="bg-[url('/images/bannerBg.png')] h-[252px] w-full flex flex-col items-center text-center text-white">
@@ -12,10 +17,25 @@ export default function Banner() {
             팀 별 순위 변동 그래프에 대해 알려드립니다
           </p>
         </div>
-        <div className="mt-[68px] flex  gap-[198px] text-base font-extrabold text-[#BBB5B5]">
-          <BannerBtn buttonStyle="border-b-4">AI 예측</BannerBtn>
-          <BannerBtn>일자별</BannerBtn>
-          <BannerBtn>년도별</BannerBtn>
+        <div className="mt-[68px] flex  gap-[198px] text-base font-extrabold">
+          <BannerBtn
+            url="/ranking/ai"
+            buttonStyle={pathname === 'ai' ? ' text-white border-b-4' : ''}
+          >
+            AI 예측
+          </BannerBtn>
+          <BannerBtn
+            url="/ranking/daily"
+            buttonStyle={pathname === 'daily' ? ' text-white border-b-4' : ''}
+          >
+            일자별
+          </BannerBtn>
+          <BannerBtn
+            url="/ranking/year"
+            buttonStyle={pathname === 'year' ? ' text-white border-b-4' : ''}
+          >
+            년도별
+          </BannerBtn>
         </div>
       </div>
     </>
