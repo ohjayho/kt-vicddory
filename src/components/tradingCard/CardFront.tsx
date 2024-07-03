@@ -29,7 +29,7 @@ const CardFront: React.FC<CardFrontProps> = ({ player, size = 'medium' }) => {
         {/* 선수 이미지 */}
         <div className="relative w-[228px] h-[316px] mx-auto">
           <img
-            src={`/images/playerCardFront/${player.playerImg}`}
+            src={`/images/player/playerCardFront/${player.playerImg}`}
             alt={`${player.korName} Image`}
             className="absolute left-0 top-3 w-full h-full object-cover rounded-2xl"
           />
