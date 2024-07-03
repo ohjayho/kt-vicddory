@@ -29,7 +29,7 @@ const CardBack: React.FC<CardBackProps> = ({ player, size = 'medium' }) => {
   const sizeClass = sizeClasses[size];
   return (
     <>
-      {/* 카드 앞면 */}
+      {/* 카드 뒷면 */}
       <div
         className={`bg-black rounded-lg overflow-hidden relative m-4 shadow-lg items-center justify-center transform transition-transform ${sizeClass}`}
       >
@@ -49,25 +49,27 @@ const CardBack: React.FC<CardBackProps> = ({ player, size = 'medium' }) => {
             className="w-full h-full object-cover"
           />
         </div>
-        <div className="absolute inset-0 flex justify-end p-6 text-white text-sm font-bold right-3 bottom-0">
-          <div className="flex justify-end items-center space-x-4 pt-1 pr-5">
+        <div className="relative inset-0 flex p-6 text-white/80 text-sm font-bold right-2 bottom-0">
+          <div className="flex flex-col bg-yellow-200/0 h-12 justify-end items-center pt-1 pr-3">
             {/* 선수 이름 */}
-            <div className="">
+            <div className="bg-slate-400/0 flex flex-row justify-start itmes-end">
               {/* 선수 국문 이름 */}
-              <div className="text-2xl leading-relaxed text-right pl-8 pt-1">
+              <div className="text-xl leading-relaxed text-left pr-1.5">
                 {player.korName}
               </div>
               {/* 선수 영문 이름 */}
-              <div className="font-bold pt-3">{player.engName}</div>
+              <div className="font-bold pb-0 text-base flex items-end">
+                {player.engName}
+              </div>
             </div>
             {/* 포지션 */}
-            <div className="">
+            <div className="bg-pink-300 ">
               {/* 포지션 맵 */}
-              <div className="">
+              <div className="absolute w-[140px]">
                 {' '}
                 <img
-                  src={`/images/player/position/${player.positionImg}`}
-                  alt={`${player.positionImg} Image`}
+                  src={`/images/player/playerPosition/${player.positionImg}`}
+                  alt={`${player.positionKor} 사진`}
                   className="absolute left-0 top-4 w-full h-full object-cover rounded-0"
                 />
               </div>
@@ -80,24 +82,23 @@ const CardBack: React.FC<CardBackProps> = ({ player, size = 'medium' }) => {
                 <div className="">{player.positionEng}</div>
               </div>
             </div>
-            {/* 선수 정보 */}
-            <div className="">
-              <div className="">
-                <div className="">생년월일:</div>
-                <div className="">{player.playerDOB}</div>
-              </div>
-              <div className="">
-                <div className="">체격:</div>
-                <div className="">{`${player.playerHeight}cm, ${player.playerWeight}kg`}</div>
-              </div>
-              <div className="">
-                <div className="">프로데뷔:</div>
-                <div className="">{`${player.debutYear}년`}</div>
-              </div>
-            </div>
           </div>
         </div>
-        <div className="w-[178px] h-[80px] absolute inset-0 flex justify-end p-6 text-white text-xs bg-zinc-300/opacity-50 rounded-[5px]"></div>
+        {/* 선수 정보 박스*/}
+        <div className="w-[178px] h-[80px] relative inset-0 flex flex-col justify-center items-center p-6 text-white text-xs bg-zinc-300/50 rounded-[5px]">
+          <div className="flex flex-row">
+            <div className="text-left">생년월일:</div>
+            <div className="text-right">{player.playerDOB}</div>
+          </div>
+          <div className="flex flex-row">
+            <div className="text-left">체격:</div>
+            <div className="text-right">{`${player.playerHeight}cm, ${player.playerWeight}kg`}</div>
+          </div>
+          <div className="flex flex-row content-between">
+            <div className="">프로데뷔:</div>
+            <div className="items-end">{`${player.debutYear}년`}</div>
+          </div>
+        </div>
       </div>
     </>
   );
