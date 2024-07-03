@@ -12,10 +12,10 @@ export default function Mascot({
     <>
       <Image
         src={src}
-        alt="mascot_ddory"
-        width={300}
+        alt="mascot_img"
+        width={320}
         height={30}
-        className={`absolute -bottom-10 ${setLocation}`}
+        className={`absolute -bottom-16 ${setLocation}`}
       />
     </>
   );
