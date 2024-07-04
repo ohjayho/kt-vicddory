@@ -1,17 +1,16 @@
+import Mascot from '@/components/wiznews/Mascot';
 import NewsBalloon from '@/components/wiznews/NewsBalloon';
+import NewsSearch from '@/components/wiznews/NewsSearch';
 
 export default function WizNews() {
   return (
     <>
-      <div className="min-h-screen bg-black">
-        <header className="h-[83px] bg-pink-200"></header>
-        <div className="h-[253px] bg-[url('/images/wiznews/wiznews_banner.png')] bg-cover bg-center flex flex-col justify-center items-center text-white">
-          <h1>wiz 한줄 뉴스</h1>
-          <h1>kt wiz의 새소식을 빅 또리 기자가 쉽고 빠르게 전해드립니다.</h1>
-        </div>
-        <div className="w-full h-[800px] flex justify-center  bg-[url('/images/wiznews/wiznews_bg.png')] bg-cover bg-center">
-          <div className="absolute bottom-4 left-0"></div>
-          <section className="w-[820px] flex flex-col">
+      <div className="w-full flex justify-center  bg-[url('/images/mainBg.png')] bg-cover relative overflow-hidden">
+        <Mascot src="svgs/newsMascot/ddory.svg" location="left" />
+        <Mascot src="svgs/newsMascot/vic.svg" location="right" />
+        <section className="w-3/4 flex flex-col justify-center items-center z-10">
+          <NewsSearch />
+          <div className="w-[820px] h-[600px] overflow-y-scroll no-scrollbar">
             <NewsBalloon
               direction="right"
               content="KT 위즈는 6월 19일 롯데전에서 에픽하이를 초청해 시구 행사를
@@ -20,8 +19,15 @@ export default function WizNews() {
             <NewsBalloon direction="left" content="나는 오재호다." />
             <NewsBalloon direction="right" content="나는 빅이다." />
             <NewsBalloon direction="left" content="나는 또리다." />
-          </section>
-        </div>
+            <NewsBalloon direction="right" content="나는 빅이다." />
+            <NewsBalloon direction="left" content="나는 또리다." />
+            <NewsBalloon direction="right" content="나는 빅이다." />
+            <NewsBalloon direction="left" content="나는 또리다." />
+            <NewsBalloon direction="right" content="나는 빅이다." />
+            <NewsBalloon direction="left" content="나는 또리다." />
+            <NewsBalloon direction="right" content="나는 빅이다." />
+          </div>
+        </section>
       </div>
     </>
   );
