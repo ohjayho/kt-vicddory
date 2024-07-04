@@ -49,10 +49,10 @@ const CardBack: React.FC<CardBackProps> = ({ player, size = 'medium' }) => {
             className="w-full h-full object-cover"
           />
         </div>
-        <div className="relative inset-0 flex p-6 text-white/80 text-sm font-bold right-2 bottom-0">
-          <div className="flex flex-col bg-yellow-200/0 h-12 justify-end items-center pt-1 pr-3">
+        <div className="relative inset-0 flex px-6 text-white/80 text-sm font-bold bottom-0 h-1/3 -mt-3">
+          <div className="flex flex-col bg-yellow-200/0 w-full">
             {/* 선수 이름 */}
-            <div className="bg-slate-400/0 flex flex-row justify-start itmes-end">
+            <div className="bg-slate-400/0 flex flex-row">
               {/* 선수 국문 이름 */}
               <div className="text-xl leading-relaxed text-left pr-1.5">
                 {player.korName}
@@ -63,38 +63,41 @@ const CardBack: React.FC<CardBackProps> = ({ player, size = 'medium' }) => {
               </div>
             </div>
             {/* 포지션 */}
-            <div className="bg-pink-300 ">
+            <div className="bg-pink-300/0 w-[178px] flex flex-col justify-items-center ml-2">
               {/* 포지션 맵 */}
-              <div className="absolute w-[140px]">
+              <div className="absolute ml-1 mt-1 w-[80px] h-[80px]">
                 {' '}
                 <img
                   src={`/images/player/playerPosition/${player.positionImg}`}
                   alt={`${player.positionKor} 사진`}
-                  className="absolute left-0 top-4 w-full h-full object-cover rounded-0"
+                  className="absolute left-0 object-cover rounded-0"
                 />
               </div>
-              <div className="">
-                {/* 투타 */}
-                <div className="">{player.positionPH}</div>
+              <div className="flex flex-row place-content-end items-end mt-6">
                 {/* 포지션 국문 */}
-                <div className="">{player.positionKor}</div>
-                {/* 포지션 영문 */}
-                <div className="">{player.positionEng}</div>
+                <p className="text-xl">{player.positionKor}</p>
+
+                <div className="text-right flex flex-col">
+                  {/* 투타 */}
+                  <p className="">{player.positionPH}</p>
+                  {/* 포지션 영문 */}
+                  <div className="">{player.positionEng}</div>
+                </div>
               </div>
             </div>
           </div>
         </div>
         {/* 선수 정보 박스*/}
-        <div className="w-[178px] h-[80px] relative inset-0 flex flex-col justify-center items-center p-6 text-white text-xs bg-zinc-300/50 rounded-[5px]">
-          <div className="flex flex-row">
+        <div className="w-[178px] h-[80px] relative ml-9 -mt-2 inset-0 flex flex-col justify-center text-white text-xs font-bold bg-zinc-300/50 rounded-[5px] px-4 py-1">
+          <div className="flex flex-row w-full justify-between my-0.5">
             <div className="text-left">생년월일:</div>
             <div className="text-right">{player.playerDOB}</div>
           </div>
-          <div className="flex flex-row">
+          <div className="flex flex-row w-full justify-between my-0.5">
             <div className="text-left">체격:</div>
             <div className="text-right">{`${player.playerHeight}cm, ${player.playerWeight}kg`}</div>
           </div>
-          <div className="flex flex-row content-between">
+          <div className="flex flex-row w-full justify-between my-0.5">
             <div className="">프로데뷔:</div>
             <div className="items-end">{`${player.debutYear}년`}</div>
           </div>

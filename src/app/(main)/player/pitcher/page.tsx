@@ -18,7 +18,7 @@ const pitcherData = [
     korName: '강현우',
     engName: 'Kang Hyun Woo',
     backNum: 55,
-    playerImg: 'backKt11.png',
+    playerImg: 'kt11.png',
   },
   {
     korName: '강현민',
@@ -109,7 +109,7 @@ export default function Pitcher() {
         </div>
       </div>
 
-      <div className="flex justify-center items-center h-screen flex-wrap ">
+      <div className="bg-white flex justify-center items-center h-min flex-wrap ">
         <div className="flex flex-wrap flex-row gap-6 p-6 justify-center items-center object-center w-3/4">
           {pitcherData.map((pitcher, index) => (
             <CardFront key={index} player={pitcher} size="medium" />
