@@ -4,18 +4,18 @@ import Button from '@/components/test/Button';
 export default function Test() {
   return (
     <>
-      <div className="flex justify-center flex-col items-center h-[100vh]">
-        <div className="w-[375px] h-[440px] bg-[#F8A6A7] flex flex-col justify-center items-center text-center">
-          <div className="w-[135px] h-7 rounded-md bg-[#ED2024] text-white text-center leading-7 text-xs mb-6 mt-14">
+      <div className="flex justify-center flex-col items-center h-dvh max-w-md m-auto">
+        <div className="w-full h-4/6 bg-[#F8A6A7] flex flex-col justify-center items-center text-center">
+          <div className="w-2/4 h-10 rounded-md bg-[#ED2024] text-white flex justify-center items-center leading-7 text-base mb-6 mt-14">
             야구 입문자를 위한
           </div>
           <Image
             src="/svgs/watermark.svg"
             alt="watermark"
-            width={152}
+            width={200}
             height={62}
           />
-          <div className="w-[203px] h-[59px] leading-[59px] text-[41px] font-bold mb-3 text-[#333333]">
+          <div className="w-56 h-14 text-5xl font-bold mb-3 text-[#333333]">
             궁합테스트
           </div>
           <div className="w-[203px] h-55 text-xs font-bold text-[#444444] mb-4">
@@ -29,7 +29,7 @@ export default function Test() {
           ></Image>
           <Button href="/test/questions/1">테스트 START</Button>
         </div>
-        <div className="w-[375px] h-[227px] bg-slate-50 flex flex-col justify-center items-center text-center">
+        <div className="w-full h-2/6 bg-slate-50 flex flex-col justify-center items-center text-center">
           <div className="w-74 h-[95px] text-xs mt-1">
             kt wiz는 2013년, 제 10구단에 대한 국민들의 강한 열망,
             <br /> 경기도 및 수원시 그리고 KT그룹의 뜨거운 유치 열정으로
