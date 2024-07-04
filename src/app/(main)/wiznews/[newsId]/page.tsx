@@ -2,10 +2,10 @@ export default function WizNewsDetail() {
   return (
     <>
       <div className="w-full h-[1000px] bg-[url('/images/mainBg.png')] text-white flex justify-center items-center">
-        <section className="w-[1200px] h-[700px] bg-black rounded-[5px] p-5 컨테이너">
-          <div className="w-[1200px] h-[660px] bg-green-200 drop-shadow-[50_0_50px_rgba(237,136,136,0.84)] 내부컨테이너">
-            <div className="버튼 칸">
-              <button>← 목록</button>
+        <section className="w-[1200px] h-[700px] bg-black rounded-[5px] p-5 font-['DungGeunMo'] 컨테이너">
+          <div className="h-[660px] drop-shadow-[0_0_50px_rgba(237,136,136,0.84)] bg-[url('/images/wiznews/newsPattern.png')] flex flex-col 내부컨테이너">
+            <div className="h-20 bg-[rgba(0,0,0,0.44)] flex 버튼 칸">
+              <button className="">← 목록</button>
             </div>
             <div className="제목 칸">
               <h1 className="제목">
