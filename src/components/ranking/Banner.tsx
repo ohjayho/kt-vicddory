@@ -10,14 +10,12 @@ export default function Banner() {
     <>
       <div className="bg-[url('/images/bannerBg.png')] h-[252px] w-full flex flex-col items-center text-center text-white">
         <div>
-          <h1 className="mt-[52px] text-2xl font-extrabold">
-            팀 별 순위 변동 그래프
-          </h1>
-          <p className="mt-[30px] text-xl">
+          <h1 className="mt-14 text-5xl font-extrabold">팀 순위</h1>
+          <p className="mt-11 text-xl">
             팀 별 순위 변동 그래프에 대해 알려드립니다
           </p>
         </div>
-        <div className="mt-[68px] flex  gap-[198px] text-base font-extrabold">
+        <div className="mt-8 flex  gap-[198px] text-base font-extrabold">
           <BannerBtn
             url="/ranking/ai"
             buttonStyle={pathname === 'ai' ? ' text-white border-b-4' : ''}

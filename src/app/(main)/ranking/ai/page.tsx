@@ -1,7 +1,9 @@
+import Banner from '@/components/ranking/Banner';
+
 export default function RankingAi() {
   return (
     <>
-      <h1>RankingAi Component</h1>
+      <Banner />
     </>
   );
 }
