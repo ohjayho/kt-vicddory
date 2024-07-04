@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import CardFront from '@/components/tradingCard/CardFront';
 import CardBack from '@/components/tradingCard/CardBack';
 import Banner from '@/components/player/Banner';
-
+import PlayerChart from '@/components/player/PlayerChart';
 const pitcherData = [
   {
     korName: '강현우',
@@ -34,16 +34,26 @@ export default function page() {
     <>
       <div>
         <Banner
-          title="선수"
+          title="투수"
           subtitle="kt wiz의 자랑스런 ‘첫 번째 선수단’을 소개합니다"
           submenus={submenus}
         />
       </div>
-      <div className="flex justify-center items-center h-screen flex-wrap ">
-        <div className="flex flex-wrap flex-row gap-6 p-6 justify-center items-center object-center w-3/4">
+
+      <div className="flex flex-row justify-around h-screen flex-wrap bg-black/90">
+        <div className="flex">
           {pitcherData.map((pitcher, index) => (
             <CardBack key={index} player={pitcher} size="medium" />
           ))}
+        </div>
+        {/* AI 파트 */}
+        <div className="flex flex-col">
+          {/*그래프*/}
+          <div className="">
+            <PlayerChart />
+          </div>
+          {/* 한 줄 예측 */}
+          <div className="rounded-[5px] border-2 border-white"></div>
         </div>
       </div>
     </>
