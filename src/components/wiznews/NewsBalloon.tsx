@@ -12,7 +12,7 @@ export default function NewsBalloon({
     <>
       <div className={`flex ${position} [&:not(:first-child)]:-mt-10`}>
         <div
-          className={`w-[400px] h-[100px] rounded-[54px] ${setDirection} bg-gradient-to-br from-[#FF0000] via-[#620000] to-[#FF0000] p-2`}
+          className={`w-[400px] h-[120px] rounded-[54px] ${setDirection} bg-gradient-to-br from-[#FF0000] via-[#620000] to-[#FF0000] p-2`}
         >
           <div
             className={`w-full h-full rounded-[46px] ${setDirection} bg-white flex justify-center items-center shadow-[inset_0px_6px_4px_rgba(0,0,0,0.25)]`}

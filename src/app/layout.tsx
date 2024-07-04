@@ -12,7 +12,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="font-['Pretendard-Regular']">{children}</body>
+      <body className="font-['NanumSquareNeo']">{children}</body>
     </html>
   );
 }

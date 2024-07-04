@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import CardFront from '@/components/tradingCard/CardFront';
+import CardBack from '@/components/tradingCard/CardBack';
 interface Tab {
   id: number;
   label: string;
@@ -20,9 +21,9 @@ const pitcherData = [
     playerImg: 'kt11.png',
   },
   {
-    korName: '김 민',
+    korName: '강현민',
     engName: 'Kim Min',
-    backNum: 11,
+    backNum: 15,
     playerImg: 'kt11.png',
   },
   {
@@ -54,6 +55,23 @@ const pitcherData = [
     engName: 'Kim Min',
     backNum: 11,
     playerImg: 'kt11.png',
+  },
+];
+
+const pitcherData2 = [
+  {
+    korName: '강현우',
+    engName: 'Kang Hyun Woo',
+    backNum: 55,
+    playerImg: 'kt11.png',
+    positionKor: '투수',
+    positionEng: 'Pitcher',
+    positionPH: '우수우타',
+    positionImg: 'pitcher.png',
+    playerDOB: '1999.04.14',
+    playerHeight: 185,
+    playerWeight: 88,
+    debutYear: 2018,
   },
 ];
 
@@ -91,8 +109,8 @@ export default function Pitcher() {
         </div>
       </div>
 
-      <div className="flex justify-center items-center h-screen">
-        <div className="grid grid-cols-4 gap-6 p-6">
+      <div className="bg-white flex justify-center items-center h-min flex-wrap ">
+        <div className="flex flex-wrap flex-row gap-6 p-6 justify-center items-center object-center w-3/4">
           {pitcherData.map((pitcher, index) => (
             <CardFront key={index} player={pitcher} size="medium" />
           ))}
