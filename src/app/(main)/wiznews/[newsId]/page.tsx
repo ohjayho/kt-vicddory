@@ -2,20 +2,20 @@ export default function WizNewsDetail() {
   return (
     <>
       <div className="w-full h-[1000px] bg-[url('/images/mainBg.png')] text-white flex justify-center items-center">
-        <section className="w-[1200px] h-[700px] bg-black rounded-[5px] p-5 font-['DungGeunMo'] 컨테이너">
-          <div className="h-[660px] drop-shadow-[0_0_50px_rgba(237,136,136,0.84)] bg-[url('/images/wiznews/newsPattern.png')] flex flex-col 내부컨테이너">
-            <div className="h-20 bg-[rgba(0,0,0,0.44)] flex 버튼 칸">
-              <button className="">← 목록</button>
+        <section className="w-[1200px] h-[700px] bg-[#0a0a0e] rounded-[5px] p-5 font-['DungGeunMo'] text-white 컨테이너">
+          <div className="h-[660px] shadow-[0_0_30px_rgba(237,136,136,0.84)] bg-[url('/images/wiznews/newsPattern.png')] bg-opa flex flex-col 내부컨테이너">
+            <div className="h-20 bg-[rgba(0,0,0,0.44)] px-10 버튼 칸">
+              <button className="h-full text-[#FFE974] text-2xl">← 목록</button>
             </div>
-            <div className="제목 칸">
+            <div className="flex justify-between p-10 제목 칸">
               <h1 className="제목">
                 “154km까지 나오더라” 감독의 감탄…선발 실패→필승 셋업맨 “마무리는
                 영현이가 15년은 해야 될 선수죠”  
               </h1>
-              <h3>2024-01-17</h3>
+              <h3 className="날짜">2024-01-17</h3>
             </div>
-            <div className="본문 칸">
-              <p className="break-all">
+            <div className="px-10 본문 칸">
+              <p>
                 [OSEN=잠실, 한용섭 기자]프로야구 KT 위즈 투수 김민이 불펜에서
                 믿을맨 역할을 잘 수행하고 있다.KT는 21일 서울 잠실구장에서 LG와
                 경기에서 3-2 역전승을 거뒀다. 김민은 선발 벤자민에 이어 2번째
