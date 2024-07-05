@@ -40,20 +40,22 @@ export default function page() {
         />
       </div>
 
-      <div className="flex flex-row justify-center h-screen flex-wrap bg-black/90">
-        <div className="flex flex-col justify-start h-full">
+      <div className="flex flex-row justify-center h-screen flex-wrap bg-black/90 py-12">
+        <div className="flex flex-col h-auto py-8">
           {pitcherData.map((pitcher, index) => (
             <CardBack key={index} player={pitcher} size="medium" />
           ))}
         </div>
         {/* AI 파트 */}
-        <div className="flex flex-col w-1/3">
+        <div className="flex flex-col w-1/3 px-6">
           {/*그래프*/}
           <div className="">
             <PlayerChart title={'선수 예측 데이터'} />
           </div>
+
           {/* 한 줄 예측 */}
-          <div className="rounded-[5px] border-2 border-white h-[60px]"></div>
+          <div className="pl-6">AI 예측</div>
+          <div className="rounded-[5px] border-2 border-white h-[60px] mx-6"></div>
         </div>
       </div>
     </>

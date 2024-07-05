@@ -5,33 +5,7 @@ import { useState } from 'react';
 import DarkUnica from 'highcharts/themes/dark-unica';
 
 DarkUnica(Highcharts);
-const exampleData = {
-  labels: ['ERA', 'K/BB', 'WHIP', '피안타율', 'QS'],
-  datasets: [
-    {
-      label: 'Player Example Dataset1',
-      data: [0.88, 0.7, 0.6, 0.5, 0.3],
-      fill: true,
-      backgroundColor: '#f2e4d6',
-      borderColor: '#',
-      pointBackgroundColor: 'red-400',
-      pointBorderColor: 'red-800',
-      pointHoverBackgroundColor: 'red-900',
-      pointHoverBorderColor: 'orange-200',
-    },
-    {
-      label: 'Player Example Dataset2',
-      data: [0.18, 0.9, 0.8, 0.3, 0.6],
-      fill: true,
-      backgroundColor: '#ffffff',
-      borderColor: '#',
-      pointBackgroundColor: 'green-400',
-      pointBorderColor: 'green-800',
-      pointHoverBackgroundColor: 'green-900',
-      pointHoverBorderColor: 'purple-200',
-    },
-  ],
-};
+
 export default function PlayerChart({ title }: { title: string }) {
   const [options, setOptions] = useState({
     title: {
@@ -40,8 +14,8 @@ export default function PlayerChart({ title }: { title: string }) {
       x: -80,
     },
     chart: {
-      polar: true,
       type: 'area',
+      polar: true,
       backgroundColor: 'transparent',
     },
     subtitle: {
@@ -58,8 +32,6 @@ export default function PlayerChart({ title }: { title: string }) {
     },
     yAxis: {
       gridLineInterpolation: 'polygon',
-      lineWidth: 0,
-      min: 0,
     },
     series: [
       {
@@ -102,21 +74,18 @@ export default function PlayerChart({ title }: { title: string }) {
     credits: {
       enabled: false,
     },
-    tooltip: {
-      shared: true,
-      pointFormat:
-        '<span style="color:{series.color}">{series.name}: <b>' +
-        '${point.y:,.0f}</b><br/>',
-    },
+    // tooltip: {
+    //   shared: true,
+    //   pointFormat:
+    //     '<span style="color:{series.color}">{series.name}: <b>' +
+    //     '${point.y:,.0f}</b><br/>',
+    // },
   });
   return (
     <>
-      <h1>playerChart Component</h1>
-      <HighchartsReact
-        highcharts={Highcharts}
-        options={options}
-        constructorType={'chart'}
-      />
+      <div className="p-4">
+        <HighchartsReact highcharts={Highcharts} options={options} />
+      </div>
     </>
   );
 }
