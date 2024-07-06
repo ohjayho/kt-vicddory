@@ -5,7 +5,8 @@ import CardFront from '@/components/tradingCard/CardFront';
 import CardBack from '@/components/tradingCard/CardBack';
 import PlayerCard from '@/components/tradingCard/PlayerCard';
 import Banner from '@/components/player/Banner';
-import PlayerChart from '@/components/player/PlayerChart';
+import dynamic from 'next/dynamic';
+
 const pitcherData = [
   {
     korName: '강현우',
@@ -22,7 +23,6 @@ const pitcherData = [
     debutYear: 2018,
   },
 ];
-
 const submenus = [
   { children: '코칭스탭', url: '/player/coach' },
   { children: '투수', url: '/player/pitcher' },
@@ -31,6 +31,9 @@ const submenus = [
 ];
 
 export default function page() {
+  const PlayerChart = dynamic(() => import('@/components/player/PlayerChart'), {
+    ssr: false,
+  });
   return (
     <>
       <div>
@@ -44,7 +47,7 @@ export default function page() {
       <div className="flex flex-row justify-center h-screen flex-wrap bg-black/90 py-12">
         <div className="flex flex-col h-auto py-8">
           {pitcherData.map((pitcher, index) => (
-            <CardBack key={index} player={pitcher} size="medium" />
+            <PlayerCard key={index} player={pitcher} size="medium" />
           ))}
         </div>
         {/* AI 파트 */}

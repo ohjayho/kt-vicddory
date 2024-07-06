@@ -47,20 +47,18 @@ const PlayerCard: React.FC<PlayerCardProps> = ({ player, size = 'medium' }) => {
   };
   return (
     <>
-      <h1>Card Component</h1>
-
       <div className="">
         <div
           className="group w-[252px] h-[348px] [perspective:1000px]"
           onClick={handleImageClick}
         >
-          <div className="relative transition-all duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+          <div className="relative transition-all duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] [backface-visibility:hidden]">
             <div className="absolute inset-0 object-cover">
               {playerData.map((player, index) => (
                 <CardFront key={index} player={player} size="medium" />
               ))}
             </div>
-            <div className="absolute inset-0 [transform:rotateY(180deg)] [backface-">
+            <div className="absolute inset-0 object-cover [transform:rotateY(180deg)] [backface-visibility:hidden]">
               {playerData.map((player, index) => (
                 <CardBack key={index} player={player} size="medium" />
               ))}

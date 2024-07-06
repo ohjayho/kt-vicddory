@@ -30,8 +30,11 @@ export default function PlayerChart({ title }: { title: string }) {
       tickmarkPlacement: 'on',
       lineWidth: 0,
     },
+
     yAxis: {
       gridLineInterpolation: 'polygon',
+      lineWidth: 0,
+      min: 0,
     },
     series: [
       {
@@ -66,14 +69,15 @@ export default function PlayerChart({ title }: { title: string }) {
         },
       ],
     },
+
     legend: {
-      layout: 'vertical',
       align: 'right',
       verticalAlign: 'middle',
+      layout: 'vertical',
     },
-    credits: {
-      enabled: false,
-    },
+    //    credits: {
+    //    enabled: false,
+    //},
     // tooltip: {
     //   shared: true,
     //   pointFormat:
