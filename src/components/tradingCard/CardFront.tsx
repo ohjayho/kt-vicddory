@@ -24,7 +24,7 @@ const CardFront: React.FC<CardFrontProps> = ({ player, size = 'medium' }) => {
     <>
       {/* 카드 앞면 */}
       <div
-        className={`bg-black rounded-lg overflow-hidden relative m-4 shadow-lg items-center justify-center transform transition-transform ${sizeClass}`}
+        className={`bg-black rounded-lg shadow-black/40 overflow-hidden relative m-4 shadow-lg items-center justify-center transform transition-transform ${sizeClass}`}
       >
         {/* 선수 이미지 */}
         <div className="relative w-[228px] h-[316px] mx-auto">

@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import CardFront from '@/components/tradingCard/CardFront';
 import CardBack from '@/components/tradingCard/CardBack';
+import PlayerCard from '@/components/tradingCard/PlayerCard';
 import Banner from '@/components/player/Banner';
 import PlayerChart from '@/components/player/PlayerChart';
 const pitcherData = [
