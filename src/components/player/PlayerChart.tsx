@@ -1,9 +1,10 @@
 'use client';
 import Highcharts from 'highcharts';
+import HighchartsMore from 'highcharts/highcharts-more';
 import HighchartsReact from 'highcharts-react-official';
 import { useState } from 'react';
 import DarkUnica from 'highcharts/themes/dark-unica';
-
+HighchartsMore(Highcharts);
 DarkUnica(Highcharts);
 
 export default function PlayerChart({ title }: { title: string }) {
@@ -11,19 +12,18 @@ export default function PlayerChart({ title }: { title: string }) {
     title: {
       text: `${title}`,
       margin: 50,
-      x: -80,
+      x: 0,
     },
     chart: {
       type: 'area',
       polar: true,
       backgroundColor: 'transparent',
+      style: {
+        fontFamily: 'NanumSquareNeo',
+      },
     },
-    subtitle: {
-      text: '오른쪽 팀 명을 선택하시면 팀별로 그래프를 확인하실 수 있습니다',
-    },
-
     pane: {
-      size: '80%',
+      size: '100%',
     },
     xAxis: {
       categories: ['ERA', 'K/BB', 'WHIP', '피안타율', 'QS'],
@@ -40,13 +40,13 @@ export default function PlayerChart({ title }: { title: string }) {
       {
         name: 'Current',
         data: [0.88, 0.7, 0.6, 0.5, 0.3],
-        // visible: true,
+        visible: true,
         pointPlacement: 'on',
       },
       {
         name: 'Expected',
         data: [0.18, 0.9, 0.8, 0.3, 0.6],
-        // visible: true,
+        visible: true,
         pointPlacement: 'on',
       },
     ],
@@ -54,7 +54,7 @@ export default function PlayerChart({ title }: { title: string }) {
       rules: [
         {
           condition: {
-            maxWidth: 500,
+            maxWidth: 700,
           },
           chartOptions: {
             legend: {
@@ -63,7 +63,7 @@ export default function PlayerChart({ title }: { title: string }) {
               layout: 'horizontal',
             },
             pane: {
-              size: '70%',
+              size: '100%',
             },
           },
         },
@@ -75,15 +75,12 @@ export default function PlayerChart({ title }: { title: string }) {
       verticalAlign: 'middle',
       layout: 'vertical',
     },
-    //    credits: {
-    //    enabled: false,
-    //},
-    // tooltip: {
-    //   shared: true,
-    //   pointFormat:
-    //     '<span style="color:{series.color}">{series.name}: <b>' +
-    //     '${point.y:,.0f}</b><br/>',
-    // },
+    credits: {
+      enabled: false,
+    },
+    tooltip: {
+      shared: true,
+    },
   });
   return (
     <>

@@ -15,7 +15,7 @@ interface CardFrontProps {
 const sizeClasses = {
   small: 'w-48 h-72', // character test
   medium: 'w-[252px] h-[348px]', // list
-  large: 'w-80 h-120', // detail page
+  large: 'w-[400px] h-[560px]', // detail page
 };
 
 const CardFront: React.FC<CardFrontProps> = ({ player, size = 'medium' }) => {

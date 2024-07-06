@@ -29,18 +29,11 @@ interface PlayerCardProps {
 const sizeClasses = {
   small: 'w-48 h-72', // character test
   medium: 'w-[252px] h-[348px]', // list
-  large: 'w-80 h-120', // detail page
+  large: 'w-[400px] h-[560px]', // detail page
 };
 
-const PlayerCard: React.FC<PlayerCardProps> = ({ player, size = 'medium' }) => {
+const PlayerCard: React.FC<PlayerCardProps> = ({ player, size = 'large' }) => {
   const [isFlipped, setIsFlipped] = useState(false);
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIsFlipped((prev) => !prev);
-    }, 3000);
-
-    return () => clearTimeout(interval);
-  }, [isFlipped]);
 
   const handleImageClick = () => {
     setIsFlipped(!isFlipped);
@@ -49,11 +42,15 @@ const PlayerCard: React.FC<PlayerCardProps> = ({ player, size = 'medium' }) => {
     <>
       <div className="">
         <div
-          className="group w-[252px] h-[348px] [perspective:1000px]"
+          className="group w-[400px] h-[560px] [perspective:1000px]"
           onClick={handleImageClick}
         >
-          <div className="relative transition-all duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] [backface-visibility:hidden]">
-            <div className="absolute inset-0 object-cover">
+          <div
+            className={`relative transition-all duration-700 [transform-style:preserve-3d] ${
+              isFlipped ? '[transform:rotateY(180deg)]' : ''
+            }`}
+          >
+            <div className="absolute inset-0 object-cover [backface-visibility:hidden]">
               {playerData.map((player, index) => (
                 <CardFront key={index} player={player} size="medium" />
               ))}

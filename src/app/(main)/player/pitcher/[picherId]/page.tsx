@@ -44,22 +44,25 @@ export default function page() {
         />
       </div>
 
-      <div className="flex flex-row justify-center h-screen flex-wrap bg-black/90 py-12">
-        <div className="flex flex-col h-auto py-8">
+      <div className="flex flex-row justify-center h-screen flex-wrap bg-black/90 py-16">
+        <div className="flex flex-col h-auto">
           {pitcherData.map((pitcher, index) => (
             <PlayerCard key={index} player={pitcher} size="medium" />
           ))}
         </div>
         {/* AI 파트 */}
-        <div className="flex flex-col w-1/3 px-6">
+        <div className="flex flex-col w-1/3 px-16">
           {/*그래프*/}
-          <div className="">
+          <div className="w-full pl-6">
             <PlayerChart title={'선수 예측 데이터'} />
           </div>
 
           {/* 한 줄 예측 */}
           <div className="pl-6">AI 예측</div>
-          <div className="rounded-[5px] border-2 border-white h-[60px] mx-6"></div>
+          <div className="rounded-[5px] border-2 border-white h-auto w-full mx-6 p-4">
+            누가 이겨? 내가 이겨~~ 루끼루끼 마 슈퍼루끼루끼루끼 마치마치 그
+            느낌적인 느낌느낌
+          </div>
         </div>
       </div>
     </>

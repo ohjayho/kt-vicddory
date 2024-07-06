@@ -22,7 +22,7 @@ interface CardBackProps {
 const sizeClasses = {
   small: 'w-48 h-72', // character test
   medium: 'w-[252px] h-[348px]', // list
-  large: 'w-80 h-120', // detail page
+  large: 'w-[400px] h-[560px]', // detail page
 };
 
 const CardBack: React.FC<CardBackProps> = ({ player, size = 'medium' }) => {
@@ -45,7 +45,7 @@ const CardBack: React.FC<CardBackProps> = ({ player, size = 'medium' }) => {
         <div className="absolute inset-0">
           <img
             src={'/images/backCardFrame.png'}
-            alt={'Front Card Frame'}
+            alt={'Back Card Frame'}
             className="w-full h-full object-cover"
           />
         </div>
