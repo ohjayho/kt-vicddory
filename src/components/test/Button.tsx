@@ -1,12 +1,12 @@
 import Link from 'next/link';
 import { ReactNode } from 'react';
 
-type TButtonprops = {
+type TButtonProps = {
   children: ReactNode;
   href: string;
 };
 
-export default function Button({ children, href }: TButtonprops) {
+export default function Button({ children, href }: TButtonProps) {
   return (
     <>
       <div className="mt-4 z-[100]">
