@@ -14,7 +14,7 @@ export default function ProgressBar({ progress }: TProgressBarProps) {
         >
           <Image
             src="/svgs/test/ball.svg"
-            alt="baseballIcon"
+            alt="ball"
             width={30}
             height={30}
             className="absolute right-0 top-1/2 transform -translate-y-1/2"
