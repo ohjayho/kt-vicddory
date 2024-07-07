@@ -1,10 +1,23 @@
+'use client';
+import { useRouter } from 'next/navigation';
+import { MouseEventHandler } from 'react';
+
 export default function NewsContent() {
+  const router = useRouter();
+  const handleBacklink: MouseEventHandler<HTMLButtonElement> = () => {
+    router.back();
+  };
   return (
     <>
       <section className="w-[1200px] h-[700px] bg-[#0a0a0e] rounded-[5px] p-5 font-['DungGeunMo'] text-white 컨테이너">
         <div className="h-[660px] shadow-[0_0_30px_rgba(237,136,136,0.84)] bg-[url('/images/wiznews/newsPattern.png')] flex flex-col 내부컨테이너">
           <div className="h-20 bg-[rgba(0,0,0,0.44)] px-10 버튼 칸">
-            <button className="h-full text-[#FFE974] text-2xl">← 목록</button>
+            <button
+              className="h-full text-[#FFE974] text-2xl"
+              onClick={handleBacklink}
+            >
+              ← 목록
+            </button>
           </div>
           <div className="flex justify-between p-10 제목 칸">
             <h1 className="제목">
