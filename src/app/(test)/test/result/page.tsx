@@ -1,6 +1,9 @@
 import Button from '@/components/test/Button';
+import KakaoShare from '@/components/test/result/KakaoShare';
+
 import ResultPosition from '@/components/test/result/ResultPosition';
 import Image from 'next/image';
+
 
 export default function Page() {
   return (
@@ -12,7 +15,7 @@ export default function Page() {
               당신의 ♥천생연분♥ 야구선수는?
             </div>
             <Image
-              src="/svgs/test/resultBackground.svg"
+              src="/svgs/test/result/resultBackground.svg"
               alt="emblem"
               width={500}
               height={120}
@@ -24,7 +27,7 @@ export default function Page() {
               가장 많은 포지션은 뭘까요?
             </div>
             <ResultPosition
-              src="/svgs/test/catcher.svg"
+              src="/svgs/test/result/catcher.svg"
               alt="catcher"
               width={238}
               left={40}
@@ -35,7 +38,7 @@ export default function Page() {
               ratio={40.8}
             />
             <ResultPosition
-              src="/svgs/test/outfielder.svg"
+              src="/svgs/test/result/outfielder.svg"
               alt="outfielder"
               width={290}
               left={30}
@@ -46,7 +49,7 @@ export default function Page() {
               ratio={25.4}
             />
             <ResultPosition
-              src="/svgs/test/pitcher.svg"
+              src="/svgs/test/result/pitcher.svg"
               alt="pitcher"
               width={360}
               left={-43}
@@ -57,7 +60,7 @@ export default function Page() {
               ratio={18.2}
             />
             <ResultPosition
-              src="/svgs/test/infielder.svg"
+              src="/svgs/test/result/infielder.svg"
               alt="infielder"
               width={243}
               left={30}
@@ -74,6 +77,7 @@ export default function Page() {
               <span className="text-[#ED2024]">테스트</span>
               <span className="text-[#333333]">공유하기</span>
             </div>
+            <KakaoShare />
           </div>
         </div>
       </div>
