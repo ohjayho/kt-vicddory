@@ -1,7 +1,8 @@
 import ProgressBar from '@/components/test/ProgressBar';
 import TestAnswer from '@/components/test/TestAnswer';
 
-export default function Questions() {
+export default async function Questions() {
+  await new Promise((resolve) => setTimeout(resolve, 5000));
   const progress = 20;
   return (
     <>
