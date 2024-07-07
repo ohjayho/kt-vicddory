@@ -8,7 +8,7 @@ export default function RankingDaily() {
   return (
     <>
       <div className="w-3/4 mx-auto text-white pb-16">
-        <div className="h-8 mt-[51px] text-lg border-l-4 border-red flex items-center">
+        <div className="h-8 mt-[51px] text-lg border-l-4 border-red-100 flex items-center">
           <p className="ml-3.5">비교 분석 구간:</p>
           <input
             type="date"

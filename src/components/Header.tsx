@@ -45,7 +45,7 @@ export default function Header() {
             <Link href="/player">Player</Link>
             <Link href="/ranking">Ranking</Link>
             <Link href="https://www.ktwizstore.co.kr">Shop</Link>
-            <div className="text-red font-extrabold">
+            <div className="text-red-100 font-extrabold">
               <Link href="https://www.ktwizstore.co.kr">티켓 구매</Link>
             </div>
           </div>
