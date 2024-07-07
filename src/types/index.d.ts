@@ -6,6 +6,8 @@ type TResultPositionProps = {
   text?: string;
   description?: string;
   tags?: string;
+  ranking?: number;
+  ratio?: number;
 };
 
 export { TResultPositionProps };
