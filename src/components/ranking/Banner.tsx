@@ -32,9 +32,9 @@ export default function Banner() {
         <div className="bg-[url('/images/bannerBg.png')] h-[252px] w-full flex flex-col items-center text-center text-white">
           <div>
             <h1 className="mt-14 text-5xl font-extrabold">
-              {text[pathname].title}
+              {text[pathname]?.title}
             </h1>
-            <p className="mt-11 text-xl">{text[pathname].subTitle}</p>
+            <p className="mt-11 text-xl">{text[pathname]?.subTitle}</p>
           </div>
           <div className="mt-8 flex  gap-[198px] text-base font-extrabold">
             <BannerBtn
