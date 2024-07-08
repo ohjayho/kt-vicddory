@@ -9,7 +9,7 @@ import Image from "next/image";
 
 // const KakaoShare = ({ description }: KakaoShareProps) => {
 const KakaoShare = () => {  
-  const shareUrl = typeof window !== "undefined" ? window.location.href : "";
+  const shareUrl = typeof window !== "undefined" ? "https://vicddory-frontend.vercel.app/test" : "";
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -40,8 +40,8 @@ const KakaoShare = () => {
         className="cursor-pointer"
         src="/svgs/test/result/kakao.svg"
         alt="카카오톡 공유 이미지"
-        width={60}
-        height={60}
+        width={56}
+        height={56}
       />
     </div>
   );
