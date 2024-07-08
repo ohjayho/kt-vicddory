@@ -8,7 +8,7 @@ import DarkUnica from 'highcharts/themes/dark-unica';
 DarkUnica(Highcharts);
 
 export default function Chart({ title }: { title: string }) {
-  const [options, setOptions] = useState({
+  const [options] = useState({
     title: {
       text: `${title}`,
       margin: 50,
