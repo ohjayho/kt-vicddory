@@ -37,11 +37,7 @@ export default function page() {
   return (
     <>
       <div>
-        <Banner
-          title="투수"
-          subtitle="kt wiz의 자랑스런 ‘첫 번째 선수단’을 소개합니다"
-          submenus={submenus}
-        />
+        <Banner title="투수" />
       </div>
 
       <div className="flex flex-row justify-center h-screen flex-wrap bg-black/90 py-16">

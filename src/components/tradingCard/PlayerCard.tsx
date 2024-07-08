@@ -2,8 +2,8 @@
 
 import CardFront from '@/components/tradingCard/CardFront';
 import CardBack from '@/components/tradingCard/CardBack';
-import Player from '@/components/player/PlayerList';
-import { useEffect, useState } from 'react';
+import Player from '@/components/player/Player';
+import { useState } from 'react';
 const playerData = [
   {
     korName: '강현우',
@@ -32,9 +32,9 @@ const sizeClasses = {
   large: 'w-[400px] h-[560px]', // detail page
 };
 
-const PlayerCard: React.FC<PlayerCardProps> = ({ player, size = 'large' }) => {
+const PlayerCard: React.FC<PlayerCardProps> = ({ size = 'large' }) => {
   const [isFlipped, setIsFlipped] = useState(false);
-
+  const sizeClass = sizeClasses[size];
   const handleImageClick = () => {
     setIsFlipped(!isFlipped);
   };
@@ -50,14 +50,18 @@ const PlayerCard: React.FC<PlayerCardProps> = ({ player, size = 'large' }) => {
               isFlipped ? '[transform:rotateY(180deg)]' : ''
             }`}
           >
-            <div className="absolute inset-0 object-cover [backface-visibility:hidden]">
+            <div
+              className={`${sizeClass} absolute inset-0 object-cover [backface-visibility:hidden]`}
+            >
               {playerData.map((player, index) => (
-                <CardFront key={index} player={player} size="medium" />
+                <CardFront key={index} player={player} size={size} />
               ))}
             </div>
-            <div className="absolute inset-0 object-cover [transform:rotateY(180deg)] [backface-visibility:hidden]">
+            <div
+              className={`${sizeClass} absolute inset-0 object-cover [transform:rotateY(180deg)] [backface-visibility:hidden]`}
+            >
               {playerData.map((player, index) => (
-                <CardBack key={index} player={player} size="medium" />
+                <CardBack key={index} player={player} size={size} />
               ))}
             </div>
           </div>

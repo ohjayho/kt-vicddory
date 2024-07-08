@@ -49,14 +49,17 @@ const CardFront: React.FC<CardFrontProps> = ({ player, size = 'medium' }) => {
   }, []);
   return (
     <>
-      {/* 홀로그램 이미지 */}
-      <div
-        className={`absolute ${sizeClass} bg-hologram-gradient brightness-110 opacity-80 mix-blend-color-dodge bg-cover bg-[150%_150%] transition-all duration-100`}
-        ref={cardRef}
-      >
+      <div>
+        {/* 홀로그램 이미지 */}
+        <div
+          className={`absolute ${sizeClass} inset-x bg-hologram-gradient brightness-110 opacity-80 mix-blend-color-dodge bg-cover bg-[150%_150%] transition-all duration-100`}
+          ref={cardRef}
+        >
+          {' '}
+        </div>
         {/* 카드 앞면 */}
         <div
-          className={`bg-black rounded-lg shadow-black/40 overflow-hidden relative m-4 shadow-lg items-center justify-center transform transition-transform duration-100 ${sizeClass}`}
+          className={`bg-black rounded-lg shadow-black/40 overflow-visible relative m-4 shadow-lg items-center justify-center transform transition-transform duration-100 ${sizeClass}`}
         >
           {/* 선수 이미지 */}
           <div className="relative w-[228px] h-[316px] mx-auto">

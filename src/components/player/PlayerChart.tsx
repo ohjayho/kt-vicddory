@@ -8,7 +8,7 @@ HighchartsMore(Highcharts);
 DarkUnica(Highcharts);
 
 export default function PlayerChart({ title }: { title: string }) {
-  const [options, setOptions] = useState({
+  const options = {
     title: {
       text: `${title}`,
       margin: 50,
@@ -81,7 +81,7 @@ export default function PlayerChart({ title }: { title: string }) {
     tooltip: {
       shared: true,
     },
-  });
+  };
   return (
     <>
       <div className="p-4">
