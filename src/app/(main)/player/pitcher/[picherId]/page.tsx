@@ -3,6 +3,9 @@
 import React, { useState } from 'react';
 import CardFront from '@/components/tradingCard/CardFront';
 import CardBack from '@/components/tradingCard/CardBack';
+import PlayerCard from '@/components/tradingCard/PlayerCard';
+import Banner from '@/components/player/Banner';
+import dynamic from 'next/dynamic';
 
 const pitcherData = [
   {
@@ -20,15 +23,42 @@ const pitcherData = [
     debutYear: 2018,
   },
 ];
+const submenus = [
+  { children: '코칭스탭', url: '/player/coach' },
+  { children: '투수', url: '/player/pitcher' },
+  { children: '타자', url: '/player/batter' },
+  { children: '응원단', url: '/player/cheerleader' },
+];
 
 export default function page() {
+  const PlayerChart = dynamic(() => import('@/components/player/PlayerChart'), {
+    ssr: false,
+  });
   return (
     <>
-      <div className="flex justify-center items-center h-screen flex-wrap ">
-        <div className="flex flex-wrap flex-row gap-6 p-6 justify-center items-center object-center w-3/4">
+      <div>
+        <Banner title="투수" />
+      </div>
+
+      <div className="flex flex-row justify-center h-screen flex-wrap bg-black/90 py-16">
+        <div className="flex flex-col h-auto">
           {pitcherData.map((pitcher, index) => (
-            <CardBack key={index} player={pitcher} size="medium" />
+            <PlayerCard key={index} player={pitcher} size="medium" />
           ))}
+        </div>
+        {/* AI 파트 */}
+        <div className="flex flex-col w-1/3 px-16">
+          {/*그래프*/}
+          <div className="w-full pl-6">
+            <PlayerChart title={'선수 예측 데이터'} />
+          </div>
+
+          {/* 한 줄 예측 */}
+          <div className="pl-6">AI 예측</div>
+          <div className="rounded-[5px] border-2 border-white h-auto w-full mx-6 p-4">
+            누가 이겨? 내가 이겨~~ 루끼루끼 마 슈퍼루끼루끼루끼 마치마치 그
+            느낌적인 느낌느낌
+          </div>
         </div>
       </div>
     </>
