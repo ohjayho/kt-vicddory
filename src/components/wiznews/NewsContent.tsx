@@ -22,7 +22,7 @@ export default function NewsContent() {
           <div className="flex justify-between p-10 제목 칸">
             <h1 className="제목">
               “154km까지 나오더라” 감독의 감탄…선발 실패→필승 셋업맨 “마무리는
-              영현이가 15년은 해야 될 선수죠”  
+              영현이가 15년은 해야 될 선수죠”
             </h1>
             <h3 className="날짜">2024-01-17</h3>
           </div>
