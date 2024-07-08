@@ -1,3 +1,4 @@
+import Script from 'next/script';
 import './globals.css';
 import { ReactNode } from 'react';
 
@@ -7,9 +8,24 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
+declare global {
+  interface Window {
+    Kakao: any;
+  }
+}
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en">
       <body className="font-['NanumSquareNeo']">{children}</body>
+      <Script
+        src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.2/kakao.min.js"
+        strategy="afterInteractive"
+      />
     </html>
   );
 }
