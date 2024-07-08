@@ -10,7 +10,7 @@ export default function Test() {
             야구 입문자를 위한
           </div>
           <Image
-            src="/svgs/test/watermark.svg"
+            src="/svgs/watermark.svg"
             alt="watermark"
             width={200}
             height={62}
@@ -22,7 +22,7 @@ export default function Test() {
             나와 어울리는 KT Wiz 선수 알아보기!
           </div>
           <Image
-            src="/svgs/test/emblem.svg"
+            src="/svgs/emblem.svg"
             alt="emblem"
             width={200}
             height={180}
