@@ -93,8 +93,3 @@
     scrollbar-width: none; /* Firefox */
   }
 }
-
-body {
-  @apply text-white;
-  min-height: 100%;
-}
