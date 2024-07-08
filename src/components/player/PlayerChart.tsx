@@ -2,7 +2,6 @@
 import Highcharts from 'highcharts';
 import HighchartsMore from 'highcharts/highcharts-more';
 import HighchartsReact from 'highcharts-react-official';
-import { useState } from 'react';
 import DarkUnica from 'highcharts/themes/dark-unica';
 HighchartsMore(Highcharts);
 DarkUnica(Highcharts);

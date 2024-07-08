@@ -1,13 +1,9 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import CardFront from '@/components/tradingCard/CardFront';
-import CardBack from '@/components/tradingCard/CardBack';
 import Banner from '@/components/player/Banner';
-interface Tab {
-  id: number;
-  label: string;
-}
+
 const pitcherData = [
   {
     korName: '김 민',
@@ -59,38 +55,7 @@ const pitcherData = [
   },
 ];
 
-const pitcherData2 = [
-  {
-    korName: '강현우',
-    engName: 'Kang Hyun Woo',
-    backNum: 55,
-    playerImg: 'kt11.png',
-    positionKor: '투수',
-    positionEng: 'Pitcher',
-    positionPH: '우수우타',
-    positionImg: 'pitcher.png',
-    playerDOB: '1999.04.14',
-    playerHeight: 185,
-    playerWeight: 88,
-    debutYear: 2018,
-  },
-];
-
-const submenus = [
-  { children: '코칭스탭', url: '/player/coach' },
-  { children: '투수', url: '/player/pitcher' },
-  { children: '타자', url: '/player/batter' },
-  { children: '응원단', url: '/player/cheerleader' },
-];
-
 export default function Pitcher() {
-  const [selectedTab, setSelectedTab] = useState(0);
-  const tabs: Tab[] = [
-    { id: 0, label: '코칭스탭' },
-    { id: 1, label: '투수' },
-    { id: 2, label: '타자' },
-    { id: 3, label: '응원단' },
-  ];
   return (
     <>
       <div>

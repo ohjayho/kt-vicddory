@@ -1,8 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
-import CardFront from '@/components/tradingCard/CardFront';
-import CardBack from '@/components/tradingCard/CardBack';
+import React from 'react';
 import PlayerCard from '@/components/tradingCard/PlayerCard';
 import Banner from '@/components/player/Banner';
 import dynamic from 'next/dynamic';
@@ -22,12 +20,6 @@ const pitcherData = [
     playerWeight: 88,
     debutYear: 2018,
   },
-];
-const submenus = [
-  { children: '코칭스탭', url: '/player/coach' },
-  { children: '투수', url: '/player/pitcher' },
-  { children: '타자', url: '/player/batter' },
-  { children: '응원단', url: '/player/cheerleader' },
 ];
 
 export default function page() {
