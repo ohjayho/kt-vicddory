@@ -1,8 +1,8 @@
 import Button from '@/components/test/Button';
-import KakaoShare from '@/components/test/result/KakaoShare';
-
 import ResultPosition from '@/components/test/result/ResultPosition';
+import TestShare from '@/components/test/result/TestShare';
 import Image from 'next/image';
+
 
 
 export default function Page() {
@@ -11,7 +11,7 @@ export default function Page() {
       <div className="bg-slate-100">
         <div className="flex justify-center flex-col items-center h-full max-w-md m-auto">
           <div className="w-full h-[600px] bg-[#FFFFFF] flex flex-col justify-center items-center relative">
-            <div className="absolute flex justify-center items-center top-10 w-72 h-9 bg-[#ED2024] rounded-full">
+            <div className="absolute flex justify-center items-center top-10 w-72 h-9 bg-red-100 rounded-full text-white">
               당신의 ♥천생연분♥ 야구선수는?
             </div>
             <Image
@@ -73,11 +73,11 @@ export default function Page() {
           </div>
           <div className="w-full h-[250px] bg-[#FFFFFF] flex flex-col justify-center items-center">
             <Button href="/test/questions/1">테스트 다시하기</Button>
-            <div className="text-lg font-bold mt-10">
-              <span className="text-[#ED2024]">테스트</span>
+            <div className="text-xl font-bold mt-10 mb-3">
+              <span className="text-red-100">테스트</span>
               <span className="text-[#333333]">공유하기</span>
             </div>
-            <KakaoShare />
+            <TestShare />
           </div>
         </div>
       </div>
