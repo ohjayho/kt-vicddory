@@ -1,7 +1,9 @@
+'use client';
+
+import { useRouter } from 'next/navigation';
+
 export default function RankingMain() {
-  return (
-    <>
-      <h1>RankingMain Component</h1>
-    </>
-  );
+  const router = useRouter();
+  router.replace('/ranking/ai');
+  return null;
 }

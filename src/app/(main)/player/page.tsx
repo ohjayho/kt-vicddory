@@ -1,7 +1,9 @@
-export default function Player() {
-  return (
-    <>
-      <h1>Player 탭입니다</h1>
-    </>
-  );
+'use client';
+
+import { useRouter } from 'next/navigation';
+
+export default function RankingMain() {
+  const router = useRouter();
+  router.replace('/player/pitcher');
+  return null;
 }

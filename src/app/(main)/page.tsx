@@ -1,8 +1,16 @@
+import Image from 'next/image';
+
 export default function Main() {
   return (
     <>
-      <h1>Main Component</h1>
-      <h3>2주차 브랜치</h3>
+      <Image
+        src="/images/main.png"
+        alt="main Image"
+        width={0}
+        height={0}
+        sizes="100vw"
+        style={{ width: '100%', height: 'auto' }}
+      />
     </>
   );
 }
