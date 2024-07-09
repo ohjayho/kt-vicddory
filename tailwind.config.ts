@@ -27,6 +27,15 @@ const config: Config = {
         'red-20': '#FBD2D3',
         'red-10': '#FEE9EA',
       },
+      keyframes: {
+        expand: {
+          '0%': { width: '0%' },
+          '100%': { width: 'var(--width)' },
+        },
+      },
+      animation: {
+        expand: 'expand 2s ease-out forwards',
+      },
     },
   },
   variants: {
