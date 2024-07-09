@@ -1,13 +1,5 @@
+import { TEmblemSrc, TMatchTeamProps } from '@/types';
 import Image from 'next/image';
-
-type TMatchTeamProps = {
-  teamName: string;
-  score: string;
-};
-
-type TEmblemSrc = {
-  [key: string]: string;
-};
 
 export default function MatchTeam({ teamName, score }: TMatchTeamProps) {
   const emblemSrc: TEmblemSrc = {
