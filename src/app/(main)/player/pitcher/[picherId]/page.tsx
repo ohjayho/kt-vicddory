@@ -47,7 +47,7 @@ export default function page() {
 
           {/* 한 줄 예측 */}
           <div className="pl-6">AI 예측</div>
-          <div className="rounded-[5px] border-2 border-white h-auto w-full mx-6 p-4">
+          <div className="rounded-[5px] border-2 text-white border-white h-auto w-full mx-6 p-4">
             누가 이겨? 내가 이겨~~ 루끼루끼 마 슈퍼루끼루끼루끼 마치마치 그
             느낌적인 느낌느낌
           </div>
