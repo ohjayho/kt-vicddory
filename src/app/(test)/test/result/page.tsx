@@ -1,27 +1,26 @@
+"use client";
+
 import Button from '@/components/test/Button';
+import CaptureArea from '@/components/test/result/CaptureArea';
+import { CaptureDownload } from '@/components/test/result/CaptureDownload';
 import ResultPosition from '@/components/test/result/ResultPosition';
 import TestShare from '@/components/test/result/TestShare';
-import Image from 'next/image';
-
+import React, { useRef } from 'react';
 
 
 export default function Page() {
+  const divRef = useRef<HTMLDivElement>(null);
+
+  const handleCaptureClick = () => {
+    CaptureDownload(divRef);
+    alert("테스트 결과를 캡쳐합니다.")
+  };
+
   return (
     <>
       <div className="bg-slate-100">
         <div className="flex justify-center flex-col items-center h-full max-w-md m-auto">
-          <div className="w-full h-[600px] bg-[#FFFFFF] flex flex-col justify-center items-center relative">
-            <div className="absolute flex justify-center items-center top-10 w-72 h-9 bg-red-100 rounded-full text-white">
-              당신의 ♥천생연분♥ 야구선수는?
-            </div>
-            <Image
-              src="/svgs/test/result/resultBackground.svg"
-              alt="emblem"
-              width={500}
-              height={120}
-              className="absolute bottom-[-1px]"
-            />
-          </div>
+          <CaptureArea divRef={divRef} />
           <div className="w-full h-[1900px] bg-[#F8A6A7] relative flex flex-col justify-center items-center">
             <div className="absolute text-[#333333] font-bold top-10">
               가장 많은 포지션은 뭘까요?
@@ -77,7 +76,7 @@ export default function Page() {
               <span className="text-red-100">테스트</span>
               <span className="text-[#333333]">공유하기</span>
             </div>
-            <TestShare />
+            <TestShare onClick={handleCaptureClick}/>
           </div>
         </div>
       </div>
