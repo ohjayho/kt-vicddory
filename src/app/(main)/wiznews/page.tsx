@@ -13,7 +13,7 @@ export default function WizNews() {
           <div className="w-[820px] max-lg:w-[500px] h-[600px] overflow-y-scroll no-scrollbar">
             <NewsBalloon
               direction="right"
-              content="KT 위즈는 6월 19일 롯데전에서 에픽하이를 초청해 시구 행사를 진행합니다 KT 위즈는 6월 19일 롯데전에서 에픽하이를 초청해 시구 행사를 진행합니다."
+              content="KT 위즈는 6월 19일 롯데전에서 에픽하이를 초청해 시구 행사를 진행합니다 KT 위즈는 6월 19일 롯데전에서 에픽하이를 초청해 시구 행사를 진행합니다"
             />
             <NewsBalloon direction="left" content="나는 오재호다." />
             <NewsBalloon direction="right" content="나는 빅이다." />
