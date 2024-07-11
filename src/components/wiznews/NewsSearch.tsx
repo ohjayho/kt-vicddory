@@ -7,9 +7,9 @@ export default function NewsSearch() {
         <Image
           src="/svgs/emblem.svg"
           alt="KT emblem"
-          width={35}
-          height={30}
-          className="h-8"
+          width={0}
+          height={0}
+          className="w-auto h-8"
         />
         <input
           type="text"
