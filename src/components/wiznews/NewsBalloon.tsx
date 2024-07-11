@@ -22,7 +22,7 @@ export default function NewsBalloon({
             <div
               className={`w-full h-full rounded-[46px] ${setDirection} bg-white flex justify-center items-center shadow-[inset_0px_6px_4px_rgba(0,0,0,0.25)]`}
             >
-              <h1 className="flex items-center w-11/12 h-5/6 font-['DungGeunMo'] overflow-hidden overflow-ellipsis break-all ">
+              <h1 className="flex items-center w-10/12 h-5/6 font-['DungGeunMo'] overflow-hidden overflow-ellipsis break-all ">
                 {content}
               </h1>
             </div>
