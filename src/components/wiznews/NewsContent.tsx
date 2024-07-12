@@ -9,25 +9,25 @@ export default function NewsContent() {
   };
   return (
     <>
-      <section className="w-[1200px] h-[700px] bg-[#0a0a0e] rounded-[5px] p-5 font-['DungGeunMo'] text-white 컨테이너">
-        <div className="h-[660px] shadow-[0_0_30px_rgba(237,136,136,0.84)] bg-[url('/images/wiznews/newsPattern.png')] flex flex-col 내부컨테이너">
-          <div className="h-20 bg-[rgba(0,0,0,0.44)] px-10 버튼 칸">
+      <section className="w-[820px] max-lg:w-[80%] h-[55%] bg-[#0a0a0e] rounded-[5px] p-5 font-['DungGeunMo'] text-white">
+        <div className="h-full shadow-[0_0_30px_rgba(237,136,136,0.84)] bg-[url('/images/wiznews/newsPattern.png')] flex flex-col 내부컨테이너">
+          <div className="h-14 bg-[rgba(0,0,0,0.44)] p-8 버튼 칸">
             <button
-              className="h-full text-[#FFE974] text-2xl"
+              className="h-full text-[#FFE974] text-xl flex items-center"
               onClick={handleBacklink}
             >
               ← 목록
             </button>
           </div>
-          <div className="flex justify-between p-10 제목 칸">
-            <h1 className="제목">
+          <div className="flex max-md:flex-col justify-between pt-8 px-8 pb-5 제목 칸">
+            <h1 className="w-[80%] max-md:w-full 제목">
               “154km까지 나오더라” 감독의 감탄…선발 실패→필승 셋업맨 “마무리는
               영현이가 15년은 해야 될 선수죠”
             </h1>
-            <h3 className="날짜">2024-01-17</h3>
+            <h3 className="flex justify-end max-md:mt-4 날짜">2024-01-17</h3>
           </div>
-          <div className="px-10 본문 칸">
-            <p>
+          <div className="px-8 pb-8 overflow-hidden 본문 칸">
+            <p className="h-full overflow-y-scroll no-scrollbar">
               [OSEN=잠실, 한용섭 기자]프로야구 KT 위즈 투수 김민이 불펜에서
               믿을맨 역할을 잘 수행하고 있다.KT는 21일 서울 잠실구장에서 LG와
               경기에서 3-2 역전승을 거뒀다. 김민은 선발 벤자민에 이어 2번째
