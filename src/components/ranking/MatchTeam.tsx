@@ -1,13 +1,5 @@
+import { TEmblemSrc, TMatchTeamProps } from '@/types';
 import Image from 'next/image';
-
-type TMatchTeamProps = {
-  teamName: string;
-  score: string;
-};
-
-type TEmblemSrc = {
-  [key: string]: string;
-};
 
 export default function MatchTeam({ teamName, score }: TMatchTeamProps) {
   const emblemSrc: TEmblemSrc = {
@@ -25,12 +17,14 @@ export default function MatchTeam({ teamName, score }: TMatchTeamProps) {
   return (
     <>
       <div className="flex flex-col justify-center items-center">
-        <Image
-          src={emblemSrc[teamName]}
-          alt={`${teamName} emblem`}
-          width={200}
-          height={200}
-        />
+        <div className="w-[200px] h-[180px] flex justify-center items-center">
+          <Image
+            src={emblemSrc[teamName]}
+            alt={`${teamName} emblem`}
+            width={200}
+            height={200}
+          />
+        </div>
         <p className="text-4xl font-extrabold mt-7">{teamName}</p>
         <p className="mt-3 text-xl">{score}</p>
       </div>
