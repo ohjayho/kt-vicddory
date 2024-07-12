@@ -1,3 +1,4 @@
+//Test
 type TResultPositionProps = {
   src: string;
   alt: string;
@@ -10,4 +11,30 @@ type TResultPositionProps = {
   ratio?: number;
 };
 
-export { TResultPositionProps };
+//Ranking
+type TGrapeProps = {
+  title: string;
+  homeScore: string;
+  awayScore: string;
+};
+
+type TCustomCSSProperties = CSSProperties & {
+  '--width'?: string;
+};
+
+type TMatchTeamProps = {
+  teamName: string;
+  score: string;
+};
+
+type TEmblemSrc = {
+  [key: string]: string;
+};
+
+export {
+  TResultPositionProps,
+  TGrapeProps,
+  TCustomCSSProperties,
+  TMatchTeamProps,
+  TEmblemSrc,
+};
