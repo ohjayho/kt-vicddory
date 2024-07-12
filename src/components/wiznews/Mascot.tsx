@@ -13,9 +13,9 @@ export default function Mascot({
       <Image
         src={src}
         alt="mascot_img"
-        width={320}
-        height={30}
-        className={`absolute -bottom-16 ${setLocation}`}
+        width={0}
+        height={0}
+        className={`w-[320px] h-auto absolute -bottom-16 ${setLocation} max-md:opacity-40`}
       />
     </>
   );
