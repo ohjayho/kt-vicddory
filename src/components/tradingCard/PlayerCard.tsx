@@ -29,12 +29,18 @@ interface PlayerCardProps {
 const sizeClasses = {
   small: 'w-48 h-72', // character test
   medium: 'w-[252px] h-[348px]', // list
-  large: 'w-[400px] h-[560px]', // detail page
+  large: 'w-[360px] h-[500px]', // detail page
 };
-
-const PlayerCard: React.FC<PlayerCardProps> = ({ size = 'large' }) => {
+const photoSizes = {
+  small: '',
+  medium: 'w-[228px] h-[316px]',
+  large: 'w-[370px] h-[520px]',
+};
+const PlayerCard: React.FC<PlayerCardProps> = ({ size = 'medium' }) => {
   const [isFlipped, setIsFlipped] = useState(false);
   const sizeClass = sizeClasses[size];
+  const photoSize = photoSizes[size];
+  console.log(size);
   const handleImageClick = () => {
     setIsFlipped(!isFlipped);
   };
@@ -42,7 +48,7 @@ const PlayerCard: React.FC<PlayerCardProps> = ({ size = 'large' }) => {
     <>
       <div className="">
         <div
-          className="group w-[400px] h-[560px] [perspective:1000px]"
+          className={`group ${photoSize} [perspective:1000px`}
           onClick={handleImageClick}
         >
           <div
