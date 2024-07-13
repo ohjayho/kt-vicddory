@@ -22,10 +22,10 @@ interface CardBackProps {
 const sizeClasses = {
   small: 'w-48 h-72', // character test
   medium: 'w-[252px] h-[348px]', // list
-  large: 'w-[400px] h-[560px]', // detail page
+  large: 'w-[360px] h-[500px]', // detail page
 };
 
-const CardBack: React.FC<CardBackProps> = ({ player, size = 'medium' }) => {
+const CardBack: React.FC<CardBackProps> = ({ player, size = 'large' }) => {
   const sizeClass = sizeClasses[size];
   if (size === 'medium') {
     return (
@@ -113,10 +113,10 @@ const CardBack: React.FC<CardBackProps> = ({ player, size = 'medium' }) => {
     <>
       {/* 카드 뒷면 */}
       <div
-        className={`bg-black rounded-lg overflow-hidden relative m-4 shadow-lg items-center justify-center transform transition-transform ${sizeClass}`}
+        className={`bg-black rounded-xl overflow-hidden relative m-4 items-center justify-center transform transition-transform ${sizeClass}`}
       >
         {/* 선수 이미지 */}
-        <div className="relative w-[228px] h-[136px] mx-auto">
+        <div className="relative w-[324px] h-[196px] mx-auto">
           <img
             src={`/images/player/playerCardBack/${player.playerImg}`}
             alt={`${player.korName} Image`}
@@ -131,12 +131,12 @@ const CardBack: React.FC<CardBackProps> = ({ player, size = 'medium' }) => {
             className="w-full h-full object-cover"
           />
         </div>
-        <div className="relative inset-0 flex px-6 text-white/80 text-sm font-bold bottom-0 h-1/3 -mt-3">
+        <div className="relative inset-0 flex text-white/80 text-lg font-bold bottom-0 h-1/3 mx-7 -mt-5 ">
           <div className="flex flex-col bg-yellow-200/0 w-full">
             {/* 선수 이름 */}
             <div className="bg-slate-400/0 flex flex-row">
               {/* 선수 국문 이름 */}
-              <div className="text-xl leading-relaxed text-left pr-1.5">
+              <div className="text-2xl leading-relaxed text-left pr-1.5">
                 {player.korName}
               </div>
               {/* 선수 영문 이름 */}
@@ -145,9 +145,9 @@ const CardBack: React.FC<CardBackProps> = ({ player, size = 'medium' }) => {
               </div>
             </div>
             {/* 포지션 */}
-            <div className="bg-pink-300/0 w-[178px] flex flex-col justify-items-center ml-2">
+            <div className="bg-pink-300/0 w-full h-full flex flex-col pt-2">
               {/* 포지션 맵 */}
-              <div className="absolute ml-1 mt-1 w-[80px] h-[80px]">
+              <div className="absolute ml-8 mt-1 w-[120px] h-auto">
                 {' '}
                 <img
                   src={`/images/player/playerPosition/${player.positionImg}`}
@@ -155,7 +155,7 @@ const CardBack: React.FC<CardBackProps> = ({ player, size = 'medium' }) => {
                   className="absolute left-0 object-cover rounded-0"
                 />
               </div>
-              <div className="flex flex-row place-content-end items-end mt-6">
+              <div className="flex flex-row place-content-end items-end pt-10 mr-14">
                 {/* 포지션 국문 */}
                 <p className="text-xl">{player.positionKor}</p>
 
@@ -170,16 +170,16 @@ const CardBack: React.FC<CardBackProps> = ({ player, size = 'medium' }) => {
           </div>
         </div>
         {/* 선수 정보 박스*/}
-        <div className="w-[178px] h-[80px] relative ml-9 -mt-2 inset-0 flex flex-col justify-center text-white text-xs font-bold bg-zinc-300/50 rounded-[5px] px-4 py-1">
-          <div className="flex flex-row w-full justify-between my-0.5">
+        <div className="w-2/3 h-1/5 relative ml-14 mt-2 inset-0 flex flex-col justify-center text-white text-sm font-bold bg-zinc-300/50 rounded-[5px] px-5 py-3">
+          <div className="flex flex-row w-full justify-between my-1">
             <div className="text-left">생년월일:</div>
             <div className="text-right">{player.playerDOB}</div>
           </div>
-          <div className="flex flex-row w-full justify-between my-0.5">
+          <div className="flex flex-row w-full justify-between my-1">
             <div className="text-left">체격:</div>
             <div className="text-right">{`${player.playerHeight}cm, ${player.playerWeight}kg`}</div>
           </div>
-          <div className="flex flex-row w-full justify-between my-0.5">
+          <div className="flex flex-row w-full justify-between my-1">
             <div className="">프로데뷔:</div>
             <div className="items-end">{`${player.debutYear}년`}</div>
           </div>
