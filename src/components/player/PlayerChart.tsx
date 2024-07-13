@@ -10,7 +10,7 @@ export default function PlayerChart({ title }: { title: string }) {
   const options = {
     title: {
       text: `${title}`,
-      margin: 50,
+      margin: 70,
       x: 0,
     },
     chart: {
@@ -22,7 +22,7 @@ export default function PlayerChart({ title }: { title: string }) {
       },
     },
     pane: {
-      size: '100%',
+      size: '120%',
     },
     xAxis: {
       categories: ['ERA', 'K/BB', 'WHIP', '피안타율', 'QS'],
@@ -53,7 +53,7 @@ export default function PlayerChart({ title }: { title: string }) {
       rules: [
         {
           condition: {
-            maxWidth: 700,
+            maxWidth: 1000,
           },
           chartOptions: {
             legend: {
@@ -62,7 +62,7 @@ export default function PlayerChart({ title }: { title: string }) {
               layout: 'horizontal',
             },
             pane: {
-              size: '100%',
+              size: '120%',
             },
           },
         },
