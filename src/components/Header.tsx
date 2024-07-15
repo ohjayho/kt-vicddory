@@ -4,11 +4,31 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import MobileMenu from './mobile/MobileMenu';
 
 export default function Header() {
   const pathname = usePathname();
   const isHome = pathname === '/';
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const [isAnimated, setIsAnimated] = useState(false);
+  const handleMobileOpen = () => {
+    isMobileOpen ? hideMenu() : showMenu();
+  };
+
+  const showMenu = () => {
+    setIsMobileOpen(!isMobileOpen);
+    setTimeout(() => {
+      setIsAnimated(!isAnimated);
+    }, 0);
+  };
+
+  const hideMenu = () => {
+    setIsAnimated(!isAnimated);
+    setTimeout(() => {
+      setIsMobileOpen(!isMobileOpen);
+    }, 1000);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,7 +50,10 @@ export default function Header() {
         className={`w-full fixed ${isHome ? (isScrolled ? 'bg-black' : 'bg-transparent') : 'bg-black'} group`}
       >
         <div className="flex justify-between h-20 max-lg:h-[13vw] w-3/4 mx-auto  text-white items-center">
-          <Link href="/" className="hidden max-lg:flex items-center h-full">
+          <button
+            className="hidden max-lg:flex items-center h-full"
+            onClick={handleMobileOpen}
+          >
             <Image
               src="/svgs/header/hamburger.svg"
               alt="ticket"
@@ -38,7 +61,7 @@ export default function Header() {
               height={0}
               className="w-auto h-[50%]"
             />
-          </Link>
+          </button>
           <Link href="/" className="flex h-full items-center -mt-4">
             <Image
               src="/svgs/watermarkWhite.svg"
@@ -136,6 +159,13 @@ export default function Header() {
           </div>
         </div>
       </div>
+      {isMobileOpen && (
+        <MobileMenu
+          handleMobileOpen={handleMobileOpen}
+          isMobileOpen={isMobileOpen}
+          isAnimated={isAnimated}
+        />
+      )}
     </>
   );
 }
