@@ -1,4 +1,5 @@
 'use client';
+import React, { useEffect, useRef } from 'react';
 import Highcharts from 'highcharts';
 import HighchartsMore from 'highcharts/highcharts-more';
 import HighchartsReact from 'highcharts-react-official';
@@ -6,7 +7,26 @@ import DarkUnica from 'highcharts/themes/dark-unica';
 HighchartsMore(Highcharts);
 DarkUnica(Highcharts);
 
-export default function PlayerChart({ title }: { title: string }) {
+export default function PlayerChart({
+  title,
+  showExpectedSeries,
+}: {
+  title: string;
+  showExpectedSeries: boolean;
+}) {
+  const chartRef = useRef<HighchartsReact.RefObject>(null);
+
+  useEffect(() => {
+    if (chartRef.current) {
+      const chart = chartRef.current.chart;
+      const expectedSeries = chart.series.find(
+        (series) => series.name === 'Expected',
+      );
+      if (expectedSeries) {
+        expectedSeries.setVisible(showExpectedSeries, true);
+      }
+    }
+  }, [showExpectedSeries]);
   const options = {
     title: {
       text: `${title}`,
@@ -45,7 +65,7 @@ export default function PlayerChart({ title }: { title: string }) {
       {
         name: 'Expected',
         data: [0.18, 0.9, 0.8, 0.3, 0.6],
-        visible: true,
+        visible: showExpectedSeries,
         pointPlacement: 'on',
       },
     ],
@@ -68,7 +88,6 @@ export default function PlayerChart({ title }: { title: string }) {
         },
       ],
     },
-
     legend: {
       align: 'right',
       verticalAlign: 'middle',

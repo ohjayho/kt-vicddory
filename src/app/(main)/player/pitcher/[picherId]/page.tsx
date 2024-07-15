@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import PlayerCard from '@/components/tradingCard/PlayerCard';
 import Banner from '@/components/player/Banner';
 import dynamic from 'next/dynamic';
@@ -23,6 +23,14 @@ const pitcherData = [
 ];
 
 export default function PitcherDetail() {
+  const [detailButton, setDetailButton] = useState(0);
+  const [showExpectedSeries, setShowExpectedSeries] = useState(false);
+
+  const handleAIButtonClick = () => {
+    setShowExpectedSeries(true);
+  };
+  const onDetailHandler = () => {};
+
   const PlayerChart = dynamic(() => import('@/components/player/PlayerChart'), {
     ssr: false,
   });
@@ -42,10 +50,16 @@ export default function PitcherDetail() {
           <div className="flex flex-col w-1/3 px-16 pl-22">
             {/*그래프*/}
             <div className="w-full">
-              <PlayerChart title={'선수 예측 데이터'} />
+              <PlayerChart
+                title={'선수 예측 데이터'}
+                showExpectedSeries={showExpectedSeries}
+              />
             </div>
             <div className="h-10 flex items-center justify-center">
-              <button className="w-1/2 h-full flex items-center justify-center font-bold text-white text-base bg-red-90 rounded-[30px]">
+              <button
+                className="w-1/2 h-full flex items-center justify-center font-bold text-white text-base bg-red-90 rounded-[30px]"
+                onClick={handleAIButtonClick}
+              >
                 선수 성적 예측하기
               </button>
             </div>
