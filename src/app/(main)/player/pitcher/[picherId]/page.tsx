@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PlayerCard from '@/components/tradingCard/PlayerCard';
 import Banner from '@/components/player/Banner';
 import dynamic from 'next/dynamic';
@@ -23,13 +23,26 @@ const pitcherData = [
 ];
 
 export default function PitcherDetail() {
-  const [detailButton, setDetailButton] = useState(0);
+  const [detailButton, setDetailButton] = useState(false);
   const [showExpectedSeries, setShowExpectedSeries] = useState(false);
+  const [isSpin, setIsSpin] = useState(false);
+  useEffect(() => {
+    if (isSpin) {
+      const timer = setTimeout(() => setIsSpin(true), 1080); // Duration should match your CSS transition duration
+      return () => clearTimeout(timer);
+    }
+  }, [isSpin]);
+  console.log(isSpin);
 
   const handleAIButtonClick = () => {
     setShowExpectedSeries(true);
+    setIsSpin(!isSpin);
   };
-  const onDetailHandler = () => {};
+
+  const onDetailHandler = () => {
+    setDetailButton(!detailButton);
+  };
+  console.log(isSpin);
 
   const PlayerChart = dynamic(() => import('@/components/player/PlayerChart'), {
     ssr: false,
@@ -39,15 +52,20 @@ export default function PitcherDetail() {
       <div>
         <Banner title="투수" />
       </div>
-      <div className="flex flex-col bg-black/90 h-screen">
+      <div className="flex flex-col bg-black/90 min-h-screen flex-wrap">
         <div className="flex flex-row justify-center flex-wrap py-16">
           <div className="flex flex-col h-fit mx-6 items-center justify-self-center my-10">
             {pitcherData.map((pitcher, index) => (
-              <PlayerCard key={index} player={pitcher} size="large" />
+              <PlayerCard
+                key={index}
+                player={pitcher}
+                size="large"
+                checkSpin={isSpin}
+              />
             ))}
           </div>
           {/* AI 파트 */}
-          <div className="flex flex-col w-1/3 px-16 pl-22">
+          <div className="flex flex-col w-1/3 px-16 pl-22 md:flex-wrap sm:w-full md:w-full">
             {/*그래프*/}
             <div className="w-full">
               <PlayerChart
@@ -72,8 +90,14 @@ export default function PitcherDetail() {
           </div>
         </div>
         <div className="flex text-white justify-center align-middle">
-          <button className="h-8 w-fit mx-2 flex flex-row">
-            <img src="/svgs/arrow-right.svg" className="w-8 h-8"></img>
+          <button
+            className="h-8 w-fit mx-2 flex flex-row"
+            onClick={onDetailHandler}
+          >
+            <img
+              src="/svgs/arrow-right.svg"
+              className={`w-8 h-8 ${detailButton ? 'rotate-90' : 'rotate-0'}`}
+            ></img>
             <div className="text-lg">선수 기록 상세보기</div>
           </button>
         </div>

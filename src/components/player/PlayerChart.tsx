@@ -1,5 +1,4 @@
 'use client';
-import React, { useEffect, useRef } from 'react';
 import Highcharts from 'highcharts';
 import HighchartsMore from 'highcharts/highcharts-more';
 import HighchartsReact from 'highcharts-react-official';
@@ -14,23 +13,10 @@ export default function PlayerChart({
   title: string;
   showExpectedSeries: boolean;
 }) {
-  const chartRef = useRef<HighchartsReact.RefObject>(null);
-
-  useEffect(() => {
-    if (chartRef.current) {
-      const chart = chartRef.current.chart;
-      const expectedSeries = chart.series.find(
-        (series) => series.name === 'Expected',
-      );
-      if (expectedSeries) {
-        expectedSeries.setVisible(showExpectedSeries, true);
-      }
-    }
-  }, [showExpectedSeries]);
   const options = {
     title: {
       text: `${title}`,
-      margin: 70,
+      margin: 90,
       x: 0,
     },
     chart: {
@@ -82,7 +68,7 @@ export default function PlayerChart({
               layout: 'horizontal',
             },
             pane: {
-              size: '120%',
+              size: '140%',
             },
           },
         },
@@ -92,6 +78,7 @@ export default function PlayerChart({
       align: 'right',
       verticalAlign: 'middle',
       layout: 'vertical',
+      margin: 20,
     },
     credits: {
       enabled: false,

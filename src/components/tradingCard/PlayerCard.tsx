@@ -3,7 +3,7 @@
 import CardFront from '@/components/tradingCard/CardFront';
 import CardBack from '@/components/tradingCard/CardBack';
 import Player from '@/components/player/Player';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 const playerData = [
   {
     korName: '강현우',
@@ -24,6 +24,7 @@ const playerData = [
 interface PlayerCardProps {
   player: Player;
   size?: 'small' | 'medium' | 'large';
+  checkSpin: boolean;
 }
 
 const sizeClasses = {
@@ -36,14 +37,28 @@ const photoSizes = {
   medium: 'w-[228px] h-[316px]',
   large: 'w-[370px] h-[520px]',
 };
-const PlayerCard: React.FC<PlayerCardProps> = ({ size = 'medium' }) => {
+const PlayerCard: React.FC<PlayerCardProps> = ({
+  size = 'medium',
+  checkSpin,
+}: {
+  size?: 'small' | 'medium' | 'large';
+  checkSpin: boolean;
+}) => {
   const [isFlipped, setIsFlipped] = useState(false);
+  const [isSpin, setIsSpin] = useState(false);
+
   const sizeClass = sizeClasses[size];
   const photoSize = photoSizes[size];
   console.log(size);
   const handleImageClick = () => {
     setIsFlipped(!isFlipped);
   };
+  useEffect(() => {
+    if (checkSpin) {
+      setIsFlipped(false);
+    }
+  }, [checkSpin]);
+
   return (
     <>
       <div className="">
@@ -54,7 +69,7 @@ const PlayerCard: React.FC<PlayerCardProps> = ({ size = 'medium' }) => {
           <div
             className={`relative transition-all duration-700 [transform-style:preserve-3d] ${
               isFlipped ? '[transform:rotateY(180deg)]' : ''
-            }`}
+            } ${isSpin ? '[transform:rotateY(1080deg)]' : ''}`}
           >
             <div
               className={`${sizeClass} absolute inset-0 object-cover [backface-visibility:hidden]`}

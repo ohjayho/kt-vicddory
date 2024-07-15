@@ -59,8 +59,7 @@ export default function Header() {
           </Link>
 
           <div className="w-4/6 flex justify-between max-lg:hidden items-center space-x-4">
-            <Link href="/">kt wiz</Link>
-            <Link href="/">wiz park</Link>
+            <Link href="/">kt wiz</Link> <Link href="/">wiz park</Link>
             <Link href="/wiznews">News</Link>
             <Link href="/player">Player</Link>
             <Link href="/ranking">Ranking</Link>
@@ -84,7 +83,7 @@ export default function Header() {
           </Link>
         </div>
         <div className="hidden group-hover:flex">
-          <div className="justify-between h-20 w-3/4 mx-auto text-white items-center">
+          <div className="justify-betweenl w-3/4 mx-auto text-white items-center">
             <div className="hidden">
               <Link href="/">
                 <Image
