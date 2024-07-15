@@ -78,6 +78,9 @@ export default function Page() {
             </div>
             <TestShare onClick={handleCaptureClick}/>
           </div>
+          <div className='sticky bottom-0 w-full h-20 bg-[#FFFFFF] flex justify-center items-center pb-6'>
+            <Button href="/test">👉🏻선수 알아보러 가기👈🏻</Button>
+          </div>
         </div>
       </div>
     </>
