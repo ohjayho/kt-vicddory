@@ -16,7 +16,7 @@ export default function BannerBtn({
     <>
       <Link href={url}>
         <button
-          className={`w-[116px] h-11 text-xl font-extrabold text-[#BBB5B5] border-white ${buttonStyle}`}
+          className={`w-28 max-sm:w-16 h-11 text-xl max-sm:text-lg font-extrabold text-[#BBB5B5] border-white ${buttonStyle}`}
         >
           {children}
         </button>
