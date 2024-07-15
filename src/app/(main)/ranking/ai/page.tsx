@@ -1,7 +1,18 @@
 import Graph from '@/components/ranking/Graph';
 import MatchTeam from '@/components/ranking/MatchTeam';
+import july_schedule from '#/data/july_schedule.json';
 
-export default function RankingAi() {
+export default async function RankingAi() {
+  const year = new Date().getFullYear();
+  const month = new Date().getMonth();
+  const date = new Date().getDate();
+  const key = year + '0' + month + date;
+
+  const key_ = '20240702';
+
+  console.log(july_schedule[key_]);
+  console.log(key);
+
   return (
     <>
       <div className="bg-[url('/images/mainBg.png')] bg-cover relative overflow-hidden">
