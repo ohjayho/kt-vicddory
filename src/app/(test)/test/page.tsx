@@ -14,6 +14,7 @@ export default function Test() {
             alt="watermark"
             width={200}
             height={62}
+            className="w-40 md:w-[200px]"
           />
           <div className="w-60 h-14 text-5xl font-bold mb-3 mt-3 text-[#333333]">
             궁합테스트
@@ -26,6 +27,7 @@ export default function Test() {
             alt="emblem"
             width={200}
             height={180}
+            className="w-40 md:w-[200px]"
           />
           <Button href="/test/questions/1">테스트 START</Button>
         </div>

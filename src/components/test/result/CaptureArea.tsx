@@ -21,7 +21,7 @@ const CaptureArea = forwardRef<HTMLDivElement, TCaptureAreaProps>(
             alt="emblem"
             width={500}
             height={120}
-            className="absolute bottom-[-1px]"
+            className="absolute bottom-[-1px] w-full"
           />
         </div>
       </>
