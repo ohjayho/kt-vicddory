@@ -24,16 +24,16 @@ export default function Graph({ title, homeScore, awayScore }: TGrapeProps) {
             className="h-8 bg-red-80 rounded-md relative animate-expand"
             style={homeStyle}
           >
-            <p className="absolute right-1 top-1">{homeScore}</p>
+            <p className="absolute right-1 top-1 max-sm:text-sm">{homeScore}</p>
           </div>
         </div>
-        <p className="whitespace-nowrap">{title}</p>
+        <p className="whitespace-nowrap max-sm:text-base">{title}</p>
         <div className="w-full bg-red-800/30 rounded-md">
           <div
             className="h-8 bg-[#6D6D6D] rounded-md relative animate-expand"
             style={awayStyle}
           >
-            <p className="absolute left-1 top-1">{awayScore}</p>
+            <p className="absolute left-1 top-1 max-sm:text-sm">{awayScore}</p>
           </div>
         </div>
       </div>

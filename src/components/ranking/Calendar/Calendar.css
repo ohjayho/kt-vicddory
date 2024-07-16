@@ -1,0 +1,31 @@
+@import 'react-datepicker/dist/react-datepicker.css';
+
+.react-datepicker {
+  @apply bg-black text-white;
+}
+
+.react-datepicker__day {
+  @apply text-white;
+}
+
+.react-datepicker__day--disabled {
+  @apply text-gray-400;
+}
+
+.react-datepicker__day--selected,
+.react-datepicker__day--in-range {
+  @apply bg-red-90 text-white rounded-full;
+}
+
+.react-datepicker__day:hover {
+  @apply bg-red-300 rounded-full;
+}
+
+.react-datepicker__header {
+  @apply bg-black text-white;
+}
+
+.react-datepicker__current-month,
+.react-datepicker__day-name {
+  @apply text-white;
+}
