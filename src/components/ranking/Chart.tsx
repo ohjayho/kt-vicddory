@@ -121,10 +121,12 @@ export default function Chart({ title }: { title: string }) {
   });
 
   return (
-    <HighchartsReact
-      highcharts={Highcharts}
-      options={options}
-      constructorType={'chart'}
-    />
+    <div className="max-sm:min-w-[600px]">
+      <HighchartsReact
+        highcharts={Highcharts}
+        options={options}
+        constructorType={'chart'}
+      />
+    </div>
   );
 }
