@@ -11,6 +11,14 @@ type TResultPositionProps = {
   ratio?: number;
 };
 
+type TQuestionHandlerProps = {
+  A1: string;
+  A2: string;
+  P1: string;
+  P2: string;
+  Q: string;
+};
+
 //Ranking
 type TGrapeProps = {
   title: string;
@@ -33,6 +41,7 @@ type TEmblemSrc = {
 
 export {
   TResultPositionProps,
+  TQuestionHandlerProps,
   TGrapeProps,
   TCustomCSSProperties,
   TMatchTeamProps,
