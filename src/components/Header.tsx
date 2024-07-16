@@ -103,9 +103,12 @@ export default function Header() {
             >
               Shop
             </Link>
-            <div className="text-red-100 font-extrabold">
-              <Link href="https://www.ticketlink.co.kr/home">티켓 구매</Link>
-            </div>
+            <Link
+              href="https://www.ticketlink.co.kr/home"
+              className="w-20 flex justify-center text-red-100 font-extrabold"
+            >
+              티켓 구매
+            </Link>
           </div>
           <Link
             href="http://kt-sports.co.kr/sports/site/main.do"
