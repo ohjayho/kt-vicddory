@@ -118,26 +118,26 @@ export default function Header() {
           <div className="w-3/4 mx-auto text-white flex items-center">
             <div className="w-[85px] h-[46px]"></div>
             <div className="flex min-h-20 pb-6 w-4/6 mx-auto space-x-4 justify-between">
-              <div className="flex flex-col w-20 items-center hover:border-t-2 hover:border-t-red-500 whitespace-nowrap">
-                <Link href="/">kt wiz는?dsfasdf</Link>
+              <div className="flex flex-col w-20 items-center hover:border-t-2 hover:border-t-red-500 whitespace-nowrap gap-2">
+                <Link href="/">kt wiz는?</Link>
                 <Link href="/">구단 BI</Link>
                 <Link href="/">회원 정책</Link>
                 <Link href="/">스폰서</Link>
                 <Link href="/">윌페이퍼</Link>
               </div>
-              <div className="flex flex-col w-20 items-center hover:border-t-2 hover:border-t-red-500 whitespace-nowrap">
+              <div className="flex flex-col w-20 items-center hover:border-t-2 hover:border-t-red-500 whitespace-nowrap gap-2">
                 <Link href="/">wiz park</Link>
                 <Link href="/">주차 예약</Link>
                 <Link href="/">찾아오기</Link>
                 <Link href="/">익산 야구장</Link>
               </div>
               <div className="w-20"></div>
-              <div className="flex flex-col w-20 items-center hover:border-t-2 hover:border-t-red-500 whitespace-nowrap">
+              <div className="flex flex-col w-20 items-center hover:border-t-2 hover:border-t-red-500 whitespace-nowrap gap-2">
                 <Link href="/">코칭스텝</Link>
                 <Link href="/">투수</Link>
                 <Link href="/">타자</Link>
               </div>
-              <div className="flex flex-col w-20 items-center hover:border-t-2 hover:border-t-red-500 whitespace-nowrap">
+              <div className="flex flex-col w-20 items-center hover:border-t-2 hover:border-t-red-500 whitespace-nowrap gap-2">
                 <Link href="/">AI 예측</Link>
                 <Link href="/">년도별</Link>
                 <Link href="/">일자별</Link>
