@@ -55,7 +55,7 @@ const PlayerCard: React.FC<PlayerCardProps> = ({
   };
   useEffect(() => {
     if (checkSpin) {
-      setIsFlipped(false);
+      setIsSpin(false);
     }
   }, [checkSpin]);
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import PlayerCardProps from '@/components/tradingCard/PlayerCard';
+// import PlayerCardProps from '@/components/tradingCard/PlayerCard';
 interface IPitcher {
   korName: string;
   engName: string;
