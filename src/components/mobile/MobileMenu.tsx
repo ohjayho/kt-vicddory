@@ -17,10 +17,10 @@ export default function MobileMenu({
   return (
     <>
       <div
-        className={`absolute z-20 ${isMobileOpen ? 'max-lg:flex' : 'hidden'} justify-between items-start w-full min-h-screen bg-[rgba(0,0,0,0.7)]`}
+        className={`fixed z-20 ${isMobileOpen ? 'max-lg:flex' : 'hidden'} justify-between items-start w-full h-screen bg-[rgba(0,0,0,0.7)]`}
       >
         <ul
-          className={`w-[80%] bg-[#f4f4f4] absolute top-0 left-0 transition-transform duration-300 ${isAnimated ? 'translate-x-0' : '-translate-x-full'}`}
+          className={`w-[80%] h-full overflow-scroll no-scrollbar bg-[#f4f4f4] absolute top-0 left-0 transition-transform duration-300 ${isAnimated ? 'translate-x-0' : '-translate-x-full'}`}
         >
           <MobileMenuBtn
             handleMobileOpen={handleMobileOpen}
