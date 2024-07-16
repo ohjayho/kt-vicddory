@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import MobileMenuBtn from './MobileMenuBtn';
+import { IoCloseOutline } from 'react-icons/io5';
 
 type handleMobileType = {
   handleMobileOpen: () => void;
@@ -52,12 +53,9 @@ export default function MobileMenu({
           onClick={handleMobileOpen}
           className={`absolute top-0 right-0 transition-opacity duration-1000 ${isAnimated ? 'opacity-100' : 'opacity-0'}`}
         >
-          <Image
-            src="/svgs/header/close.svg"
-            width={0}
-            height={0}
-            alt="close button"
-            className="w-[8.5vw] mr-[2vw] mt-[2vw]"
+          <IoCloseOutline
+            size="8.5vw"
+            className="mr-[2vw] mt-[2vw] text-white"
           />
         </button>
       </div>

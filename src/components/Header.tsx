@@ -5,6 +5,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import MobileMenu from './mobile/MobileMenu';
+import { RxHamburgerMenu } from 'react-icons/rx';
+import { HiOutlineTicket } from 'react-icons/hi2';
 
 export default function Header() {
   const pathname = usePathname();
@@ -54,13 +56,7 @@ export default function Header() {
             className="hidden max-lg:flex items-center h-full"
             onClick={handleMobileOpen}
           >
-            <Image
-              src="/svgs/header/hamburger.svg"
-              alt="ticket"
-              width={0}
-              height={0}
-              className="w-auto h-[50%]"
-            />
+            <RxHamburgerMenu className="w-auto h-[50%]" />
           </button>
           <Link href="/" className="flex h-full items-center -mt-4">
             <Image
@@ -72,13 +68,7 @@ export default function Header() {
             />
           </Link>
           <Link href="/" className="hidden max-lg:flex items-center h-full">
-            <Image
-              src="/svgs/header/ticket.svg"
-              alt="menu"
-              width={0}
-              height={0}
-              className="w-auto h-[50%]"
-            />
+            <HiOutlineTicket className="w-auto h-[50%]" />
           </Link>
 
           <div className="w-4/6 flex justify-between max-lg:hidden items-center">

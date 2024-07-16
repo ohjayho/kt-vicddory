@@ -2,6 +2,8 @@
 
 import Image from 'next/image';
 import { useState } from 'react';
+import { FaChevronDown } from 'react-icons/fa';
+import { FaChevronUp } from 'react-icons/fa';
 
 type MobileMenuBtnType = {
   title: string;
@@ -21,18 +23,12 @@ export default function MobileMenuBtn({ title, subtitle }: MobileMenuBtnType) {
             {title}
           </h1>
           {subtitle && (
-            <button className="w-[5vw]" onClick={handleOpen}>
-              <Image
-                src={
-                  menuOpen
-                    ? '/svgs/header/chevronUp.svg'
-                    : '/svgs/header/chevronDown.svg'
-                }
-                width={0}
-                height={0}
-                alt="open button"
-                className="w-full"
-              />
+            <button className="w-[5vw] text-[#ea0114]" onClick={handleOpen}>
+              {menuOpen ? (
+                <FaChevronUp className="w-full" />
+              ) : (
+                <FaChevronDown className="w-full" />
+              )}
             </button>
           )}
         </div>
