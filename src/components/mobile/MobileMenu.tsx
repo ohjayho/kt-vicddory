@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import MobileMenuBtn from './MobileMenuBtn';
 import { IoCloseOutline } from 'react-icons/io5';
 
@@ -24,10 +23,13 @@ export default function MobileMenu({
           className={`w-[80%] bg-[#f4f4f4] absolute top-0 left-0 transition-transform duration-1000 ${isAnimated ? 'translate-x-0' : '-translate-x-full'}`}
         >
           <MobileMenuBtn
+            handleMobileOpen={handleMobileOpen}
             title="kt wiz"
             subtitle={['kt wiz는?', '구단 BI', '회원정책']}
+            pages={['/', '/', '/']}
           />
           <MobileMenuBtn
+            handleMobileOpen={handleMobileOpen}
             title="wiz park"
             subtitle={[
               '수원 kt wiz park',
@@ -35,19 +37,40 @@ export default function MobileMenu({
               '찾아오기',
               '익산야구장',
             ]}
+            pages={['/', '/', '/', '/']}
           />
-          <MobileMenuBtn title="News" />
           <MobileMenuBtn
+            handleMobileOpen={handleMobileOpen}
+            title="News"
+            pages={['/wiznews']}
+          />
+          <MobileMenuBtn
+            handleMobileOpen={handleMobileOpen}
             title="Player"
             subtitle={['코칭 스텝', '투수', '타자']}
+            pages={['/player', '/', '/']}
           />
           <MobileMenuBtn
+            handleMobileOpen={handleMobileOpen}
             title="Ranking"
             subtitle={['AI 예측', '연도별', '일자별']}
+            pages={['/ranking', '/', '/']}
           />
-          <MobileMenuBtn title="성향 테스트" />
-          <MobileMenuBtn title="Shop" />
-          <MobileMenuBtn title="티켓 구매" />
+          <MobileMenuBtn
+            handleMobileOpen={handleMobileOpen}
+            title="성향 테스트"
+            pages={['/test']}
+          />
+          <MobileMenuBtn
+            handleMobileOpen={handleMobileOpen}
+            title="Shop"
+            pages={['/']}
+          />
+          <MobileMenuBtn
+            handleMobileOpen={handleMobileOpen}
+            title="티켓 구매"
+            pages={['/']}
+          />
         </ul>
         <button
           onClick={handleMobileOpen}
