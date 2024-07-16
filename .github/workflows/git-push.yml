@@ -18,12 +18,12 @@ jobs:
         id: push_directory
         uses: cpina/github-action-push-to-another-repository@main
         env:
-          API_TOKEN_GITHUB: ${{ secrets.MJ_GITHUB_KEY }}
+          API_TOKEN_GITHUB: ${{ secrets.SNXWXH_GITHUB_KEY }}
         with:
           source-directory: 'output'
-          destination-github-username: spiritstone
-          destination-repository-name: Vicddory-frontend
-          user-email: ${{ secrets.MJ_ACCOUNT_EMAIL }}
+          destination-github-username: SNXWXH
+          destination-repository-name: KT-Vicddory-FE
+          user-email: ${{ secrets.SNXWXH_ACCOUNT_EMAIL }}
           commit-message: ${{ github.event.commits[0].message }}
           target-branch: main
       - name: Test get variable exported by push-to-another-repository
