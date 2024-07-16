@@ -48,6 +48,7 @@ export default function Questions({ params }: TQuestionsProps) {
   const handleAnswer = (answer: string) => {
     if(questionIndex < totalQuestions -1) {
       router.push(`/test/questions/${questionIndex + 2}`);
+      console.log(answer);
     } else {
       router.push('/test/result');
     }

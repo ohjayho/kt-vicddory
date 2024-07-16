@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { TQuestionHandlerProps } from '@/types';
 
 export async function GET(req: NextRequest) {
+  console.log(req);
   try {
     const response = await fetch(`${process.env.TEST_QUESTIONS_API_URL}`, {
       method: 'POST',

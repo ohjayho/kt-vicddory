@@ -29,4 +29,6 @@ const CaptureArea = forwardRef<HTMLDivElement, TCaptureAreaProps>(
   },
 );
 
+CaptureArea.displayName = "CaptureArea";
+
 export default CaptureArea;
