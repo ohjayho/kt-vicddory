@@ -115,20 +115,11 @@ export default function Header() {
           </Link>
         </div>
         <div className="hidden lg:group-hover:flex">
-          <div className="justify-betweenl w-3/4 mx-auto text-white items-center">
-            <div className="hidden">
-              <Link href="/">
-                <Image
-                  src="/svgs/watermarkWhite.svg"
-                  alt="KT watermark"
-                  width={85}
-                  height={42}
-                />
-              </Link>
-            </div>
-            <div className="flex h-20 w-4/6 mx-auto text-white space-x-4 justify-between">
+          <div className="w-3/4 mx-auto text-white flex items-center">
+            <div className="w-[85px] h-[46px]"></div>
+            <div className="flex min-h-20 pb-6 w-4/6 mx-auto space-x-4 justify-between">
               <div className="flex flex-col w-20 items-center hover:border-t-2 hover:border-t-red-500 whitespace-nowrap">
-                <Link href="/">kt wiz는?</Link>
+                <Link href="/">kt wiz는?dsfasdf</Link>
                 <Link href="/">구단 BI</Link>
                 <Link href="/">회원 정책</Link>
                 <Link href="/">스폰서</Link>
@@ -140,7 +131,7 @@ export default function Header() {
                 <Link href="/">찾아오기</Link>
                 <Link href="/">익산 야구장</Link>
               </div>
-              <div className="flex flex-col w-20 items-center hover:border-t-2 hover:border-t-red-500 whitespace-nowrap"></div>
+              <div className="w-20"></div>
               <div className="flex flex-col w-20 items-center hover:border-t-2 hover:border-t-red-500 whitespace-nowrap">
                 <Link href="/">코칭스텝</Link>
                 <Link href="/">투수</Link>
@@ -151,19 +142,10 @@ export default function Header() {
                 <Link href="/">년도별</Link>
                 <Link href="/">일자별</Link>
               </div>
-              <div className="flex flex-col w-20 items-center hover:border-t-2 hover:border-t-red-500 whitespace-nowrap"></div>
-              <div className="flex flex-col w-20 items-center hover:border-t-2 hover:border-t-red-500 whitespace-nowrap"></div>
+              <div className="w-20"></div>
+              <div className="w-20"></div>
             </div>
-            <Link href="http://kt-sports.co.kr/sports/site/main.do">
-              <div className="hidden w-[102px] h-[46px]  place-items-center border border-slate-600 rounded-md">
-                <Image
-                  src="/images/ktsports.png"
-                  alt="KT sports"
-                  width={66}
-                  height={18}
-                />
-              </div>
-            </Link>
+            <div className="w-[102px] h-[46px]"></div>
           </div>
         </div>
       </div>
