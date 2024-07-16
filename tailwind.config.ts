@@ -8,6 +8,14 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      width: {
+        'md-custom': '252px',
+        'lg-custom': '400px',
+      },
+      height: {
+        'md-custom': '348px',
+        'lg-custom': '560px',
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':

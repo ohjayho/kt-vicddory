@@ -122,7 +122,7 @@ export default function Header() {
           </Link>
         </div>
         <div className="hidden group-hover:flex">
-          <div className="justify-between h-20 w-3/4 mx-auto text-white items-center">
+          <div className="justify-betweenl w-3/4 mx-auto text-white items-center">
             <div className="hidden">
               <Link href="/">
                 <Image

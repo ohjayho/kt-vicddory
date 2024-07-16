@@ -6,11 +6,17 @@ import DarkUnica from 'highcharts/themes/dark-unica';
 HighchartsMore(Highcharts);
 DarkUnica(Highcharts);
 
-export default function PlayerChart({ title }: { title: string }) {
+export default function PlayerChart({
+  title,
+  showExpectedSeries,
+}: {
+  title: string;
+  showExpectedSeries: boolean;
+}) {
   const options = {
     title: {
       text: `${title}`,
-      margin: 50,
+      margin: 90,
       x: 0,
     },
     chart: {
@@ -22,7 +28,7 @@ export default function PlayerChart({ title }: { title: string }) {
       },
     },
     pane: {
-      size: '100%',
+      size: '120%',
     },
     xAxis: {
       categories: ['ERA', 'K/BB', 'WHIP', '피안타율', 'QS'],
@@ -45,7 +51,7 @@ export default function PlayerChart({ title }: { title: string }) {
       {
         name: 'Expected',
         data: [0.18, 0.9, 0.8, 0.3, 0.6],
-        visible: true,
+        visible: showExpectedSeries,
         pointPlacement: 'on',
       },
     ],
@@ -53,7 +59,7 @@ export default function PlayerChart({ title }: { title: string }) {
       rules: [
         {
           condition: {
-            maxWidth: 700,
+            maxWidth: 1000,
           },
           chartOptions: {
             legend: {
@@ -62,17 +68,17 @@ export default function PlayerChart({ title }: { title: string }) {
               layout: 'horizontal',
             },
             pane: {
-              size: '100%',
+              size: '140%',
             },
           },
         },
       ],
     },
-
     legend: {
       align: 'right',
       verticalAlign: 'middle',
       layout: 'vertical',
+      margin: 20,
     },
     credits: {
       enabled: false,
