@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import '@/components/ranking/calendar/Calendar.css';
+import '@/components/ranking/Calendar/Calendar.css';
 
 export default function DateRangePicker() {
   const today = new Date();
