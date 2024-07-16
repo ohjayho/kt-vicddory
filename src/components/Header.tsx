@@ -29,7 +29,7 @@ export default function Header() {
     setIsAnimated(!isAnimated);
     setTimeout(() => {
       setIsMobileOpen(!isMobileOpen);
-    }, 1000);
+    }, 300);
   };
 
   useEffect(() => {

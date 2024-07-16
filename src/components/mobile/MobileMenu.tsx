@@ -20,7 +20,7 @@ export default function MobileMenu({
         className={`absolute z-20 ${isMobileOpen ? 'max-lg:flex' : 'hidden'} justify-between items-start w-full min-h-screen bg-[rgba(0,0,0,0.7)]`}
       >
         <ul
-          className={`w-[80%] bg-[#f4f4f4] absolute top-0 left-0 transition-transform duration-1000 ${isAnimated ? 'translate-x-0' : '-translate-x-full'}`}
+          className={`w-[80%] bg-[#f4f4f4] absolute top-0 left-0 transition-transform duration-300 ${isAnimated ? 'translate-x-0' : '-translate-x-full'}`}
         >
           <MobileMenuBtn
             handleMobileOpen={handleMobileOpen}
@@ -74,7 +74,7 @@ export default function MobileMenu({
         </ul>
         <button
           onClick={handleMobileOpen}
-          className={`absolute top-0 right-0 transition-opacity duration-1000 ${isAnimated ? 'opacity-100' : 'opacity-0'}`}
+          className={`absolute top-0 right-0 transition-opacity duration-300 ${isAnimated ? 'opacity-100' : 'opacity-0'}`}
         >
           <IoCloseOutline
             size="8.5vw"
