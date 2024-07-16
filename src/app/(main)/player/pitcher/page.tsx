@@ -58,7 +58,7 @@ const pitcherData = [
 export default function Pitcher() {
   return (
     <>
-      <div>
+      <div className="pt-20">
         <Banner title="투수" />
       </div>
 
