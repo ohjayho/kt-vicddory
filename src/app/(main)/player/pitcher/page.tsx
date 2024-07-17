@@ -2,7 +2,6 @@
 
 import React from 'react';
 import CardFront from '@/components/tradingCard/CardFront';
-import Banner from '@/components/player/Banner';
 
 const pitcherData = [
   {
@@ -58,10 +57,6 @@ const pitcherData = [
 export default function Pitcher() {
   return (
     <>
-      <div className="pt-20">
-        <Banner title="투수" />
-      </div>
-
       <div className="bg-white flex justify-center items-center h-min flex-wrap ">
         <div className="flex flex-wrap flex-row gap-6 p-6 justify-center items-center object-center w-3/4">
           {pitcherData.map((pitcher, index) => (
