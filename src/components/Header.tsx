@@ -115,9 +115,9 @@ export default function Header() {
           </Link>
         </div>
         <div className="hidden lg:group-hover:flex">
-          <div className="w-3/4 mx-auto text-white flex items-center">
-            <div className="w-[85px] h-[46px]"></div>
-            <div className="flex min-h-20 pb-6 w-4/6 mx-auto space-x-4 justify-between">
+          <div className="w-3/4 mx-auto text-white flex justify-between items-center">
+            <div className="w-[85px] h-[80px]"></div>
+            <div className="flex min-h-20 pb-6 w-4/6 mx-auto justify-between">
               <div className="flex flex-col w-20 items-center hover:border-t-2 hover:border-t-red-500 whitespace-nowrap gap-2">
                 <Link href="/">kt wiz는?</Link>
                 <Link href="/">구단 BI</Link>
