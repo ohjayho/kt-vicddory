@@ -2,57 +2,9 @@
 
 import React from 'react';
 import CardFront from '@/components/tradingCard/CardFront';
+import pitcher_data from '#/data/playerFront/pitcher_data.json';
 
-const pitcherData = [
-  {
-    korName: '김 민',
-    engName: 'Kim Min',
-    backNum: 11,
-    playerImg: 'kt11.png',
-  },
-  {
-    korName: '강현우',
-    engName: 'Kang Hyun Woo',
-    backNum: 55,
-    playerImg: 'kt11.png',
-  },
-  {
-    korName: '강현민',
-    engName: 'Kim Min',
-    backNum: 15,
-    playerImg: 'kt11.png',
-  },
-  {
-    korName: '김 민',
-    engName: 'Kim Min',
-    backNum: 11,
-    playerImg: 'kt11.png',
-  },
-  {
-    korName: '김 민',
-    engName: 'Kim Min',
-    backNum: 11,
-    playerImg: 'kt11.png',
-  },
-  {
-    korName: '김 민',
-    engName: 'Kim Min',
-    backNum: 11,
-    playerImg: 'kt11.png',
-  },
-  {
-    korName: '김 민',
-    engName: 'Kim Min',
-    backNum: 11,
-    playerImg: 'kt11.png',
-  },
-  {
-    korName: '김 민',
-    engName: 'Kim Min',
-    backNum: 11,
-    playerImg: 'kt11.png',
-  },
-];
+const pitcherData = pitcher_data.data.list;
 
 export default function Pitcher() {
   return (

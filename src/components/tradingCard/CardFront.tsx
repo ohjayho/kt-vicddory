@@ -2,8 +2,7 @@ import React, { useEffect, useRef } from 'react';
 // import PlayerCardProps from '@/components/tradingCard/PlayerCard';
 interface IPitcher {
   korName: string;
-  engName: string;
-  backNum: number;
+  backNum: string;
   playerImg: string;
 }
 

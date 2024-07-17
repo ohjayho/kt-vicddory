@@ -2,163 +2,163 @@
     "data": {
         "list": [
             {
-                "playerName": "강건",
-                "backnum": "99",
+                "korName": "강건",
+                "backNum": "99",
                 "playerImg": "kt99.png"
             },
             {
-                "playerName": "고영표",
-                "backnum": "1",
+                "korName": "고영표",
+                "backNum": "1",
                 "playerImg": "kt1.png"
             },
             {
-                "playerName": "김건웅",
-                "backnum": "49",
+                "korName": "김건웅",
+                "backNum": "49",
                 "playerImg": "kt49.png"
             },
             {
-                "playerName": "김민",
-                "backnum": "11",
+                "korName": "김민",
+                "backNum": "11",
                 "playerImg": "kt11.png"
             },
             {
-                "playerName": "김민성",
-                "backnum": "94",
+                "korName": "김민성",
+                "backNum": "94",
                 "playerImg": "kt94.png"
             },
             {
-                "playerName": "김민수",
-                "backnum": "26",
+                "korName": "김민수",
+                "backNum": "26",
                 "playerImg": "kt26.png"
             },
             {
-                "playerName": "김영현",
-                "backnum": "48",
+                "korName": "김영현",
+                "backNum": "48",
                 "playerImg": "kt48.png"
             },
             {
-                "playerName": "문용익",
-                "backnum": "13",
+                "korName": "문용익",
+                "backNum": "13",
                 "playerImg": "kt13.png"
             },
             {
-                "playerName": "박세진",
-                "backnum": "33",
+                "korName": "박세진",
+                "backNum": "33",
                 "playerImg": "kt33.png"
             },
             {
-                "playerName": "박시영",
-                "backnum": "46",
+                "korName": "박시영",
+                "backNum": "46",
                 "playerImg": "kt46.png"
             },
             {
-                "playerName": "박영현",
-                "backnum": "60",
+                "korName": "박영현",
+                "backNum": "60",
                 "playerImg": "kt60.png"
             },
             {
-                "playerName": "벤자민",
-                "backnum": "43",
+                "korName": "벤자민",
+                "backNum": "43",
                 "playerImg": "kt43.png"
             },
             {
-                "playerName": "성재헌",
-                "backnum": "95",
+                "korName": "성재헌",
+                "backNum": "95",
                 "playerImg": "kt95.png"
             },
             {
-                "playerName": "소형준",
-                "backnum": "30",
+                "korName": "소형준",
+                "backNum": "30",
                 "playerImg": "kt30.png"
             },
             {
-                "playerName": "손동현",
-                "backnum": "41",
+                "korName": "손동현",
+                "backNum": "41",
                 "playerImg": "kt41.png"
             },
             {
-                "playerName": "신병률",
-                "backnum": "15",
+                "korName": "신병률",
+                "backNum": "15",
                 "playerImg": "kt15.png"
             },
             {
-                "playerName": "엄상백",
-                "backnum": "18",
+                "korName": "엄상백",
+                "backNum": "18",
                 "playerImg": "kt18.png"
             },
             {
-                "playerName": "우규민",
-                "backnum": "21",
+                "korName": "우규민",
+                "backNum": "21",
                 "playerImg": "kt21.png"
             },
             {
-                "playerName": "원상현",
-                "backnum": "63",
+                "korName": "원상현",
+                "backNum": "63",
                 "playerImg": "kt63.png"
             },
             {
-                "playerName": "육청명",
-                "backnum": "64",
+                "korName": "육청명",
+                "backNum": "64",
                 "playerImg": "kt64.png"
             },
             {
-                "playerName": "윤강찬",
-                "backnum": "65",
+                "korName": "윤강찬",
+                "backNum": "65",
                 "playerImg": "kt65.png"
             },
             {
-                "playerName": "이상동",
-                "backnum": "37",
+                "korName": "이상동",
+                "backNum": "37",
                 "playerImg": "kt37.png"
             },
             {
-                "playerName": "이선우",
-                "backnum": "61",
+                "korName": "이선우",
+                "backNum": "61",
                 "playerImg": "kt61.png"
             },
             {
-                "playerName": "이정현",
-                "backnum": "51",
+                "korName": "이정현",
+                "backNum": "51",
                 "playerImg": "kt51.png"
             },
             {
-                "playerName": "이채호",
-                "backnum": "17",
+                "korName": "이채호",
+                "backNum": "17",
                 "playerImg": "kt17.png"
             },
             {
-                "playerName": "이태규",
-                "backnum": "45",
+                "korName": "이태규",
+                "backNum": "45",
                 "playerImg": "kt45.png"
             },
             {
-                "playerName": "전용주",
-                "backnum": "29",
+                "korName": "전용주",
+                "backNum": "29",
                 "playerImg": "kt29.png"
             },
             {
-                "playerName": "조이현",
-                "backnum": "54",
+                "korName": "조이현",
+                "backNum": "54",
                 "playerImg": "kt54.png"
             },
             {
-                "playerName": "주권",
-                "backnum": "38",
+                "korName": "주권",
+                "backNum": "38",
                 "playerImg": "kt38.png"
             },
             {
-                "playerName": "쿠에바스",
-                "backnum": "32",
+                "korName": "쿠에바스",
+                "backNum": "32",
                 "playerImg": "kt32.png"
             },
             {
-                "playerName": "하준호",
-                "backnum": "28",
+                "korName": "하준호",
+                "backNum": "28",
                 "playerImg": "kt28.png"
             },
             {
-                "playerName": "한차현",
-                "backnum": "59",
+                "korName": "한차현",
+                "backNum": "59",
                 "playerImg": "kt59.png"
             }
         ]
