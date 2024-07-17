@@ -1,0 +1,66 @@
+{
+    "data": {
+        "list": [
+            {
+                "playerName": "김건형",
+                "backNum": "0",
+                "playerImg": "kt0.png"
+            },
+            {
+                "playerName": "김민혁",
+                "backNum": "53",
+                "playerImg": "kt53.png"
+            },
+            {
+                "playerName": "김병준",
+                "backNum": "57",
+                "playerImg": "kt57.png"
+            },
+            {
+                "playerName": "로하스",
+                "backNum": "3",
+                "playerImg": "kt3.png"
+            },
+            {
+                "playerName": "문상철",
+                "backNum": "24",
+                "playerImg": "kt24.png"
+            },
+            {
+                "playerName": "배정대",
+                "backNum": "27",
+                "playerImg": "kt27.png"
+            },
+            {
+                "playerName": "송민섭",
+                "backNum": "12",
+                "playerImg": "kt12.png"
+            },
+            {
+                "playerName": "안치영",
+                "backNum": "8",
+                "playerImg": "kt8.png"
+            },
+            {
+                "playerName": "안현민",
+                "backNum": "62",
+                "playerImg": "kt62.png"
+            },
+            {
+                "playerName": "정준영",
+                "backNum": "58",
+                "playerImg": "kt58.png"
+            },
+            {
+                "playerName": "조용호",
+                "backNum": "23",
+                "playerImg": "kt23.png"
+            },
+            {
+                "playerName": "홍현빈",
+                "backNum": "31",
+                "playerImg": "kt31.png"
+            }
+        ]
+    }
+}
