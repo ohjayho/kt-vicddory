@@ -6,16 +6,19 @@ import july_schedule from '#/data/july_schedule.json';
 
 import {
   TGameData,
+  TGameInfo,
   TGamePredictData,
   TPitcherData,
   TPitcherRecord,
   TTeamRecord,
-  // TWinLossData,
 } from '@/types';
 
 export default async function RankingAi() {
   const julyScheduleJSON: { [key: string]: number } = july_schedule;
   const today = dateFormat();
+  const year = new Date().getFullYear();
+  const month = new Date().getMonth() + 1;
+  const yearmonth = year + '0' + month;
 
   //선발투수 정보 API
   const day_num: number = julyScheduleJSON[today];
@@ -33,15 +36,19 @@ export default async function RankingAi() {
 
   //오늘 경기장 API
   const gaemRes: Response = await fetch(
-    `${process.env.BASE_URL}/api/todayGame`,
+    `${process.env.BASE_URL}/api/todayGame?yearmonth=${yearmonth}`,
   );
   const gameData: TGameData = await gaemRes.json();
 
-  const gameDetail = gameData.list.filter((item) => {
-    const gameDate = item.gameDate.toString();
-    return gameDate === today && (item.home === 'KT' || item.visit === 'KT');
-  });
-  const stadiums = gameDetail.map((item) => item.stadium);
+  const gameDetail: TGameInfo[] = gameData.list.filter(
+    (item: TGameInfo): boolean => {
+      const gameDate: string = item.gameDate.toString();
+      return gameDate === today && (item.home === 'KT' || item.visit === 'KT');
+    },
+  );
+  const stadiums: string[] = gameDetail.map(
+    (item: TGameInfo): string => item.stadium,
+  );
 
   //전체 승률 및 예상 승률
   const total: number = winlossData.total[team[1]].winningPercentage;

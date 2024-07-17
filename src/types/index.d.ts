@@ -122,4 +122,5 @@ export {
   TWinLossData,
   TPitcherRecord,
   TTeamRecord,
+  TGameInfo,
 };
