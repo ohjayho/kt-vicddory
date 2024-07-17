@@ -133,7 +133,7 @@ export default function Header() {
                 />
               </Link>
             </div>
-            <div className="flex h-20 w-4/6 mx-auto text-white space-x-4 justify-between">
+            <div className="flex h-auto pb-4 w-4/6 mx-auto text-white space-x-4 justify-between">
               <div className="flex flex-col w-20 items-center hover:border-t-2 hover:border-t-red-500 whitespace-nowrap">
                 <Link href="/">kt wiz는?</Link>
                 <Link href="/">구단 BI</Link>
