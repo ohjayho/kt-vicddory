@@ -50,9 +50,6 @@ export default function PitcherDetail() {
   });
   return (
     <>
-      <div>
-        <Banner title="투수" />
-      </div>
       <div className="flex flex-col items-center bg-black/90 min-h-screen sm:flex-wrap md:flex-wrap">
         <div className="flex w-3/4 items-center justify-center max-sm:flex-wrap py-16 ">
           <div className="flex max-sm:flex-col h-fit mx-6 items-center justify-self-center my-10">
