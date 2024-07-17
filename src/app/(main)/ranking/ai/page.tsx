@@ -11,10 +11,12 @@ import {
   TPitcherData,
   TPitcherRecord,
   TTeamRecord,
+  TWinLossData,
 } from '@/types';
 
 export default async function RankingAi() {
   const julyScheduleJSON: { [key: string]: number } = july_schedule;
+  const winlossDataJSON: TWinLossData = winlossData;
   const today = dateFormat();
   const year = new Date().getFullYear();
   const month = new Date().getMonth() + 1;
@@ -51,9 +53,8 @@ export default async function RankingAi() {
   );
 
   //전체 승률 및 예상 승률
-  const total: number = winlossData.total[team[1]].winningPercentage;
-  const last: number = winlossData.recent[team[1]].winningPercentage;
-  // console.log('🚀  total:', total);
+  const total: number = +winlossDataJSON.total[team[1]].winningPercentage;
+  const last: number = +winlossDataJSON.recent[team[1]].winningPercentage;
 
   //승리 예측 API
   const gamePredict: Response = await fetch(
@@ -80,8 +81,16 @@ export default async function RankingAi() {
             <MatchTeam teamName={team[1]} score={teamScore[1]} />
           </div>
           <div className="flex flex-col justify-center items-center gap-8 mt-11">
-            <Graph title="전체 승률" homeScore={total} awayScore={1 - total} />
-            <Graph title="최근 승률" homeScore={last} awayScore={1 - last} />
+            <Graph
+              title="전체 승률"
+              homeScore={total}
+              awayScore={(1 - total).toFixed(3)}
+            />
+            <Graph
+              title="최근 승률"
+              homeScore={last}
+              awayScore={(1 - last).toFixed(3)}
+            />
             <Graph
               title="예상 승률"
               homeScore={`${winPercent}%`}

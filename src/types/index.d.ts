@@ -96,17 +96,24 @@ type TGamePredictData = {
   string;
 };
 
+type TeamStats = {
+  wins: number;
+  draws: number;
+  losses: number;
+  winningPercentage: string;
+};
+
+type TotalStats = {
+  [team: string]: TeamStats;
+};
+
+type RecentStats = {
+  [team: string]: TeamStats;
+};
+
 type TWinLossData = {
-  total: {
-    [key: string]: {
-      winningPercentage: number;
-    };
-  };
-  recent: {
-    [key: string]: {
-      winningPercentage: number;
-    };
-  };
+  total: TotalStats;
+  recent: RecentStats;
 };
 
 export {
@@ -119,8 +126,8 @@ export {
   TPitcherData,
   TGameData,
   TGamePredictData,
-  TWinLossData,
   TPitcherRecord,
   TTeamRecord,
   TGameInfo,
+  TWinLossData,
 };
