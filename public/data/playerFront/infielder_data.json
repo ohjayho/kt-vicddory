@@ -2,69 +2,69 @@
     "data": {
         "list": [
             {
-                "playerName": "강민성",
+                "korName": "강민성",
                 "backNum": "5",
-                "playerImg": "kt5.png"
+                "playerImg": "batter/infielder/강민성.jpg"
             },
             {
-                "playerName": "강백호",
+                "korName": "강백호",
                 "backNum": "50",
-                "playerImg": "kt50.png"
+                "playerImg": "batter/infielder/강백호.jpg"
             },
             {
-                "playerName": "김상수",
+                "korName": "김상수",
                 "backNum": "7",
-                "playerImg": "kt7.png"
+                "playerImg": "batter/infielder/김상수.jpg"
             },
             {
-                "playerName": "박경수",
+                "korName": "박경수",
                 "backNum": "6",
-                "playerImg": "kt6.png"
+                "playerImg": "batter/infielder/박경수.jpg"
             },
             {
-                "playerName": "박민석",
+                "korName": "박민석",
                 "backNum": "25",
-                "playerImg": "kt25.png"
+                "playerImg": "batter/infielder/박민석.jpg"
             },
             {
-                "playerName": "신본기",
+                "korName": "신본기",
                 "backNum": "56",
-                "playerImg": "kt56.png"
+                "playerImg": "batter/infielder/신본기.jpg"
             },
             {
-                "playerName": "오윤석",
+                "korName": "오윤석",
                 "backNum": "4",
-                "playerImg": "kt4.png"
+                "playerImg": "batter/infielder/오윤석.jpg"
             },
             {
-                "playerName": "오재일",
+                "korName": "오재일",
                 "backNum": "36",
-                "playerImg": "kt36.png"
+                "playerImg": "batter/infielder/오재일.jpg"
             },
             {
-                "playerName": "윤준혁",
+                "korName": "윤준혁",
                 "backNum": "35",
-                "playerImg": "kt35.png"
+                "playerImg": "batter/infielder/윤준혁.jpg"
             },
             {
-                "playerName": "이호연",
+                "korName": "이호연",
                 "backNum": "34",
-                "playerImg": "kt34.png"
+                "playerImg": "batter/infielder/이호연.jpg"
             },
             {
-                "playerName": "장준원",
+                "korName": "장준원",
                 "backNum": "16",
-                "playerImg": "kt16.png"
+                "playerImg": "batter/infielder/장준원.jpg"
             },
             {
-                "playerName": "천성호",
+                "korName": "천성호",
                 "backNum": "14",
-                "playerImg": "kt14.png"
+                "playerImg": "batter/infielder/천성호.jpg"
             },
             {
-                "playerName": "황재균",
+                "korName": "황재균",
                 "backNum": "10",
-                "playerImg": "kt10.png"
+                "playerImg": "batter/infielder/황재균.jpg"
             }
         ]
     }
