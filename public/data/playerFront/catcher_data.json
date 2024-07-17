@@ -4,27 +4,27 @@
             {
                 "korName": "강현우",
                 "backNum": "55",
-                "playerImg": "강현우.jpg"
+                "playerImg": "batter/catcher/강현우.jpg"
             },
             {
                 "korName": "김민석",
                 "backNum": "97",
-                "playerImg": "김민석.jpg"
+                "playerImg": "batter/catcher/김민석.jpg"
             },
             {
                 "korName": "김준태",
                 "backNum": "44",
-                "playerImg": "김준태.jpg"
+                "playerImg": "batter/catcher/김준태.jpg"
             },
             {
                 "korName": "장성우",
                 "backNum": "22",
-                "playerImg": "장성우.jpg"
+                "playerImg": "batter/catcher/장성우.jpg"
             },
             {
                 "korName": "조대현",
                 "backNum": "42",
-                "playerImg": "조대현.jpg"
+                "playerImg": "batter/catcher/조대현.jpg"
             }
         ]
     }
