@@ -2,32 +2,40 @@ import Graph from '@/components/ranking/Graph';
 import MatchTeam from '@/components/ranking/MatchTeam';
 import dateFormat from '@/utils/dateFormat';
 import winlossData from '#/data/winlossdata.json';
+import july_schedule from '#/data/july_schedule.json';
+
 import {
   TGameData,
   TGamePredictData,
   TPitcherData,
-  TWinLossData,
+  TPitcherRecord,
+  TTeamRecord,
+  // TWinLossData,
 } from '@/types';
 
 export default async function RankingAi() {
+  const julyScheduleJSON: { [key: string]: number } = july_schedule;
+  const today = dateFormat();
+
   //선발투수 정보 API
+  const day_num: number = julyScheduleJSON[today];
+
   const pitcherRes: Response = await fetch(
-    `${process.env.BASE_URL}/api/startingPitcher`,
+    `${process.env.BASE_URL}/api/startingPitcher?day_num=${day_num}`,
   );
   const pitcherData: TPitcherData = await pitcherRes.json();
 
-  const todayPlay = pitcherData['선발투수']['선발'];
-  const team = Object.keys(todayPlay);
-  const pitcher = Object.values(todayPlay);
-  const score = pitcherData['상대전적']['정규시즌전적'];
-  const teamScore = Object.values(score);
+  const todayGame: TPitcherRecord = pitcherData['선발투수']['선발'];
+  const team: string[] = Object.keys(todayGame);
+  const pitcher: string[] = Object.values(todayGame);
+  const score: TTeamRecord = pitcherData['상대전적']['정규시즌전적'];
+  const teamScore: string[] = Object.values(score);
 
   //오늘 경기장 API
   const gaemRes: Response = await fetch(
     `${process.env.BASE_URL}/api/todayGame`,
   );
   const gameData: TGameData = await gaemRes.json();
-  const today = dateFormat();
 
   const gameDetail = gameData.list.filter((item) => {
     const gameDate = item.gameDate.toString();
@@ -38,7 +46,7 @@ export default async function RankingAi() {
   //전체 승률 및 예상 승률
   const total: number = winlossData.total[team[1]].winningPercentage;
   const last: number = winlossData.recent[team[1]].winningPercentage;
-  console.log('🚀  total:', total);
+  // console.log('🚀  total:', total);
 
   //승리 예측 API
   const gamePredict: Response = await fetch(

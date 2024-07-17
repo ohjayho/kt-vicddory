@@ -22,8 +22,8 @@ type TQuestionHandlerProps = {
 //Ranking
 type TGrapeProps = {
   title: string;
-  homeScore: string;
-  awayScore: string;
+  homeScore: string | number;
+  awayScore: strubg | number;
 };
 
 type TCustomCSSProperties = CSSProperties & {
@@ -39,6 +39,76 @@ type TEmblemSrc = {
   [key: string]: string;
 };
 
+type TTeamRecord = {
+  '경기당 득점': string;
+  '경기당 실점': string;
+  구분: string;
+  상대전적: string;
+  '승차/최근': string;
+  '원정 성적': string;
+  정규시즌전적: string;
+  '홈 성적': string;
+};
+
+type TPitcherRecord = {
+  구분: string;
+  '상대 전적(모든시즌)': string;
+  선발: string;
+  '시즌 성적(정규)': string;
+  '최근 30일': string;
+  확정: string;
+};
+
+type TPitcherData = {
+  상대전적: {
+    [key: string]: TTeamRecord;
+  };
+  선발투수: {
+    [key: string]: TPitcherRecord;
+  };
+};
+
+type TGameInfo = {
+  broadcast: string;
+  displayDate: string;
+  gameDate: number;
+  gmkey: string;
+  gtime: string;
+  home: string;
+  homeKey: string;
+  homeScore: number;
+  matchTeamCode: string;
+  matchTeamName: string;
+  outcome: string;
+  stadium: string;
+  stadiumKey: string;
+  status: string;
+  visit: string;
+  visitKey: string;
+  visitScore: number;
+};
+
+type TGameData = {
+  list: TGameInfo[];
+};
+
+type TGamePredictData = {
+  string;
+};
+
+type TWinLossData = {
+  total: {
+    [key: string]: {
+      winningPercentage: number;
+    };
+  };
+  recent: {
+    [key: string]: {
+      winningPercentage: number;
+    };
+  };
+};
+
 export {
   TResultPositionProps,
   TQuestionHandlerProps,
@@ -46,4 +116,10 @@ export {
   TCustomCSSProperties,
   TMatchTeamProps,
   TEmblemSrc,
+  TPitcherData,
+  TGameData,
+  TGamePredictData,
+  TWinLossData,
+  TPitcherRecord,
+  TTeamRecord,
 };
