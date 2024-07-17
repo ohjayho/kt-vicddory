@@ -83,12 +83,12 @@ export default async function RankingAi() {
           <div className="flex flex-col justify-center items-center gap-8 mt-11">
             <Graph
               title="전체 승률"
-              homeScore={total}
+              homeScore={total.toFixed(3)}
               awayScore={(1 - total).toFixed(3)}
             />
             <Graph
               title="최근 승률"
-              homeScore={last}
+              homeScore={last.toFixed(3)}
               awayScore={(1 - last).toFixed(3)}
             />
             <Graph
