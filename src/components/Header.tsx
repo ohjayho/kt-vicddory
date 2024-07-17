@@ -49,7 +49,7 @@ export default function Header() {
   return (
     <>
       <div
-        className={`w-full fixed ${isHome ? (isScrolled ? 'bg-black' : 'bg-transparent') : 'bg-black'} group`}
+        className={`w-full fixed z-20 ${isHome ? (isScrolled ? 'bg-black' : 'bg-transparent') : 'bg-black'} group`}
       >
         <div className="flex justify-between h-20 max-lg:h-[13vw] w-3/4 mx-auto  text-white items-center">
           <button
