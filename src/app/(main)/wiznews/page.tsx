@@ -13,7 +13,7 @@ type TNews = TNewsContent[];
 export default async function WizNews() {
   const getNews = async () => {
     const res = await fetch(
-      'http://3.35.50.52:5002/news?query=KTwiz&page=1&count=10',
+      `${process.env.API_URL}/news?query=KTwiz&page=1&count=10`,
     );
     const data: TNews = await res.json();
     return data;
@@ -31,6 +31,7 @@ export default async function WizNews() {
           <div className="w-[820px] max-lg:w-[500px] h-[600px] overflow-y-scroll no-scrollbar">
             {displayNews.map((news, index) => (
               <NewsBalloon
+                key={1}
                 direction={index % 2 === 0 ? 'right' : 'left'}
                 content={news.title}
               />
