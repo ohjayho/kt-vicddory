@@ -2,27 +2,27 @@
     "data": {
         "list": [
             {
-                "playerName": "강현우",
+                "korName": "강현우",
                 "backNum": "55",
                 "playerImg": "kt55.png"
             },
             {
-                "playerName": "김민석",
+                "korName": "김민석",
                 "backNum": "97",
                 "playerImg": "kt97.png"
             },
             {
-                "playerName": "김준태",
+                "korName": "김준태",
                 "backNum": "44",
                 "playerImg": "kt44.png"
             },
             {
-                "playerName": "장성우",
+                "korName": "장성우",
                 "backNum": "22",
                 "playerImg": "kt22.png"
             },
             {
-                "playerName": "조대현",
+                "korName": "조대현",
                 "backNum": "42",
                 "playerImg": "kt42.png"
             }
