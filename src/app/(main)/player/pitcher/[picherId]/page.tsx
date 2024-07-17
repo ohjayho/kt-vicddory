@@ -63,15 +63,15 @@ export default function PitcherDetail() {
             ))}
           </div>
           {/* AI 파트 */}
-          <div className="flex flex-col w-1/3 px-16 pl-22 md:flex-wrap sm:w-full md:w-full">
+          <div className="flex flex-col w-1/3 px-16 pl-22 max-sm:pl-0 max-sm:w-full max-sm:flex-wrap max-sm:px-2 max-sm:mx-4">
             {/*그래프*/}
-            <div className="w-full">
+            <div className="w-full max-sm:px-2 max-sm:items-center">
               <PlayerChart
                 title={'선수 예측 데이터'}
                 showExpectedSeries={showExpectedSeries}
               />
             </div>
-            <div className="h-10 flex items-center justify-center">
+            <div className="h-10 flex items-center justify-center max-sm:pr-6">
               <button
                 className="w-1/2 h-full flex items-center justify-center font-bold text-white text-base bg-red-90 rounded-[30px]"
                 onClick={handleAIButtonClick}
