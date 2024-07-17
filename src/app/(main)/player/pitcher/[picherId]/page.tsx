@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import PlayerCard from '@/components/tradingCard/PlayerCard';
 import Banner from '@/components/player/Banner';
 import dynamic from 'next/dynamic';
+import { MdOutlineArrowRight } from 'react-icons/md';
 
 const pitcherData = [
   {
@@ -94,10 +95,9 @@ export default function PitcherDetail() {
             className="h-8 w-fit mx-2 flex flex-row"
             onClick={onDetailHandler}
           >
-            <img
-              src="/svgs/arrow-right.svg"
+            <MdOutlineArrowRight
               className={`w-8 h-8 ${detailButton ? 'rotate-90' : 'rotate-0'}`}
-            ></img>
+            />
             <div className="text-lg">선수 기록 상세보기</div>
           </button>
         </div>
