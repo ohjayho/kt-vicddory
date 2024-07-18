@@ -39,7 +39,7 @@ export default function Banner() {
 
   return (
     <>
-      <div className="bg-[url('/images/bannerBg.png')] h-[252px] w-full flex flex-col items-center text-center text-white">
+      <div className="bg-[url('/images/bannerBg.png')] h-[252px] w-full pb-4 flex flex-col items-center text-center text-white">
         <div>
           <h1 className="mt-14 text-5xl font-extrabold">
             {text[pathname]?.title}
@@ -64,39 +64,41 @@ export default function Banner() {
             buttonStyle={pathname === 'batter' ? ' text-white border-b-4' : ''}
           >
             타자{' '}
-            <div className="z-20 w-full bg-white group-hover:fixed">
-              <div className="justify-between mt-4 mx-auto pb-4 text-black items-center h-20 bg-white">
-                <div className="flex flex-row w-20 items-center hover:border-t-2 hover:border-t-red-500 whitespace-nowrap">
-                  <BatterBanner
-                    url="catcher"
-                    buttonStyle={
-                      pathname2 == 'catcher'
-                        ? 'text-white border-b-4 bg-red-500'
-                        : ''
-                    }
-                  >
-                    포수
-                  </BatterBanner>
-                  <BatterBanner
-                    url="infielder"
-                    buttonStyle={
-                      pathname2 == 'infielder'
-                        ? 'text-white border-b-4 bg-red-500'
-                        : ''
-                    }
-                  >
-                    내야수
-                  </BatterBanner>
-                  <BatterBanner
-                    url="outfielder"
-                    buttonStyle={
-                      pathname2 == 'outfielder'
-                        ? 'text-white border-b-4 bg-red-500'
-                        : ''
-                    }
-                  >
-                    외야수
-                  </BatterBanner>
+            <div className="hidden group-hover:flex">
+              <div className="fixed pb-0 h-auto w-full bg-white">
+                <div className="flex fixed justify-between mt-[10px] mx-auto text-black items-center w-full h-auto bg-white">
+                  <div className="flex flex-row w-20 items-center  whitespace-nowrap">
+                    <BatterBanner
+                      url="catcher"
+                      buttonStyle={
+                        pathname2 == 'catcher'
+                          ? 'text-white bg-red-500'
+                          : 'hover:bg-red-500 hover:text-white'
+                      }
+                    >
+                      포수
+                    </BatterBanner>
+                    <BatterBanner
+                      url="infielder"
+                      buttonStyle={
+                        pathname2 == 'infielder'
+                          ? 'text-white bg-red-500'
+                          : 'hover:bg-red-500 hover:text-white'
+                      }
+                    >
+                      내야수
+                    </BatterBanner>
+                    <BatterBanner
+                      url="outfielder"
+                      buttonStyle={
+                        pathname2 == 'outfielder'
+                          ? 'text-white bg-red-500'
+                          : 'hover:bg-red-500 hover:text-white'
+                      }
+                    >
+                      외야수
+                    </BatterBanner>
+                  </div>
                 </div>
               </div>
             </div>

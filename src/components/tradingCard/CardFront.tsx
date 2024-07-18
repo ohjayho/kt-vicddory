@@ -86,7 +86,7 @@ const CardFront: React.FC<CardFrontProps> = ({ player, size = 'medium' }) => {
       <div>
         {/* 홀로그램 이미지 */}
         <div
-          className={`absolute ${sizeClass} inset-x bg-hologram-gradient brightness-110 opacity-80 mix-blend-color-dodge bg-cover bg-[150%_150%] transition-all duration-100`}
+          className={`hidden absolute ${sizeClass} inset-x bg-hologram-gradient brightness-110 opacity-80 mix-blend-color-dodge bg-cover bg-[150%_150%] transition-all duration-100`}
           ref={cardRef}
         ></div>
         {/* 카드 앞면 */}

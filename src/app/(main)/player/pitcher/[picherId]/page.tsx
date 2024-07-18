@@ -5,9 +5,25 @@ import PlayerCard from '@/components/tradingCard/PlayerCard';
 import Banner from '@/components/player/Banner';
 import dynamic from 'next/dynamic';
 import { MdOutlineArrowRight } from 'react-icons/md';
-import player_detail from '#/data/playerDetail/강건.json';
+import pitcher_data from '#/data/playerDetail/강건.json';
 
-const pitcherData = player_detail;
+// const pitcherData2 = pitcher_data.data.list;
+const pitcherData = [
+  {
+    korName: '강현우',
+    engName: 'Kang Hyun Woo',
+    backNum: 55,
+    playerImg: 'kt11.png',
+    positionKor: '투수',
+    positionEng: 'Pitcher',
+    positionHitType: '우수우타',
+    positionImg: 'pitcher.png',
+    playerDOB: '1999.04.14',
+    playerHeight: 185,
+    playerWeight: 88,
+    debutYear: 2018,
+  },
+];
 
 export default function PitcherDetail() {
   const [detailButton, setDetailButton] = useState(false);
