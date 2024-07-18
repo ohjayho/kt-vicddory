@@ -4,7 +4,7 @@ interface Player {
   playerImg: string;
   positionKor: string;
   positionEng: string;
-  positionPH: string;
+  positionHitType: string;
   positionImg: string;
   playerDOB: string;
   playerHeight: number;

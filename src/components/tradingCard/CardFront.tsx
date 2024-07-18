@@ -1,13 +1,13 @@
 import React, { useEffect, useRef } from 'react';
 // import PlayerCardProps from '@/components/tradingCard/PlayerCard';
-interface IPitcher {
+interface IPlayerFront {
   korName: string;
   backNum: string;
   playerImg: string;
 }
 
 interface CardFrontProps {
-  player: IPitcher;
+  player: IPlayerFront;
   size?: 'small' | 'medium' | 'large';
 }
 

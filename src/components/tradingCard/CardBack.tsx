@@ -6,7 +6,7 @@ interface IPitcherBack {
   playerImg: string;
   positionKor: string;
   positionEng: string;
-  positionPH: string;
+  positionHitType: string;
   positionImg: string;
   playerDOB: string;
   playerHeight: number;
@@ -80,7 +80,7 @@ const CardBack: React.FC<CardBackProps> = ({ player, size = 'large' }) => {
 
                   <div className="text-right flex flex-col">
                     {/* 투타 */}
-                    <p className="">{player.positionPH}</p>
+                    <p className="">{player.positionHitType}</p>
                     {/* 포지션 영문 */}
                     <div className="">{player.positionEng}</div>
                   </div>
@@ -160,7 +160,7 @@ const CardBack: React.FC<CardBackProps> = ({ player, size = 'large' }) => {
 
                   <div className="text-right flex flex-col">
                     {/* 투타 */}
-                    <p className="">{player.positionPH}</p>
+                    <p className="">{player.positionHitType}</p>
                     {/* 포지션 영문 */}
                     <div className="">{player.positionEng}</div>
                   </div>

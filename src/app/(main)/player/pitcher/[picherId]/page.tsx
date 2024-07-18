@@ -14,7 +14,7 @@ const pitcherData = [
     playerImg: 'kt11.png',
     positionKor: '투수',
     positionEng: 'Pitcher',
-    positionPH: '우수우타',
+    positionHitType: '우수우타',
     positionImg: 'pitcher.png',
     playerDOB: '1999.04.14',
     playerHeight: 185,
