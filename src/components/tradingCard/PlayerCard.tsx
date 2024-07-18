@@ -3,6 +3,7 @@
 import CardFront from '@/components/tradingCard/CardFront';
 import CardBack from '@/components/tradingCard/CardBack';
 import Player from '@/components/player/Player';
+import IPlayerFront from '@/components/player/PlayerFront';
 import { useState, useEffect } from 'react';
 const playerData = [
   {
@@ -22,7 +23,8 @@ const playerData = [
 ];
 
 interface PlayerCardProps {
-  player: Player;
+  playerFront: IPlayerFront;
+  playerBack: Player;
   size?: 'small' | 'medium' | 'large';
   checkSpin: boolean;
 }
