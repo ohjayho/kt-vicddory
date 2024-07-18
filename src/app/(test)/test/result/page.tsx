@@ -71,7 +71,7 @@ export default function Page() {
             />
           </div>
           <div className="w-full h-[250px] bg-[#FFFFFF] flex flex-col justify-center items-center">
-            <Button href="/test/questions/1">테스트 다시하기</Button>
+            <Button width={80} text='2xl' href="/test/questions/1">테스트 다시하기</Button>
             <div className="text-xl font-bold mt-10 mb-3">
               <span className="text-red-100">테스트</span>
               <span className="text-[#333333]">공유하기</span>
@@ -79,7 +79,7 @@ export default function Page() {
             <TestShare onClick={handleCaptureClick}/>
           </div>
           <div className='sticky bottom-0 w-full h-20 bg-[#FFFFFF] flex justify-center items-center pb-6'>
-            <Button href="/test">👉🏻선수 알아보러 가기👈🏻</Button>
+            <Button width={80} text='2xl' href="/test">👉🏻선수 알아보러 가기👈🏻</Button>
           </div>
         </div>
       </div>
