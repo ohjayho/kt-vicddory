@@ -4,10 +4,15 @@ import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import { useState } from 'react';
 import DarkUnica from 'highcharts/themes/dark-unica';
+import year_rank from '#/data/year_rank.json';
+import { getTeamRanks } from '@/utils/getTeamRanks';
 
 DarkUnica(Highcharts);
 
 export default function Chart({ title }: { title: string }) {
+  const yearRankJson = year_rank;
+  // const ktRank = getTeamRanks('KT');
+
   const [options] = useState({
     title: {
       text: `${title}`,
@@ -19,59 +24,71 @@ export default function Chart({ title }: { title: string }) {
     series: [
       {
         name: 'LG',
-        data: [3, 1, 3, 2, 1, 3, 2, 1, 2],
+        data: getTeamRanks('lg'),
         visible: false,
       },
       {
         name: 'KT',
-        data: [1, 3, 1, 4, 2, 1, 4, 2, 7],
+        data: getTeamRanks('KT'),
         visible: true,
       },
       {
         name: 'SSG',
-        data: [10, 2, 6, 1, 3, 6, 1, 3, 5],
+        data: getTeamRanks('SSG'),
         visible: false,
       },
       {
         name: 'NC',
-        data: [2, 9, 7, 6, 4, 7, 6, 4, 6],
+        data: getTeamRanks('NC'),
         visible: false,
       },
       {
         name: '두산',
-        data: [8, 8, 4, 9, 5, 4, 9, 5, 4],
+        data: getTeamRanks('두산'),
         visible: false,
       },
       {
         name: 'KIA',
-        data: [7, 10, 9, 5, 6, 9, 5, 6, 1],
+        data: getTeamRanks('KIA'),
         visible: false,
       },
       {
         name: '롯데',
-        data: [9, 4, 8, 8, 7, 8, 8, 7, 8],
+        data: getTeamRanks('롯데'),
         visible: false,
       },
       {
         name: '삼성',
-        data: [6, 5, 2, 7, 8, 2, 7, 8, 3],
+        data: getTeamRanks('삼성'),
         visible: false,
       },
       {
         name: '한화',
-        data: [4, 6, 10, 10, 9, 10, 10, 9, 9],
+        data: getTeamRanks('한화'),
         visible: false,
       },
       {
         name: '키움',
-        data: [5, 7, 5, 3, 10, 5, 3, 10, 10],
+        data: getTeamRanks('키움'),
+        visible: false,
+      },
+      {
+        name: '현대',
+        data: getTeamRanks('현대'),
+        visible: false,
+      },
+      {
+        name: '쌍방울',
+        data: getTeamRanks('쌍방울'),
         visible: false,
       },
     ],
     xAxis: {
-      categories: [
-        2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024,
-      ],
+      categories: yearRankJson.map((item) => item.year),
+      labels: {
+        rotation: -90,
+        align: 'right',
+      },
     },
     yAxis: {
       title: {
