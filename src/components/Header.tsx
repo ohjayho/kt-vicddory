@@ -47,7 +47,7 @@ export default function Header() {
   return (
     <>
       <div
-        className={`w-full fixed ${isHome ? (isScrolled ? 'bg-black' : 'bg-transparent') : 'bg-black'} group`}
+        className={`z-20 w-full fixed ${isHome ? (isScrolled ? 'bg-black' : 'bg-transparent') : 'bg-black'} group`}
       >
         <div className="flex justify-between h-20 max-lg:h-[13vw] w-3/4 mx-auto  text-white items-center">
           <button
@@ -122,7 +122,7 @@ export default function Header() {
           </Link>
         </div>
         <div className="hidden group-hover:flex">
-          <div className="justify-betweenl w-3/4 mx-auto text-white items-center">
+          <div className="justify-between w-3/4 mx-auto text-white items-center">
             <div className="hidden">
               <Link href="/">
                 <Image

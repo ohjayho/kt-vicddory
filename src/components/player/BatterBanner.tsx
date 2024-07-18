@@ -13,7 +13,7 @@ export default function BatterBanner({
 }: batterBannerType) {
   return (
     <>
-      <Link href={url}>
+      <Link href={`/player/batter/${url}`}>
         <button
           className={`w-28 max-sm:w-16 h-11 text-lg max-sm:text-sm font-extrabold text-[#000000] border-white ${buttonStyle}`}
         >

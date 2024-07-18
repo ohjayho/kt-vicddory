@@ -3,7 +3,7 @@
 import { usePathname } from 'next/navigation';
 // import { useState } from 'react';
 import BannerBtn from '../BannerBtn';
-
+import BatterBanner from './BatterBanner';
 interface BannerProps {
   title: string;
   subtitle: string;
@@ -16,6 +16,8 @@ type TPathNameText = {
 };
 export default function Banner() {
   const pathname = usePathname().split('/')[2];
+  const pathname2 = usePathname().split('/')[3];
+
   const text: TPathNameText = {
     coach: {
       title: '코칭스탭',
@@ -44,7 +46,7 @@ export default function Banner() {
           </h1>
           <p className="mt-11 text-xl">{text[pathname]?.subtitle}</p>
         </div>
-        <div className="mt-8 flex  gap-[198px] text-base font-extrabold">
+        <div className="mt-8 flex gap-[198px] text-base font-extrabold">
           <BannerBtn
             url="/player/coach"
             buttonStyle={pathname === 'coach' ? ' text-white border-b-4' : ''}
@@ -61,8 +63,44 @@ export default function Banner() {
             url="/player/batter"
             buttonStyle={pathname === 'batter' ? ' text-white border-b-4' : ''}
           >
-            타자
-          </BannerBtn>
+            타자{' '}
+            <div className="z-20 w-full bg-white group-hover:fixed">
+              <div className="justify-between mt-4 mx-auto pb-4 text-black items-center h-20 bg-white">
+                <div className="flex flex-row w-20 items-center hover:border-t-2 hover:border-t-red-500 whitespace-nowrap">
+                  <BatterBanner
+                    url="catcher"
+                    buttonStyle={
+                      pathname2 == 'catcher'
+                        ? 'text-white border-b-4 bg-red-500'
+                        : ''
+                    }
+                  >
+                    포수
+                  </BatterBanner>
+                  <BatterBanner
+                    url="infielder"
+                    buttonStyle={
+                      pathname2 == 'infielder'
+                        ? 'text-white border-b-4 bg-red-500'
+                        : ''
+                    }
+                  >
+                    내야수
+                  </BatterBanner>
+                  <BatterBanner
+                    url="outfielder"
+                    buttonStyle={
+                      pathname2 == 'outfielder'
+                        ? 'text-white border-b-4 bg-red-500'
+                        : ''
+                    }
+                  >
+                    외야수
+                  </BatterBanner>
+                </div>
+              </div>
+            </div>
+          </BannerBtn>{' '}
           <BannerBtn
             url="/player/cheerleader"
             buttonStyle={
