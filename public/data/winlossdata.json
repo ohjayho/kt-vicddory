@@ -1,0 +1,120 @@
+{
+  "total": {
+    "SSG": {
+      "wins": 34,
+      "draws": 3,
+      "losses": 20,
+      "winningPercentage": "0.630"
+    },
+    "LG": {
+      "wins": 62,
+      "draws": 2,
+      "losses": 92,
+      "winningPercentage": "0.403"
+    },
+    "키움": {
+      "wins": 63,
+      "draws": 1,
+      "losses": 87,
+      "winningPercentage": "0.420"
+    },
+    "롯데": {
+      "wins": 71,
+      "draws": 4,
+      "losses": 77,
+      "winningPercentage": "0.480"
+    },
+    "두산": {
+      "wins": 70,
+      "draws": 1,
+      "losses": 82,
+      "winningPercentage": "0.461"
+    },
+    "삼성": {
+      "wins": 76,
+      "draws": 4,
+      "losses": 72,
+      "winningPercentage": "0.514"
+    },
+    "NC": {
+      "wins": 66,
+      "draws": 5,
+      "losses": 81,
+      "winningPercentage": "0.449"
+    },
+    "KIA": {
+      "wins": 75,
+      "draws": 3,
+      "losses": 78,
+      "winningPercentage": "0.490"
+    },
+    "한화": {
+      "wins": 75,
+      "draws": 2,
+      "losses": 76,
+      "winningPercentage": "0.497"
+    },
+    "SK": {
+      "wins": 45,
+      "draws": 0,
+      "losses": 51,
+      "winningPercentage": "0.469"
+    }
+  },
+  "recent": {
+    "KIA": {
+      "wins": 6,
+      "draws": 0,
+      "losses": 10,
+      "winningPercentage": "0.375"
+    },
+    "삼성": {
+      "wins": 8,
+      "draws": 0,
+      "losses": 8,
+      "winningPercentage": "0.500"
+    },
+    "두산": {
+      "wins": 10,
+      "draws": 1,
+      "losses": 5,
+      "winningPercentage": "0.667"
+    },
+    "SSG": {
+      "wins": 10,
+      "draws": 1,
+      "losses": 5,
+      "winningPercentage": "0.667"
+    },
+    "LG": {
+      "wins": 6,
+      "draws": 0,
+      "losses": 10,
+      "winningPercentage": "0.375"
+    },
+    "롯데": {
+      "wins": 13,
+      "draws": 0,
+      "losses": 3,
+      "winningPercentage": "0.813"
+    },
+    "한화": {
+      "wins": 9,
+      "draws": 1,
+      "losses": 6,
+      "winningPercentage": "0.600"
+    },
+    "NC": {
+      "wins": 10,
+      "draws": 0,
+      "losses": 6,
+      "winningPercentage": "0.625"
+    },
+    "키움": {
+      "wins": 7,
+      "draws": 0,
+      "losses": 9,
+      "winningPercentage": "0.438"
+    }
+  }
+}
