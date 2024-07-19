@@ -1,11 +1,6 @@
 import React, { useEffect, useRef } from 'react';
+import { IPlayerFront } from '@/types';
 // import PlayerCardProps from '@/components/tradingCard/PlayerCard';
-interface IPlayerFront {
-  korName: string;
-  backNum: string;
-  playerImg: string;
-}
-
 interface CardFrontProps {
   player: IPlayerFront;
   size?: 'small' | 'medium' | 'large';
