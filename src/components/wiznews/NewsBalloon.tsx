@@ -3,9 +3,11 @@ import Link from 'next/link';
 export default function NewsBalloon({
   direction,
   content,
+  id,
 }: {
   direction: 'left' | 'right';
   content: string;
+  id: Number;
 }) {
   const position = direction === 'right' ? 'justify-end' : 'justify-start';
   const setDirection =
@@ -15,7 +17,7 @@ export default function NewsBalloon({
       <div
         className={`flex ${position} max-lg:justify-center lg:[&:not(:first-child)]:-mt-10 max-lg:mb-5`}
       >
-        <Link href="/wiznews/a" scroll={false}>
+        <Link href={`/wiznews/${id}`} scroll={false}>
           <div
             className={`w-[400px] max-lg:w-[380px] h-[120px] rounded-[54px] ${setDirection} bg-gradient-to-br from-[#FF0000] via-[#620000] to-[#FF0000] p-2`}
           >
