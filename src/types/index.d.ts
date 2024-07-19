@@ -116,6 +116,25 @@ type TWinLossData = {
   recent: RecentStats;
 };
 
+// Player
+interface IPlayerFront {
+  korName: string;
+  backNum: string;
+  playerImg: string;
+}
+
+interface IPlayerBack extends IPlayerFront {
+  engName: string;
+  positionKor: string;
+  positionEng: string;
+  positionHitType: string;
+  positionImg: string;
+  playerDOB: string;
+  playerHeight: number;
+  playerWeight: number;
+  debutYear: number;
+}
+
 export {
   TResultPositionProps,
   TQuestionHandlerProps,
@@ -130,4 +149,6 @@ export {
   TTeamRecord,
   TGameInfo,
   TWinLossData,
+  IPlayerFront,
+  IPlayerBack,
 };
