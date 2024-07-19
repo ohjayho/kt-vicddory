@@ -12,25 +12,26 @@ export type TNewsContent = {
   [key: string]: any;
 };
 
-export type TNews = TNewsContent[];
+export type TNewsList = TNewsContent[];
 
-type NewsStore = {
-  news: TNews;
-  setNews: (news: TNews) => void;
+type NewsListStore = {
+  newsList: TNewsList;
+  setNewsList: (news: TNewsList) => void;
 };
 
-export const useNewsStore = create<NewsStore>()((set) => ({
-  news: [],
-  setNews: (news) => set((state) => ({ news: [...state.news, ...news] })),
+export const useNewsListStore = create<NewsListStore>()((set) => ({
+  newsList: [],
+  setNewsList: (news) =>
+    set((state) => ({ newsList: [...state.newsList, ...news] })),
 }));
 
 export default function NewsSearch() {
-  const setNews = useNewsStore((state) => state.setNews);
+  const setNewsList = useNewsListStore((state) => state.setNewsList);
   const handleEnter = async (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       // const inputElement = e.target as HTMLInputElement;
       const newsData = await (await fetch(`/api/news`)).json();
-      setNews(newsData);
+      setNewsList(newsData);
     }
   };
   return (
