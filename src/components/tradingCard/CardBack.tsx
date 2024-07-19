@@ -1,21 +1,7 @@
 import React from 'react';
-
-interface IPitcherBack {
-  korName: string;
-  engName: string;
-  playerImg: string;
-  positionKor: string;
-  positionEng: string;
-  positionHitType: string;
-  positionImg: string;
-  playerDOB: string;
-  playerHeight: number;
-  playerWeight: number;
-  debutYear: number;
-}
-
+import { IPlayerBack } from '@/types';
 interface CardBackProps {
-  player: IPitcherBack;
+  player: IPlayerBack;
   size?: 'small' | 'medium' | 'large';
 }
 
