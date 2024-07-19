@@ -58,8 +58,7 @@ export default function PitcherDetail() {
             {pitcherData.map((pitcher, index) => (
               <PlayerCard
                 key={index}
-                playerFront={pitcher}
-                playerBack={pitcher}
+                player={pitcher}
                 size="large"
                 checkSpin={isSpin}
               />

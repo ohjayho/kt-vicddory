@@ -2,14 +2,13 @@
 
 import CardFront from '@/components/tradingCard/CardFront';
 import CardBack from '@/components/tradingCard/CardBack';
-import PlayerBack from '@/components/player/PlayerBack';
-import PlayerFront from '@/components/player/PlayerFront';
+import { IPlayerFront, IPlayerBack } from '@/types';
 import { useState, useEffect } from 'react';
 const playerData = [
   {
     korName: '강현우',
     engName: 'Kang Hyun Woo',
-    backNum: 55,
+    backNum: '55',
     playerImg: 'kt11.png',
     positionKor: '투수',
     positionEng: 'Pitcher',
@@ -27,8 +26,7 @@ const playerDataFront = [
 ];
 
 interface PlayerCardProps {
-  playerFront: PlayerFront;
-  playerBack: PlayerBack;
+  player: IPlayerBack;
   size?: 'small' | 'medium' | 'large';
   checkSpin: boolean;
 }
