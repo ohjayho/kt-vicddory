@@ -1,4 +1,4 @@
-interface Player {
+interface PlayerBack {
   korName: string;
   engName: string;
   playerImg: string;
@@ -11,4 +11,4 @@ interface Player {
   playerWeight: number;
   debutYear: number;
 }
-export default Player;
+export default PlayerBack;

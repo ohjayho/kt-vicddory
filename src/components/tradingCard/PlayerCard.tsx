@@ -2,8 +2,8 @@
 
 import CardFront from '@/components/tradingCard/CardFront';
 import CardBack from '@/components/tradingCard/CardBack';
-import Player from '@/components/player/Player';
-import IPlayerFront from '@/components/player/PlayerFront';
+import PlayerBack from '@/components/player/PlayerBack';
+import PlayerFront from '@/components/player/PlayerFront';
 import { useState, useEffect } from 'react';
 const playerData = [
   {
@@ -22,9 +22,13 @@ const playerData = [
   },
 ];
 
+const playerDataFront = [
+  { korName: '강현우', backNum: '55', playerImg: 'kt11.png' },
+];
+
 interface PlayerCardProps {
-  playerFront: IPlayerFront;
-  playerBack: Player;
+  playerFront: PlayerFront;
+  playerBack: PlayerBack;
   size?: 'small' | 'medium' | 'large';
   checkSpin: boolean;
 }
@@ -76,7 +80,7 @@ const PlayerCard: React.FC<PlayerCardProps> = ({
             <div
               className={`${sizeClass} absolute inset-0 object-cover [backface-visibility:hidden]`}
             >
-              {playerData.map((player, index) => (
+              {playerDataFront.map((player, index) => (
                 <CardFront key={index} player={player} size={size} />
               ))}
             </div>

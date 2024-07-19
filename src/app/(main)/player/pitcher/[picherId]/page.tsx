@@ -5,7 +5,7 @@ import PlayerCard from '@/components/tradingCard/PlayerCard';
 import Banner from '@/components/player/Banner';
 import dynamic from 'next/dynamic';
 import { MdOutlineArrowRight } from 'react-icons/md';
-import pitcher_data from '#/data/playerDetail/강건.json';
+// import pitcher_data from '#/data/playerDetail/강건.json';
 
 // const pitcherData2 = pitcher_data.data.list;
 const pitcherData = [
@@ -58,7 +58,8 @@ export default function PitcherDetail() {
             {pitcherData.map((pitcher, index) => (
               <PlayerCard
                 key={index}
-                player={pitcher}
+                playerFront={pitcher}
+                playerBack={pitcher}
                 size="large"
                 checkSpin={isSpin}
               />
