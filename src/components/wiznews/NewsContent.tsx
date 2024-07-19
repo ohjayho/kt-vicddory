@@ -1,12 +1,58 @@
 'use client';
 import { useRouter } from 'next/navigation';
-import { MouseEventHandler } from 'react';
+import { MouseEventHandler, useEffect } from 'react';
+import { TNewsContent, useNewsListStore } from './NewsSearch';
+import Image from 'next/image';
+import { create } from 'zustand';
 
-export default function NewsContent() {
+type TNewsId = {
+  newsId: string;
+};
+
+type TheNewsStore = {
+  theNews: TNewsContent;
+  setTheNews: (theNews: TNewsContent) => void;
+};
+
+export const useTheNewsStore = create<TheNewsStore>()((set) => ({
+  theNews: { artcTitle: '', artcContents: '', imgFilePath: '', artcSeq: 0 },
+  setTheNews: (theNews) => set(() => ({ theNews: theNews })),
+}));
+
+export default function NewsContent({ newsId }: TNewsId) {
+  const theNews = useTheNewsStore((state) => state.theNews);
+  const setTheNews = useTheNewsStore((state) => state.setTheNews);
+  const newsList = useNewsListStore((state) => state.newsList);
+  const setNewsList = useNewsListStore((state) => state.setNewsList);
+  const fetchNews = async () => {
+    //NewsSearch에서 caching 된 경우 재호출되지 않음.
+    //하지만 뉴스의 URL을 공유했을 경우 Zustand의 store에 뉴스 정보가 없기 때문에 fetch해야함.
+    const newsData = await (await fetch(`/api/news`)).json();
+    setNewsList(newsData);
+  };
+
   const router = useRouter();
   const handleBacklink: MouseEventHandler<HTMLButtonElement> = () => {
     router.back();
   };
+
+  useEffect(() => {
+    if (newsList.length === 0) {
+      ///뉴스가 없다면
+      fetchNews();
+    }
+  }, []);
+
+  useEffect(() => {
+    const theNews = newsList.find((news) => news.artcSeq === parseInt(newsId));
+
+    if (theNews) {
+      //undefiend 일 수도 있으니 타입 체크. 타입오류 해결 용도
+      setTheNews(theNews);
+    }
+    console.log(theNews, '더뉴스');
+  }, [newsId, newsList]);
+
   return (
     <>
       <section className="w-[820px] max-lg:w-[80%] h-[55%] bg-[#0a0a0e] rounded-[5px] p-5 font-['DungGeunMo'] text-white">
@@ -20,33 +66,19 @@ export default function NewsContent() {
             </button>
           </div>
           <div className="flex max-md:flex-col justify-between pt-8 px-8 pb-5 제목 칸">
-            <h1 className="w-[80%] max-md:w-full 제목">
-              “154km까지 나오더라” 감독의 감탄…선발 실패→필승 셋업맨 “마무리는
-              영현이가 15년은 해야 될 선수죠”
-            </h1>
+            <h1 className="w-[80%] max-md:w-full 제목">{theNews.artcTitle}</h1>
             <h3 className="flex justify-end max-md:mt-4 날짜">2024-01-17</h3>
           </div>
-          <div className="px-8 pb-8 overflow-hidden 본문 칸">
+          <div className="px-8 pb-8 overflow-scroll no-scrollbar 본문 칸">
+            <Image
+              src={theNews.imgFilePath}
+              width={500}
+              height={0}
+              alt="news_image"
+              className="w-full"
+            />
             <p className="h-full overflow-y-scroll no-scrollbar">
-              [OSEN=잠실, 한용섭 기자]프로야구 KT 위즈 투수 김민이 불펜에서
-              믿을맨 역할을 잘 수행하고 있다.KT는 21일 서울 잠실구장에서 LG와
-              경기에서 3-2 역전승을 거뒀다. 김민은 선발 벤자민에 이어 2번째
-              투수로 나와 1이닝 1피안타 무실점을 기록하며 승리 투수가 됐다. 2-2
-              동점인 8회 등판한 김민은 대타 신민재에게 중전 안타를 허용했다.
-              그러나 무사 1루에서 홍창기를 유격수 땅볼 병살타로 처리하며 주자를
-              없앴다. 2사 후 김현수를 2루수 땅볼로 이닝을 마쳤다.KT는 9회초 연속
-              볼넷과 1사 2,3루에서 자동 고의4구로 만루 찬스를 잡았고, 2사
-              만루에서 강현우의 밀어내기 볼넷으로 결승점을 뽑았다. 마무리
-              박영현이 2아웃을 잡고서 볼넷 2개를 내줬지만 1점 차 승리를
-              지켜냈다.이강철 감독은 “NC전 때는 154km까지 나오더라”며 불펜에서
-              김민의 공이 제일 좋다고 칭찬했다. 김민은 마무리 박영현 앞에서
-              셋업맨 역할을 하고 있다.김민은 경기 후 “올 시즌 갑자기 많이 던지게
-              돼 항상 마운드 올라갈 때는 감사한 마음으로 올라간다. 그냥 이
-              상황에 내가 올라가는 것도 나한테 좋고, 항상 그런 생각으로 던지고
-              있다”고 말했다. 이어 “나 때문에 이렇게 팀이 좀 이기니까 기쁘다.
-              다른 거는 솔직히 신경 안 쓰고 있다. 원래 홀드에 신경 쓰는 선수도
-              아니고, 일단 팀이 이기는 것만, 뒤로 연결만 해주는 데 신경쓴다”고
-              말했다.
+              {theNews.artcContents}
             </p>
           </div>
         </div>
