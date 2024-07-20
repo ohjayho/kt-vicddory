@@ -1,0 +1,467 @@
+[
+  {
+    "day": 20240620,
+    "data": [
+      { "rank": 1, "team": "KIA" },
+      { "rank": 2, "team": "두산" },
+      { "rank": 3, "team": "LG" },
+      { "rank": 4, "team": "삼성" },
+      { "rank": 5, "team": "SSG" },
+      { "rank": 6, "team": "NC" },
+      { "rank": 7, "team": "한화" },
+      { "rank": 8, "team": "롯데" },
+      { "rank": 9, "team": "KT" },
+      { "rank": 10, "team": "키움" }
+    ]
+  },
+  {
+    "day": 20240621,
+    "data": [
+      { "rank": 1, "team": "KIA" },
+      { "rank": 2, "team": "삼성" },
+      { "rank": 3, "team": "두산" },
+      { "rank": 4, "team": "LG" },
+      { "rank": 5, "team": "SSG" },
+      { "rank": 6, "team": "NC" },
+      { "rank": 7, "team": "한화" },
+      { "rank": 8, "team": "롯데" },
+      { "rank": 9, "team": "KT" },
+      { "rank": 10, "team": "키움" }
+    ]
+  },
+  {
+    "day": 20240622,
+    "data": [
+      { "rank": 1, "team": "KIA" },
+      { "rank": 2, "team": "삼성" },
+      { "rank": 3, "team": "두산" },
+      { "rank": 4, "team": "LG" },
+      { "rank": 5, "team": "SSG" },
+      { "rank": 6, "team": "NC" },
+      { "rank": 7, "team": "한화" },
+      { "rank": 8, "team": "롯데" },
+      { "rank": 9, "team": "KT" },
+      { "rank": 10, "team": "키움" }
+    ]
+  },
+  {
+    "day": 20240623,
+    "data": [
+      { "rank": 1, "team": "KIA" },
+      { "rank": 2, "team": "삼성" },
+      { "rank": 3, "team": "LG" },
+      { "rank": 4, "team": "두산" },
+      { "rank": 5, "team": "SSG" },
+      { "rank": 6, "team": "NC" },
+      { "rank": 7, "team": "한화" },
+      { "rank": 8, "team": "롯데" },
+      { "rank": 9, "team": "KT" },
+      { "rank": 10, "team": "키움" }
+    ]
+  },
+  {
+    "day": 20240624,
+    "data": [
+      { "rank": 1, "team": "KIA" },
+      { "rank": 2, "team": "삼성" },
+      { "rank": 3, "team": "LG" },
+      { "rank": 4, "team": "두산" },
+      { "rank": 5, "team": "SSG" },
+      { "rank": 6, "team": "NC" },
+      { "rank": 7, "team": "한화" },
+      { "rank": 8, "team": "롯데" },
+      { "rank": 9, "team": "KT" },
+      { "rank": 10, "team": "키움" }
+    ]
+  },
+  {
+    "day": 20240625,
+    "data": [
+      { "rank": 1, "team": "KIA" },
+      { "rank": 2, "team": "삼성" },
+      { "rank": 3, "team": "LG" },
+      { "rank": 4, "team": "두산" },
+      { "rank": 5, "team": "SSG" },
+      { "rank": 6, "team": "NC" },
+      { "rank": 7, "team": "한화" },
+      { "rank": 8, "team": "롯데" },
+      { "rank": 9, "team": "KT" },
+      { "rank": 10, "team": "키움" }
+    ]
+  },
+  {
+    "day": 20240626,
+    "data": [
+      { "rank": 1, "team": "KIA" },
+      { "rank": 2, "team": "LG" },
+      { "rank": 3, "team": "삼성" },
+      { "rank": 4, "team": "두산" },
+      { "rank": 5, "team": "SSG" },
+      { "rank": 6, "team": "NC" },
+      { "rank": 7, "team": "한화" },
+      { "rank": 8, "team": "롯데" },
+      { "rank": 9, "team": "KT" },
+      { "rank": 10, "team": "키움" }
+    ]
+  },
+  {
+    "day": 20240627,
+    "data": [
+      { "rank": 1, "team": "KIA" },
+      { "rank": 2, "team": "삼성" },
+      { "rank": 3, "team": "LG" },
+      { "rank": 4, "team": "두산" },
+      { "rank": 5, "team": "SSG" },
+      { "rank": 6, "team": "NC" },
+      { "rank": 7, "team": "한화" },
+      { "rank": 8, "team": "롯데" },
+      { "rank": 9, "team": "KT" },
+      { "rank": 10, "team": "키움" }
+    ]
+  },
+  {
+    "day": 20240628,
+    "data": [
+      { "rank": 1, "team": "KIA" },
+      { "rank": 2, "team": "삼성" },
+      { "rank": 3, "team": "LG" },
+      { "rank": 4, "team": "두산" },
+      { "rank": 5, "team": "SSG" },
+      { "rank": 6, "team": "NC" },
+      { "rank": 7, "team": "한화" },
+      { "rank": 8, "team": "롯데" },
+      { "rank": 9, "team": "KT" },
+      { "rank": 10, "team": "키움" }
+    ]
+  },
+  {
+    "day": 20240629,
+    "data": [
+      { "rank": 1, "team": "KIA" },
+      { "rank": 2, "team": "삼성" },
+      { "rank": 3, "team": "LG" },
+      { "rank": 4, "team": "두산" },
+      { "rank": 5, "team": "SSG" },
+      { "rank": 6, "team": "NC" },
+      { "rank": 7, "team": "롯데" },
+      { "rank": 8, "team": "한화" },
+      { "rank": 9, "team": "KT" },
+      { "rank": 10, "team": "키움" }
+    ]
+  },
+  {
+    "day": 20240630,
+    "data": [
+      { "rank": 1, "team": "KIA" },
+      { "rank": 2, "team": "LG" },
+      { "rank": 3, "team": "삼성" },
+      { "rank": 4, "team": "두산" },
+      { "rank": 5, "team": "SSG" },
+      { "rank": 6, "team": "NC" },
+      { "rank": 7, "team": "롯데" },
+      { "rank": 8, "team": "한화" },
+      { "rank": 9, "team": "KT" },
+      { "rank": 10, "team": "키움" }
+    ]
+  },
+  {
+    "day": 20240701,
+    "data": [
+      { "rank": 1, "team": "KIA" },
+      { "rank": 2, "team": "LG" },
+      { "rank": 3, "team": "삼성" },
+      { "rank": 4, "team": "두산" },
+      { "rank": 5, "team": "SSG" },
+      { "rank": 6, "team": "NC" },
+      { "rank": 7, "team": "롯데" },
+      { "rank": 8, "team": "한화" },
+      { "rank": 9, "team": "KT" },
+      { "rank": 10, "team": "키움" }
+    ]
+  },
+  {
+    "day": 20240702,
+    "data": [
+      { "rank": 1, "team": "KIA" },
+      { "rank": 2, "team": "LG" },
+      { "rank": 3, "team": "삼성" },
+      { "rank": 4, "team": "두산" },
+      { "rank": 5, "team": "SSG" },
+      { "rank": 6, "team": "NC" },
+      { "rank": 7, "team": "롯데" },
+      { "rank": 8, "team": "KT" },
+      { "rank": 9, "team": "한화" },
+      { "rank": 10, "team": "키움" }
+    ]
+  },
+  {
+    "day": 20240703,
+    "data": [
+      { "rank": 1, "team": "KIA" },
+      { "rank": 2, "team": "LG" },
+      { "rank": 3, "team": "삼성" },
+      { "rank": 4, "team": "두산" },
+      { "rank": 5, "team": "SSG" },
+      { "rank": 6, "team": "NC" },
+      { "rank": 7, "team": "KT" },
+      { "rank": 8, "team": "롯데" },
+      { "rank": 9, "team": "한화" },
+      { "rank": 10, "team": "키움" }
+    ]
+  },
+  {
+    "day": 20240704,
+    "data": [
+      { "rank": 1, "team": "KIA" },
+      { "rank": 2, "team": "LG" },
+      { "rank": 3, "team": "두산" },
+      { "rank": 4, "team": "삼성" },
+      { "rank": 5, "team": "SSG" },
+      { "rank": 6, "team": "NC" },
+      { "rank": 7, "team": "KT" },
+      { "rank": 8, "team": "롯데" },
+      { "rank": 9, "team": "한화" },
+      { "rank": 10, "team": "키움" }
+    ]
+  },
+  {
+    "day": 20240705,
+    "data": [
+      { "rank": 1, "team": "KIA" },
+      { "rank": 2, "team": "LG" },
+      { "rank": 3, "team": "두산" },
+      { "rank": 4, "team": "삼성" },
+      { "rank": 5, "team": "SSG" },
+      { "rank": 6, "team": "NC" },
+      { "rank": 7, "team": "KT" },
+      { "rank": 8, "team": "롯데" },
+      { "rank": 9, "team": "한화" },
+      { "rank": 10, "team": "키움" }
+    ]
+  },
+  {
+    "day": 20240706,
+    "data": [
+      { "rank": 1, "team": "KIA" },
+      { "rank": 2, "team": "LG" },
+      { "rank": 3, "team": "두산" },
+      { "rank": 4, "team": "삼성" },
+      { "rank": 5, "team": "SSG" },
+      { "rank": 6, "team": "NC" },
+      { "rank": 7, "team": "KT" },
+      { "rank": 8, "team": "롯데" },
+      { "rank": 9, "team": "한화" },
+      { "rank": 10, "team": "키움" }
+    ]
+  },
+  {
+    "day": 20240707,
+    "data": [
+      { "rank": 1, "team": "KIA" },
+      { "rank": 2, "team": "LG" },
+      { "rank": 3, "team": "두산" },
+      { "rank": 4, "team": "삼성" },
+      { "rank": 5, "team": "SSG" },
+      { "rank": 6, "team": "NC" },
+      { "rank": 7, "team": "KT" },
+      { "rank": 8, "team": "롯데" },
+      { "rank": 9, "team": "한화" },
+      { "rank": 10, "team": "키움" }
+    ]
+  },
+  {
+    "day": 20240708,
+    "data": [
+      { "rank": 1, "team": "KIA" },
+      { "rank": 2, "team": "LG" },
+      { "rank": 3, "team": "두산" },
+      { "rank": 4, "team": "삼성" },
+      { "rank": 5, "team": "SSG" },
+      { "rank": 6, "team": "NC" },
+      { "rank": 7, "team": "KT" },
+      { "rank": 8, "team": "롯데" },
+      { "rank": 9, "team": "한화" },
+      { "rank": 10, "team": "키움" }
+    ]
+  },
+  {
+    "day": 20240709,
+    "data": [
+      { "rank": 1, "team": "KIA" },
+      { "rank": 2, "team": "LG" },
+      { "rank": 3, "team": "두산" },
+      { "rank": 4, "team": "삼성" },
+      { "rank": 5, "team": "SSG" },
+      { "rank": 6, "team": "NC" },
+      { "rank": 7, "team": "KT" },
+      { "rank": 8, "team": "롯데" },
+      { "rank": 9, "team": "한화" },
+      { "rank": 10, "team": "키움" }
+    ]
+  },
+  {
+    "day": 20240710,
+    "data": [
+      { "rank": 1, "team": "KIA" },
+      { "rank": 2, "team": "삼성" },
+      { "rank": 3, "team": "두산" },
+      { "rank": 4, "team": "LG" },
+      { "rank": 5, "team": "SSG" },
+      { "rank": 6, "team": "NC" },
+      { "rank": 7, "team": "KT" },
+      { "rank": 8, "team": "롯데" },
+      { "rank": 9, "team": "한화" },
+      { "rank": 10, "team": "키움" }
+    ]
+  },
+  {
+    "day": 20240711,
+    "data": [
+      { "rank": 1, "team": "KIA" },
+      { "rank": 2, "team": "삼성" },
+      { "rank": 3, "team": "두산" },
+      { "rank": 4, "team": "LG" },
+      { "rank": 5, "team": "SSG" },
+      { "rank": 6, "team": "NC" },
+      { "rank": 7, "team": "KT" },
+      { "rank": 8, "team": "롯데" },
+      { "rank": 9, "team": "한화" },
+      { "rank": 10, "team": "키움" }
+    ]
+  },
+  {
+    "day": 20240712,
+    "data": [
+      { "rank": 1, "team": "KIA" },
+      { "rank": 2, "team": "삼성" },
+      { "rank": 3, "team": "두산" },
+      { "rank": 4, "team": "LG" },
+      { "rank": 5, "team": "SSG" },
+      { "rank": 6, "team": "NC" },
+      { "rank": 7, "team": "KT" },
+      { "rank": 8, "team": "한화" },
+      { "rank": 9, "team": "롯데" },
+      { "rank": 10, "team": "키움" }
+    ]
+  },
+  {
+    "day": 20240713,
+    "data": [
+      { "rank": 1, "team": "KIA" },
+      { "rank": 2, "team": "삼성" },
+      { "rank": 3, "team": "두산" },
+      { "rank": 4, "team": "LG" },
+      { "rank": 5, "team": "SSG" },
+      { "rank": 6, "team": "NC" },
+      { "rank": 7, "team": "KT" },
+      { "rank": 8, "team": "한화" },
+      { "rank": 9, "team": "롯데" },
+      { "rank": 10, "team": "키움" }
+    ]
+  },
+  {
+    "day": 20240714,
+    "data": [
+      { "rank": 1, "team": "KIA" },
+      { "rank": 2, "team": "삼성" },
+      { "rank": 3, "team": "LG" },
+      { "rank": 4, "team": "두산" },
+      { "rank": 5, "team": "SSG" },
+      { "rank": 6, "team": "NC" },
+      { "rank": 7, "team": "KT" },
+      { "rank": 8, "team": "한화" },
+      { "rank": 9, "team": "롯데" },
+      { "rank": 10, "team": "키움" }
+    ]
+  },
+  {
+    "day": 20240715,
+    "data": [
+      { "rank": 1, "team": "KIA" },
+      { "rank": 2, "team": "삼성" },
+      { "rank": 3, "team": "LG" },
+      { "rank": 4, "team": "두산" },
+      { "rank": 5, "team": "SSG" },
+      { "rank": 6, "team": "NC" },
+      { "rank": 7, "team": "KT" },
+      { "rank": 8, "team": "한화" },
+      { "rank": 9, "team": "롯데" },
+      { "rank": 10, "team": "키움" }
+    ]
+  },
+  {
+    "day": 20240716,
+    "data": [
+      { "rank": 1, "team": "KIA" },
+      { "rank": 2, "team": "삼성" },
+      { "rank": 3, "team": "LG" },
+      { "rank": 4, "team": "두산" },
+      { "rank": 5, "team": "SSG" },
+      { "rank": 6, "team": "NC" },
+      { "rank": 7, "team": "KT" },
+      { "rank": 8, "team": "한화" },
+      { "rank": 9, "team": "롯데" },
+      { "rank": 10, "team": "키움" }
+    ]
+  },
+  {
+    "day": 20240717,
+    "data": [
+      { "rank": 1, "team": "KIA" },
+      { "rank": 2, "team": "삼성" },
+      { "rank": 3, "team": "LG" },
+      { "rank": 4, "team": "두산" },
+      { "rank": 5, "team": "SSG" },
+      { "rank": 6, "team": "NC" },
+      { "rank": 7, "team": "KT" },
+      { "rank": 8, "team": "한화" },
+      { "rank": 9, "team": "롯데" },
+      { "rank": 10, "team": "키움" }
+    ]
+  },
+  {
+    "day": 20240718,
+    "data": [
+      { "rank": 1, "team": "KIA" },
+      { "rank": 2, "team": "LG" },
+      { "rank": 3, "team": "삼성" },
+      { "rank": 4, "team": "두산" },
+      { "rank": 5, "team": "SSG" },
+      { "rank": 6, "team": "NC" },
+      { "rank": 7, "team": "KT" },
+      { "rank": 8, "team": "롯데" },
+      { "rank": 9, "team": "한화" },
+      { "rank": 10, "team": "키움" }
+    ]
+  },
+  {
+    "day": 20240719,
+    "data": [
+      { "rank": 1, "team": "KIA" },
+      { "rank": 2, "team": "LG" },
+      { "rank": 3, "team": "삼성" },
+      { "rank": 4, "team": "두산" },
+      { "rank": 5, "team": "SSG" },
+      { "rank": 6, "team": "NC" },
+      { "rank": 7, "team": "KT" },
+      { "rank": 8, "team": "롯데" },
+      { "rank": 9, "team": "한화" },
+      { "rank": 10, "team": "키움" }
+    ]
+  },
+  {
+    "day": 20240720,
+    "data": [
+      { "rank": 1, "team": "KIA" },
+      { "rank": 2, "team": "LG" },
+      { "rank": 3, "team": "삼성" },
+      { "rank": 4, "team": "두산" },
+      { "rank": 5, "team": "SSG" },
+      { "rank": 6, "team": "NC" },
+      { "rank": 7, "team": "KT" },
+      { "rank": 8, "team": "롯데" },
+      { "rank": 9, "team": "한화" },
+      { "rank": 10, "team": "키움" }
+    ]
+  }
+]
