@@ -9,82 +9,103 @@ import { getTeamRanks } from '@/utils/getTeamRanks';
 
 DarkUnica(Highcharts);
 
-export default function Chart({ title }: { title: string }) {
+export default function Chart({
+  title,
+  startDate,
+  endDate,
+  page,
+}: {
+  title: string;
+  startDate?: Date | undefined;
+  endDate?: Date | undefined;
+  page: string;
+}) {
   const yearRankJson = year_rank;
-  // const ktRank = getTeamRanks('KT');
+
+  const yearTeam = [
+    'LG',
+    'KT',
+    'SSG',
+    'NC',
+    '두산',
+    'KIA',
+    '롯데',
+    '삼성',
+    '한화',
+    '키움',
+    '현대',
+    '쌍방울',
+  ];
+  const dailyTeam = [
+    'LG',
+    'KT',
+    'SSG',
+    'NC',
+    '두산',
+    'KIA',
+    '롯데',
+    '삼성',
+    '한화',
+    '키움',
+  ];
+
+  const today = new Date();
+  const thirtyDaysAgo = new Date(today.getTime() - 30 * 24 * 60 * 60 * 1000);
+  const defaultStartDate = startDate || thirtyDaysAgo;
+  const defaultEndDate = endDate || today;
+
+  const yearArr = yearTeam.map((team) => ({
+    name: team,
+    data: getTeamRanks({ teamName: team, page: 'year' }),
+    visible: team === 'KT',
+  }));
+
+  const dailyArr = dailyTeam.map((team) => ({
+    name: team,
+    data: getTeamRanks({
+      teamName: team,
+      page: 'daily',
+      startDate: defaultStartDate,
+      endDate: defaultEndDate,
+    }),
+    visible: team === 'KT',
+  }));
+
+  const baseSeries = page === 'year' ? yearArr : dailyArr;
+
+  const category =
+    page === 'year'
+      ? yearRankJson.map((item) => item.year)
+      : getDateRange(defaultStartDate, defaultEndDate).map((date) => date);
+
+  function getDateRange(
+    startDate: Date | undefined,
+    endDate: Date | undefined,
+  ) {
+    if (!startDate || !endDate) return [];
+
+    const dates = [];
+    const currentDate = new Date(startDate);
+
+    while (currentDate <= new Date(endDate)) {
+      dates.push(currentDate.toISOString().slice(5, 10));
+      currentDate.setDate(currentDate.getDate() + 1);
+    }
+
+    return dates;
+  }
 
   const [options] = useState({
     title: {
-      text: `${title}`,
+      text: title,
       margin: 50,
     },
     subtitle: {
       text: '오른쪽 팀 명을 선택하시면 팀별로 그래프를 확인하실 수 있습니다',
     },
-    series: [
-      {
-        name: 'LG',
-        data: getTeamRanks('LG'),
-        visible: false,
-      },
-      {
-        name: 'KT',
-        data: getTeamRanks('KT'),
-        visible: true,
-      },
-      {
-        name: 'SSG',
-        data: getTeamRanks('SSG'),
-        visible: false,
-      },
-      {
-        name: 'NC',
-        data: getTeamRanks('NC'),
-        visible: false,
-      },
-      {
-        name: '두산',
-        data: getTeamRanks('두산'),
-        visible: false,
-      },
-      {
-        name: 'KIA',
-        data: getTeamRanks('KIA'),
-        visible: false,
-      },
-      {
-        name: '롯데',
-        data: getTeamRanks('롯데'),
-        visible: false,
-      },
-      {
-        name: '삼성',
-        data: getTeamRanks('삼성'),
-        visible: false,
-      },
-      {
-        name: '한화',
-        data: getTeamRanks('한화'),
-        visible: false,
-      },
-      {
-        name: '키움',
-        data: getTeamRanks('키움'),
-        visible: false,
-      },
-      {
-        name: '현대',
-        data: getTeamRanks('현대'),
-        visible: false,
-      },
-      {
-        name: '쌍방울',
-        data: getTeamRanks('쌍방울'),
-        visible: false,
-      },
-    ],
+    series: baseSeries,
     xAxis: {
-      categories: yearRankJson.map((item) => item.year),
+      categories: category,
       labels: {
         rotation: -90,
         align: 'right',
