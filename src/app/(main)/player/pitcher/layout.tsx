@@ -7,7 +7,7 @@ export default function PitcherLayout({
 }) {
   return (
     <>
-      <div className="min-h-screen bg-black">
+      <div className="min-h-screen bg-black w-full">
         {' '}
         <div className="pt-20">
           <Banner />

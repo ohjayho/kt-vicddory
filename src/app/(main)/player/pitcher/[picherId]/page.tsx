@@ -12,7 +12,7 @@ const pitcherData = [
   {
     korName: '강현우',
     engName: 'Kang Hyun Woo',
-    backNum: 55,
+    backNum: '55',
     playerImg: 'kt11.png',
     positionKor: '투수',
     positionEng: 'Pitcher',
@@ -53,7 +53,7 @@ export default function PitcherDetail() {
   return (
     <>
       <div className="flex flex-col items-center bg-black/90 min-h-screen sm:flex-wrap md:flex-wrap">
-        <div className="flex w-3/4 items-center justify-center max-sm:flex-wrap py-16 ">
+        <div className="flex w-3/4 items-center justify-center max-sm:flex-wrap py-16 max-sm:w-full md:w-full">
           <div className="flex max-sm:flex-col h-fit mx-6 items-center justify-self-center my-10">
             {pitcherData.map((pitcher, index) => (
               <PlayerCard
