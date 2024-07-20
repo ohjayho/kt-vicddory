@@ -55,6 +55,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     'players',
     `${playerMeta.korName}.json`,
   );
+  console.log(filePath);
   let player = null;
 
   try {
