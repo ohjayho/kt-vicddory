@@ -1,16 +1,9 @@
 'use client';
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
-export default function NewsTTS({
-  text,
-  audioUrl,
-  setAudioUrl,
-}: {
-  text: string;
-  audioUrl: string | null;
-  setAudioUrl: Dispatch<SetStateAction<string | null>>;
-}) {
-  let audio: HTMLAudioElement | null = null;
+export default function NewsTTS({ text }: { text: string }) {
+  const [audioUrl, setAudioUrl] = useState<string | null>(null);
+  const [audio, setAudio] = useState<HTMLAudioElement | null>(null);
 
   useEffect(() => {
     const fetchAudioUrl = async () => {
@@ -29,14 +22,20 @@ export default function NewsTTS({
       }
     };
     fetchAudioUrl();
-    if (audioUrl) {
-      audio = new Audio(audioUrl);
-    }
-  }, []);
+    return () => {
+      // 다른 페이지로 이동했을 때 오디오 멈춤
+      if (audio) {
+        audio.pause();
+        audio.currentTime = 0;
+      }
+    };
+  }, [audio, text]);
 
   const handleAudioPlay = () => {
-    if (audio) {
-      audio.play();
+    if (audioUrl) {
+      const newAudio = new Audio(audioUrl);
+      setAudio(newAudio);
+      newAudio.play();
     }
   };
   return (
