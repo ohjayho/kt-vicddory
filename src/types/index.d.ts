@@ -116,6 +116,18 @@ type TWinLossData = {
   recent: RecentStats;
 };
 
+type TRanking = {
+  rank: number;
+  team: string;
+};
+
+type TYearData = {
+  year: number;
+  data: TRanking[];
+};
+
+type TLeagueData = TYearData[];
+
 export {
   TResultPositionProps,
   TQuestionHandlerProps,
@@ -130,4 +142,5 @@ export {
   TTeamRecord,
   TGameInfo,
   TWinLossData,
+  TLeagueData,
 };
