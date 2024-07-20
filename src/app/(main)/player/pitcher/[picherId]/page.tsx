@@ -1,7 +1,3 @@
-import React, { useState, useEffect } from 'react';
-import PlayerCard from '@/components/tradingCard/PlayerCard';
-import { GetStaticPaths, GetStaticProps } from 'next';
-import dynamic from 'next/dynamic';
 import path from 'path';
 import fs from 'fs';
 import { MdOutlineArrowRight } from 'react-icons/md';
