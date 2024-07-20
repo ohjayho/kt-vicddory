@@ -52,9 +52,9 @@ export default function PitcherDetail() {
   });
   return (
     <>
-      <div className="flex flex-col items-center bg-black/90 min-h-screen max-sm:flex-wrap">
-        <div className="flex w-3/4 items-center justify-center max-sm:flex-wrap py-16 max-sm:w-full">
-          <div className="flex h-fit mx-6 items-center justify-self-center my-10 max-sm:flex max-sm:flex-col max-sm:justify-items-center max-sm:px-0 max-sm:mx-0">
+      <div className="flex flex-col items-center bg-black/90 min-h-screen max-md:flex-wrap">
+        <div className="flex w-3/4 items-center justify-center max-md:flex-wrap py-16 max-md:w-full">
+          <div className="flex h-fit mx-6 items-center justify-self-center my-10 max-md:flex max-md:flex-col max-md:justify-items-center max-md:px-0 max-md:mx-0">
             {pitcherData.map((pitcher, index) => (
               <PlayerCard
                 key={index}
@@ -65,15 +65,15 @@ export default function PitcherDetail() {
             ))}
           </div>
           {/* AI 파트 */}
-          <div className="flex flex-col w-1/3 px-16 pl-22 max-sm:pl-0 max-sm:w-full max-sm:flex-wrap max-sm:px-2 max-sm:mx-4">
+          <div className="flex flex-col w-1/2 px-16 pl-22 max-md:pl-0 max-md:w-full max-md:flex-wrap max-md:px-2 max-md:mx-4">
             {/*그래프*/}
-            <div className="w-full max-sm:px-2 max-sm:items-center">
+            <div className="w-full max-md:px-2 max-md:items-center">
               <PlayerChart
                 title={'선수 예측 데이터'}
                 showExpectedSeries={showExpectedSeries}
               />
             </div>
-            <div className="h-10 flex items-center justify-center max-sm:pr-6">
+            <div className="h-10 flex items-center justify-center max-md:pr-6">
               <button
                 className="w-1/2 h-full flex items-center justify-center font-bold text-white text-base bg-red-90 rounded-[30px]"
                 onClick={handleAIButtonClick}
@@ -82,10 +82,14 @@ export default function PitcherDetail() {
               </button>
             </div>
             {/* 한 줄 예측 */}
-            <div className="text-white pl-6 mt-3 ">AI 예측</div>
-            <div className="rounded-[5px] border-2 text-white border-white h-auto w-4/5 mx-6 p-4 max-sm:w-11/12 max-sm:flex max-sm:justify-center">
-              누가 이겨? 내가 이겨~~ 루끼루끼 마 슈퍼루끼루끼루끼 마치마치 그
-              느낌적인 느낌느낌
+            <div className="pl-6 mt-3">
+              <div className="text-white pl-6 mt-3 ">AI 예측</div>
+              <div className="flex items-center rounded-[5px] border-2 text-white border-white h-auto w-5/6 mx-6 p-4 max-md:w-11/12 max-md:flex max-md:justify-center">
+                <div className="text-white">
+                  누가 이겨? 내가 이겨~~ 루끼루끼 마 슈퍼루끼루끼루끼 마치마치
+                  그 느낌적인 느낌느낌
+                </div>
+              </div>
             </div>
           </div>
         </div>
