@@ -3,14 +3,14 @@
 import React, { useState, useEffect } from 'react';
 import PlayerCard from '@/components/tradingCard/PlayerCard';
 import { GetStaticPaths, GetStaticProps } from 'next';
-import { useRouter } from 'next/router';
+import dynamic from 'next/dynamic';
 import path from 'path';
 import fs from 'fs';
-import dynamic from 'next/dynamic';
 import { MdOutlineArrowRight } from 'react-icons/md';
-// import pitcher_data from '#/data/playerDetail/강건.json';
-
-// const pitcherData2 = pitcher_data.data.list;
+import { IPlayerFront, IPlayerBack } from '@/types';
+interface PitcherDetailProps {
+  player: IPlayerBack | null;
+}
 const pitcherData = [
   {
     korName: '강현우',
@@ -27,8 +27,48 @@ const pitcherData = [
     debutYear: 2018,
   },
 ];
+export const getStaticPaths: GetStaticPaths = async () => {
+  const filePath = path.join(process.cwd(), 'data', 'pitcher_data.json');
+  const jsonData = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+  const paths = jsonData.data.list.map((player: IPlayerFront) => ({
+    params: { backNum: player.backNum },
+  }));
 
-export default function PitcherDetail() {
+  return { paths, fallback: true };
+};
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const backNum = params?.backNum as string;
+  const pitcherDataPath = path.join(process.cwd(), 'data', 'pitcher_data.json');
+  const pitcherData = JSON.parse(fs.readFileSync(pitcherDataPath, 'utf8'));
+  const playerMeta = pitcherData.data.list.find(
+    (player: IPlayerFront) => player.backNum === backNum,
+  );
+
+  if (!playerMeta) {
+    return { props: { player: null } };
+  }
+
+  const filePath = path.join(
+    process.cwd(),
+    'data',
+    'players',
+    `${playerMeta.korName}.json`,
+  );
+  let player = null;
+
+  try {
+    const fileContents = fs.readFileSync(filePath, 'utf8');
+    player = JSON.parse(fileContents);
+  } catch (error) {
+    console.error(`Cannot read player data: ${playerMeta.korName}.json`);
+  }
+
+  return {
+    props: { player },
+  };
+};
+export default function PitcherDetail({ player }: PitcherDetailProps) {
   const [detailButton, setDetailButton] = useState(false);
   const [showExpectedSeries, setShowExpectedSeries] = useState(false);
   const [isSpin, setIsSpin] = useState(false);
