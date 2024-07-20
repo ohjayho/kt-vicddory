@@ -52,9 +52,9 @@ export default function PitcherDetail() {
   });
   return (
     <>
-      <div className="flex flex-col items-center bg-black/90 min-h-screen sm:flex-wrap md:flex-wrap">
-        <div className="flex w-3/4 items-center justify-center max-sm:flex-wrap py-16 max-sm:w-full md:w-full">
-          <div className="flex max-sm:flex-col h-fit mx-6 items-center justify-self-center my-10">
+      <div className="flex flex-col items-center bg-black/90 min-h-screen max-sm:flex-wrap">
+        <div className="flex w-3/4 items-center justify-center max-sm:flex-wrap py-16 max-sm:w-full">
+          <div className="flex h-fit mx-6 items-center justify-self-center my-10 max-sm:flex max-sm:flex-col max-sm:justify-items-center max-sm:px-0 max-sm:mx-0">
             {pitcherData.map((pitcher, index) => (
               <PlayerCard
                 key={index}
@@ -82,8 +82,8 @@ export default function PitcherDetail() {
               </button>
             </div>
             {/* 한 줄 예측 */}
-            <div className="text-white pl-6 mt-3">AI 예측</div>
-            <div className="rounded-[5px] border-2 text-white border-white h-auto w-4/5 max-sm:w-full mx-6 p-4">
+            <div className="text-white pl-6 mt-3 ">AI 예측</div>
+            <div className="rounded-[5px] border-2 text-white border-white h-auto w-4/5 mx-6 p-4 max-sm:w-11/12 max-sm:flex max-sm:justify-center">
               누가 이겨? 내가 이겨~~ 루끼루끼 마 슈퍼루끼루끼루끼 마치마치 그
               느낌적인 느낌느낌
             </div>
