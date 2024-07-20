@@ -1,5 +1,3 @@
-'use client';
-
 import React, { useState, useEffect } from 'react';
 import PlayerCard from '@/components/tradingCard/PlayerCard';
 import { GetStaticPaths, GetStaticProps } from 'next';
@@ -27,18 +25,17 @@ const pitcherData = [
     debutYear: 2018,
   },
 ];
-export const getStaticPaths: GetStaticPaths = async () => {
+export async function generateStaticParams() {
   const filePath = path.join(process.cwd(), 'data', 'pitcher_data.json');
   const jsonData = JSON.parse(fs.readFileSync(filePath, 'utf8'));
   const paths = jsonData.data.list.map((player: IPlayerFront) => ({
     params: { backNum: player.backNum },
   }));
 
-  return { paths, fallback: true };
-};
+  return paths;
+}
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const backNum = params?.backNum as string;
+async function getPlayerData(backNum: string): Promise<IPlayerBack | null> {
   const pitcherDataPath = path.join(process.cwd(), 'data', 'pitcher_data.json');
   const pitcherData = JSON.parse(fs.readFileSync(pitcherDataPath, 'utf8'));
   const playerMeta = pitcherData.data.list.find(
@@ -46,7 +43,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   );
 
   if (!playerMeta) {
-    return { props: { player: null } };
+    return null;
   }
 
   const filePath = path.join(
@@ -56,20 +53,20 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     `${playerMeta.korName}.json`,
   );
   console.log(filePath);
-  let player = null;
 
   try {
     const fileContents = fs.readFileSync(filePath, 'utf8');
-    player = JSON.parse(fileContents);
+    return JSON.parse(fileContents);
   } catch (error) {
     console.error(`Cannot read player data: ${playerMeta.korName}.json`);
+    return null;
   }
-
-  return {
-    props: { player },
-  };
-};
-export default function PitcherDetail({ player }: PitcherDetailProps) {
+}
+export default async function PitcherDetail({
+  params,
+}: {
+  params: { backNum: string };
+}) {
   const [detailButton, setDetailButton] = useState(false);
   const [showExpectedSeries, setShowExpectedSeries] = useState(false);
   const [isSpin, setIsSpin] = useState(false);
@@ -94,6 +91,12 @@ export default function PitcherDetail({ player }: PitcherDetailProps) {
   const PlayerChart = dynamic(() => import('@/components/player/PlayerChart'), {
     ssr: false,
   });
+
+  const player = await getPlayerData(params.backNum);
+
+  if (!player) {
+    return <div>Player not found</div>;
+  }
   return (
     <>
       <div className="flex flex-col items-center bg-black/90 min-h-screen max-md:flex-wrap">
