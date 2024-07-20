@@ -4,6 +4,7 @@ import { IPlayerFront } from '@/types';
 interface CardFrontProps {
   player: IPlayerFront;
   size?: 'small' | 'medium' | 'large';
+  onClick?: () => void;
 }
 
 const sizeClasses = {
@@ -41,7 +42,11 @@ const korNameFonts = {
   medium: 'text-xl',
   large: 'text-3xl',
 };
-const CardFront: React.FC<CardFrontProps> = ({ player, size = 'medium' }) => {
+const CardFront: React.FC<CardFrontProps> = ({
+  player,
+  size = 'medium',
+  onClick,
+}) => {
   const sizeClass = sizeClasses[size];
   const photoSize = photoSizes[size];
   const textBox = textBoxes[size];
@@ -87,6 +92,7 @@ const CardFront: React.FC<CardFrontProps> = ({ player, size = 'medium' }) => {
         {/* 카드 앞면 */}
         <div
           className={`bg-black ${sizeClass} rounded-lg overflow-visible relative m-4 items-center justify-center transform transition-transform duration-100`}
+          onClick={onClick}
         >
           {/* 선수 이미지 */}
           <div className={`relative ${photoSize} mx-auto`}>
