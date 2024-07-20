@@ -1,7 +1,6 @@
 'use client';
 import { useRouter } from 'next/navigation';
 import { MouseEventHandler, useEffect, useState } from 'react';
-import {} from './NewsSearch';
 import Image from 'next/image';
 import NewsTTS from './NewsTTS';
 import { TNewsContent, useNewsListStore } from './NewsArea';
@@ -12,7 +11,6 @@ type TNewsId = {
 
 export default function NewsContent({ newsId }: TNewsId) {
   const [theNews, setTheNews] = useState<TNewsContent>(null);
-  const [audioUrl, setAudioUrl] = useState<string | null>(null);
   const newsList = useNewsListStore((state) => state.newsList);
   const setNewsList = useNewsListStore((state) => state.setNewsList);
   const fetchNews = async () => {
@@ -71,11 +69,7 @@ export default function NewsContent({ newsId }: TNewsId) {
               <h3 className="flex justify-end max-md:mt-4 날짜">2024-01-17</h3>
             </div>
             <div className="px-8 pb-8 overflow-scroll no-scrollbar 본문 칸">
-              <NewsTTS
-                text={theNews.artcContents}
-                audioUrl={audioUrl}
-                setAudioUrl={setAudioUrl}
-              />
+              <NewsTTS text={theNews.artcContents} />
               <Image
                 src={theNews.imgFilePath}
                 width={500}
