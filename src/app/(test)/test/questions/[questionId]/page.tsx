@@ -20,21 +20,27 @@ export default function Questions({ params }: TQuestionsProps) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    async function fetchQuestionsFromApi() {
+    const fetchQuestions = async () => {
       try {
-        const response = await fetch('/api/questions');
-        if (response.ok) {
-          const data = await response.json();
-          setQuestions(data);
+        const cachedQuestions = sessionStorage.getItem('questions');
+        if (cachedQuestions) {
+          setQuestions(JSON.parse(cachedQuestions));
         } else {
-          console.error('Failed to fetch questions');
+          const response = await fetch('/api/questions');
+          if (response.ok) {
+            const data = await response.json();
+            setQuestions(data);
+            sessionStorage.setItem('questions', JSON.stringify(data));
+          } else {
+            console.error('Failed to fetch questions');
+          }
         }
       } catch (error) {
         console.error('Failed to fetch questions', error);
       }
       setLoading(false);
-    }
-    fetchQuestionsFromApi();
+    };
+    fetchQuestions();
   }, []);
 
   if(loading) {
@@ -51,6 +57,7 @@ export default function Questions({ params }: TQuestionsProps) {
       console.log(answer);
     } else {
       router.push('/test/result');
+      sessionStorage.removeItem('questions');
     }
   };
 
