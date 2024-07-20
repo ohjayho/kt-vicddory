@@ -23,8 +23,7 @@ export default async function RankingAi() {
   const month = new Date().getMonth() + 1;
   const yearmonth = year + '0' + month;
 
-  // const dayOfWeek = new Date().getDay();
-  const dayOfWeek = 1;
+  const dayOfWeek = new Date().getDay();
 
   //선발투수 정보 API
   const day_num: number = julyScheduleJSON[today];
