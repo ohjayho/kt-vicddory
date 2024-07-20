@@ -23,7 +23,8 @@ export default async function RankingAi() {
   const month = new Date().getMonth() + 1;
   const yearmonth = year + '0' + month;
 
-  const dayOfWeek = new Date().getDay();
+  // const dayOfWeek = new Date().getDay();
+  const dayOfWeek = 1;
 
   //선발투수 정보 API
   const day_num: number = julyScheduleJSON[today];
@@ -70,17 +71,17 @@ export default async function RankingAi() {
 
   return (
     <>
-      <div className="bg-[url('/images/mainBg.png')] bg-cover relative overflow-hidden">
-        <div className="w-3/4 mx-auto text-white pb-16">
+      <div className="bg-[url('/images/mainBg.png')] bg-cover relative overflow-hidden h-screen">
+        <div className="w-3/4 mx-auto text-white pb-16 h-screen">
           {dayOfWeek === 0 || dayOfWeek === 1 ? (
-            <div className="flex flex-col h-screen justify-center items-center font-semibold text-xl gap-4">
-              <div className="flex justify-center h-64 mb-4">
+            <div className="flex flex-col justify-center items-center font-semibold text-xl gap-4 h-3/4 max-sm:gap-0">
+              <div className="flex justify-center h-64 mb-4 max-sm:h-1/4">
                 <Image
                   src="/svgs/newsMascot/ddory.svg"
                   alt="ticket"
                   width={0}
                   height={0}
-                  className="w-auto h-[100%]"
+                  className="w-auto h-[100%] "
                 />
                 <Image
                   src="/svgs/newsMascot/vic.svg"
