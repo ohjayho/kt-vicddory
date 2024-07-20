@@ -22,7 +22,7 @@ const playerData = [
 ];
 
 const playerDataFront = [
-  { korName: '강현우', backNum: '55', playerImg: 'kt11.png' },
+  { korName: '강현우', backNum: '55', playerImg: 'pitcher/고영표.jpg' },
 ];
 
 interface PlayerCardProps {
@@ -79,7 +79,12 @@ const PlayerCard: React.FC<PlayerCardProps> = ({
               className={`${sizeClass} absolute inset-0 object-cover [backface-visibility:hidden]`}
             >
               {playerDataFront.map((player, index) => (
-                <CardFront key={index} player={player} size={size} />
+                <CardFront
+                  key={index}
+                  player={player}
+                  size={size}
+                  onClick={() => handleImageClick()}
+                />
               ))}
             </div>
             <div
