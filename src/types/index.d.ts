@@ -126,7 +126,20 @@ type TYearData = {
   data: TRanking[];
 };
 
-type TLeagueData = TYearData[];
+type TDailyData = {
+  day: number;
+  data: TRanking[];
+};
+
+type TLeagueYearData = TYearData[];
+
+type TLeagueDailyData = TDailyData[];
+
+type TBaseSeries = {
+  name: string;
+  data: (number | null)[];
+  visible: boolean;
+};
 
 export {
   TResultPositionProps,
@@ -142,5 +155,10 @@ export {
   TTeamRecord,
   TGameInfo,
   TWinLossData,
-  TLeagueData,
+  TRanking,
+  TYearData,
+  TDailyData,
+  TLeagueYearData,
+  TLeagueDailyData,
+  TBaseSeries,
 };

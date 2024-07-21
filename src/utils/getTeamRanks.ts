@@ -1,6 +1,12 @@
 import year_rank from '#/data/year_rank.json';
 import daily_rank from '#/data/daily_rank.json';
-import { TLeagueData } from '@/types';
+import {
+  TDailyData,
+  TLeagueDailyData,
+  TLeagueYearData,
+  TRanking,
+  TYearData,
+} from '@/types';
 
 export const getTeamRanks = ({
   teamName,
@@ -16,38 +22,47 @@ export const getTeamRanks = ({
   const formatDate = (dateString: string | undefined) => {
     if (!dateString) return undefined;
     const date = new Date(dateString);
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, '0');
-    const day = String(date.getDate()).padStart(2, '0');
+    const year: number = date.getFullYear();
+    const month: string = String(date.getMonth() + 1).padStart(2, '0');
+    const day: string = String(date.getDate()).padStart(2, '0');
     return Number(`${year}${month}${day}`);
   };
 
-  const yearRankJson: TLeagueData = year_rank;
-  const dailyRankJson = daily_rank;
-  const baseJson = page === 'year' ? yearRankJson : dailyRankJson;
+  const yearRankJson: TLeagueYearData = year_rank;
+  const dailyRankJson: TLeagueDailyData = daily_rank;
+  const baseJson: TLeagueYearData | TLeagueDailyData =
+    page === 'year' ? yearRankJson : dailyRankJson;
 
   const yearRank: (number | null)[] = [];
 
-  const formatStartDate = formatDate(startDate?.toISOString());
-  const formatEndDate = formatDate(endDate?.toISOString());
+  const formatStartDate: number | undefined = formatDate(
+    startDate?.toISOString(),
+  );
+  const formatEndDate: number | undefined = formatDate(endDate?.toISOString());
 
   if (page === 'daily') {
-    const filteredDailyRank = dailyRankJson.filter((item) => {
-      const itemDate = new Date(item.day);
+    const filteredDailyRank: TDailyData[] = dailyRankJson.filter(
+      (item: TDailyData): boolean => {
+        const itemDate = new Date(item.day);
+        return (
+          (!formatStartDate ||
+            itemDate.valueOf() >= formatStartDate.valueOf()) &&
+          (!formatEndDate || itemDate.valueOf() <= formatEndDate.valueOf())
+        );
+      },
+    );
 
-      return (
-        (!formatStartDate || itemDate >= formatStartDate) &&
-        (!formatEndDate || itemDate <= formatEndDate)
+    filteredDailyRank.forEach((item: TDailyData): void => {
+      const teamData: TRanking | undefined = item.data.find(
+        (v: TRanking) => v.team === teamName,
       );
-    });
-
-    filteredDailyRank.forEach((item) => {
-      const teamData = item.data.find((v) => v.team === teamName);
       yearRank.push(teamData ? teamData.rank : null);
     });
   } else {
-    baseJson.forEach((item) => {
-      const teamData = item.data.find((v) => v.team === teamName);
+    baseJson.forEach((item: TYearData | TDailyData) => {
+      const teamData: TRanking | undefined = item.data.find(
+        (v: TRanking): boolean => v.team === teamName,
+      );
       yearRank.push(teamData ? teamData.rank : null);
     });
   }

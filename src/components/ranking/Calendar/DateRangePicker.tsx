@@ -16,13 +16,13 @@ export default function DateRangePicker({
   const thirtyDaysAgo = new Date(today);
   thirtyDaysAgo.setDate(today.getDate() - 30);
 
-  const [startDate, setStartDate] = useState<Date | null>(thirtyDaysAgo);
-  const [endDate, setEndDate] = useState<Date | null>(today);
+  const [startDate, setStartDate] = useState<Date | undefined>(thirtyDaysAgo);
+  const [endDate, setEndDate] = useState<Date | undefined>(today);
 
   const handleDateChange = (dates: [Date | null, Date | null]) => {
     const [start, end] = dates;
-    setStartDate(start);
-    setEndDate(end);
+    setStartDate(start || undefined);
+    setEndDate(end || undefined);
     onDateChange(start, end);
   };
 

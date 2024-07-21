@@ -6,6 +6,7 @@ import { useState } from 'react';
 import DarkUnica from 'highcharts/themes/dark-unica';
 import year_rank from '#/data/year_rank.json';
 import { getTeamRanks } from '@/utils/getTeamRanks';
+import { TBaseSeries, TLeagueYearData, TYearData } from '@/types';
 
 DarkUnica(Highcharts);
 
@@ -20,9 +21,9 @@ export default function Chart({
   endDate?: Date | undefined;
   page: string;
 }) {
-  const yearRankJson = year_rank;
+  const yearRankJson: TLeagueYearData = year_rank;
 
-  const yearTeam = [
+  const yearTeam: string[] = [
     'LG',
     'KT',
     'SSG',
@@ -36,7 +37,7 @@ export default function Chart({
     '현대',
     '쌍방울',
   ];
-  const dailyTeam = [
+  const dailyTeam: string[] = [
     'LG',
     'KT',
     'SSG',
@@ -51,37 +52,43 @@ export default function Chart({
 
   const today = new Date();
   const thirtyDaysAgo = new Date(today.getTime() - 30 * 24 * 60 * 60 * 1000);
-  const defaultStartDate = startDate || thirtyDaysAgo;
-  const defaultEndDate = endDate || today;
+  const defaultStartDate: Date = startDate || thirtyDaysAgo;
+  const defaultEndDate: Date = endDate || today;
 
-  const yearArr = yearTeam.map((team) => ({
-    name: team,
-    data: getTeamRanks({ teamName: team, page: 'year' }),
-    visible: team === 'KT',
-  }));
-
-  const dailyArr = dailyTeam.map((team) => ({
-    name: team,
-    data: getTeamRanks({
-      teamName: team,
-      page: 'daily',
-      startDate: defaultStartDate,
-      endDate: defaultEndDate,
+  const yearArr: TBaseSeries[] = yearTeam.map(
+    (team: string): TBaseSeries => ({
+      name: team,
+      data: getTeamRanks({ teamName: team, page: 'year' }),
+      visible: team === 'KT',
     }),
-    visible: team === 'KT',
-  }));
+  );
 
-  const baseSeries = page === 'year' ? yearArr : dailyArr;
+  const dailyArr: TBaseSeries[] = dailyTeam.map(
+    (team: string): TBaseSeries => ({
+      name: team,
+      data: getTeamRanks({
+        teamName: team,
+        page: 'daily',
+        startDate: defaultStartDate,
+        endDate: defaultEndDate,
+      }),
+      visible: team === 'KT',
+    }),
+  );
 
-  const category =
+  const baseSeries: TBaseSeries[] = page === 'year' ? yearArr : dailyArr;
+
+  const category: string[] | number[] =
     page === 'year'
-      ? yearRankJson.map((item) => item.year)
-      : getDateRange(defaultStartDate, defaultEndDate).map((date) => date);
+      ? yearRankJson.map((item: TYearData): number => item.year)
+      : getDateRange(defaultStartDate, defaultEndDate).map(
+          (date: string): string => date,
+        );
 
   function getDateRange(
     startDate: Date | undefined,
     endDate: Date | undefined,
-  ) {
+  ): string[] {
     if (!startDate || !endDate) return [];
 
     const dates = [];
