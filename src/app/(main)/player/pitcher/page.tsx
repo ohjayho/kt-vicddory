@@ -15,7 +15,7 @@ export default function PitcherMain() {
   return (
     <>
       <div className="bg-white flex justify-center items-center h-min flex-wrap ">
-        <div className="flex flex-wrap flex-row gap-6 p-6 justify-center items-center object-center w-3/4">
+        <div className="flex flex-wrap flex-row gap-6 p-6 justify-start items-center object-center w-3/4">
           {pitcherData.map((pitcher, index) => (
             <CardFront
               key={index}

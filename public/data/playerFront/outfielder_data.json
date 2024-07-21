@@ -4,62 +4,62 @@
             {
                 "korName": "김건형",
                 "backNum": "0",
-                "playerImg": "batter/outfielder/김건형.jpg"
+                "playerFrontImg": "batter/outfielder/김건형.jpg"
             },
             {
                 "korName": "김민혁",
                 "backNum": "53",
-                "playerImg": "batter/outfielder/김민혁.jpg"
+                "playerFrontImg": "batter/outfielder/김민혁.jpg"
             },
             {
                 "korName": "김병준",
                 "backNum": "57",
-                "playerImg": "batter/outfielder/김병준.jpg"
+                "playerFrontImg": "batter/outfielder/김병준.jpg"
             },
             {
                 "korName": "로하스",
                 "backNum": "3",
-                "playerImg": "batter/outfielder/로하스.jpg"
+                "playerFrontImg": "batter/outfielder/로하스.jpg"
             },
             {
                 "korName": "문상철",
                 "backNum": "24",
-                "playerImg": "batter/outfielder/문상철.jpg"
+                "playerFrontImg": "batter/outfielder/문상철.jpg"
             },
             {
                 "korName": "배정대",
                 "backNum": "27",
-                "playerImg": "batter/outfielder/배정대.jpg"
+                "playerFrontImg": "batter/outfielder/배정대.jpg"
             },
             {
                 "korName": "송민섭",
                 "backNum": "12",
-                "playerImg": "batter/outfielder/송민섭.jpg"
+                "playerFrontImg": "batter/outfielder/송민섭.jpg"
             },
             {
                 "korName": "안치영",
                 "backNum": "8",
-                "playerImg": "batter/outfielder/안치영.jpg"
+                "playerFrontImg": "batter/outfielder/안치영.jpg"
             },
             {
                 "korName": "안현민",
                 "backNum": "62",
-                "playerImg": "batter/outfielder/안현민.jpg"
+                "playerFrontImg": "batter/outfielder/안현민.jpg"
             },
             {
                 "korName": "정준영",
                 "backNum": "58",
-                "playerImg": "batter/outfielder/정준영.jpg"
+                "playerFrontImg": "batter/outfielder/정준영.jpg"
             },
             {
                 "korName": "조용호",
                 "backNum": "23",
-                "playerImg": "batter/outfielder/조용호.jpg"
+                "playerFrontImg": "batter/outfielder/조용호.jpg"
             },
             {
                 "korName": "홍현빈",
                 "backNum": "31",
-                "playerImg": "batter/outfielder/홍현빈.jpg"
+                "playerFrontImg": "batter/outfielder/홍현빈.jpg"
             }
         ]
     }
