@@ -254,8 +254,9 @@
         "gameplayer": {
             "korName": "원상현",
             "engName": "WON SANG HYEON",
+            "playerFrontImg": "pitcher/원상현.jpg",
             "backNum": "63",
-            "playerImg": "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/54063_2024-03-06_123243.jpg",
+            "playerBackImg": "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/54063_2024-03-06_123243.jpg",
             "positionKor": "투수",
             "positionEng": "Pitcher",
             "positionHitType": "우투우타",

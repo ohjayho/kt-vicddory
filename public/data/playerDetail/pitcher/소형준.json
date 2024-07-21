@@ -211,8 +211,9 @@
         "gameplayer": {
             "korName": "소형준",
             "engName": "SO HYEONG JUN",
+            "playerFrontImg": "pitcher/소형준.jpg",
             "backNum": "30",
-            "playerImg": "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/50030_2024-03-06_122146.jpg",
+            "playerBackImg": "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/50030_2024-03-06_122146.jpg",
             "positionKor": "투수",
             "positionEng": "Pitcher",
             "positionHitType": "우투우타",

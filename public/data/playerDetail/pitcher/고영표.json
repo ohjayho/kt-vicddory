@@ -385,8 +385,9 @@
         "gameplayer": {
             "korName": "고영표",
             "engName": "KO YEONG PYO",
+            "playerFrontImg": "pitcher/고영표.jpg",
             "backNum": "1",
-            "playerImg": "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/64001_2024-03-06_113402.jpg",
+            "playerBackImg": "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/64001_2024-03-06_113402.jpg",
             "positionKor": "투수",
             "positionEng": "Pitcher",
             "positionHitType": "우언우타",

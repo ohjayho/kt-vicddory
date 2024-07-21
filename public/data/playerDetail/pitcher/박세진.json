@@ -372,8 +372,9 @@
         "gameplayer": {
             "korName": "박세진",
             "engName": "PARK SE JIN",
+            "playerFrontImg": "pitcher/박세진.jpg",
             "backNum": "33",
-            "playerImg": "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/66047_2024-03-06_114756.jpg",
+            "playerBackImg": "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/66047_2024-03-06_114756.jpg",
             "positionKor": "투수",
             "positionEng": "Pitcher",
             "positionHitType": "좌투좌타",

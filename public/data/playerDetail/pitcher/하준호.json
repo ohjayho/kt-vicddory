@@ -353,8 +353,9 @@
         "gameplayer": {
             "korName": "하준호",
             "engName": "HA JUN HO",
+            "playerFrontImg": "pitcher/하준호.jpg",
             "backNum": "28",
-            "playerImg": "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/78517_2024-03-06_130048.jpg",
+            "playerBackImg": "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/78517_2024-03-06_130048.jpg",
             "positionKor": "투수",
             "positionEng": "Pitcher",
             "positionHitType": "좌투좌타",

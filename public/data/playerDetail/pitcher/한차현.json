@@ -314,8 +314,9 @@
         "gameplayer": {
             "korName": "한차현",
             "engName": "HAN CHA HYEON",
+            "playerFrontImg": "pitcher/한차현.jpg",
             "backNum": "59",
-            "playerImg": "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/51058_2024-03-08_100756.jpg",
+            "playerBackImg": "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/51058_2024-03-08_100756.jpg",
             "positionKor": "투수",
             "positionEng": "Pitcher",
             "positionHitType": "우투우타",

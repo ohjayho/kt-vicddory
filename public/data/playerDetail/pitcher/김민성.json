@@ -114,8 +114,9 @@
         "gameplayer": {
             "korName": "김민성",
             "engName": "KIM MIN SEONG",
+            "playerFrontImg": "pitcher/김민성.jpg",
             "backNum": "94",
-            "playerImg": "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/54094_2024-03-06_113835.jpg",
+            "playerBackImg": "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/54094_2024-03-06_113835.jpg",
             "positionKor": "투수",
             "positionEng": "Pitcher",
             "positionHitType": "우투우타",

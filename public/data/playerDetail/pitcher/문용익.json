@@ -290,8 +290,9 @@
         "gameplayer": {
             "korName": "문용익",
             "engName": "MOON YONG IK",
+            "playerFrontImg": "pitcher/문용익.jpg",
             "backNum": "13",
-            "playerImg": "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/67419_2024-03-06_114416.jpg",
+            "playerBackImg": "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/67419_2024-03-06_114416.jpg",
             "positionKor": "투수",
             "positionEng": "Pitcher",
             "positionHitType": "우투우타",

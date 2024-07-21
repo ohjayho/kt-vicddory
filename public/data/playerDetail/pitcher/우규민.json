@@ -272,8 +272,9 @@
         "gameplayer": {
             "korName": "우규민",
             "engName": "WOO GYU MIN",
+            "playerFrontImg": "pitcher/우규민.jpg",
             "backNum": "21",
-            "playerImg": "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/73117_2024-03-06_122954.jpg",
+            "playerBackImg": "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/73117_2024-03-06_122954.jpg",
             "positionKor": "투수",
             "positionEng": "Pitcher",
             "positionHitType": "우언우타",

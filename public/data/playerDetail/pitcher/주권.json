@@ -393,8 +393,9 @@
         "gameplayer": {
             "korName": "주권",
             "engName": "JU KWON",
+            "playerFrontImg": "pitcher/주권.jpg",
             "backNum": "38",
-            "playerImg": "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/65060_2024-03-06_125146.jpg",
+            "playerBackImg": "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/65060_2024-03-06_125146.jpg",
             "positionKor": "투수",
             "positionEng": "Pitcher",
             "positionHitType": "우투우타",

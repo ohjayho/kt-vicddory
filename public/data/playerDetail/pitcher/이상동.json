@@ -386,8 +386,9 @@
         "gameplayer": {
             "korName": "이상동",
             "engName": "LEE SANG DONG",
+            "playerFrontImg": "pitcher/이상동.jpg",
             "backNum": "37",
-            "playerImg": "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/69054_2024-03-06_123705.jpg",
+            "playerBackImg": "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/69054_2024-03-06_123705.jpg",
             "positionKor": "투수",
             "positionEng": "Pitcher",
             "positionHitType": "우투우타",

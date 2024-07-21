@@ -392,8 +392,9 @@
         "gameplayer": {
             "korName": "김민",
             "engName": "KIM MIN",
+            "playerFrontImg": "pitcher/김민.jpg",
             "backNum": "11",
-            "playerImg": "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/68043_2024-03-06_113719.jpg",
+            "playerBackImg": "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/68043_2024-03-06_113719.jpg",
             "positionKor": "투수",
             "positionEng": "Pitcher",
             "positionHitType": "우투우타",

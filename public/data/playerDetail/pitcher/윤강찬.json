@@ -150,8 +150,9 @@
         "gameplayer": {
             "korName": "윤강찬",
             "engName": "YOON KANG CHAN",
+            "playerFrontImg": "pitcher/윤강찬.jpg",
             "backNum": "65",
-            "playerImg": "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/68093_2024-03-06_123531.jpg",
+            "playerBackImg": "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/68093_2024-03-06_123531.jpg",
             "positionKor": "투수",
             "positionEng": "Pitcher",
             "positionHitType": "우투우타",

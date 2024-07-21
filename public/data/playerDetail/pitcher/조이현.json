@@ -314,8 +314,9 @@
         "gameplayer": {
             "korName": "조이현",
             "engName": "CHO I HYEON",
+            "playerFrontImg": "pitcher/조이현.jpg",
             "backNum": "54",
-            "playerImg": "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/64768_2024-03-06_124848.jpg",
+            "playerBackImg": "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/64768_2024-03-06_124848.jpg",
             "positionKor": "투수",
             "positionEng": "Pitcher",
             "positionHitType": "우투좌타",

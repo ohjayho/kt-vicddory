@@ -308,8 +308,9 @@
         "gameplayer": {
             "korName": "손동현",
             "engName": "SON DONG HYEON",
+            "playerFrontImg": "pitcher/손동현.jpg",
             "backNum": "41",
-            "playerImg": "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/69041_2024-03-06_122308.jpg",
+            "playerBackImg": "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/69041_2024-03-06_122308.jpg",
             "positionKor": "투수",
             "positionEng": "Pitcher",
             "positionHitType": "우투우타",

@@ -295,8 +295,9 @@
         "gameplayer": {
             "korName": "강건",
             "engName": "KANG GEON",
+            "playerFrontImg": "pitcher/강건.jpg",
             "backNum": "99",
-            "playerImg": "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/53006_2024-03-06_113244.jpg",
+            "playerBackImg": "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/53006_2024-03-06_113244.jpg",
             "positionKor": "투수",
             "positionEng": "Pitcher",
             "positionHitType": "우투우타",

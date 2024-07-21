@@ -319,8 +319,9 @@
         "gameplayer": {
             "korName": "전용주",
             "engName": "JEON YONG JU",
+            "playerFrontImg": "pitcher/전용주.jpg",
             "backNum": "29",
-            "playerImg": "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/69047_2024-03-06_124737.jpg",
+            "playerBackImg": "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/69047_2024-03-06_124737.jpg",
             "positionKor": "투수",
             "positionEng": "Pitcher",
             "positionHitType": "좌투좌타",

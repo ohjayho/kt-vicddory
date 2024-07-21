@@ -369,8 +369,9 @@
         "gameplayer": {
             "korName": "김민수",
             "engName": "KIM MIN SU",
+            "playerFrontImg": "pitcher/김민수.jpg",
             "backNum": "26",
-            "playerImg": "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/65048_2024-03-06_113958.jpg",
+            "playerBackImg": "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/65048_2024-03-06_113958.jpg",
             "positionKor": "투수",
             "positionEng": "Pitcher",
             "positionHitType": "우투우타",

@@ -120,11 +120,12 @@ type TWinLossData = {
 interface IPlayerFront {
   korName: string;
   backNum: string;
-  playerImg: string;
+  playerFrontImg: string;
 }
 
 interface IPlayerBack extends IPlayerFront {
   engName: string;
+  playerBackImg: string;
   positionKor: string;
   positionEng: string;
   positionHitType: string;

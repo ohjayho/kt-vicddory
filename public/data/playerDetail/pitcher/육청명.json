@@ -236,8 +236,9 @@
         "gameplayer": {
             "korName": "육청명",
             "engName": "YUK CHEONG MYEONG",
+            "playerFrontImg": "pitcher/육청명.jpg",
             "backNum": "64",
-            "playerImg": "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/54064_2024-03-06_123407.jpg",
+            "playerBackImg": "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/54064_2024-03-06_123407.jpg",
             "positionKor": "투수",
             "positionEng": "Pitcher",
             "positionHitType": "우투우타",

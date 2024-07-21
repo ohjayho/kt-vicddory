@@ -362,8 +362,9 @@
         "gameplayer": {
             "korName": "이선우",
             "engName": "LEE SUN WOO",
+            "playerFrontImg": "pitcher/이선우.jpg",
             "backNum": "61",
-            "playerImg": "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/69068_2024-03-06_123828.jpg",
+            "playerBackImg": "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/69068_2024-03-06_123828.jpg",
             "positionKor": "투수",
             "positionEng": "Pitcher",
             "positionHitType": "우언우타",

@@ -96,8 +96,9 @@
         "gameplayer": {
             "korName": "김건웅",
             "engName": "KIM GEON UNG",
+            "playerFrontImg": "pitcher/김건웅.jpg",
             "backNum": "49",
-            "playerImg": "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/53049_2024-03-06_113525.jpg",
+            "playerBackImg": "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/53049_2024-03-06_113525.jpg",
             "positionKor": "투수",
             "positionEng": "Pitcher",
             "positionHitType": "좌투우타",

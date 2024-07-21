@@ -97,7 +97,7 @@ const CardFront: React.FC<CardFrontProps> = ({
           {/* 선수 이미지 */}
           <div className={`relative ${photoSize} mx-auto`}>
             <img
-              src={`/images/player/playerCardFront/${player.playerImg}`}
+              src={`/images/player/playerCardFront/${player.playerFrontImg}`}
               alt={`${player.korName} Image`}
               className="absolute left-0 top-3 w-full h-full object-cover rounded-2xl"
             />

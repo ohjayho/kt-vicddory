@@ -266,8 +266,9 @@
         "gameplayer": {
             "korName": "벤자민",
             "engName": "Wes Benjamin",
+            "playerFrontImg": "pitcher/벤자민.jpg",
             "backNum": "43",
-            "playerImg": "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/52043_2024-03-06_121642.jpg",
+            "playerBackImg": "https://wizzap.ktwiz.co.kr/files/playerImg/ktImg/52043_2024-03-06_121642.jpg",
             "positionKor": "투수",
             "positionEng": "Pitcher",
             "positionHitType": "좌투좌타",
