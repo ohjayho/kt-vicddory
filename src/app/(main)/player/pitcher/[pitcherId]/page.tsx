@@ -60,9 +60,8 @@ async function getPlayerData(backNum: string): Promise<IPlayerBack | null> {
 }
 export default async function PitcherDetail({ params }: PitcherPageProps) {
   const player = await getPlayerData(params.pitcherId);
-  console.log(`parameter check: ${params}`);
-
-  console.log(player);
+  // console.log(`parameter check: ${params}`);
+  // console.log(player);
 
   return (
     <>

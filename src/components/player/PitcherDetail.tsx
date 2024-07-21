@@ -41,6 +41,8 @@ export default function PitcherDetail({ player }: PitcherDetailProps) {
   if (!player) {
     return <div>Player not found</div>;
   }
+  console.log('Player data:', player);
+
   return (
     <>
       <div className="flex flex-col items-center bg-black/90 min-h-screen max-md:flex-wrap">
