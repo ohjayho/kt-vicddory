@@ -7,7 +7,7 @@ import fs from 'fs';
 import PitcherDetailClient from '@/components/player/PitcherDetail';
 import { IPlayerFront, IPlayerBack } from '@/types';
 interface PitcherPageProps {
-  params: { backNum: string };
+  params: { pitcherId: string };
 }
 
 export async function generateStaticParams() {
@@ -19,7 +19,7 @@ export async function generateStaticParams() {
   // console.log(filePath);
   const jsonData = JSON.parse(fs.readFileSync(filePath, 'utf8'));
   const paths = jsonData.data.list.map((player: IPlayerFront) => ({
-    params: { backNum: player.backNum },
+    pitcherId: player.backNum.toString(),
   }));
 
   return paths;
@@ -44,8 +44,8 @@ async function getPlayerData(backNum: string): Promise<IPlayerBack | null> {
 
   const filePath = path.join(
     process.cwd(),
-    'data',
-    'players',
+    'public/data',
+    'playerDetail/pitcher',
     `${playerMeta.korName}.json`,
   );
   console.log(`filePath: ${filePath}`);
@@ -59,7 +59,7 @@ async function getPlayerData(backNum: string): Promise<IPlayerBack | null> {
   }
 }
 export default async function PitcherDetail({ params }: PitcherPageProps) {
-  const player = await getPlayerData(params.backNum);
+  const player = await getPlayerData(params.pitcherId);
   console.log(`parameter check: ${params}`);
 
   console.log(player);
