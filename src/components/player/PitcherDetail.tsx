@@ -41,7 +41,7 @@ export default function PitcherDetail({ player }: PitcherDetailProps) {
   if (!player) {
     return <div>Player not found</div>;
   }
-  console.log('Player data:', player);
+  // console.log('Player data:', player);
 
   return (
     <>

@@ -8,6 +8,7 @@ DarkUnica(Highcharts);
 type CategoryDescriptions = {
   categories: string[];
   descriptions: { [key: string]: string };
+  standards: { [key: string]: number };
 };
 
 type positionType = {
@@ -27,6 +28,13 @@ const positionCategory: positionType = {
       피안타율: '투수가 상대에게 허용한 타율로, 낮을수록 좋습니다.',
       QS: '선발 투수가 6이닝 이상 던지며 3점 이하의 자책점을 이용한 경기 수 (Quality Start). 투수가 많은 경기를 오래 던지며 적은 점수를 허용할수록 좋기 때문에 높을수록 좋습니다.',
     },
+    standards: {
+      ERA: 2.0,
+      'K/BB': 4.0,
+      WHIP: 1.0,
+      QS: 15,
+      피안타율: 0.25,
+    },
   },
   catcher: {
     categories: ['FPCT', 'CS%', 'PB', 'rSB', 'CERA'],
@@ -37,6 +45,13 @@ const positionCategory: positionType = {
       PB: '포일(Passed Balls). 포수가 놓친 공의 수로, 낮을수록 좋습니다.',
       rSB: '도루 저지 횟수(Runs Saved by Stolen Base Attempts). 도루 저지로 인한 팀 득점 방지 횟수로, 높을수록 좋습니다.',
       CERA: "포수의 평균 자책점(Catcher's Earned Run Average). 포수가 있을 때의 투수 평균 자책점으로, 낮을수록 좋습니다.",
+    },
+    standards: {
+      FPCT: 0.98,
+      'CS%': 0.4,
+      PB: 10,
+      rSB: 4,
+      CERA: 3.5,
     },
   },
   infielder: {
@@ -49,6 +64,14 @@ const positionCategory: positionType = {
       FPCT: '수비율(Fielding Percentage). 수비 기회를 처리한 비율로, 높을수록 좋습니다.',
       WAR: '대체 선수 대비 승리 기여도(Wins Above Replacement). 선수가 팀에 기여한 승리 수로, 높을수록 좋습니다.',
     },
+    standards: {
+      BA: 0.3,
+      OBP: 0.4,
+      SLG: 0.5,
+      OPS: 0.9,
+      FPCT: 0.99,
+      WAR: 5.0,
+    },
   },
   outfielder: {
     categories: ['BA', 'OBP', 'SLG', 'OPS', 'FPCT', 'WAR'],
@@ -60,16 +83,27 @@ const positionCategory: positionType = {
       FPCT: '수비율(Fielding Percentage). 수비 기회를 처리한 비율로, 높을수록 좋습니다.',
       WAR: '대체 선수 대비 승리 기여도(Wins Above Replacement). 선수가 팀에 기여한 승리 수로, 높을수록 좋습니다.',
     },
+    standards: {
+      BA: 0.3,
+      OBP: 0.4,
+      SLG: 0.5,
+      OPS: 0.9,
+      FPCT: 0.99,
+      WAR: 5.0,
+    },
   },
 };
+
+let currentPosition = 'pitcher';
 
 export default function PlayerChart({
   position,
   showExpectedSeries,
 }: {
-  position: string;
+  position: keyof positionType;
   showExpectedSeries: boolean;
 }) {
+  console.log('position', position);
   const options = {
     title: {
       text: '선수 예측 데이터',
@@ -90,6 +124,25 @@ export default function PlayerChart({
     xAxis: {
       categories: positionCategory[position].categories,
       tickmarkPlacement: 'on',
+      plotLines: positionCategory[position].categories.map((category) => ({
+        color: 'white',
+        width: 1,
+        value: positionCategory[position].standards[category],
+        zIndex: 2,
+        label: {
+          text: `${category} (Standard: ${positionCategory[position].standards[category]})`,
+          align: 'left',
+          style: { color: 'white', fontSize: '10px' },
+        },
+      })),
+      max: positionCategory[position].categories.reduce(
+        (acc, category) => {
+          acc[category] = positionCategory[position].standards[category];
+          console.log('max acc', acc[category]);
+          return acc;
+        },
+        {} as { [key: string]: number },
+      ),
       lineWidth: 0,
     },
 
@@ -101,9 +154,13 @@ export default function PlayerChart({
     series: [
       {
         name: 'Current',
-        data: [0.88, 0.7, 0.6, 0.5, 0.3],
+        data: [1, 3, 0.6, 10, 0.3],
         visible: true,
         pointPlacement: 'on',
+        marker: {
+          enabled: true,
+          radius: 4,
+        },
       },
       {
         name: 'Expected',
@@ -142,8 +199,30 @@ export default function PlayerChart({
     },
     tooltip: {
       shared: true,
+      // formatter: function () {
+      //   return `<b>${this.x}</b>: ${positionCategory[position].descriptions[this.x]}`;
+      // },
     },
   };
+
+  currentPosition = position;
+  options.xAxis.categories = positionCategory[position].categories;
+  options.xAxis.plotLines = positionCategory[position].categories.map(
+    (category) => ({
+      color: 'lightgrey',
+      width: 1,
+      value: category,
+      zIndex: 2,
+      label: {
+        text: `${category} (Standard: ${positionCategory[position].standards[category]})`,
+        align: 'center',
+        style: {
+          color: 'black',
+          fontSize: '10px',
+        },
+      },
+    }),
+  );
   return (
     <>
       <div className="p-4">
