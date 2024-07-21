@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import PlayerCard from '@/components/tradingCard/PlayerCard';
 import dynamic from 'next/dynamic';
 import { IPlayerFront, IPlayerBack } from '@/types';
+import { MdOutlineArrowRight } from 'react-icons/md';
 
 interface PitcherDetailProps {
   player: IPlayerBack | null;
@@ -31,24 +32,21 @@ export default function PitcherDetail({ player }: PitcherDetailProps) {
   const onDetailHandler = () => {
     setDetailButton(!detailButton);
   };
+  console.log(isSpin);
+
+  const PlayerChart = dynamic(() => import('@/components/player/PlayerChart'), {
+    ssr: false,
+  });
 
   if (!player) {
     return <div>Player not found</div>;
   }
-  console.log(isSpin);
   return (
     <>
       <div className="flex flex-col items-center bg-black/90 min-h-screen max-md:flex-wrap">
         <div className="flex w-3/4 items-center justify-center max-md:flex-wrap py-16 max-md:w-full">
           <div className="flex h-fit mx-6 items-center justify-self-center my-10 max-md:flex max-md:flex-col max-md:justify-items-center max-md:px-0 max-md:mx-0">
-            {pitcherData.map((pitcher, index) => (
-              <PlayerCard
-                key={index}
-                player={pitcher}
-                size="large"
-                checkSpin={isSpin}
-              />
-            ))}
+            <PlayerCard player={player} size="large" checkSpin={isSpin} />
           </div>
           {/* AI 파트 */}
           <div className="flex flex-col w-1/2 px-16 pl-22 max-md:pl-0 max-md:w-full max-md:flex-wrap max-md:px-2 max-md:mx-4">
