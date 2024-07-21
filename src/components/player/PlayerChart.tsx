@@ -32,8 +32,8 @@ const positionCategory: positionType = {
       ERA: 2.0,
       'K/BB': 4.0,
       WHIP: 1.0,
-      QS: 15,
-      피안타율: 0.25,
+      피안타율: 0.4,
+      QS: 20,
     },
   },
   catcher: {
@@ -103,23 +103,20 @@ export default function PlayerChart({
   position: keyof positionType;
   showExpectedSeries: boolean;
 }) {
-  console.log('position', position);
-  const originalData = [1, 3, 0.6, 10, 0.3];
-
-  const maxValues = positionCategory[position].categories.map(
-    (category) => positionCategory[position].standards[category],
-  );
-  const globalMax = Math.max(...maxValues);
-
+  const originalData = [1, 3, 0.6, 0.3, 10];
+  const originalData2 = [1, 2, 0.5, 0.2, 10];
   // Scale the data for each category based on the global maximum
   const scaledData = positionCategory[position].categories.map(
-    (category, index) => ({
-      name: category,
-      y:
-        (originalData[index] / positionCategory[position].standards[category]) *
-        globalMax,
-    }),
+    (category, index) => {
+      const yValue =
+        originalData[index] / positionCategory[position].standards[category];
+      return {
+        name: category,
+        y: parseFloat(yValue.toFixed(2)),
+      };
+    },
   );
+
   const options = {
     title: {
       text: '선수 예측 데이터',
@@ -140,28 +137,9 @@ export default function PlayerChart({
     xAxis: {
       categories: positionCategory[position].categories,
       tickmarkPlacement: 'on',
-      plotLines: positionCategory[position].categories.map((category) => ({
-        color: 'white',
-        width: 1,
-        value: positionCategory[position].standards[category],
-        zIndex: 2,
-        label: {
-          text: `${category} (Standard: ${positionCategory[position].standards[category]})`,
-          align: 'left',
-          style: { color: 'white', fontSize: '10px' },
-        },
-      })),
-      max: positionCategory[position].categories.reduce(
-        (acc, category) => {
-          acc[category] = positionCategory[position].standards[category];
-          console.log('max acc', acc[category]);
-          return acc;
-        },
-        {} as { [key: string]: number },
-      ),
+
       lineWidth: 0,
     },
-
     yAxis: {
       gridLineInterpolation: 'polygon',
       lineWidth: 0,
