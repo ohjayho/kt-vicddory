@@ -70,9 +70,9 @@ export default async function RankingAi() {
 
   return (
     <>
-      <div className="bg-[url('/images/mainBg.png')] bg-cover relative overflow-hidden h-screen">
-        <div className="w-3/4 mx-auto text-white pb-16 h-screen">
-          {dayOfWeek === 0 || dayOfWeek === 1 ? (
+      <div className="flex flex-1 bg-[url('/images/mainBg.png')] bg-cover relative items-center overflow-hidden">
+        <div className="w-3/4 mx-auto text-white">
+          {dayOfWeek === 1 ? (
             <div className="flex flex-col justify-center items-center font-semibold text-xl gap-4 h-3/4 max-sm:gap-0">
               <div className="flex justify-center h-64 mb-4 max-sm:h-1/4">
                 <Image
@@ -123,7 +123,7 @@ export default async function RankingAi() {
                   homeScore={`${winPercent}%`}
                   awayScore={`${100 - winPercent}%`}
                 />
-                <div className="flex w-full justify-center items-center gap-5">
+                <div className="flex w-full justify-center items-center gap-5 pb-16">
                   <p className="w-full text-end max-sm:text-sm">{pitcher[0]}</p>
                   <p className="whitespace-nowrap">선발 투수</p>
                   <p className="w-full max-sm:text-sm">{pitcher[1]}</p>
