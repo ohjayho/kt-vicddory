@@ -23,7 +23,7 @@ const CardBack: React.FC<CardBackProps> = ({ player, size = 'large' }) => {
           {/* 선수 이미지 */}
           <div className="relative w-[228px] h-[136px] mx-auto">
             <img
-              src={`/images/player/playerCardBack/${player.playerBackImg}`}
+              src={player.playerBackImg}
               alt={`${player.korName} Image`}
               className="absolute left-0 top-4 w-full h-full object-cover rounded-2xl"
             />
@@ -103,7 +103,7 @@ const CardBack: React.FC<CardBackProps> = ({ player, size = 'large' }) => {
           {/* 선수 이미지 */}
           <div className="relative w-[324px] h-[196px] mx-auto">
             <img
-              src={`/images/player/playerCardBack/${player.playerImg}`}
+              src={player.playerBackImg}
               alt={`${player.korName} Image`}
               className="absolute left-0 top-4 w-full h-full object-cover rounded-2xl"
             />
