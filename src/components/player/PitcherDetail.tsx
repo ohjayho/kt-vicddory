@@ -55,7 +55,7 @@ export default function PitcherDetail({ player }: PitcherDetailProps) {
             {/*그래프*/}
             <div className="w-full max-md:px-2 max-md:items-center">
               <PlayerChart
-                title={'선수 예측 데이터'}
+                position={'pitcher'}
                 showExpectedSeries={showExpectedSeries}
               />
             </div>
