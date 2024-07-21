@@ -104,6 +104,22 @@ export default function PlayerChart({
   showExpectedSeries: boolean;
 }) {
   console.log('position', position);
+  const originalData = [1, 3, 0.6, 10, 0.3];
+
+  const maxValues = positionCategory[position].categories.map(
+    (category) => positionCategory[position].standards[category],
+  );
+  const globalMax = Math.max(...maxValues);
+
+  // Scale the data for each category based on the global maximum
+  const scaledData = positionCategory[position].categories.map(
+    (category, index) => ({
+      name: category,
+      y:
+        (originalData[index] / positionCategory[position].standards[category]) *
+        globalMax,
+    }),
+  );
   const options = {
     title: {
       text: '선수 예측 데이터',
@@ -154,13 +170,9 @@ export default function PlayerChart({
     series: [
       {
         name: 'Current',
-        data: [1, 3, 0.6, 10, 0.3],
+        data: scaledData,
         visible: true,
         pointPlacement: 'on',
-        marker: {
-          enabled: true,
-          radius: 4,
-        },
       },
       {
         name: 'Expected',
@@ -207,22 +219,7 @@ export default function PlayerChart({
 
   currentPosition = position;
   options.xAxis.categories = positionCategory[position].categories;
-  options.xAxis.plotLines = positionCategory[position].categories.map(
-    (category) => ({
-      color: 'lightgrey',
-      width: 1,
-      value: category,
-      zIndex: 2,
-      label: {
-        text: `${category} (Standard: ${positionCategory[position].standards[category]})`,
-        align: 'center',
-        style: {
-          color: 'black',
-          fontSize: '10px',
-        },
-      },
-    }),
-  );
+
   return (
     <>
       <div className="p-4">
