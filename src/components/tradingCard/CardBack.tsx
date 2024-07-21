@@ -135,7 +135,7 @@ const CardBack: React.FC<CardBackProps> = ({ player, size = 'large' }) => {
                 <div className="absolute ml-8 mt-1 w-[120px] h-auto">
                   {' '}
                   <img
-                    src={`/images/player/playerPosition/${player.positionImg}`}
+                    src={`/images/player/playerPosition/${player.positionEng}.png`}
                     alt={`${player.positionKor} 사진`}
                     className="absolute left-0 object-cover rounded-0"
                   />
