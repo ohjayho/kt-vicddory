@@ -6,7 +6,7 @@ import { IPlayerFront, IPlayerBack } from '@/types';
 import { useState, useEffect } from 'react';
 
 interface PlayerCardProps {
-  player: { data: { gameplayer: IPlayerBack } };
+  player: IPlayerBack;
   size?: 'small' | 'medium' | 'large';
   checkSpin: boolean;
 }
@@ -40,7 +40,6 @@ export default function PlayerCard({
     }
   }, [checkSpin]);
 
-  const gameplayer = player.data.gameplayer;
   return (
     <>
       <div className="">
@@ -57,7 +56,7 @@ export default function PlayerCard({
               className={`${sizeClass} absolute inset-0 object-cover [backface-visibility:hidden]`}
             >
               <CardFront
-                player={gameplayer}
+                player={player}
                 size={size}
                 onClick={() => handleImageClick()}
               />
@@ -65,7 +64,7 @@ export default function PlayerCard({
             <div
               className={`${sizeClass} absolute inset-0 object-cover [transform:rotateY(180deg)] [backface-visibility:hidden]`}
             >
-              <CardBack player={gameplayer} size={size} />
+              <CardBack player={player} size={size} />
             </div>
           </div>
         </div>

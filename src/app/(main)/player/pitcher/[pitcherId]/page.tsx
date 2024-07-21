@@ -25,7 +25,9 @@ export async function generateStaticParams() {
   return paths;
 }
 
-async function getPlayerData(backNum: string): Promise<IPlayerBack | null> {
+async function getPlayerData(
+  backNum: string,
+): Promise<{ data: { gameplayer: IPlayerBack } } | null> {
   const pitcherDataPath = path.join(
     process.cwd(),
     'public/data/playerFront',
@@ -60,12 +62,16 @@ async function getPlayerData(backNum: string): Promise<IPlayerBack | null> {
 }
 export default async function PitcherDetail({ params }: PitcherPageProps) {
   const player = await getPlayerData(params.pitcherId);
+  // const gameplayer = player.data.gameplayer;
   // console.log(`parameter check: ${params}`);
-  // console.log(player);
+  if (!player) {
+    return <div>Player not found</div>;
+  }
+  const playerProfile: IPlayerBack = player.data.gameplayer;
 
   return (
     <>
-      <PitcherDetailClient player={player} />
+      <PitcherDetailClient player={playerProfile} />
     </>
   );
 }
