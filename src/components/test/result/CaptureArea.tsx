@@ -26,15 +26,16 @@ const CaptureArea = forwardRef<HTMLDivElement, TCaptureAreaProps>(({ divRef }, r
   return (
     <div
       ref={divRef}
-      className="w-full h-[600px] bg-[#FFFFFF] flex flex-col justify-center items-center relative"
+      className="w-full h-[865px] bg-[#FFFFFF] flex flex-col justify-center items-center relative"
     >
-      <div className="absolute flex justify-center items-center top-10 w-72 h-9 bg-red-100 rounded-full text-white">
+      <div className="absolute flex justify-center items-center top-10 w-72 h-9 bg-red-100 rounded-full text-white -mt-7 mb-3">
         당신의 ♥천생연분♥ 야구선수는?
       </div>
-      <div className="result-container">
-        <h1>테스트 결과</h1>
-        <h2>포지션: {result.position}</h2>
-        <p>{result.response}</p>
+      <Image src='/images/player/playerCardFront/kt11.png' alt='sample' width={252}
+        height={348} />
+      <div className="flex flex-col justify-center items-center mt-3 mb-24 mx-5">
+        <h1 className='text-2xl font-bold mb-3'>⚾️{result.position}⚾️</h1>
+        <div className='p-2 bg-white border-4 border-blue-200 rounded w-[400px] md:w-[400px] h-60 flex justify-center items-center'>{result.response}</div>
       </div>
       <Image
         src="/svgs/test/result/resultBackground.svg"
