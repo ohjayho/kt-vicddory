@@ -2,7 +2,7 @@ import React from 'react';
 import path from 'path';
 import fs from 'fs';
 import PitcherDetailClient from '@/components/player/PitcherDetail';
-import { IPlayerFront, IPlayerBack } from '@/types';
+import { IPlayerFront, IPlayerBack, TPitcherMetric } from '@/types';
 interface PitcherPageProps {
   params: { pitcherId: string };
 }
@@ -59,8 +59,14 @@ async function getPlayerData(
 }
 export default async function PitcherDetail({ params }: PitcherPageProps) {
   const player = await getPlayerData(params.pitcherId);
-  // const gameplayer = player.data.gameplayer;
-  // console.log(`parameter check: ${params}`);
+
+  // 예측 API
+  const playerRes: Response = await fetch(
+    `${process.env.BASE_URL}/api/startingPitcher?day_num=${player}`,
+  );
+  const playerMetric: TPitcherMetric = await playerRes.json();
+  const aiPrediction: string[] = playerMetric['reason'];
+
   if (!player) {
     return <div>Player not found</div>;
   }

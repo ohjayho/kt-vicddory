@@ -135,6 +135,34 @@ interface IPlayerBack extends IPlayerFront {
   playerWeight: number;
   debutYear: number;
 }
+// Player Metric
+type TPithcerMetric = {
+  ERA: number;
+  'K/BB': number;
+  WHIP: number;
+  QS: number;
+  피안타율: number;
+  reason: string;
+};
+
+type TCatcherMetric = {
+  FPCT: number;
+  'CS%': number;
+  PB: number;
+  rSB: number;
+  CERA: number;
+  reason: string;
+};
+
+type TInfiedlerMetric = {
+  BA: number;
+  OBP: number;
+  SLG: number;
+  OPS: number;
+  FPCT: number;
+  WAR: number;
+  reason: string;
+};
 
 export {
   TResultPositionProps,
@@ -152,4 +180,7 @@ export {
   TWinLossData,
   IPlayerFront,
   IPlayerBack,
+  TCatcherMetric,
+  TPitcherMetric,
+  TInfiedlerMetric,
 };

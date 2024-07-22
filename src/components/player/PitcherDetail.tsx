@@ -11,7 +11,6 @@ interface PitcherDetailProps {
 }
 
 export default function PitcherDetail({ player }: PitcherDetailProps) {
-  const [detailButton, setDetailButton] = useState(false);
   const [showExpectedSeries, setShowExpectedSeries] = useState(false);
   const [isSpin, setIsSpin] = useState(false);
   useEffect(() => {
