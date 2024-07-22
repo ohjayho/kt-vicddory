@@ -1,9 +1,11 @@
 'use client';
+import { PiUserSound } from 'react-icons/pi';
 import { useEffect, useState } from 'react';
 
 export default function NewsTTS({ text }: { text: string }) {
   const [audioUrl, setAudioUrl] = useState<string | null>(null);
   const [audio, setAudio] = useState<HTMLAudioElement | null>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchAudioUrl = async () => {
@@ -19,6 +21,8 @@ export default function NewsTTS({ text }: { text: string }) {
         setAudioUrl(audioUrl);
       } catch (e) {
         console.log('Error:', e);
+      } finally {
+        setLoading(false);
       }
     };
     fetchAudioUrl();
@@ -38,10 +42,18 @@ export default function NewsTTS({ text }: { text: string }) {
       newAudio.play();
     }
   };
+
+  if (loading) {
+    return <div>Loading TTS...</div>;
+  }
   return (
     <>
-      <button className="text-red-100" onClick={handleAudioPlay}>
-        재생
+      <button
+        className="flex justify-center items-center text-[#ed2024]"
+        onClick={handleAudioPlay}
+      >
+        <PiUserSound size="50px" />
+        <h1 className="ml-4">음성 뉴스 듣기</h1>
       </button>
       {/* {audioUrl && (
         <audio controls>
