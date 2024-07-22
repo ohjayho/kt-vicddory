@@ -67,6 +67,7 @@ export default function NewsArea() {
                   direction={index % 2 === 0 ? 'right' : 'left'}
                   content={news.artcTitle}
                   id={news.artcSeq}
+                  ai={news.imgFilePath ? false : true}
                 />
               ),
           )}
