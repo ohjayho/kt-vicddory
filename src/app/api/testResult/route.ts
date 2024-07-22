@@ -18,17 +18,14 @@ export async function POST(req: NextRequest) {
     });
 
     if (!response.ok) {
-      console.error('API call failed with status:', response.status);
       return NextResponse.json({ error: 'Failed to fetch evaluation result' }, { status: response.status });
     }
 
     const result = await response.json();
 
-    if (!result.position || !result.response) {
-      return NextResponse.json({ error: 'Invalid evaluation result' }, { status: 500 });
-    }
+    const dbResponse = await collection.insertOne(result);
 
-    return NextResponse.json(result);
+    return NextResponse.json(result, { status: 200 });
   } catch (error) {
     console.error('Failed to save result:', error);
     return NextResponse.json({ error: 'Failed to save result' }, { status: 500 });
