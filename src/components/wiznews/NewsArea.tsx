@@ -9,7 +9,7 @@ export type TNewsContent = {
   artcContents: string;
   artcTitle: string;
   artcSeq: Number;
-  imgFilePath: string;
+  imgFilePath?: string;
   [key: string]: any;
 } | null;
 
@@ -22,8 +22,14 @@ type NewsListStore = {
 
 export const useNewsListStore = create<NewsListStore>()((set) => ({
   newsList: [],
-  setNewsList: (news) =>
-    set((state) => ({ newsList: [...state.newsList, ...news] })),
+  setNewsList: (news) => {
+    if (news[0] && news[0].imgFilePath === undefined) {
+      // news null 체크, imgFilePath가 없으면 === aiNews이면
+      set((state) => ({ newsList: [...news, ...state.newsList] }));
+    } else {
+      set((state) => ({ newsList: [...state.newsList, ...news] }));
+    }
+  },
 }));
 
 export const fetchNews = async (pageNum: number) => {
