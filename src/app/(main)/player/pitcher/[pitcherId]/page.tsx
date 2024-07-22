@@ -2,7 +2,13 @@ import React from 'react';
 import path from 'path';
 import fs from 'fs';
 import PitcherDetailClient from '@/components/player/PitcherDetail';
-import { IPlayerFront, IPlayerBack, TPitcherMetric } from '@/types';
+import {
+  IPlayerFront,
+  IPlayerBack,
+  TPitcherMetric,
+  TPitcherYearRecord,
+  IPitcherPlayerData,
+} from '@/types';
 interface PitcherPageProps {
   params: { pitcherId: string };
 }
@@ -24,7 +30,7 @@ export async function generateStaticParams() {
 
 async function getPlayerData(
   backNum: string,
-): Promise<{ data: { gameplayer: IPlayerBack } } | null> {
+): Promise<IPitcherPlayerData | null> {
   const pitcherDataPath = path.join(
     process.cwd(),
     'public/data/playerFront',
@@ -47,7 +53,7 @@ async function getPlayerData(
     'playerDetail/pitcher',
     `${playerMeta.korName}.json`,
   );
-  console.log(`filePath: ${filePath}`);
+  // console.log(`filePath: ${filePath}`);
 
   try {
     const fileContents = fs.readFileSync(filePath, 'utf8');
@@ -60,21 +66,34 @@ async function getPlayerData(
 export default async function PitcherDetail({ params }: PitcherPageProps) {
   const player = await getPlayerData(params.pitcherId);
 
-  // 예측 API
-  const playerRes: Response = await fetch(
-    `${process.env.BASE_URL}/api/startingPitcher?day_num=${player}`,
-  );
-  const playerMetric: TPitcherMetric = await playerRes.json();
-  const aiPrediction: string[] = playerMetric['reason'];
-
   if (!player) {
     return <div>Player not found</div>;
   }
   const playerProfile: IPlayerBack = player.data.gameplayer;
-
+  const playerYearRecord: TPitcherYearRecord[] = player.data.yearrecordlist;
+  // 예측 API
+  const predictionRes: Response = await fetch(
+    `${process.env.API_URL}/predict_player_stats`,
+    {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        position: 'pitcher',
+        player_data: playerYearRecord,
+      }),
+    },
+  );
+  if (!predictionRes.ok) {
+    console.error('Error-Failed to fetch prediction data');
+    console.log(predictionRes.statusText);
+    return <div>Failed to fetch prediction data</div>;
+  }
+  const playerMetric: TPitcherMetric = await predictionRes.json();
+  const aiPrediction: string = playerMetric.reason;
+  console.log(aiPrediction);
   return (
     <>
-      <PitcherDetailClient player={playerProfile} />
+      <PitcherDetailClient player={playerProfile} prediction={aiPrediction} />
     </>
   );
 }

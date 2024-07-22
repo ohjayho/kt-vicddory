@@ -1,4 +1,4 @@
-// pages/api/player/[position]/[playerId].ts
+// pages/api/player/[playerId].ts
 import { NextRequest, NextResponse } from 'next/server';
 import path from 'path';
 import fs from 'fs';
@@ -119,7 +119,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json(result);
   } catch (error) {
     return NextResponse.json(
-      { error: 'Failed to fetch prediction data' },
+      { error: 'In Metric - Failed to fetch prediction data' },
       { status: 500 },
     );
   }

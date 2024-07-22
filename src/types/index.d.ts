@@ -135,8 +135,9 @@ interface IPlayerBack extends IPlayerFront {
   playerWeight: number;
   debutYear: number;
 }
+
 // Player Metric
-type TPithcerMetric = {
+type TPitcherMetric = {
   ERA: number;
   'K/BB': number;
   WHIP: number;
@@ -164,6 +165,74 @@ type TInfiedlerMetric = {
   reason: string;
 };
 
+type TBatterYearRecord = {
+  ab: number;
+  bb: number;
+  bra: string;
+  cs: number;
+  gamenum: number;
+  gd: number;
+  gyear: string;
+  h2: number;
+  h3: number;
+  hit: number;
+  hp: number;
+  hr: number;
+  hra: string;
+  kk: number;
+  rbi: number;
+  run: number;
+  sb: number;
+  slg: string;
+  teamCode: string;
+  teamName: string;
+}[];
+
+type TPitcherYearRecord = {
+  bb: number;
+  bf: number;
+  er: number;
+  era: string;
+  gamenum: number;
+  gyear: string;
+  hit: number;
+  hold: number;
+  hp: number;
+  hr: number;
+  inn2: number;
+  innDisplay: string;
+  kk: number;
+  l: number;
+  r: number;
+  sho: number;
+  sv: number;
+  teamCode: string;
+  teamName: string;
+  w: number;
+  wCg: number;
+  wra: string;
+}[];
+
+interface IPitcherPlayerData {
+  data: {
+    recentgamerecordlist: any[];
+    recentgamerecordlistfutures: any[];
+    seasonsummary: any;
+    yearrecordlist: TPitcherYearRecord[];
+    seasonsummaryfutures: any;
+    gameplayer: IPlayerBack;
+  };
+}
+interface IBatterPlayerData {
+  data: {
+    recentgamerecordlist: any[];
+    recentgamerecordlistfutures: any[];
+    seasonsummary: any;
+    yearrecordlist: TBatterYearRecord[];
+    seasonsummaryfutures: any;
+    gameplayer: IPlayerBack;
+  };
+}
 export {
   TResultPositionProps,
   TQuestionHandlerProps,
@@ -183,4 +252,8 @@ export {
   TCatcherMetric,
   TPitcherMetric,
   TInfiedlerMetric,
+  TBatterYearRecord,
+  TPitcherYearRecord,
+  IPitcherPlayerData,
+  IBatterPlayerData,
 };

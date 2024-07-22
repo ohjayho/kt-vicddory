@@ -4,15 +4,19 @@ import PlayerCard from '@/components/tradingCard/PlayerCard';
 import dynamic from 'next/dynamic';
 import PlayerData from './PlayerData';
 import { IPlayerFront, IPlayerBack } from '@/types';
-import { MdOutlineArrowRight } from 'react-icons/md';
 
 interface PitcherDetailProps {
   player: IPlayerBack | null;
+  prediction: string;
 }
 
-export default function PitcherDetail({ player }: PitcherDetailProps) {
+export default function PitcherDetail({
+  player,
+  prediction,
+}: PitcherDetailProps) {
   const [showExpectedSeries, setShowExpectedSeries] = useState(false);
   const [isSpin, setIsSpin] = useState(false);
+  console.log('prediction', prediction);
   useEffect(() => {
     if (isSpin) {
       const timer = setTimeout(() => setIsSpin(true), 1080); // Duration should match your CSS transition duration
@@ -65,10 +69,7 @@ export default function PitcherDetail({ player }: PitcherDetailProps) {
             <div className="pl-6 mt-3">
               <div className="text-white pl-6 mt-3 ">AI 예측</div>
               <div className="flex items-center rounded-[5px] border-2 text-white border-white h-auto w-5/6 mx-6 p-4 max-md:w-11/12 max-md:flex max-md:justify-center">
-                <div className="text-white">
-                  누가 이겨? 내가 이겨~~ 루끼루끼 마 슈퍼루끼루끼루끼 마치마치
-                  그 느낌적인 느낌느낌
-                </div>
+                <div className="text-white">{prediction}</div>
               </div>
             </div>
           </div>
