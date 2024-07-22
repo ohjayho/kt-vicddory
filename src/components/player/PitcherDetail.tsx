@@ -14,6 +14,7 @@ import {
 interface PitcherDetailProps {
   player: IPlayerBack | null;
   metric: TPitcherMetric | TCatcherMetric | TInfielderMetric;
+  position: 'pitcher' | 'catcher' | 'infielder' | 'outfielder';
 }
 const isPitcherMetric = (metric: any): metric is TPitcherMetric => {
   return metric.ERA !== undefined;
@@ -27,7 +28,12 @@ const isInfielderMetric = (metric: any): metric is TInfielderMetric => {
   return metric.BA !== undefined && metric.OBP !== undefined;
 };
 
-export default function PitcherDetail({ player, metric }: PitcherDetailProps) {
+export default function PitcherDetail({
+  player,
+  metric,
+  position,
+}: PitcherDetailProps) {
+  console.log('metric', metric);
   const [showExpectedSeries, setShowExpectedSeries] = useState(false);
   const [isSpin, setIsSpin] = useState(false);
   console.log('prediction', metric.reason);
@@ -67,7 +73,8 @@ export default function PitcherDetail({ player, metric }: PitcherDetailProps) {
             {/*그래프*/}
             <div className="w-full max-md:px-2 max-md:items-center">
               <PlayerChart
-                position={'pitcher'}
+                positionMetric={metric}
+                position={position}
                 showExpectedSeries={showExpectedSeries}
               />
             </div>

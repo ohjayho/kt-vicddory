@@ -92,7 +92,11 @@ export default async function PitcherDetail({ params }: PitcherPageProps) {
   const aiPrediction: string = playerMetric.reason;
   return (
     <>
-      <PitcherDetailClient player={playerProfile} metric={playerMetric} />
+      <PitcherDetailClient
+        player={playerProfile}
+        metric={playerMetric}
+        position="pitcher"
+      />
     </>
   );
 }

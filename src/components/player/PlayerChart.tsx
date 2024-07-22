@@ -3,6 +3,18 @@ import Highcharts from 'highcharts';
 import HighchartsMore from 'highcharts/highcharts-more';
 import HighchartsReact from 'highcharts-react-official';
 import DarkUnica from 'highcharts/themes/dark-unica';
+import { TPitcherMetric, TCatcherMetric, TInfielderMetric } from '@/types';
+type positionType = {
+  pitcher: CategoryDescriptions;
+  catcher: CategoryDescriptions;
+  infielder: CategoryDescriptions;
+  outfielder: CategoryDescriptions;
+};
+interface PlayerChartProps {
+  positionMetric: TPitcherMetric | TCatcherMetric | TInfielderMetric;
+  position: keyof positionType;
+  showExpectedSeries: boolean;
+}
 HighchartsMore(Highcharts);
 DarkUnica(Highcharts);
 type CategoryDescriptions = {
@@ -11,12 +23,6 @@ type CategoryDescriptions = {
   standards: { [key: string]: number };
 };
 
-type positionType = {
-  pitcher: CategoryDescriptions;
-  catcher: CategoryDescriptions;
-  infielder: CategoryDescriptions;
-  outfielder: CategoryDescriptions;
-};
 const positionCategory: positionType = {
   pitcher: {
     categories: ['ERA', 'K/BB', 'WHIP', '피안타율', 'QS'],
@@ -29,9 +35,9 @@ const positionCategory: positionType = {
       QS: '선발 투수가 6이닝 이상 던지며 3점 이하의 자책점을 이용한 경기 수 (Quality Start). 투수가 많은 경기를 오래 던지며 적은 점수를 허용할수록 좋기 때문에 높을수록 좋습니다.',
     },
     standards: {
-      ERA: 2.0,
-      'K/BB': 4.0,
-      WHIP: 1.0,
+      ERA: 4.0,
+      'K/BB': 5.0,
+      WHIP: 1.5,
       피안타율: 0.4,
       QS: 20,
     },
@@ -97,22 +103,81 @@ const positionCategory: positionType = {
 let currentPosition = 'pitcher';
 
 export default function PlayerChart({
+  positionMetric,
   position,
   showExpectedSeries,
-}: {
-  position: keyof positionType;
-  showExpectedSeries: boolean;
-}) {
+}: PlayerChartProps) {
   const originalData = [1, 3, 0.6, 0.3, 10];
-  const originalData2 = [1, 2, 0.5, 0.2, 10];
+  const expectedData = (() => {
+    if (position === 'pitcher') {
+      const metric = positionMetric as TPitcherMetric;
+      console.log(metric);
+      return [
+        metric.ERA,
+        metric['K/BB'],
+        metric.WHIP,
+        metric.피안타율,
+        metric.QS,
+      ];
+    } else if (position === 'catcher') {
+      const metric = positionMetric as TCatcherMetric;
+      return [metric.FPCT, metric['CS%'], metric.PB, metric.rSB, metric.CERA];
+    } else if (position === 'infielder') {
+      const metric = positionMetric as TInfielderMetric;
+      return [
+        metric.BA,
+        metric.OBP,
+        metric.SLG,
+        metric.OPS,
+        metric.FPCT,
+        metric.WAR,
+      ];
+    } else if (position === 'outfielder') {
+      const metric = positionMetric as TInfielderMetric;
+      return [
+        metric.BA,
+        metric.OBP,
+        metric.SLG,
+        metric.OPS,
+        metric.FPCT,
+        metric.WAR,
+      ];
+    } else {
+      return [];
+    }
+  })();
+
   // Scale the data for each category based on the global maximum
   const scaledData = positionCategory[position].categories.map(
     (category, index) => {
       const yValue =
-        originalData[index] / positionCategory[position].standards[category];
+        expectedData[index] / positionCategory[position].standards[category];
+
       return {
         name: category,
-        y: parseFloat(yValue.toFixed(2)),
+        y: Math.min(parseFloat(yValue.toFixed(2)), 1),
+      };
+    },
+  );
+
+  const scaledExpectedData = positionCategory[position].categories.map(
+    (category, index) => {
+      let yExpectedValue =
+        expectedData[index] / positionCategory[position].standards[category];
+      return {
+        name: category,
+        y: parseFloat(yExpectedValue.toFixed(2)),
+      };
+    },
+  );
+
+  const notScaledExpectedData = positionCategory[position].categories.map(
+    (category, index) => {
+      const yValue = expectedData[index] / 1;
+
+      return {
+        name: category,
+        y: yValue,
       };
     },
   );
@@ -137,7 +202,6 @@ export default function PlayerChart({
     xAxis: {
       categories: positionCategory[position].categories,
       tickmarkPlacement: 'on',
-
       lineWidth: 0,
     },
     yAxis: {
@@ -154,7 +218,7 @@ export default function PlayerChart({
       },
       {
         name: 'Expected',
-        data: [0.18, 0.9, 0.8, 0.3, 0.6],
+        data: scaledExpectedData,
         visible: showExpectedSeries,
         pointPlacement: 'on',
       },
