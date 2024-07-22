@@ -9,29 +9,22 @@ import {
   TPitcherMetric,
   TCatcherMetric,
   TInfielderMetric,
+  IPitcherPlayerData,
+  IBatterPlayerData,
 } from '@/types';
 
 interface PitcherDetailProps {
   player: IPlayerBack | null;
+  playerData: IPitcherPlayerData | IBatterPlayerData;
   metric: TPitcherMetric | TCatcherMetric | TInfielderMetric;
   position: 'pitcher' | 'catcher' | 'infielder' | 'outfielder';
 }
-const isPitcherMetric = (metric: any): metric is TPitcherMetric => {
-  return metric.ERA !== undefined;
-};
-
-const isCatcherMetric = (metric: any): metric is TCatcherMetric => {
-  return metric.FPCT !== undefined && metric.PB !== undefined;
-};
-
-const isInfielderMetric = (metric: any): metric is TInfielderMetric => {
-  return metric.BA !== undefined && metric.OBP !== undefined;
-};
 
 export default function PitcherDetail({
   player,
   metric,
   position,
+  playerData,
 }: PitcherDetailProps) {
   console.log('metric', metric);
   const [showExpectedSeries, setShowExpectedSeries] = useState(false);
@@ -43,14 +36,11 @@ export default function PitcherDetail({
       return () => clearTimeout(timer);
     }
   }, [isSpin]);
-  console.log(isSpin);
 
   const handleAIButtonClick = () => {
     setShowExpectedSeries(true);
     setIsSpin(!isSpin);
   };
-
-  console.log(isSpin);
 
   const PlayerChart = dynamic(() => import('@/components/player/PlayerChart'), {
     ssr: false,
@@ -76,6 +66,7 @@ export default function PitcherDetail({
                 positionMetric={metric}
                 position={position}
                 showExpectedSeries={showExpectedSeries}
+                playerData={playerData}
               />
             </div>
             <div className="h-10 flex items-center justify-center max-md:pr-6">

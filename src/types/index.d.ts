@@ -155,7 +155,7 @@ type TCatcherMetric = {
   reason: string;
 };
 
-type TInfiedlerMetric = {
+type TInfielderMetric = {
   BA: number;
   OBP: number;
   SLG: number;
@@ -251,7 +251,7 @@ export {
   IPlayerBack,
   TCatcherMetric,
   TPitcherMetric,
-  TInfiedlerMetric,
+  TInfielderMetric,
   TBatterYearRecord,
   TPitcherYearRecord,
   IPitcherPlayerData,

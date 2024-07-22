@@ -70,6 +70,7 @@ export default async function PitcherDetail({ params }: PitcherPageProps) {
     return <div>Player not found</div>;
   }
   const playerProfile: IPlayerBack = player.data.gameplayer;
+  const playerData: IPitcherPlayerData = player.data.seasonsummary;
   const playerYearRecord: TPitcherYearRecord[] = player.data.yearrecordlist;
   // 예측 API
   const predictionRes: Response = await fetch(
@@ -89,12 +90,12 @@ export default async function PitcherDetail({ params }: PitcherPageProps) {
     return <div>Failed to fetch prediction data</div>;
   }
   const playerMetric: TPitcherMetric = await predictionRes.json();
-  const aiPrediction: string = playerMetric.reason;
   return (
     <>
       <PitcherDetailClient
         player={playerProfile}
         metric={playerMetric}
+        playerData={playerData}
         position="pitcher"
       />
     </>

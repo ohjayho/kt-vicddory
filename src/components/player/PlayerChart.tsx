@@ -3,7 +3,13 @@ import Highcharts from 'highcharts';
 import HighchartsMore from 'highcharts/highcharts-more';
 import HighchartsReact from 'highcharts-react-official';
 import DarkUnica from 'highcharts/themes/dark-unica';
-import { TPitcherMetric, TCatcherMetric, TInfielderMetric } from '@/types';
+import {
+  TPitcherMetric,
+  TCatcherMetric,
+  TInfielderMetric,
+  IPitcherPlayerData,
+  IBatterPlayerData,
+} from '@/types';
 type positionType = {
   pitcher: CategoryDescriptions;
   catcher: CategoryDescriptions;
@@ -14,6 +20,7 @@ interface PlayerChartProps {
   positionMetric: TPitcherMetric | TCatcherMetric | TInfielderMetric;
   position: keyof positionType;
   showExpectedSeries: boolean;
+  playerData: IPitcherPlayerData | IBatterPlayerData;
 }
 HighchartsMore(Highcharts);
 DarkUnica(Highcharts);
@@ -106,8 +113,25 @@ export default function PlayerChart({
   positionMetric,
   position,
   showExpectedSeries,
+  playerData,
 }: PlayerChartProps) {
-  const originalData = [1, 3, 0.6, 0.3, 10];
+  const testData = [1, 3, 0.6, 0.3, 10];
+  const originalData: number[] =
+    (() => {
+      if (position === 'pitcher') {
+        const data = playerData as IPitcherPlayerData;
+        const orgData = data.data.seasonsummary;
+        return [
+          parseFloat(orgData['era']),
+          parseFloat(orgData['kbb']),
+          parseFloat(orgData['whip']),
+          parseFloat(orgData['oavg']),
+          parseFloat(orgData['qs']),
+        ];
+      }
+      // 다른 포지션에 대한 처리도 필요하다면 추가
+      return [];
+    })() || []; // 항상 배열을 반환하도록 보장
   const expectedData = (() => {
     if (position === 'pitcher') {
       const metric = positionMetric as TPitcherMetric;
@@ -150,8 +174,11 @@ export default function PlayerChart({
   // Scale the data for each category based on the global maximum
   const scaledData = positionCategory[position].categories.map(
     (category, index) => {
+      const ynotExpectedValue = originalData[index]; // originalData가 배열임을 보장
+
       const yValue =
-        expectedData[index] / positionCategory[position].standards[category];
+        ynotExpectedValue[index] /
+        positionCategory[position].standards[category];
 
       return {
         name: category,
