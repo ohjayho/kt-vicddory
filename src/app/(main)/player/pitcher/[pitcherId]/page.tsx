@@ -90,10 +90,9 @@ export default async function PitcherDetail({ params }: PitcherPageProps) {
   }
   const playerMetric: TPitcherMetric = await predictionRes.json();
   const aiPrediction: string = playerMetric.reason;
-  console.log(aiPrediction);
   return (
     <>
-      <PitcherDetailClient player={playerProfile} prediction={aiPrediction} />
+      <PitcherDetailClient player={playerProfile} metric={playerMetric} />
     </>
   );
 }

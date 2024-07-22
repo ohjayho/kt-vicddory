@@ -3,20 +3,34 @@ import React, { useState, useEffect } from 'react';
 import PlayerCard from '@/components/tradingCard/PlayerCard';
 import dynamic from 'next/dynamic';
 import PlayerData from './PlayerData';
-import { IPlayerFront, IPlayerBack } from '@/types';
+import {
+  IPlayerFront,
+  IPlayerBack,
+  TPitcherMetric,
+  TCatcherMetric,
+  TInfielderMetric,
+} from '@/types';
 
 interface PitcherDetailProps {
   player: IPlayerBack | null;
-  prediction: string;
+  metric: TPitcherMetric | TCatcherMetric | TInfielderMetric;
 }
+const isPitcherMetric = (metric: any): metric is TPitcherMetric => {
+  return metric.ERA !== undefined;
+};
 
-export default function PitcherDetail({
-  player,
-  prediction,
-}: PitcherDetailProps) {
+const isCatcherMetric = (metric: any): metric is TCatcherMetric => {
+  return metric.FPCT !== undefined && metric.PB !== undefined;
+};
+
+const isInfielderMetric = (metric: any): metric is TInfielderMetric => {
+  return metric.BA !== undefined && metric.OBP !== undefined;
+};
+
+export default function PitcherDetail({ player, metric }: PitcherDetailProps) {
   const [showExpectedSeries, setShowExpectedSeries] = useState(false);
   const [isSpin, setIsSpin] = useState(false);
-  console.log('prediction', prediction);
+  console.log('prediction', metric.reason);
   useEffect(() => {
     if (isSpin) {
       const timer = setTimeout(() => setIsSpin(true), 1080); // Duration should match your CSS transition duration
@@ -69,7 +83,7 @@ export default function PitcherDetail({
             <div className="pl-6 mt-3">
               <div className="text-white pl-6 mt-3 ">AI 예측</div>
               <div className="flex items-center rounded-[5px] border-2 text-white border-white h-auto w-5/6 mx-6 p-4 max-md:w-11/12 max-md:flex max-md:justify-center">
-                <div className="text-white">{prediction}</div>
+                <div className="text-white">{metric.reason}</div>
               </div>
             </div>
           </div>
