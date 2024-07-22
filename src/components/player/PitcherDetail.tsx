@@ -2,15 +2,13 @@
 import React, { useState, useEffect } from 'react';
 import PlayerCard from '@/components/tradingCard/PlayerCard';
 import dynamic from 'next/dynamic';
+import PlayerData from './PlayerData';
 import { IPlayerFront, IPlayerBack } from '@/types';
 import { MdOutlineArrowRight } from 'react-icons/md';
 
 interface PitcherDetailProps {
   player: IPlayerBack | null;
 }
-const PlayerChart = dynamic(() => import('@/components/player/PlayerChart'), {
-  ssr: false,
-});
 
 export default function PitcherDetail({ player }: PitcherDetailProps) {
   const [detailButton, setDetailButton] = useState(false);
@@ -29,9 +27,6 @@ export default function PitcherDetail({ player }: PitcherDetailProps) {
     setIsSpin(!isSpin);
   };
 
-  const onDetailHandler = () => {
-    setDetailButton(!detailButton);
-  };
   console.log(isSpin);
 
   const PlayerChart = dynamic(() => import('@/components/player/PlayerChart'), {
@@ -79,17 +74,7 @@ export default function PitcherDetail({ player }: PitcherDetailProps) {
             </div>
           </div>
         </div>
-        <div className="flex text-white justify-center align-middle">
-          <button
-            className="h-8 w-fit mx-2 flex flex-row"
-            onClick={onDetailHandler}
-          >
-            <MdOutlineArrowRight
-              className={`w-8 h-8 ${detailButton ? 'rotate-90' : 'rotate-0'}`}
-            />
-            <div className="text-lg">선수 기록 상세보기</div>
-          </button>
-        </div>
+        <PlayerData player={player} />
       </div>
     </>
   );

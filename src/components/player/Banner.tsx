@@ -65,7 +65,7 @@ export default function Banner() {
             타자
             {pathname === 'batter' ? (
               <div className="">
-                <div className="sticky pb-0 mt-[14px] h-auto w-full bg-white">
+                <div className="sticky pb-0 mt-[15px] h-auto w-full ">
                   <div className="flex sticky justify-between mt-[10px] mx-auto text-black items-center w-full h-auto bg-white">
                     <div className="flex flex-row w-20 items-center  whitespace-nowrap">
                       <BatterBanner
