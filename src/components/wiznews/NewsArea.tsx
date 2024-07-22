@@ -3,6 +3,7 @@
 import { create } from 'zustand';
 import NewsBalloon from './NewsBalloon';
 import { useEffect } from 'react';
+import NewsLoader from './NewsLoader';
 
 export type TNewsContent = {
   artcContents: string;
@@ -25,17 +26,28 @@ export const useNewsListStore = create<NewsListStore>()((set) => ({
     set((state) => ({ newsList: [...state.newsList, ...news] })),
 }));
 
+export const fetchNews = async (pageNum: number) => {
+  const newsData = await (
+    await fetch(`/api/news?searchMax=5&pageNum=${pageNum}`, {
+      cache: 'force-cache',
+    })
+  ).json();
+  return newsData;
+};
+
 export default function NewsArea() {
   const newsList = useNewsListStore((state) => state.newsList);
   const setNewsList = useNewsListStore((state) => state.setNewsList);
   useEffect(() => {
-    const fetchNews = async () => {
-      const newsData = await (
-        await fetch(`/api/news`, { cache: 'force-cache' })
-      ).json();
-      setNewsList(newsData);
+    const getNews = async () => {
+      try {
+        const result = await fetchNews(1);
+        setNewsList(result);
+      } catch (e) {
+        console.log('Error:', e);
+      }
     };
-    fetchNews();
+    getNews();
   }, []);
   return (
     <>
@@ -52,6 +64,7 @@ export default function NewsArea() {
                 />
               ),
           )}
+        <NewsLoader />
       </div>
     </>
   );
