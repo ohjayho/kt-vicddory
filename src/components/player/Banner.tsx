@@ -17,7 +17,6 @@ type TPathNameText = {
 export default function Banner() {
   const pathname = usePathname().split('/')[2];
   const pathname2 = usePathname().split('/')[3];
-
   const text: TPathNameText = {
     coach: {
       title: '코칭스탭',
@@ -63,45 +62,49 @@ export default function Banner() {
             url="/player/batter"
             buttonStyle={pathname === 'batter' ? ' text-white border-b-4' : ''}
           >
-            타자{' '}
-            <div className="hidden group-hover:flex">
-              <div className="fixed pb-0 h-auto w-full bg-white">
-                <div className="flex fixed justify-between mt-[10px] mx-auto text-black items-center w-full h-auto bg-white">
-                  <div className="flex flex-row w-20 items-center  whitespace-nowrap">
-                    <BatterBanner
-                      url="catcher"
-                      buttonStyle={
-                        pathname2 == 'catcher'
-                          ? 'text-white bg-red-500'
-                          : 'hover:bg-red-500 hover:text-white'
-                      }
-                    >
-                      포수
-                    </BatterBanner>
-                    <BatterBanner
-                      url="infielder"
-                      buttonStyle={
-                        pathname2 == 'infielder'
-                          ? 'text-white bg-red-500'
-                          : 'hover:bg-red-500 hover:text-white'
-                      }
-                    >
-                      내야수
-                    </BatterBanner>
-                    <BatterBanner
-                      url="outfielder"
-                      buttonStyle={
-                        pathname2 == 'outfielder'
-                          ? 'text-white bg-red-500'
-                          : 'hover:bg-red-500 hover:text-white'
-                      }
-                    >
-                      외야수
-                    </BatterBanner>
+            타자
+            {pathname === 'batter' ? (
+              <div className="">
+                <div className="sticky pb-0 mt-[14px] h-auto w-full bg-white">
+                  <div className="flex sticky justify-between mt-[10px] mx-auto text-black items-center w-full h-auto bg-white">
+                    <div className="flex flex-row w-20 items-center  whitespace-nowrap">
+                      <BatterBanner
+                        url="catcher"
+                        buttonStyle={
+                          pathname2 == 'catcher'
+                            ? 'text-white bg-red-500'
+                            : 'hover:bg-red-500 hover:text-white'
+                        }
+                      >
+                        포수
+                      </BatterBanner>
+                      <BatterBanner
+                        url="infielder"
+                        buttonStyle={
+                          pathname2 == 'infielder'
+                            ? 'text-white bg-red-500'
+                            : 'hover:bg-red-500 hover:text-white'
+                        }
+                      >
+                        내야수
+                      </BatterBanner>
+                      <BatterBanner
+                        url="outfielder"
+                        buttonStyle={
+                          pathname2 == 'outfielder'
+                            ? 'text-white bg-red-500'
+                            : 'hover:bg-red-500 hover:text-white'
+                        }
+                      >
+                        외야수
+                      </BatterBanner>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            ) : (
+              <></>
+            )}
           </BannerBtn>{' '}
           <BannerBtn
             url="/player/cheerleader"
