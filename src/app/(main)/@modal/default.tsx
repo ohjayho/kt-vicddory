@@ -23,7 +23,7 @@ export default function Default() {
             height={120}
             className="w-72 -mb-4 mr-11"
           />
-          <Button width={52} text="xl" href="/test">👉🏻AI 야구 성향 테스트하러 가기👈🏻</Button>
+          <Button width={52} text="xl" href="/testModal">👉🏻AI 야구 성향 테스트하러 가기👈🏻</Button>
         </div>
         <Image
           src="/svgs/test/result/resultBackground.svg"
