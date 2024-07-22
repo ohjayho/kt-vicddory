@@ -130,9 +130,9 @@ const CardBack: React.FC<CardBackProps> = ({ player, size = 'large' }) => {
                 </div>
               </div>
               {/* 포지션 */}
-              <div className="bg-pink-300/0 w-full h-full flex flex-col pt-2">
+              <div className="bg-pink-300/0 w-full h-full flex flex-col pt-2 justify-between">
                 {/* 포지션 맵 */}
-                <div className="absolute ml-8 mt-1 w-[120px] h-auto">
+                <div className="absolute ml-6 mt-1 w-[120px] h-auto">
                   {' '}
                   <img
                     src={`/images/player/playerPosition/${player.positionEng}.png`}
@@ -140,7 +140,7 @@ const CardBack: React.FC<CardBackProps> = ({ player, size = 'large' }) => {
                     className="absolute left-0 object-cover rounded-0"
                   />
                 </div>
-                <div className="flex flex-row place-content-end items-end pt-10 mr-14">
+                <div className="flex flex-row place-content-end items-end pt-10 mr-8">
                   {/* 포지션 국문 */}
                   <p className="text-xl">{player.positionKor}</p>
 
@@ -148,7 +148,7 @@ const CardBack: React.FC<CardBackProps> = ({ player, size = 'large' }) => {
                     {/* 투타 */}
                     <p className="">{player.positionHitType}</p>
                     {/* 포지션 영문 */}
-                    <div className="">{player.positionEng}</div>
+                    <div className="pl-2">{player.positionEng}</div>
                   </div>
                 </div>
               </div>
