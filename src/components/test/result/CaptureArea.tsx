@@ -4,7 +4,7 @@ import { useEffect, useState, forwardRef } from 'react';
 import Image from 'next/image';
 import Loading from '@/app/(test)/test/loading';
 
-const CaptureArea = forwardRef<HTMLDivElement>(() => {
+const CaptureArea = forwardRef<HTMLDivElement>((_, ref) => {
   const [result, setResult] = useState<{
     position: string;
     response: string;
@@ -25,6 +25,7 @@ const CaptureArea = forwardRef<HTMLDivElement>(() => {
   return (
     <div
       id="download"
+      ref={ref}
       className="w-full h-[883px] bg-[#FFFFFF] flex flex-col justify-center items-center relative"
     >
       <div className="absolute flex justify-center items-center top-10 w-72 h-9 bg-red-100 rounded-full text-white -mt-7 mb-3">
