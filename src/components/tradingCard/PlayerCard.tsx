@@ -2,27 +2,11 @@
 
 import CardFront from '@/components/tradingCard/CardFront';
 import CardBack from '@/components/tradingCard/CardBack';
-import Player from '@/components/player/Player';
+import { IPlayerBack } from '@/types';
 import { useState, useEffect } from 'react';
-const playerData = [
-  {
-    korName: '강현우',
-    engName: 'Kang Hyun Woo',
-    backNum: 55,
-    playerImg: 'kt11.png',
-    positionKor: '투수',
-    positionEng: 'Pitcher',
-    positionPH: '우수우타',
-    positionImg: 'pitcher.png',
-    playerDOB: '1999.04.14',
-    playerHeight: 185,
-    playerWeight: 88,
-    debutYear: 2018,
-  },
-];
 
 interface PlayerCardProps {
-  player: Player;
+  player: IPlayerBack;
   size?: 'small' | 'medium' | 'large';
   checkSpin: boolean;
 }
@@ -37,19 +21,16 @@ const photoSizes = {
   medium: 'w-[228px] h-[316px]',
   large: 'w-[370px] h-[520px]',
 };
-const PlayerCard: React.FC<PlayerCardProps> = ({
+export default function PlayerCard({
+  player,
   size = 'medium',
   checkSpin,
-}: {
-  size?: 'small' | 'medium' | 'large';
-  checkSpin: boolean;
-}) => {
+}: PlayerCardProps) {
   const [isFlipped, setIsFlipped] = useState(false);
   const [isSpin, setIsSpin] = useState(false);
 
   const sizeClass = sizeClasses[size];
   const photoSize = photoSizes[size];
-  console.log(size);
   const handleImageClick = () => {
     setIsFlipped(!isFlipped);
   };
@@ -74,22 +55,20 @@ const PlayerCard: React.FC<PlayerCardProps> = ({
             <div
               className={`${sizeClass} absolute inset-0 object-cover [backface-visibility:hidden]`}
             >
-              {playerData.map((player, index) => (
-                <CardFront key={index} player={player} size={size} />
-              ))}
+              <CardFront
+                player={player}
+                size={size}
+                onClick={() => handleImageClick()}
+              />
             </div>
             <div
               className={`${sizeClass} absolute inset-0 object-cover [transform:rotateY(180deg)] [backface-visibility:hidden]`}
             >
-              {playerData.map((player, index) => (
-                <CardBack key={index} player={player} size={size} />
-              ))}
+              <CardBack player={player} size={size} />
             </div>
           </div>
         </div>
       </div>
     </>
   );
-};
-
-export default PlayerCard;
+}

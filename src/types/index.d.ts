@@ -127,6 +127,124 @@ type TWinLossData = {
   recent: RecentStats;
 };
 
+// Player
+interface IPlayerFront {
+  korName: string;
+  backNum: string;
+  playerFrontImg: string;
+}
+
+interface IPlayerBack extends IPlayerFront {
+  engName: string;
+  playerBackImg: string;
+  positionKor: string;
+  positionEng: string;
+  positionHitType: string;
+  positionImg: string;
+  playerDOB: string;
+  playerHeight: number;
+  playerWeight: number;
+  debutYear: number;
+}
+
+// Player Metric
+type TPitcherMetric = {
+  ERA: number;
+  'K/BB': number;
+  WHIP: number;
+  QS: number;
+  피안타율: number;
+  reason: string;
+};
+
+type TCatcherMetric = {
+  FPCT: number;
+  'CS%': number;
+  PB: number;
+  rSB: number;
+  CERA: number;
+  reason: string;
+};
+
+type TInfielderMetric = {
+  BA: number;
+  OBP: number;
+  SLG: number;
+  OPS: number;
+  FPCT: number;
+  WAR: number;
+  reason: string;
+};
+
+type TBatterYearRecord = {
+  ab: number;
+  bb: number;
+  bra: string;
+  cs: number;
+  gamenum: number;
+  gd: number;
+  gyear: string;
+  h2: number;
+  h3: number;
+  hit: number;
+  hp: number;
+  hr: number;
+  hra: string;
+  kk: number;
+  rbi: number;
+  run: number;
+  sb: number;
+  slg: string;
+  teamCode: string;
+  teamName: string;
+}[];
+
+type TPitcherYearRecord = {
+  bb: number;
+  bf: number;
+  er: number;
+  era: string;
+  gamenum: number;
+  gyear: string;
+  hit: number;
+  hold: number;
+  hp: number;
+  hr: number;
+  inn2: number;
+  innDisplay: string;
+  kk: number;
+  l: number;
+  r: number;
+  sho: number;
+  sv: number;
+  teamCode: string;
+  teamName: string;
+  w: number;
+  wCg: number;
+  wra: string;
+}[];
+
+interface IPitcherPlayerData {
+  data: {
+    recentgamerecordlist: any[];
+    recentgamerecordlistfutures: any[];
+    seasonsummary: any;
+    yearrecordlist: TPitcherYearRecord[];
+    seasonsummaryfutures: any;
+    gameplayer: IPlayerBack;
+    // currentsummary?: TPitcherMetric;
+  };
+}
+interface IBatterPlayerData {
+  data: {
+    recentgamerecordlist: any[];
+    recentgamerecordlistfutures: any[];
+    seasonsummary: any;
+    yearrecordlist: TBatterYearRecord[];
+    seasonsummaryfutures: any;
+    gameplayer: IPlayerBack;
+  };
+}
 type TRanking = {
   rank: number;
   team: string;
@@ -168,6 +286,15 @@ export {
   TTeamRecord,
   TGameInfo,
   TWinLossData,
+  IPlayerFront,
+  IPlayerBack,
+  TCatcherMetric,
+  TPitcherMetric,
+  TInfielderMetric,
+  TBatterYearRecord,
+  TPitcherYearRecord,
+  IPitcherPlayerData,
+  IBatterPlayerData,
   TRanking,
   TYearData,
   TDailyData,

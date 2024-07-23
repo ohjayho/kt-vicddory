@@ -1,11 +1,8 @@
-import Banner from '@/components/player/Banner';
+'use client';
+import { useRouter } from 'next/navigation';
 
-export default function Batcher() {
-  return (
-    <>
-      <div>
-        <Banner title="타자" />
-      </div>
-    </>
-  );
+export default function BatterMain() {
+  const router = useRouter();
+  router.replace('/player/batter/catcher');
+  return null;
 }
