@@ -92,4 +92,28 @@
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
   }
+  /* Act as a border */
+  .generate-btn-wrapper {
+    @apply relative overflow-hidden rounded-2xl bg-gradient-to-b from-slate-700 to-slate-800;
+  }
+
+  /* Gradient */
+  .generate-btn-wrapper::before {
+    background: conic-gradient(
+      rgba(244, 114, 182, 0.4) 0deg,
+      rgba(192, 132, 252, 0.4) 0deg,
+      transparent 80deg
+    );
+
+    @apply absolute left-[-50%] top-[-130%] h-[350%] w-[200%] animate-border-spin content-[''];
+  }
+
+  /* Body */
+  .generate-btn-content {
+    @apply absolute left-[1px] top-[1px] h-[calc(100%-2px)] w-[calc(100%-2px)] rounded-2xl bg-gradient-to-b from-slate-800 to-slate-900;
+  }
+
+  .ball {
+    @apply h-8 w-8 shadow-[inset_0_0_18px_#fff,inset_6px_0_18px_violet,inset_-6px_0_18px_#0ff,inset_6px_0_30px_violet,inset_-6px_0_30px_#0ff,0_0_18px_#fff,-4px_0_18px_violet,4px_0_18px_#0ff] rounded-[100px] left-[50vw] top-[50vh];
+  }
 }
