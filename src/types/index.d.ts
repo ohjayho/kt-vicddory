@@ -232,6 +232,7 @@ interface IPitcherPlayerData {
     yearrecordlist: TPitcherYearRecord[];
     seasonsummaryfutures: any;
     gameplayer: IPlayerBack;
+    // currentsummary?: TPitcherMetric;
   };
 }
 interface IBatterPlayerData {

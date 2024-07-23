@@ -96,7 +96,6 @@ export default async function CatcherDetail({ params }: CatcherPageProps) {
       <PlayerDetailClient
         player={playerProfile}
         metric={playerMetric}
-        playerData={playerData}
         position="catcher"
       />
     </>
