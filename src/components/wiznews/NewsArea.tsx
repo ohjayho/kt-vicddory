@@ -57,7 +57,7 @@ export default function NewsArea() {
   }, []);
   return (
     <>
-      <div className="w-[820px] max-lg:w-[500px] h-[600px] overflow-y-scroll no-scrollbar">
+      <div className="w-[820px] max-lg:w-[500px] h-[600px] overflow-y-scroll no-scrollbar pt-1">
         {newsList.length &&
           newsList.map(
             (news, index) =>
