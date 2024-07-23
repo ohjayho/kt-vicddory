@@ -38,9 +38,15 @@ const config: Config = {
           '0%': { width: '0%' },
           '100%': { width: 'var(--width)' },
         },
+        'border-spin': {
+          '100%': {
+            transform: 'rotate(-360deg)',
+          },
+        },
       },
       animation: {
         expand: 'expand 2s ease-out forwards',
+        'border-spin': 'border-spin 3s linear infinite',
       },
     },
   },
