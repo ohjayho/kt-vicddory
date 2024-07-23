@@ -70,7 +70,7 @@ export default async function PitcherDetail({ params }: PitcherPageProps) {
     return <div>Player not found</div>;
   }
   const playerProfile: IPlayerBack = player.data.gameplayer;
-  const playerData: IPitcherPlayerData = player.data.seasonsummary;
+  // const playerData: IPitcherPlayerData = player.data.seasonsummary;
   const playerYearRecord: TPitcherYearRecord[] = player.data.yearrecordlist;
   // 예측 API
   const predictionRes: Response = await fetch(

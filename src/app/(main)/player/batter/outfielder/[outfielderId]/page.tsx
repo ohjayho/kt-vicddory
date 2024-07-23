@@ -74,7 +74,7 @@ export default async function OutfielderDetail({
     return <div>Player not found</div>;
   }
   const playerProfile: IPlayerBack = player.data.gameplayer;
-  const playerData: IBatterPlayerData = player.data.seasonsummary;
+  // const playerData: IBatterPlayerData = player.data.seasonsummary;
   const playerYearRecord: TBatterYearRecord[] = player.data.yearrecordlist;
   // 예측 API
   const predictionRes: Response = await fetch(

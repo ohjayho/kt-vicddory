@@ -8,8 +8,8 @@ import {
   TPitcherMetric,
   TCatcherMetric,
   TInfielderMetric,
-  IPitcherPlayerData,
-  IBatterPlayerData,
+  // IPitcherPlayerData,
+  // IBatterPlayerData,
 } from '@/types';
 
 interface PlayerDetailProps {
