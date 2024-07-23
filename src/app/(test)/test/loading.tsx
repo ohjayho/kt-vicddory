@@ -13,9 +13,12 @@ const images = [
   '/svgs/test/loading/7.svg',
 ];
 
+const texts = ['야구 데이터 분석중', '성향 분석중', 'AI 퀴즈 생성중'];
+
 export default function Loading() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [dots, setDots] = useState('');
+  const [text, setText] = useState(0);
 
   useEffect(() => {
     const imageInterval = setInterval(() => {
@@ -26,9 +29,20 @@ export default function Loading() {
   }, []);
 
   useEffect(() => {
-    const textInterval = setInterval(() => {
+    const dotInterval = setInterval(() => {
       setDots((prevDots) => (prevDots.length === 6 ? '' : prevDots + '.'));
-    }, 500);
+    }, 400);
+
+    return () => clearInterval(dotInterval);
+  }, []);
+
+  useEffect(() => {
+    const textInterval = setInterval(() => {
+      setText((prevIndex) => {
+        setDots('');
+        return (prevIndex + 1) % texts.length;
+      });
+    }, 3000);
 
     return () => clearInterval(textInterval);
   }, []);
@@ -48,7 +62,8 @@ export default function Loading() {
         ))}
       </div>
       <div className="mt-4 font-bold text-3xl text-[#444444]">
-        공 가지러 가는 중{dots}
+        {texts[text]}
+        {dots}
       </div>
     </div>
   );
