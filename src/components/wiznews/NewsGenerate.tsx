@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import { useState } from 'react';
 import { useNewsListStore } from './NewsArea';
-export default function NewsSearch() {
+export default function NewsGenerate() {
   // const [dateType, setDateType] = useState('text');
   const [date, setDate] = useState('2024-07-11');
   const [loading, setLoading] = useState(false);
