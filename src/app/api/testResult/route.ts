@@ -1,13 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
-import clientPromise from '@/libs/mongodb';
+// import clientPromise from '@/libs/mongodb';
 
 export async function POST(req: NextRequest) {
   const { positions } = await req.json();
 
   try {
-    const client = await clientPromise;
-    const db = client.db('vicddory');
-    const collection = db.collection('test-results');
+    // const client = await clientPromise;
+    // const db = client.db('vicddory');
+    // const collection = db.collection('test-results');
 
     const response = await fetch(`${process.env.API_URL}/evaluate`, {
       method: 'POST',
@@ -22,8 +22,6 @@ export async function POST(req: NextRequest) {
     }
 
     const result = await response.json();
-
-    const dbResponse = await collection.insertOne(result);
 
     return NextResponse.json(result, { status: 200 });
   } catch (error) {

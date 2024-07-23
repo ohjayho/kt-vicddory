@@ -8,7 +8,7 @@ type TCaptureAreaProps = {
   divRef: RefObject<HTMLDivElement>;
 };
 
-const CaptureArea = forwardRef<HTMLDivElement, TCaptureAreaProps>(({ divRef }, ref) => {
+const CaptureArea = forwardRef<HTMLDivElement, TCaptureAreaProps>(({ divRef }) => {
   const [result, setResult] = useState<{ position: string; response: string } | null>(null);
 
   useEffect(() => {
