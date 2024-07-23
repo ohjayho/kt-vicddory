@@ -1,0 +1,71 @@
+{
+    "data": {
+        "list": [
+            {
+                "korName": "강민성",
+                "backNum": "5",
+                "playerFrontImg": "batter/infielder/강민성.jpg"
+            },
+            {
+                "korName": "강백호",
+                "backNum": "50",
+                "playerFrontImg": "batter/infielder/강백호.jpg"
+            },
+            {
+                "korName": "김상수",
+                "backNum": "7",
+                "playerFrontImg": "batter/infielder/김상수.jpg"
+            },
+            {
+                "korName": "박경수",
+                "backNum": "6",
+                "playerFrontImg": "batter/infielder/박경수.jpg"
+            },
+            {
+                "korName": "박민석",
+                "backNum": "25",
+                "playerFrontImg": "batter/infielder/박민석.jpg"
+            },
+            {
+                "korName": "신본기",
+                "backNum": "56",
+                "playerFrontImg": "batter/infielder/신본기.jpg"
+            },
+            {
+                "korName": "오윤석",
+                "backNum": "4",
+                "playerFrontImg": "batter/infielder/오윤석.jpg"
+            },
+            {
+                "korName": "오재일",
+                "backNum": "36",
+                "playerFrontImg": "batter/infielder/오재일.jpg"
+            },
+            {
+                "korName": "윤준혁",
+                "backNum": "35",
+                "playerFrontImg": "batter/infielder/윤준혁.jpg"
+            },
+            {
+                "korName": "이호연",
+                "backNum": "34",
+                "playerFrontImg": "batter/infielder/이호연.jpg"
+            },
+            {
+                "korName": "장준원",
+                "backNum": "16",
+                "playerFrontImg": "batter/infielder/장준원.jpg"
+            },
+            {
+                "korName": "천성호",
+                "backNum": "14",
+                "playerFrontImg": "batter/infielder/천성호.jpg"
+            },
+            {
+                "korName": "황재균",
+                "backNum": "10",
+                "playerFrontImg": "batter/infielder/황재균.jpg"
+            }
+        ]
+    }
+}

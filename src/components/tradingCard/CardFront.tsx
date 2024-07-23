@@ -1,15 +1,10 @@
 import React, { useEffect, useRef } from 'react';
+import { IPlayerFront } from '@/types';
 // import PlayerCardProps from '@/components/tradingCard/PlayerCard';
-interface IPitcher {
-  korName: string;
-  engName: string;
-  backNum: number;
-  playerImg: string;
-}
-
 interface CardFrontProps {
-  player: IPitcher;
+  player: IPlayerFront;
   size?: 'small' | 'medium' | 'large';
+  onClick?: () => void;
 }
 
 const sizeClasses = {
@@ -47,7 +42,11 @@ const korNameFonts = {
   medium: 'text-xl',
   large: 'text-3xl',
 };
-const CardFront: React.FC<CardFrontProps> = ({ player, size = 'medium' }) => {
+const CardFront: React.FC<CardFrontProps> = ({
+  player,
+  size = 'medium',
+  onClick,
+}) => {
   const sizeClass = sizeClasses[size];
   const photoSize = photoSizes[size];
   const textBox = textBoxes[size];
@@ -87,17 +86,18 @@ const CardFront: React.FC<CardFrontProps> = ({ player, size = 'medium' }) => {
       <div>
         {/* 홀로그램 이미지 */}
         <div
-          className={`absolute ${sizeClass} inset-x bg-hologram-gradient brightness-110 opacity-80 mix-blend-color-dodge bg-cover bg-[150%_150%] transition-all duration-100`}
+          className={`hidden absolute ${sizeClass} inset-x bg-hologram-gradient brightness-110 opacity-80 mix-blend-color-dodge bg-cover bg-[150%_150%] transition-all duration-100`}
           ref={cardRef}
         ></div>
         {/* 카드 앞면 */}
         <div
-          className={`bg-black ${sizeClass} rounded-lg shadow-black/40 overflow-visible relative m-4 shadow-lg items-center justify-center transform transition-transform duration-100`}
+          className={`bg-black ${sizeClass} rounded-lg overflow-visible relative m-4 items-center justify-center transform transition-transform duration-100`}
+          onClick={onClick}
         >
           {/* 선수 이미지 */}
           <div className={`relative ${photoSize} mx-auto`}>
             <img
-              src={`/images/player/playerCardFront/${player.playerImg}`}
+              src={`/images/player/playerCardFront/${player.playerFrontImg}`}
               alt={`${player.korName} Image`}
               className="absolute left-0 top-3 w-full h-full object-cover rounded-2xl"
             />

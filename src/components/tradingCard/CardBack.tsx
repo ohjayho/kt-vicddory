@@ -1,21 +1,7 @@
 import React from 'react';
-
-interface IPitcherBack {
-  korName: string;
-  engName: string;
-  playerImg: string;
-  positionKor: string;
-  positionEng: string;
-  positionPH: string;
-  positionImg: string;
-  playerDOB: string;
-  playerHeight: number;
-  playerWeight: number;
-  debutYear: number;
-}
-
+import { IPlayerBack } from '@/types';
 interface CardBackProps {
-  player: IPitcherBack;
+  player: IPlayerBack;
   size?: 'small' | 'medium' | 'large';
 }
 
@@ -37,7 +23,7 @@ const CardBack: React.FC<CardBackProps> = ({ player, size = 'large' }) => {
           {/* 선수 이미지 */}
           <div className="relative w-[228px] h-[136px] mx-auto">
             <img
-              src={`/images/player/playerCardBack/${player.playerImg}`}
+              src={player.playerBackImg}
               alt={`${player.korName} Image`}
               className="absolute left-0 top-4 w-full h-full object-cover rounded-2xl"
             />
@@ -80,7 +66,7 @@ const CardBack: React.FC<CardBackProps> = ({ player, size = 'large' }) => {
 
                   <div className="text-right flex flex-col">
                     {/* 투타 */}
-                    <p className="">{player.positionPH}</p>
+                    <p className="">{player.positionHitType}</p>
                     {/* 포지션 영문 */}
                     <div className="">{player.positionEng}</div>
                   </div>
@@ -117,7 +103,7 @@ const CardBack: React.FC<CardBackProps> = ({ player, size = 'large' }) => {
           {/* 선수 이미지 */}
           <div className="relative w-[324px] h-[196px] mx-auto">
             <img
-              src={`/images/player/playerCardBack/${player.playerImg}`}
+              src={player.playerBackImg}
               alt={`${player.korName} Image`}
               className="absolute left-0 top-4 w-full h-full object-cover rounded-2xl"
             />
@@ -144,25 +130,25 @@ const CardBack: React.FC<CardBackProps> = ({ player, size = 'large' }) => {
                 </div>
               </div>
               {/* 포지션 */}
-              <div className="bg-pink-300/0 w-full h-full flex flex-col pt-2">
+              <div className="bg-pink-300/0 w-full h-full flex flex-col pt-2 justify-between">
                 {/* 포지션 맵 */}
-                <div className="absolute ml-8 mt-1 w-[120px] h-auto">
+                <div className="absolute ml-6 mt-1 w-[120px] h-auto">
                   {' '}
                   <img
-                    src={`/images/player/playerPosition/${player.positionImg}`}
+                    src={`/images/player/playerPosition/${player.positionEng}.png`}
                     alt={`${player.positionKor} 사진`}
                     className="absolute left-0 object-cover rounded-0"
                   />
                 </div>
-                <div className="flex flex-row place-content-end items-end pt-10 mr-14">
+                <div className="flex flex-row place-content-end items-end pt-10 mr-8">
                   {/* 포지션 국문 */}
                   <p className="text-xl">{player.positionKor}</p>
 
                   <div className="text-right flex flex-col">
                     {/* 투타 */}
-                    <p className="">{player.positionPH}</p>
+                    <p className="">{player.positionHitType}</p>
                     {/* 포지션 영문 */}
-                    <div className="">{player.positionEng}</div>
+                    <div className="pl-2">{player.positionEng}</div>
                   </div>
                 </div>
               </div>

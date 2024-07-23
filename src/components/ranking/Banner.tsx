@@ -28,7 +28,7 @@ export default function Banner() {
 
   return (
     <>
-      <div className="pt-20">
+      <div className="flex-none pt-20">
         <div className="bg-[url('/images/bannerBg.png')] h-[252px] w-full flex flex-col items-center text-center text-white">
           <div>
             <h1 className="mt-14 text-5xl max-sm:text-3xl font-extrabold">

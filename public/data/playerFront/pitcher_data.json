@@ -1,0 +1,166 @@
+{
+    "data": {
+        "list": [
+            {
+                "korName": "강건",
+                "backNum": "99",
+                "playerFrontImg": "pitcher/강건.jpg"
+            },
+            {
+                "korName": "고영표",
+                "backNum": "1",
+                "playerFrontImg": "pitcher/고영표.jpg"
+            },
+            {
+                "korName": "김건웅",
+                "backNum": "49",
+                "playerFrontImg": "pitcher/김건웅.jpg"
+            },
+            {
+                "korName": "김민",
+                "backNum": "11",
+                "playerFrontImg": "pitcher/김민.jpg"
+            },
+            {
+                "korName": "김민성",
+                "backNum": "94",
+                "playerFrontImg": "pitcher/김민성.jpg"
+            },
+            {
+                "korName": "김민수",
+                "backNum": "26",
+                "playerFrontImg": "pitcher/김민수.jpg"
+            },
+            {
+                "korName": "김영현",
+                "backNum": "48",
+                "playerFrontImg": "pitcher/김영현.jpg"
+            },
+            {
+                "korName": "문용익",
+                "backNum": "13",
+                "playerFrontImg": "pitcher/문용익.jpg"
+            },
+            {
+                "korName": "박세진",
+                "backNum": "33",
+                "playerFrontImg": "pitcher/박세진.jpg"
+            },
+            {
+                "korName": "박시영",
+                "backNum": "46",
+                "playerFrontImg": "pitcher/박시영.jpg"
+            },
+            {
+                "korName": "박영현",
+                "backNum": "60",
+                "playerFrontImg": "pitcher/박영현.jpg"
+            },
+            {
+                "korName": "벤자민",
+                "backNum": "43",
+                "playerFrontImg": "pitcher/벤자민.jpg"
+            },
+            {
+                "korName": "성재헌",
+                "backNum": "95",
+                "playerFrontImg": "pitcher/성재헌.jpg"
+            },
+            {
+                "korName": "소형준",
+                "backNum": "30",
+                "playerFrontImg": "pitcher/소형준.jpg"
+            },
+            {
+                "korName": "손동현",
+                "backNum": "41",
+                "playerFrontImg": "pitcher/손동현.jpg"
+            },
+            {
+                "korName": "신병률",
+                "backNum": "15",
+                "playerFrontImg": "pitcher/신병률.jpg"
+            },
+            {
+                "korName": "엄상백",
+                "backNum": "18",
+                "playerFrontImg": "pitcher/엄상백.jpg"
+            },
+            {
+                "korName": "우규민",
+                "backNum": "21",
+                "playerFrontImg": "pitcher/우규민.jpg"
+            },
+            {
+                "korName": "원상현",
+                "backNum": "63",
+                "playerFrontImg": "pitcher/원상현.jpg"
+            },
+            {
+                "korName": "육청명",
+                "backNum": "64",
+                "playerFrontImg": "pitcher/육청명.jpg"
+            },
+            {
+                "korName": "윤강찬",
+                "backNum": "65",
+                "playerFrontImg": "pitcher/윤강찬.jpg"
+            },
+            {
+                "korName": "이상동",
+                "backNum": "37",
+                "playerFrontImg": "pitcher/이상동.jpg"
+            },
+            {
+                "korName": "이선우",
+                "backNum": "61",
+                "playerFrontImg": "pitcher/이선우.jpg"
+            },
+            {
+                "korName": "이정현",
+                "backNum": "51",
+                "playerFrontImg": "pitcher/이정현.jpg"
+            },
+            {
+                "korName": "이채호",
+                "backNum": "17",
+                "playerFrontImg": "pitcher/이채호.jpg"
+            },
+            {
+                "korName": "이태규",
+                "backNum": "45",
+                "playerFrontImg": "pitcher/이태규.jpg"
+            },
+            {
+                "korName": "전용주",
+                "backNum": "29",
+                "playerFrontImg": "pitcher/전용주.jpg"
+            },
+            {
+                "korName": "조이현",
+                "backNum": "54",
+                "playerFrontImg": "pitcher/조이현.jpg"
+            },
+            {
+                "korName": "주권",
+                "backNum": "38",
+                "playerFrontImg": "pitcher/주권.jpg"
+            },
+            {
+                "korName": "쿠에바스",
+                "backNum": "32",
+                "playerFrontImg": "pitcher/쿠에바스.jpg"
+            },
+            {
+                "korName": "하준호",
+                "backNum": "28",
+                "playerFrontImg": "pitcher/하준호.jpg"
+            },
+            {
+                "korName": "한차현",
+                "backNum": "59",
+                "playerFrontImg": "pitcher/한차현.jpg"
+            }
+        ]
+    }
+}

@@ -1,8 +1,10 @@
 import { TCustomCSSProperties, TGrapeProps } from '@/types';
 
 export default function Graph({ title, homeScore, awayScore }: TGrapeProps) {
-  const parseScore = (score: string) =>
-    score.includes('%') ? parseFloat(score) / 100 : parseFloat(score);
+  const parseScore = (score: string | number) =>
+    typeof score === 'string' && score.includes('%')
+      ? parseFloat(score) / 100
+      : parseFloat(score.toString());
 
   const homePercent = parseScore(homeScore) * 100;
   const awayPercent = parseScore(awayScore) * 100;
