@@ -1,8 +1,8 @@
 import { MongoClient } from 'mongodb';
 
 const globalWithMongo = global as typeof globalThis & {
-  _mongoClientPromise: Promise<MongoClient>
-}
+  _mongoClientPromise: Promise<MongoClient>;
+};
 
 let client: MongoClient;
 let clientPromise: Promise<MongoClient>;

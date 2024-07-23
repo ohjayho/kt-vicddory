@@ -29,7 +29,9 @@ export default function Test() {
             height={180}
             className="w-40 md:w-[200px] mb-4"
           />
-          <Button width={80} text="2xl" href="/test/questions/1">테스트 START</Button>
+          <Button width={80} text="2xl" href="/test/questions/1">
+            테스트 START
+          </Button>
         </div>
         <div className="w-full h-2/6 bg-[#FFFFFF] flex flex-col justify-center items-center text-center">
           <div className="w-74 h-[95px] text-sm mt-1 text-[#333333]">

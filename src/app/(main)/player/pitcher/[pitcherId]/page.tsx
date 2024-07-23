@@ -41,7 +41,7 @@ async function getPlayerData(
   const playerMeta = pitcherData.data.list.find(
     (player: IPlayerFront) => player.backNum === backNum,
   );
-  console.log(`playerMeta:${playerMeta}`);
+  // console.log(`playerMeta:${playerMeta}`);
 
   if (!playerMeta) {
     return null;
@@ -86,7 +86,7 @@ export default async function PitcherDetail({ params }: PitcherPageProps) {
   );
   if (!predictionRes.ok) {
     console.error('Error-Failed to fetch prediction data');
-    console.log(predictionRes.statusText);
+    // console.log(predictionRes.statusText);
     return <div>Failed to fetch prediction data</div>;
   }
   const playerMetric: TPitcherMetric = await predictionRes.json();

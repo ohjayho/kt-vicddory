@@ -1,18 +1,21 @@
-'use client'
+'use client';
 
-import React, { useEffect } from "react";
-import Image from "next/image";
+import React, { useEffect } from 'react';
+import Image from 'next/image';
 
 // type KakaoShareProps = {
 //   description: string;
 // };
 
 // const KakaoShare = ({ description }: KakaoShareProps) => {
-const KakaoShare = () => {  
-  const shareUrl = typeof window !== "undefined" ? "https://vicddory-frontend.vercel.app/test" : "";
+const KakaoShare = () => {
+  const shareUrl =
+    typeof window !== 'undefined'
+      ? 'https://vicddory-frontend.vercel.app/test'
+      : '';
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
+    if (typeof window !== 'undefined') {
       const { Kakao } = window;
 
       if (!Kakao.isInitialized()) {
@@ -25,8 +28,8 @@ const KakaoShare = () => {
     const { Kakao } = window;
 
     Kakao.Share.sendDefault({
-      objectType: "text",
-      text: "나와 잘 맞는 ktwiz 선수 알아보러 가기!",
+      objectType: 'text',
+      text: '나와 잘 맞는 ktwiz 선수 알아보러 가기!',
       link: {
         mobileWebUrl: shareUrl,
         webUrl: shareUrl,

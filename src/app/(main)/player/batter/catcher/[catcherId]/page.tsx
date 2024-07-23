@@ -64,7 +64,7 @@ async function getPlayerData(
   }
 }
 export default async function CatcherDetail({ params }: CatcherPageProps) {
-  console.log('catcher page');
+  // console.log('catcher page');
   const player = await getPlayerData(params.catcherId);
   if (!player) {
     return <div>Player not found</div>;
@@ -87,7 +87,7 @@ export default async function CatcherDetail({ params }: CatcherPageProps) {
   );
   if (!predictionRes.ok) {
     console.error('Error-Failed to fetch prediction data');
-    console.log(predictionRes.statusText);
+    // console.log(predictionRes.statusText);
     return <div>Failed to fetch prediction data</div>;
   }
   const playerMetric: TCatcherMetric = await predictionRes.json();

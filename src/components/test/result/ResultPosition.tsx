@@ -17,7 +17,14 @@ export default function ResultPosition({
   return (
     <>
       <div className="relative flex justify-center items-center w-full h-72 mb-[-15px] mt-14">
-        <ResultPositionImage src={src} alt={alt} width={width} left={left} ranking={ranking} ratio={ratio} />
+        <ResultPositionImage
+          src={src}
+          alt={alt}
+          width={width}
+          left={left}
+          ranking={ranking}
+          ratio={ratio}
+        />
         <Balloon className="absolute h-20 bottom-20">{text}</Balloon>
       </div>
       {description && tags && (

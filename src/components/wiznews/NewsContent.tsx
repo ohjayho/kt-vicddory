@@ -22,7 +22,7 @@ export default function NewsContent({ newsId }: TNewsId) {
     const detailedNews = await (
       await fetch(`/api/detailednews?params=${newsId}`)
     ).json();
-    console.log(detailedNews, '디테일');
+    // console.log(detailedNews, '디테일');
     return detailedNews;
   };
 

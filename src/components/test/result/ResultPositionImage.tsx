@@ -1,14 +1,14 @@
-import { TResultPositionProps } from "@/types";
-import Image from "next/image";
-import ResultPositionRankingContent from "./ResultPositionRankingContent";
+import { TResultPositionProps } from '@/types';
+import Image from 'next/image';
+import ResultPositionRankingContent from './ResultPositionRankingContent';
 
-export default function ResultPositionImage ({
+export default function ResultPositionImage({
   src,
   alt,
   width,
   left,
   ranking,
-  ratio
+  ratio,
 }: TResultPositionProps) {
   return (
     <>
@@ -29,6 +29,6 @@ export default function ResultPositionImage ({
         className="absolute right-14 bottom-16 opacity-85"
       />
       <ResultPositionRankingContent ranking={ranking} ratio={ratio} />
-    </> 
-  )
+    </>
+  );
 }

@@ -1,23 +1,23 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 const images = [
-  "/svgs/test/loading/0.svg",
-  "/svgs/test/loading/1.svg",
-  "/svgs/test/loading/2.svg",
-  "/svgs/test/loading/3.svg",
-  "/svgs/test/loading/4.svg",
-  "/svgs/test/loading/5.svg",
-  "/svgs/test/loading/6.svg",
-  "/svgs/test/loading/7.svg",
+  '/svgs/test/loading/0.svg',
+  '/svgs/test/loading/1.svg',
+  '/svgs/test/loading/2.svg',
+  '/svgs/test/loading/3.svg',
+  '/svgs/test/loading/4.svg',
+  '/svgs/test/loading/5.svg',
+  '/svgs/test/loading/6.svg',
+  '/svgs/test/loading/7.svg',
 ];
 
 export default function Loading() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [dots, setDots] = useState("");
+  const [dots, setDots] = useState('');
 
-  useEffect(() => {    
+  useEffect(() => {
     const imageInterval = setInterval(() => {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
     }, 300);
@@ -26,9 +26,9 @@ export default function Loading() {
   }, []);
 
   useEffect(() => {
-      const textInterval = setInterval(() => {
-      setDots((prevDots) => (prevDots.length === 6 ? "" : prevDots + "."));
-    }, 500); 
+    const textInterval = setInterval(() => {
+      setDots((prevDots) => (prevDots.length === 6 ? '' : prevDots + '.'));
+    }, 500);
 
     return () => clearInterval(textInterval);
   }, []);
@@ -42,12 +42,14 @@ export default function Loading() {
             src={image}
             alt={`슬라이드 이미지 ${index}`}
             className={`absolute w-60 h-60 object-cover transition-opacity duration-0 ease-in-out ${
-              index === currentImageIndex ? "opacity-100" : "opacity-0"
+              index === currentImageIndex ? 'opacity-100' : 'opacity-0'
             }`}
           />
         ))}
       </div>
-      <div className="mt-4 font-bold text-3xl text-[#444444]">공 가지러 가는 중{dots}</div>
+      <div className="mt-4 font-bold text-3xl text-[#444444]">
+        공 가지러 가는 중{dots}
+      </div>
     </div>
   );
 }

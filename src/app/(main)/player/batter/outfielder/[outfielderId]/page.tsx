@@ -36,14 +36,14 @@ async function getPlayerData(
     'public/data/playerFront',
     'outfielder_data.json',
   );
-  console.log(outfielderDataPath);
+  // console.log(outfielderDataPath);
   const outfielderData = JSON.parse(
     fs.readFileSync(outfielderDataPath, 'utf8'),
   );
   const playerMeta = outfielderData.data.list.find(
     (player: IPlayerFront) => player.backNum === backNum,
   );
-  console.log(`playerMeta:${playerMeta}`);
+  // console.log(`playerMeta:${playerMeta}`);
 
   if (!playerMeta) {
     return null;
@@ -55,7 +55,7 @@ async function getPlayerData(
     'playerDetail/batter/outfielder',
     `${playerMeta.korName}.json`,
   );
-  console.log(`filePath: ${filePath}`);
+  // console.log(`filePath: ${filePath}`);
 
   try {
     const fileContents = fs.readFileSync(filePath, 'utf8');
@@ -90,7 +90,7 @@ export default async function OutfielderDetail({
   );
   if (!predictionRes.ok) {
     console.error('Error-Failed to fetch prediction data');
-    console.log(predictionRes.statusText);
+    // console.log(predictionRes.statusText);
     return <div>Failed to fetch prediction data</div>;
   }
   const playerMetric: TInfielderMetric = await predictionRes.json();

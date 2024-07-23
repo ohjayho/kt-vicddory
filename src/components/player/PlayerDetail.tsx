@@ -24,10 +24,10 @@ export default function PlayerDetailClient({
   metric,
   position,
 }: PlayerDetailProps) {
-  console.log('metric', metric);
+  // console.log('metric', metric);
   const [showExpectedSeries, setShowExpectedSeries] = useState(false);
   const [isSpin, setIsSpin] = useState(false);
-  console.log('prediction', metric.reason);
+  // console.log('prediction', metric.reason);
   useEffect(() => {
     if (isSpin) {
       const timer = setTimeout(() => setIsSpin(true), 1080); // Duration should match your CSS transition duration
