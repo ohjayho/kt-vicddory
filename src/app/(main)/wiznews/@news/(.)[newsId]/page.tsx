@@ -21,7 +21,7 @@ export default function InterceptedWizNewsDetail({ params }: TParams) {
     };
     window.addEventListener('click', clickHandler);
     return () => window.removeEventListener('click', clickHandler);
-  });
+  }, []);
 
   return (
     <>
