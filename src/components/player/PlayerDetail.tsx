@@ -14,7 +14,7 @@ import {
 
 interface PlayerDetailProps {
   player: IPlayerBack | null;
-  playerData: IPitcherPlayerData | IBatterPlayerData;
+  // playerData: IPitcherPlayerData | IBatterPlayerData;
   metric: TPitcherMetric | TCatcherMetric | TInfielderMetric;
   position: 'pitcher' | 'catcher' | 'infielder' | 'outfielder';
 }
@@ -23,7 +23,6 @@ export default function PlayerDetailClient({
   player,
   metric,
   position,
-  playerData,
 }: PlayerDetailProps) {
   console.log('metric', metric);
   const [showExpectedSeries, setShowExpectedSeries] = useState(false);
@@ -65,7 +64,6 @@ export default function PlayerDetailClient({
                 positionMetric={metric}
                 position={position}
                 showExpectedSeries={showExpectedSeries}
-                playerData={playerData}
               />
             </div>
             <div className="h-10 flex items-center justify-center max-md:pr-6">

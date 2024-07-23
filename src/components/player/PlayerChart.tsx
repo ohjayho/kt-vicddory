@@ -7,8 +7,8 @@ import {
   TPitcherMetric,
   TCatcherMetric,
   TInfielderMetric,
-  IPitcherPlayerData,
-  IBatterPlayerData,
+  // IPitcherPlayerData,
+  // IBatterPlayerData,
 } from '@/types';
 type positionType = {
   pitcher: CategoryDescriptions;
@@ -20,7 +20,7 @@ interface PlayerChartProps {
   positionMetric: TPitcherMetric | TCatcherMetric | TInfielderMetric;
   position: keyof positionType;
   showExpectedSeries: boolean;
-  playerData: IPitcherPlayerData | IBatterPlayerData;
+  // playerData: any[];
 }
 HighchartsMore(Highcharts);
 DarkUnica(Highcharts);
@@ -61,7 +61,7 @@ const positionCategory: positionType = {
     },
     standards: {
       FPCT: 0.98,
-      'CS%': 0.4,
+      'CS%': 40,
       PB: 10,
       rSB: 4,
       CERA: 3.5,
@@ -113,31 +113,31 @@ export default function PlayerChart({
   positionMetric,
   position,
   showExpectedSeries,
-  playerData,
+  // playerData,
 }: PlayerChartProps) {
   // const testData = [1, 3, 0.6, 0.3, 10];
-  const originalData: number[] =
-    (() => {
-      if (position === 'pitcher') {
-        const data = playerData as IPitcherPlayerData;
-        const orgData = data.data.seasonsummary;
-        console.log(orgData);
-        return [
-          parseFloat(orgData['era']),
-          parseFloat(orgData['kbb']),
-          parseFloat(orgData['whip']),
-          parseFloat(orgData['oavg']),
-          parseFloat(orgData['qs']),
-        ];
-      }
-      // 다른 포지션에 대한 처리도 필요하다면 추가
-      return [];
-    })() || []; // 항상 배열을 반환하도록 보장
+  // const originalData: number[] =
+  //   (() => {
+  //     if (position === 'pitcher') {
+  //       const orgData = playerData;
+  //       // const orgData = data.data.seasonsummary;
+  //       console.log(orgData);
+  //       return [
+  //         // parseFloat(orgData['era']),
+  //         // parseFloat(orgData['kbb']),
+  //         // parseFloat(orgData['whip']),
+  //         // parseFloat(orgData['oavg']),
+  //         // parseFloat(orgData['qs']),
+  //       ];
+  //     }
+  //     // 다른 포지션에 대한 처리도 필요하다면 추가
+  //     return [];
+  //   })() || []; // 항상 배열을 반환하도록 보장
 
   const expectedData = (() => {
     if (position === 'pitcher') {
       const metric = positionMetric as TPitcherMetric;
-      // console.log(metric);
+      //console.log(metric);
       return [
         metric.ERA,
         metric['K/BB'],
@@ -296,7 +296,7 @@ export default function PlayerChart({
     <>
       <div className="p-4">
         <HighchartsReact highcharts={Highcharts} options={options} />
-        <div className="hidden">{originalData}</div>
+        <div className="hidden"></div>
       </div>
     </>
   );

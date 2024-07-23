@@ -95,8 +95,7 @@ export default async function InfielderDetail({ params }: InfielderPageProps) {
       <PlayerDetailClient
         player={playerProfile}
         metric={playerMetric}
-        playerData={playerData}
-        position="outfielder"
+        position="infielder"
       />
     </>
   );

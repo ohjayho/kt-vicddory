@@ -83,7 +83,7 @@ export default async function OutfielderDetail({
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        position: 'catcher',
+        position: 'outfielder',
         player_data: playerYearRecord,
       }),
     },
@@ -99,8 +99,7 @@ export default async function OutfielderDetail({
       <PlayerDetailClient
         player={playerProfile}
         metric={playerMetric}
-        playerData={playerData}
-        position="infielder"
+        position="outfielder"
       />
     </>
   );

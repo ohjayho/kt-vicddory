@@ -13,7 +13,7 @@ interface PitcherPageProps {
   params: { pitcherId: string };
 }
 
-export async function generateStaticParams() {
+export function generateStaticParams() {
   const filePath = path.join(
     process.cwd(),
     'public/data/playerFront',
@@ -36,7 +36,7 @@ async function getPlayerData(
     'public/data/playerFront',
     'pitcher_data.json',
   );
-  console.log(pitcherDataPath);
+  // console.log(pitcherDataPath);
   const pitcherData = JSON.parse(fs.readFileSync(pitcherDataPath, 'utf8'));
   const playerMeta = pitcherData.data.list.find(
     (player: IPlayerFront) => player.backNum === backNum,
@@ -95,7 +95,6 @@ export default async function PitcherDetail({ params }: PitcherPageProps) {
       <PlayerDetailClient
         player={playerProfile}
         metric={playerMetric}
-        playerData={playerData}
         position="pitcher"
       />
     </>
