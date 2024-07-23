@@ -8,7 +8,7 @@ export default function NewsBalloon({
 }: {
   direction: 'left' | 'right';
   content: string;
-  id: Number;
+  id: number;
   ai: boolean;
 }) {
   const position = direction === 'right' ? 'justify-end' : 'justify-start';

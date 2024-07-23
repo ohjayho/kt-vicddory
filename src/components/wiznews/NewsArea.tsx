@@ -8,7 +8,7 @@ import NewsLoader from './NewsLoader';
 export type TNewsContent = {
   artcContents: string;
   artcTitle: string;
-  artcSeq: Number;
+  artcSeq: number;
   imgFilePath?: string;
   [key: string]: any;
 } | null;
