@@ -1,7 +1,7 @@
 import React from 'react';
 import path from 'path';
 import fs from 'fs';
-import PlayerDetailClient from '@/components/player/PitcherDetail';
+import PlayerDetailClient from '@/components/player/PlayerDetail';
 import {
   IPlayerFront,
   IPlayerBack,
