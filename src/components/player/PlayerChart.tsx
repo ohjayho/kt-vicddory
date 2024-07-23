@@ -121,6 +121,7 @@ export default function PlayerChart({
       if (position === 'pitcher') {
         const data = playerData as IPitcherPlayerData;
         const orgData = data.data.seasonsummary;
+        console.log(orgData);
         return [
           parseFloat(orgData['era']),
           parseFloat(orgData['kbb']),
@@ -172,20 +173,20 @@ export default function PlayerChart({
   })();
 
   // Scale the data for each category based on the global maximum
-  const scaledData = positionCategory[position].categories.map(
-    (category, index) => {
-      const ynotExpectedValue = originalData[index]; // originalData가 배열임을 보장
+  // const scaledData = positionCategory[position].categories.map(
+  //   (category, index) => {
+  //     const ynotExpectedValue = originalData[index]; // originalData가 배열임을 보장
 
-      const yValue =
-        ynotExpectedValue[index] /
-        positionCategory[position].standards[category];
+  //     const yValue =
+  //       ynotExpectedValue[index] /
+  //       positionCategory[position].standards[category];
 
-      return {
-        name: category,
-        y: Math.min(parseFloat(yValue.toFixed(2)), 1),
-      };
-    },
-  );
+  //     return {
+  //       name: category,
+  //       y: Math.min(parseFloat(yValue.toFixed(2)), 1),
+  //     };
+  //   },
+  // );
 
   const scaledExpectedData = positionCategory[position].categories.map(
     (category, index) => {
@@ -239,7 +240,7 @@ export default function PlayerChart({
     series: [
       {
         name: 'Current',
-        data: scaledData,
+        data: scaledExpectedData,
         visible: true,
         pointPlacement: 'on',
       },

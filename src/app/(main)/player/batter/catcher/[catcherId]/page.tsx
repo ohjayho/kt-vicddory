@@ -1,8 +1,14 @@
 import React from 'react';
 import path from 'path';
 import fs from 'fs';
-import PitcherDetailClient from '@/components/player/PitcherDetail';
-import { IPlayerFront, IPlayerBack } from '@/types';
+import PlayerDetailClient from '@/components/player/PitcherDetail';
+import {
+  IPlayerFront,
+  IPlayerBack,
+  IBatterPlayerData,
+  TBatterYearRecord,
+  TCatcherMetric,
+} from '@/types';
 interface CatcherPageProps {
   params: { catcherId: string };
 }
@@ -24,7 +30,7 @@ export async function generateStaticParams() {
 
 async function getPlayerData(
   backNum: string,
-): Promise<{ data: { gameplayer: IPlayerBack } } | null> {
+): Promise<IBatterPlayerData | null> {
   const catcherDataPath = path.join(
     process.cwd(),
     'public/data/playerFront',
@@ -58,15 +64,41 @@ async function getPlayerData(
   }
 }
 export default async function CatcherDetail({ params }: CatcherPageProps) {
+  console.log('catcher page');
   const player = await getPlayerData(params.catcherId);
   if (!player) {
     return <div>Player not found</div>;
   }
   const playerProfile: IPlayerBack = player.data.gameplayer;
+  const playerData: IBatterPlayerData = player.data.seasonsummary;
+  const playerYearRecord: TBatterYearRecord[] = player.data.yearrecordlist;
 
+  // 예측 API
+  const predictionRes: Response = await fetch(
+    `${process.env.API_URL}/predict_player_stats`,
+    {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        position: 'catcher',
+        player_data: playerYearRecord,
+      }),
+    },
+  );
+  if (!predictionRes.ok) {
+    console.error('Error-Failed to fetch prediction data');
+    console.log(predictionRes.statusText);
+    return <div>Failed to fetch prediction data</div>;
+  }
+  const playerMetric: TCatcherMetric = await predictionRes.json();
   return (
     <>
-      <PitcherDetailClient player={playerProfile} />
+      <PlayerDetailClient
+        player={playerProfile}
+        metric={playerMetric}
+        playerData={playerData}
+        position="catcher"
+      />
     </>
   );
 }

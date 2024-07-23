@@ -12,6 +12,7 @@ export default function Catcger() {
   const handleCardClick = (backNum: string) => {
     router.push(`/player/batter/catcher/${backNum}`);
   };
+  console.log('catcher list');
   return (
     <>
       <div className="bg-white flex justify-center items-center h-min flex-wrap ">

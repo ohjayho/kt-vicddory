@@ -1,7 +1,7 @@
 import React from 'react';
 import path from 'path';
 import fs from 'fs';
-import PitcherDetailClient from '@/components/player/PitcherDetail';
+import PlayerDetailClient from '@/components/player/PitcherDetail';
 import {
   IPlayerFront,
   IPlayerBack,
@@ -92,7 +92,7 @@ export default async function PitcherDetail({ params }: PitcherPageProps) {
   const playerMetric: TPitcherMetric = await predictionRes.json();
   return (
     <>
-      <PitcherDetailClient
+      <PlayerDetailClient
         player={playerProfile}
         metric={playerMetric}
         playerData={playerData}

@@ -13,19 +13,19 @@ import {
   IBatterPlayerData,
 } from '@/types';
 
-interface PitcherDetailProps {
+interface PlayerDetailProps {
   player: IPlayerBack | null;
   playerData: IPitcherPlayerData | IBatterPlayerData;
   metric: TPitcherMetric | TCatcherMetric | TInfielderMetric;
   position: 'pitcher' | 'catcher' | 'infielder' | 'outfielder';
 }
 
-export default function PitcherDetail({
+export default function PlayerDetailClient({
   player,
   metric,
   position,
   playerData,
-}: PitcherDetailProps) {
+}: PlayerDetailProps) {
   console.log('metric', metric);
   const [showExpectedSeries, setShowExpectedSeries] = useState(false);
   const [isSpin, setIsSpin] = useState(false);
