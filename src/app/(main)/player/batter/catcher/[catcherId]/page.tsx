@@ -53,7 +53,7 @@ async function getPlayerData(
     'playerDetail/batter/catcher',
     `${playerMeta.korName}.json`,
   );
-  console.log(`filePath: ${filePath}`);
+  //  console.log(`filePath: ${filePath}`);
 
   try {
     const fileContents = fs.readFileSync(filePath, 'utf8');
