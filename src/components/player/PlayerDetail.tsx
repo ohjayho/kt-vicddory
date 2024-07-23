@@ -4,7 +4,6 @@ import PlayerCard from '@/components/tradingCard/PlayerCard';
 import dynamic from 'next/dynamic';
 import PlayerData from './PlayerData';
 import {
-  IPlayerFront,
   IPlayerBack,
   TPitcherMetric,
   TCatcherMetric,

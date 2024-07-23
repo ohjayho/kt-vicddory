@@ -4,10 +4,10 @@ import { usePathname } from 'next/navigation';
 // import { useState } from 'react';
 import BannerBtn from '../BannerBtn';
 import BatterBanner from './BatterBanner';
-interface BannerProps {
-  title: string;
-  subtitle: string;
-}
+//interface BannerProps {
+//title: string;
+//  subtitle: string;
+//}
 type TPathNameText = {
   [key: string]: {
     title: string;

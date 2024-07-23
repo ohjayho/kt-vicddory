@@ -107,7 +107,7 @@ const positionCategory: positionType = {
   },
 };
 
-let currentPosition = 'pitcher';
+// let currentPosition = 'pitcher';
 
 export default function PlayerChart({
   positionMetric,
@@ -115,7 +115,7 @@ export default function PlayerChart({
   showExpectedSeries,
   playerData,
 }: PlayerChartProps) {
-  const testData = [1, 3, 0.6, 0.3, 10];
+  // const testData = [1, 3, 0.6, 0.3, 10];
   const originalData: number[] =
     (() => {
       if (position === 'pitcher') {
@@ -133,6 +133,7 @@ export default function PlayerChart({
       // 다른 포지션에 대한 처리도 필요하다면 추가
       return [];
     })() || []; // 항상 배열을 반환하도록 보장
+
   const expectedData = (() => {
     if (position === 'pitcher') {
       const metric = positionMetric as TPitcherMetric;
@@ -190,7 +191,7 @@ export default function PlayerChart({
 
   const scaledExpectedData = positionCategory[position].categories.map(
     (category, index) => {
-      let yExpectedValue =
+      const yExpectedValue =
         expectedData[index] / positionCategory[position].standards[category];
       return {
         name: category,
@@ -198,7 +199,7 @@ export default function PlayerChart({
       };
     },
   );
-
+  /*
   const notScaledExpectedData = positionCategory[position].categories.map(
     (category, index) => {
       const yValue = expectedData[index] / 1;
@@ -209,7 +210,7 @@ export default function PlayerChart({
       };
     },
   );
-
+*/
   const options = {
     title: {
       text: '선수 예측 데이터',
@@ -287,13 +288,15 @@ export default function PlayerChart({
     },
   };
 
-  currentPosition = position;
+  //  currentPosition = position;
   options.xAxis.categories = positionCategory[position].categories;
+  // const playerdata = playerData;
 
   return (
     <>
       <div className="p-4">
         <HighchartsReact highcharts={Highcharts} options={options} />
+        <div className="hidden">{originalData}</div>
       </div>
     </>
   );

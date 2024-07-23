@@ -2,7 +2,7 @@
 
 import CardFront from '@/components/tradingCard/CardFront';
 import CardBack from '@/components/tradingCard/CardBack';
-import { IPlayerFront, IPlayerBack } from '@/types';
+import { IPlayerBack } from '@/types';
 import { useState, useEffect } from 'react';
 
 interface PlayerCardProps {
