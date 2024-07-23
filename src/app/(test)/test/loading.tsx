@@ -42,7 +42,7 @@ export default function Loading() {
         setDots('');
         return (prevIndex + 1) % texts.length;
       });
-    }, 3000);
+    }, 5000);
 
     return () => clearInterval(textInterval);
   }, []);
