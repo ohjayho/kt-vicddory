@@ -5,7 +5,13 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import '@/components/ranking/Calendar/Calendar.css';
 
-export default function DateRangePicker() {
+type DateRangePickerProps = {
+  onDateChange: (start: Date | null, end: Date | null) => void;
+};
+
+export default function DateRangePicker({
+  onDateChange,
+}: DateRangePickerProps) {
   const today = new Date();
   const thirtyDaysAgo = new Date(today);
   thirtyDaysAgo.setDate(today.getDate() - 30);
@@ -17,6 +23,7 @@ export default function DateRangePicker() {
     const [start, end] = dates;
     setStartDate(start || undefined);
     setEndDate(end || undefined);
+    onDateChange(start, end);
   };
 
   return (

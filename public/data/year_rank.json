@@ -1,0 +1,567 @@
+[
+  {
+    "year": 1982,
+    "data": [
+      { "rank": 1, "team": "두산" },
+      { "rank": 2, "team": "삼성" },
+      { "rank": 3, "team": "LG" },
+      { "rank": 4, "team": "KIA" },
+      { "rank": 5, "team": "롯데" },
+      { "rank": 6, "team": "현대" }
+    ]
+  },
+  {
+    "year": 1983,
+    "data": [
+      { "rank": 1, "team": "KIA" },
+      { "rank": 2, "team": "LG" },
+      { "rank": 3, "team": "현대" },
+      { "rank": 4, "team": "삼성" },
+      { "rank": 5, "team": "두산" },
+      { "rank": 6, "team": "롯데" }
+    ]
+  },
+  {
+    "year": 1984,
+    "data": [
+      { "rank": 1, "team": "롯데" },
+      { "rank": 2, "team": "삼성" },
+      { "rank": 3, "team": "두산" },
+      { "rank": 4, "team": "LG" },
+      { "rank": 5, "team": "KIA" },
+      { "rank": 6, "team": "현대" }
+    ]
+  },
+  {
+    "year": 1985,
+    "data": [
+      { "rank": 1, "team": "삼성" },
+      { "rank": 2, "team": "롯데" },
+      { "rank": 3, "team": "KIA" },
+      { "rank": 4, "team": "두산" },
+      { "rank": 5, "team": "LG" },
+      { "rank": 6, "team": "현대" }
+    ]
+  },
+  {
+    "year": 1986,
+    "data": [
+      { "rank": 1, "team": "KIA" },
+      { "rank": 2, "team": "삼성" },
+      { "rank": 3, "team": "LG" },
+      { "rank": 4, "team": "두산" },
+      { "rank": 5, "team": "롯데" },
+      { "rank": 6, "team": "현대" },
+      { "rank": 7, "team": "한화" }
+    ]
+  },
+  {
+    "year": 1987,
+    "data": [
+      { "rank": 1, "team": "KIA" },
+      { "rank": 2, "team": "삼성" },
+      { "rank": 3, "team": "롯데" },
+      { "rank": 4, "team": "두산" },
+      { "rank": 5, "team": "LG" },
+      { "rank": 6, "team": "한화" },
+      { "rank": 7, "team": "현대" }
+    ]
+  },
+  {
+    "year": 1988,
+    "data": [
+      { "rank": 1, "team": "KIA" },
+      { "rank": 2, "team": "한화" },
+      { "rank": 3, "team": "롯데" },
+      { "rank": 4, "team": "삼성" },
+      { "rank": 5, "team": "두산" },
+      { "rank": 6, "team": "LG" },
+      { "rank": 7, "team": "현대" }
+    ]
+  },
+  {
+    "year": 1989,
+    "data": [
+      { "rank": 1, "team": "KIA" },
+      { "rank": 2, "team": "한화" },
+      { "rank": 3, "team": "현대" },
+      { "rank": 4, "team": "삼성" },
+      { "rank": 5, "team": "두산" },
+      { "rank": 6, "team": "LG" },
+      { "rank": 7, "team": "롯데" }
+    ]
+  },
+  {
+    "year": 1989,
+    "data": [
+      { "rank": 1, "team": "KIA" },
+      { "rank": 2, "team": "한화" },
+      { "rank": 3, "team": "현대" },
+      { "rank": 4, "team": "삼성" },
+      { "rank": 5, "team": "두산" },
+      { "rank": 6, "team": "LG" },
+      { "rank": 7, "team": "롯데" }
+    ]
+  },
+  {
+    "year": 1990,
+    "data": [
+      { "rank": 1, "team": "LG" },
+      { "rank": 2, "team": "삼성" },
+      { "rank": 3, "team": "KIA" },
+      { "rank": 4, "team": "한화" },
+      { "rank": 5, "team": "현대" },
+      { "rank": 6, "team": "롯데" },
+      { "rank": 7, "team": "두산" }
+    ]
+  },
+  {
+    "year": 1991,
+    "data": [
+      { "rank": 1, "team": "KIA" },
+      { "rank": 2, "team": "한화" },
+      { "rank": 3, "team": "삼성" },
+      { "rank": 4, "team": "롯데" },
+      { "rank": 5, "team": "현대" },
+      { "rank": 6, "team": "LG" },
+      { "rank": 6, "team": "쌍방울" },
+      { "rank": 8, "team": "두산" }
+    ]
+  },
+  {
+    "year": 1992,
+    "data": [
+      { "rank": 1, "team": "롯데" },
+      { "rank": 2, "team": "한화" },
+      { "rank": 3, "team": "KIA" },
+      { "rank": 4, "team": "삼성" },
+      { "rank": 5, "team": "두산" },
+      { "rank": 6, "team": "현대" },
+      { "rank": 7, "team": "LG" },
+      { "rank": 8, "team": "쌍방울" }
+    ]
+  },
+  {
+    "year": 1993,
+    "data": [
+      { "rank": 1, "team": "KIA" },
+      { "rank": 2, "team": "삼성" },
+      { "rank": 3, "team": "두산" },
+      { "rank": 4, "team": "LG" },
+      { "rank": 5, "team": "한화" },
+      { "rank": 6, "team": "롯데" },
+      { "rank": 7, "team": "쌍방울" },
+      { "rank": 8, "team": "현대" }
+    ]
+  },
+  {
+    "year": 1994,
+    "data": [
+      { "rank": 1, "team": "LG" },
+      { "rank": 2, "team": "현대" },
+      { "rank": 3, "team": "KIA" },
+      { "rank": 3, "team": "한화" },
+      { "rank": 5, "team": "삼성" },
+      { "rank": 6, "team": "롯데" },
+      { "rank": 7, "team": "두산" },
+      { "rank": 8, "team": "쌍방울" }
+    ]
+  },
+  {
+    "year": 1995,
+    "data": [
+      { "rank": 1, "team": "두산" },
+      { "rank": 2, "team": "롯데" },
+      { "rank": 3, "team": "LG" },
+      { "rank": 4, "team": "KIA" },
+      { "rank": 5, "team": "삼성" },
+      { "rank": 6, "team": "한화" },
+      { "rank": 7, "team": "현대" },
+      { "rank": 8, "team": "쌍방울" }
+    ]
+  },
+  {
+    "year": 1996,
+    "data": [
+      { "rank": 1, "team": "KIA" },
+      { "rank": 2, "team": "현대" },
+      { "rank": 3, "team": "쌍방울" },
+      { "rank": 4, "team": "한화" },
+      { "rank": 5, "team": "롯데" },
+      { "rank": 6, "team": "삼성" },
+      { "rank": 7, "team": "LG" },
+      { "rank": 8, "team": "두산" }
+    ]
+  },
+  {
+    "year": 1997,
+    "data": [
+      { "rank": 1, "team": "KIA" },
+      { "rank": 2, "team": "LG" },
+      { "rank": 3, "team": "쌍방울" },
+      { "rank": 4, "team": "삼성" },
+      { "rank": 5, "team": "두산" },
+      { "rank": 6, "team": "현대" },
+      { "rank": 7, "team": "한화" },
+      { "rank": 8, "team": "롯데" }
+    ]
+  },
+  {
+    "year": 1998,
+    "data": [
+      { "rank": 1, "team": "현대" },
+      { "rank": 2, "team": "LG" },
+      { "rank": 3, "team": "삼성" },
+      { "rank": 4, "team": "두산" },
+      { "rank": 5, "team": "KIA" },
+      { "rank": 6, "team": "쌍방울" },
+      { "rank": 7, "team": "한화" },
+      { "rank": 8, "team": "롯데" }
+    ]
+  },
+  {
+    "year": 1999,
+    "data": [
+      { "rank": 1, "team": "한화" },
+      { "rank": 2, "team": "롯데" },
+      { "rank": 3, "team": "두산" },
+      { "rank": 4, "team": "삼성" },
+      { "rank": 5, "team": "현대" },
+      { "rank": 6, "team": "LG" },
+      { "rank": 7, "team": "KIA" },
+      { "rank": 8, "team": "쌍방울" }
+    ]
+  },
+  {
+    "year": 2000,
+    "data": [
+      { "rank": 1, "team": "현대" },
+      { "rank": 2, "team": "두산" },
+      { "rank": 3, "team": "삼성" },
+      { "rank": 4, "team": "LG" },
+      { "rank": 5, "team": "롯데" },
+      { "rank": 6, "team": "KIA" },
+      { "rank": 7, "team": "한화" },
+      { "rank": 8, "team": "SSG" }
+    ]
+  },
+  {
+    "year": 2001,
+    "data": [
+      { "rank": 1, "team": "두산" },
+      { "rank": 2, "team": "삼성" },
+      { "rank": 3, "team": "현대" },
+      { "rank": 4, "team": "한화" },
+      { "rank": 5, "team": "KIA" },
+      { "rank": 6, "team": "LG" },
+      { "rank": 7, "team": "SSG" },
+      { "rank": 8, "team": "롯데" }
+    ]
+  },
+  {
+    "year": 2002,
+    "data": [
+      { "rank": 1, "team": "삼성" },
+      { "rank": 2, "team": "LG" },
+      { "rank": 3, "team": "KIA" },
+      { "rank": 4, "team": "현대" },
+      { "rank": 5, "team": "두산" },
+      { "rank": 6, "team": "SSG" },
+      { "rank": 7, "team": "한화" },
+      { "rank": 8, "team": "롯데" }
+    ]
+  },
+  {
+    "year": 2003,
+    "data": [
+      { "rank": 1, "team": "현대" },
+      { "rank": 2, "team": "SSG" },
+      { "rank": 3, "team": "KIA" },
+      { "rank": 4, "team": "삼성" },
+      { "rank": 5, "team": "한화" },
+      { "rank": 6, "team": "LG" },
+      { "rank": 7, "team": "두산" },
+      { "rank": 8, "team": "롯데" }
+    ]
+  },
+  {
+    "year": 2004,
+    "data": [
+      { "rank": 1, "team": "현대" },
+      { "rank": 2, "team": "삼성" },
+      { "rank": 3, "team": "두산" },
+      { "rank": 4, "team": "KIA" },
+      { "rank": 5, "team": "SSG" },
+      { "rank": 6, "team": "LG" },
+      { "rank": 7, "team": "한화" },
+      { "rank": 8, "team": "롯데" }
+    ]
+  },
+  {
+    "year": 2005,
+    "data": [
+      { "rank": 1, "team": "삼성" },
+      { "rank": 2, "team": "두산" },
+      { "rank": 3, "team": "SSG" },
+      { "rank": 4, "team": "한화" },
+      { "rank": 5, "team": "롯데" },
+      { "rank": 6, "team": "LG" },
+      { "rank": 7, "team": "현대" },
+      { "rank": 8, "team": "KIA" }
+    ]
+  },
+  {
+    "year": 2006,
+    "data": [
+      { "rank": 1, "team": "삼성" },
+      { "rank": 2, "team": "한화" },
+      { "rank": 3, "team": "현대" },
+      { "rank": 4, "team": "KIA" },
+      { "rank": 5, "team": "두산" },
+      { "rank": 6, "team": "SSG" },
+      { "rank": 7, "team": "롯데" },
+      { "rank": 8, "team": "LG" }
+    ]
+  },
+  {
+    "year": 2007,
+    "data": [
+      { "rank": 1, "team": "SSG" },
+      { "rank": 2, "team": "두산" },
+      { "rank": 3, "team": "한화" },
+      { "rank": 4, "team": "삼성" },
+      { "rank": 5, "team": "LG" },
+      { "rank": 6, "team": "현대" },
+      { "rank": 7, "team": "롯데" },
+      { "rank": 8, "team": "KIA" }
+    ]
+  },
+  {
+    "year": 2008,
+    "data": [
+      { "rank": 1, "team": "SSG" },
+      { "rank": 2, "team": "두산" },
+      { "rank": 3, "team": "롯데" },
+      { "rank": 4, "team": "삼성" },
+      { "rank": 5, "team": "한화" },
+      { "rank": 6, "team": "KIA" },
+      { "rank": 7, "team": "키움" },
+      { "rank": 8, "team": "LG" }
+    ]
+  },
+  {
+    "year": 2009,
+    "data": [
+      { "rank": 1, "team": "KIA" },
+      { "rank": 2, "team": "SSG" },
+      { "rank": 3, "team": "두산" },
+      { "rank": 4, "team": "롯데" },
+      { "rank": 5, "team": "삼성" },
+      { "rank": 6, "team": "키움" },
+      { "rank": 7, "team": "LG" },
+      { "rank": 8, "team": "한화" }
+    ]
+  },
+  {
+    "year": 2010,
+    "data": [
+      { "rank": 1, "team": "SSG" },
+      { "rank": 2, "team": "삼성" },
+      { "rank": 3, "team": "두산" },
+      { "rank": 4, "team": "롯데" },
+      { "rank": 5, "team": "KIA" },
+      { "rank": 6, "team": "LG" },
+      { "rank": 7, "team": "키움" },
+      { "rank": 8, "team": "한화" }
+    ]
+  },
+  {
+    "year": 2011,
+    "data": [
+      { "rank": 1, "team": "삼성" },
+      { "rank": 2, "team": "SSG" },
+      { "rank": 3, "team": "롯데" },
+      { "rank": 4, "team": "KIA" },
+      { "rank": 5, "team": "두산" },
+      { "rank": 6, "team": "LG" },
+      { "rank": 6, "team": "한화" },
+      { "rank": 8, "team": "키움" }
+    ]
+  },
+  {
+    "year": 2012,
+    "data": [
+      { "rank": 1, "team": "삼성" },
+      { "rank": 2, "team": "SSG" },
+      { "rank": 3, "team": "두산" },
+      { "rank": 4, "team": "롯데" },
+      { "rank": 5, "team": "KIA" },
+      { "rank": 6, "team": "키움" },
+      { "rank": 7, "team": "LG" },
+      { "rank": 8, "team": "한화" }
+    ]
+  },
+  {
+    "year": 2013,
+    "data": [
+      { "rank": 1, "team": "삼성" },
+      { "rank": 2, "team": "두산" },
+      { "rank": 3, "team": "LG" },
+      { "rank": 4, "team": "키움" },
+      { "rank": 5, "team": "롯데" },
+      { "rank": 6, "team": "SSG" },
+      { "rank": 7, "team": "NC" },
+      { "rank": 8, "team": "KIA" },
+      { "rank": 9, "team": "한화" }
+    ]
+  },
+  {
+    "year": 2014,
+    "data": [
+      { "rank": 1, "team": "삼성" },
+      { "rank": 2, "team": "키움" },
+      { "rank": 3, "team": "NC" },
+      { "rank": 4, "team": "LG" },
+      { "rank": 5, "team": "SSG" },
+      { "rank": 6, "team": "두산" },
+      { "rank": 7, "team": "롯데" },
+      { "rank": 8, "team": "KIA" },
+      { "rank": 9, "team": "한화" }
+    ]
+  },
+  {
+    "year": 2015,
+    "data": [
+      { "rank": 1, "team": "두산" },
+      { "rank": 2, "team": "삼성" },
+      { "rank": 3, "team": "NC" },
+      { "rank": 4, "team": "키움" },
+      { "rank": 5, "team": "SSG" },
+      { "rank": 6, "team": "한화" },
+      { "rank": 7, "team": "KIA" },
+      { "rank": 8, "team": "롯데" },
+      { "rank": 9, "team": "LG" },
+      { "rank": 10, "team": "KT" }
+    ]
+  },
+  {
+    "year": 2016,
+    "data": [
+      { "rank": 1, "team": "두산" },
+      { "rank": 2, "team": "NC" },
+      { "rank": 3, "team": "키움" },
+      { "rank": 4, "team": "LG" },
+      { "rank": 5, "team": "KIA" },
+      { "rank": 6, "team": "SSG" },
+      { "rank": 7, "team": "한화" },
+      { "rank": 8, "team": "롯데" },
+      { "rank": 9, "team": "삼성" },
+      { "rank": 10, "team": "KT" }
+    ]
+  },
+  {
+    "year": 2017,
+    "data": [
+      { "rank": 1, "team": "KIA" },
+      { "rank": 2, "team": "두산" },
+      { "rank": 3, "team": "롯데" },
+      { "rank": 4, "team": "NC" },
+      { "rank": 5, "team": "SSG" },
+      { "rank": 6, "team": "LG" },
+      { "rank": 7, "team": "키움" },
+      { "rank": 8, "team": "한화" },
+      { "rank": 9, "team": "삼성" },
+      { "rank": 10, "team": "KT" }
+    ]
+  },
+  {
+    "year": 2018,
+    "data": [
+      { "rank": 1, "team": "SSG" },
+      { "rank": 2, "team": "두산" },
+      { "rank": 3, "team": "한화" },
+      { "rank": 4, "team": "키움" },
+      { "rank": 5, "team": "KIA" },
+      { "rank": 6, "team": "삼성" },
+      { "rank": 7, "team": "롯데" },
+      { "rank": 8, "team": "LG" },
+      { "rank": 9, "team": "KT" },
+      { "rank": 10, "team": "NC" }
+    ]
+  },
+  {
+    "year": 2019,
+    "data": [
+      { "rank": 1, "team": "두산" },
+      { "rank": 2, "team": "키움" },
+      { "rank": 3, "team": "SSG" },
+      { "rank": 4, "team": "LG" },
+      { "rank": 5, "team": "NC" },
+      { "rank": 6, "team": "KT" },
+      { "rank": 7, "team": "KIA" },
+      { "rank": 8, "team": "삼성" },
+      { "rank": 9, "team": "한화" },
+      { "rank": 10, "team": "롯데" }
+    ]
+  },
+  {
+    "year": 2020,
+    "data": [
+      { "rank": 1, "team": "NC" },
+      { "rank": 2, "team": "두산" },
+      { "rank": 3, "team": "KT" },
+      { "rank": 4, "team": "LG" },
+      { "rank": 5, "team": "키움" },
+      { "rank": 6, "team": "KIA" },
+      { "rank": 7, "team": "롯데" },
+      { "rank": 8, "team": "삼성" },
+      { "rank": 9, "team": "SSG" },
+      { "rank": 10, "team": "한화" }
+    ]
+  },
+  {
+    "year": 2021,
+    "data": [
+      { "rank": 1, "team": "KT" },
+      { "rank": 2, "team": "두산" },
+      { "rank": 3, "team": "삼성" },
+      { "rank": 4, "team": "LG" },
+      { "rank": 5, "team": "키움" },
+      { "rank": 6, "team": "SSG" },
+      { "rank": 7, "team": "NC" },
+      { "rank": 8, "team": "롯데" },
+      { "rank": 9, "team": "KIA" },
+      { "rank": 10, "team": "한화" }
+    ]
+  },
+  {
+    "year": 2022,
+    "data": [
+      { "rank": 1, "team": "SSG" },
+      { "rank": 2, "team": "키움" },
+      { "rank": 3, "team": "LG" },
+      { "rank": 4, "team": "KT" },
+      { "rank": 5, "team": "KIA" },
+      { "rank": 6, "team": "NC" },
+      { "rank": 7, "team": "삼성" },
+      { "rank": 8, "team": "롯데" },
+      { "rank": 9, "team": "두산" },
+      { "rank": 10, "team": "한화" }
+    ]
+  },
+  {
+    "year": 2023,
+    "data": [
+      { "rank": 1, "team": "LG" },
+      { "rank": 2, "team": "KT" },
+      { "rank": 3, "team": "SSG" },
+      { "rank": 4, "team": "NC" },
+      { "rank": 5, "team": "두산" },
+      { "rank": 6, "team": "KIA" },
+      { "rank": 7, "team": "롯데" },
+      { "rank": 8, "team": "삼성" },
+      { "rank": 9, "team": "한화" },
+      { "rank": 10, "team": "키움" }
+    ]
+  }
+]
