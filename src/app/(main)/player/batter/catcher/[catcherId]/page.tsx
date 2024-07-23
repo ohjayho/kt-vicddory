@@ -36,12 +36,12 @@ async function getPlayerData(
     'public/data/playerFront',
     'catcher_data.json',
   );
-  console.log(catcherDataPath);
+  // console.log(catcherDataPath);
   const catcherData = JSON.parse(fs.readFileSync(catcherDataPath, 'utf8'));
   const playerMeta = catcherData.data.list.find(
     (player: IPlayerFront) => player.backNum === backNum,
   );
-  console.log(`playerMeta:${playerMeta}`);
+  // console.log(`playerMeta:${playerMeta}`);
 
   if (!playerMeta) {
     return null;
