@@ -19,6 +19,17 @@ type TQuestionHandlerProps = {
   Q: string;
 };
 
+type TQuestionsProps = {
+  params: {
+    questionId: string;
+  };
+};
+
+type TPositionStatisticProps = {
+  position: string;
+  percentage: string;
+};
+
 //Ranking
 type TGrapeProps = {
   title: string;
@@ -116,9 +127,36 @@ type TWinLossData = {
   recent: RecentStats;
 };
 
+type TRanking = {
+  rank: number;
+  team: string;
+};
+
+type TYearData = {
+  year: number;
+  data: TRanking[];
+};
+
+type TDailyData = {
+  day: number;
+  data: TRanking[];
+};
+
+type TLeagueYearData = TYearData[];
+
+type TLeagueDailyData = TDailyData[];
+
+type TBaseSeries = {
+  name: string;
+  data: (number | null)[];
+  visible: boolean;
+};
+
 export {
   TResultPositionProps,
   TQuestionHandlerProps,
+  TQuestionsProps,
+  TPositionStatisticProps,
   TGrapeProps,
   TCustomCSSProperties,
   TMatchTeamProps,
@@ -130,4 +168,10 @@ export {
   TTeamRecord,
   TGameInfo,
   TWinLossData,
+  TRanking,
+  TYearData,
+  TDailyData,
+  TLeagueYearData,
+  TLeagueDailyData,
+  TBaseSeries,
 };

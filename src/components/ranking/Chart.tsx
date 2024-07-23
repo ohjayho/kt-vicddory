@@ -4,74 +4,119 @@ import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import { useState } from 'react';
 import DarkUnica from 'highcharts/themes/dark-unica';
+import year_rank from '#/data/year_rank.json';
+import { getTeamRanks } from '@/utils/getTeamRanks';
+import { TBaseSeries, TLeagueYearData, TYearData } from '@/types';
 
 DarkUnica(Highcharts);
 
-export default function Chart({ title }: { title: string }) {
+export default function Chart({
+  title,
+  startDate,
+  endDate,
+  page,
+}: {
+  title: string;
+  startDate?: Date | undefined;
+  endDate?: Date | undefined;
+  page: string;
+}) {
+  const yearRankJson: TLeagueYearData = year_rank;
+
+  const yearTeam: string[] = [
+    'LG',
+    'KT',
+    'SSG',
+    'NC',
+    '두산',
+    'KIA',
+    '롯데',
+    '삼성',
+    '한화',
+    '키움',
+    '현대',
+    '쌍방울',
+  ];
+  const dailyTeam: string[] = [
+    'LG',
+    'KT',
+    'SSG',
+    'NC',
+    '두산',
+    'KIA',
+    '롯데',
+    '삼성',
+    '한화',
+    '키움',
+  ];
+
+  const today = new Date();
+  const thirtyDaysAgo = new Date(today.getTime() - 30 * 24 * 60 * 60 * 1000);
+  const defaultStartDate: Date = startDate || thirtyDaysAgo;
+  const defaultEndDate: Date = endDate || today;
+
+  const yearArr: TBaseSeries[] = yearTeam.map(
+    (team: string): TBaseSeries => ({
+      name: team,
+      data: getTeamRanks({ teamName: team, page: 'year' }),
+      visible: team === 'KT',
+    }),
+  );
+
+  const dailyArr: TBaseSeries[] = dailyTeam.map(
+    (team: string): TBaseSeries => ({
+      name: team,
+      data: getTeamRanks({
+        teamName: team,
+        page: 'daily',
+        startDate: defaultStartDate,
+        endDate: defaultEndDate,
+      }),
+      visible: team === 'KT',
+    }),
+  );
+
+  const baseSeries: TBaseSeries[] = page === 'year' ? yearArr : dailyArr;
+
+  const category: string[] | number[] =
+    page === 'year'
+      ? yearRankJson.map((item: TYearData): number => item.year)
+      : getDateRange(defaultStartDate, defaultEndDate).map(
+          (date: string): string => date,
+        );
+
+  function getDateRange(
+    startDate: Date | undefined,
+    endDate: Date | undefined,
+  ): string[] {
+    if (!startDate || !endDate) return [];
+
+    const dates = [];
+    const currentDate = new Date(startDate);
+
+    while (currentDate <= new Date(endDate)) {
+      dates.push(currentDate.toISOString().slice(5, 10));
+      currentDate.setDate(currentDate.getDate() + 1);
+    }
+
+    return dates;
+  }
+
   const [options] = useState({
     title: {
-      text: `${title}`,
+      text: title,
       margin: 50,
     },
     subtitle: {
       text: '오른쪽 팀 명을 선택하시면 팀별로 그래프를 확인하실 수 있습니다',
     },
-    series: [
-      {
-        name: 'LG',
-        data: [3, 1, 3, 2, 1, 3, 2, 1, 2],
-        visible: false,
-      },
-      {
-        name: 'KT',
-        data: [1, 3, 1, 4, 2, 1, 4, 2, 7],
-        visible: true,
-      },
-      {
-        name: 'SSG',
-        data: [10, 2, 6, 1, 3, 6, 1, 3, 5],
-        visible: false,
-      },
-      {
-        name: 'NC',
-        data: [2, 9, 7, 6, 4, 7, 6, 4, 6],
-        visible: false,
-      },
-      {
-        name: '두산',
-        data: [8, 8, 4, 9, 5, 4, 9, 5, 4],
-        visible: false,
-      },
-      {
-        name: 'KIA',
-        data: [7, 10, 9, 5, 6, 9, 5, 6, 1],
-        visible: false,
-      },
-      {
-        name: '롯데',
-        data: [9, 4, 8, 8, 7, 8, 8, 7, 8],
-        visible: false,
-      },
-      {
-        name: '삼성',
-        data: [6, 5, 2, 7, 8, 2, 7, 8, 3],
-        visible: false,
-      },
-      {
-        name: '한화',
-        data: [4, 6, 10, 10, 9, 10, 10, 9, 9],
-        visible: false,
-      },
-      {
-        name: '키움',
-        data: [5, 7, 5, 3, 10, 5, 3, 10, 10],
-        visible: false,
-      },
-    ],
+    series: baseSeries,
     xAxis: {
-      categories: [
-        2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024,
-      ],
+      categories: category,
+      labels: {
+        rotation: -90,
+        align: 'right',
+      },
     },
     yAxis: {
       title: {
