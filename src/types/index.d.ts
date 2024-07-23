@@ -19,6 +19,17 @@ type TQuestionHandlerProps = {
   Q: string;
 };
 
+type TQuestionsProps = {
+  params: {
+    questionId: string;
+  };
+};
+
+type TPositionStatisticProps = {
+  position: string;
+  percentage: string;
+};
+
 //Ranking
 type TGrapeProps = {
   title: string;
@@ -144,6 +155,8 @@ type TBaseSeries = {
 export {
   TResultPositionProps,
   TQuestionHandlerProps,
+  TQuestionsProps,
+  TPositionStatisticProps,
   TGrapeProps,
   TCustomCSSProperties,
   TMatchTeamProps,
