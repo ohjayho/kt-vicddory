@@ -2,7 +2,7 @@
 import { PiUserSound } from 'react-icons/pi';
 import { useEffect, useState } from 'react';
 
-export default function NewsTTS({ text }: { text: string }) {
+export default function NewsTTS({ text }: { text: string | undefined | null }) {
   const [audioUrl, setAudioUrl] = useState<string | null>(null);
   const [audio, setAudio] = useState<HTMLAudioElement | null>(null);
   const [loading, setLoading] = useState(true);
