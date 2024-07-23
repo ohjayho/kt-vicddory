@@ -137,7 +137,7 @@ export default function PlayerChart({
   const expectedData = (() => {
     if (position === 'pitcher') {
       const metric = positionMetric as TPitcherMetric;
-      console.log(metric);
+      // console.log(metric);
       return [
         metric.ERA,
         metric['K/BB'],

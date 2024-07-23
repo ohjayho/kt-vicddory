@@ -7,12 +7,11 @@ import catcher_data from '#/data/playerFront/catcher_data.json';
 
 const catcherData = catcher_data.data.list;
 
-export default function Catcger() {
+export default function Catcher() {
   const router = useRouter();
   const handleCardClick = (backNum: string) => {
     router.push(`/player/batter/catcher/${backNum}`);
   };
-  console.log('catcher list');
   return (
     <>
       <div className="bg-white flex justify-center items-center h-min flex-wrap ">
