@@ -1,8 +1,14 @@
 import React from 'react';
 import path from 'path';
 import fs from 'fs';
-import PitcherDetailClient from '@/components/player/PitcherDetail';
-import { IPlayerFront, IPlayerBack } from '@/types';
+import PlayerDetailClient from '@/components/player/PitcherDetail';
+import {
+  IPlayerFront,
+  IPlayerBack,
+  IBatterPlayerData,
+  TBatterYearRecord,
+  TInfielderMetric,
+} from '@/types';
 interface OutfielderPageProps {
   params: { outfielderId: string };
 }
@@ -24,7 +30,7 @@ export async function generateStaticParams() {
 
 async function getPlayerData(
   backNum: string,
-): Promise<{ data: { gameplayer: IPlayerBack } } | null> {
+): Promise<IBatterPlayerData | null> {
   const outfielderDataPath = path.join(
     process.cwd(),
     'public/data/playerFront',
@@ -63,16 +69,39 @@ export default async function OutfielderDetail({
   params,
 }: OutfielderPageProps) {
   const player = await getPlayerData(params.outfielderId);
-  // const gameplayer = player.data.gameplayer;
-  // console.log(`parameter check: ${params}`);
+
   if (!player) {
     return <div>Player not found</div>;
   }
   const playerProfile: IPlayerBack = player.data.gameplayer;
-
+  const playerData: IBatterPlayerData = player.data.seasonsummary;
+  const playerYearRecord: TBatterYearRecord[] = player.data.yearrecordlist;
+  // 예측 API
+  const predictionRes: Response = await fetch(
+    `${process.env.API_URL}/predict_player_stats`,
+    {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        position: 'catcher',
+        player_data: playerYearRecord,
+      }),
+    },
+  );
+  if (!predictionRes.ok) {
+    console.error('Error-Failed to fetch prediction data');
+    console.log(predictionRes.statusText);
+    return <div>Failed to fetch prediction data</div>;
+  }
+  const playerMetric: TInfielderMetric = await predictionRes.json();
   return (
     <>
-      <PitcherDetailClient player={playerProfile} />
+      <PlayerDetailClient
+        player={playerProfile}
+        metric={playerMetric}
+        playerData={playerData}
+        position="infielder"
+      />
     </>
   );
 }
