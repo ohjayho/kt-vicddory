@@ -2,21 +2,30 @@
 
 import Button from '@/components/test/Button';
 import CaptureArea from '@/components/test/result/CaptureArea';
-import { CaptureDownload } from '@/components/test/result/CaptureDownload';
+import html2canvas from 'html2canvas';
 import ResultPosition from '@/components/test/result/ResultPosition';
 import TestShare from '@/components/test/result/TestShare';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import positionDetails from '@/data/positionDetails';
 import { TPositionStatisticProps } from '@/types';
 
 export default function Page() {
-  const divRef = useRef<HTMLDivElement>(null);
-  const [statistics, setStatistics] = useState<TPositionStatisticProps[]>([]);
-
-  const handleCaptureClick = () => {
-    CaptureDownload(divRef);
-    alert('테스트 결과를 캡쳐합니다.');
+  const CaptureDownload = () => {
+    const target = document.getElementById('download') as HTMLElement;
+    if (!target) {
+      return alert('사진 저장에 실패했습니다.');
+    }
+    html2canvas(target).then((canvas) => {
+      const link = document.createElement('a');
+      document.body.appendChild(link);
+      link.href = canvas.toDataURL('image/png');
+      link.download = 'vicddory.png';
+      link.click();
+      document.body.removeChild(link);
+    });
   };
+
+  const [statistics, setStatistics] = useState<TPositionStatisticProps[]>([]);
 
   useEffect(() => {
     const fetchStatistics = async () => {
@@ -40,7 +49,7 @@ export default function Page() {
     <>
       <div className="bg-slate-100">
         <div className="flex justify-center flex-col items-center h-full max-w-md m-auto">
-          <CaptureArea divRef={divRef} />
+          <CaptureArea />
           <div className="w-full h-[1900px] bg-[#F8A6A7] relative flex flex-col justify-center items-center">
             <div className="absolute text-[#333333] font-bold top-10">
               가장 많은 포지션은 뭘까요?
@@ -65,7 +74,7 @@ export default function Page() {
               <span className="text-red-100">테스트</span>
               <span className="text-[#333333]">공유하기</span>
             </div>
-            <TestShare onClick={handleCaptureClick} />
+            <TestShare onClick={CaptureDownload} />
           </div>
           <div className="sticky bottom-0 w-full h-20 bg-[#FFFFFF] flex justify-center items-center pb-6">
             <Button width={80} text="2xl" href="/test">
