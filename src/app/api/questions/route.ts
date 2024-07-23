@@ -4,8 +4,9 @@ import { TQuestionHandlerProps } from '@/types';
 export async function GET(req: NextRequest) {
   console.log(req);
   try {
-    const response = await fetch(`${process.env.TEST_QUESTIONS_API_URL}`, {
+    const response = await fetch(`${process.env.API_URL}/generate_questions`, {
       method: 'POST',
+      cache: "no-store",
     });
     const questions: TQuestionHandlerProps[] = await response.json();
     return NextResponse.json(questions, { status: 200 });
