@@ -17,6 +17,8 @@ export default function NewsContent({ newsId }: TNewsId) {
   const handleBacklink: MouseEventHandler<HTMLButtonElement> = () => {
     router.back();
   };
+  let trimmedArtcContents =
+    theNews && theNews.artcContents.replace(/<[^>]*>/g, '');
 
   const fetchDetailedNews = async () => {
     const detailedNews = await (
@@ -52,52 +54,45 @@ export default function NewsContent({ newsId }: TNewsId) {
 
   return (
     <>
-      {theNews &&
-        (() => {
-          let trimmedArtcContents = theNews.artcContents.replace(
-            /<[^>]*>/g,
-            '',
-          );
-          return (
-            <section className="w-[820px] max-lg:w-[80%] h-[63%] bg-[#0a0a0e] rounded-[5px] p-5 font-['DungGeunMo'] text-white">
-              <div className="h-full shadow-[0_0_30px_rgba(237,136,136,0.84)] bg-[url('/images/wiznews/newsPattern.png')] flex flex-col 내부컨테이너">
-                <div className="h-14 bg-[rgba(0,0,0,0.44)] p-8 버튼 칸">
-                  <button
-                    className="h-full text-[#FFE974] text-xl flex items-center"
-                    onClick={handleBacklink}
-                  >
-                    ← 목록
-                  </button>
-                </div>
-                <div className="flex flex-col items-center">
-                  <div className="w-full flex max-md:flex-col justify-between pt-8 px-8 pb-5 제목 칸">
-                    <h1 className="w-[80%] max-md:w-full 제목">
-                      {theNews.artcTitle}
-                    </h1>
-                    <h3 className="flex justify-end max-md:mt-1 날짜">
-                      2024-01-17
-                    </h3>
-                  </div>
-                  <DynamicTTS text={trimmedArtcContents} />
-                </div>
-                <div className="px-8 pb-8 overflow-scroll no-scrollbar 본문 칸">
-                  {theNews.imgFilePath && (
-                    <Image
-                      src={theNews.imgFilePath}
-                      width={500}
-                      height={0}
-                      alt="news_image"
-                      className="w-full mt-4"
-                    />
-                  )}
-                  <p className="h-full overflow-y-scroll no-scrollbar mt-4">
-                    {trimmedArtcContents}
-                  </p>
-                </div>
+      {theNews && (
+        <section className="w-[820px] max-lg:w-[80%] h-[63%] bg-[#0a0a0e] rounded-[5px] p-5 font-['DungGeunMo'] text-white">
+          <div className="h-full shadow-[0_0_30px_rgba(237,136,136,0.84)] bg-[url('/images/wiznews/newsPattern.png')] flex flex-col 내부컨테이너">
+            <div className="h-14 bg-[rgba(0,0,0,0.44)] p-8 버튼 칸">
+              <button
+                className="h-full text-[#FFE974] text-xl flex items-center"
+                onClick={handleBacklink}
+              >
+                ← 목록
+              </button>
+            </div>
+            <div className="flex flex-col items-center">
+              <div className="w-full flex max-md:flex-col justify-between pt-8 px-8 pb-5 제목 칸">
+                <h1 className="w-[80%] max-md:w-full 제목">
+                  {theNews.artcTitle}
+                </h1>
+                <h3 className="flex justify-end max-md:mt-1 날짜">
+                  2024-01-17
+                </h3>
               </div>
-            </section>
-          );
-        })()}
+              <DynamicTTS text={trimmedArtcContents} />
+            </div>
+            <div className="px-8 pb-8 overflow-scroll no-scrollbar 본문 칸">
+              {theNews.imgFilePath && (
+                <Image
+                  src={theNews.imgFilePath}
+                  width={500}
+                  height={0}
+                  alt="news_image"
+                  className="w-full mt-4"
+                />
+              )}
+              <p className="h-full overflow-y-scroll no-scrollbar mt-4">
+                {trimmedArtcContents}
+              </p>
+            </div>
+          </div>
+        </section>
+      )}
     </>
   );
 }
