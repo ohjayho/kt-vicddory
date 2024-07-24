@@ -20,7 +20,6 @@ export function generateStaticParams() {
     'public/data/playerFront',
     'pitcher_data.json',
   );
-  // console.log(filePath);
   const jsonData = JSON.parse(fs.readFileSync(filePath, 'utf8'));
   const paths = jsonData.data.list.map((player: IPlayerFront) => ({
     pitcherId: player.backNum.toString(),
@@ -37,12 +36,10 @@ async function getPlayerData(
     'public/data/playerFront',
     'pitcher_data.json',
   );
-  // console.log(pitcherDataPath);
   const pitcherData = JSON.parse(fs.readFileSync(pitcherDataPath, 'utf8'));
   const playerMeta = pitcherData.data.list.find(
     (player: IPlayerFront) => player.backNum === backNum,
   );
-  // console.log(`playerMeta:${playerMeta}`);
 
   if (!playerMeta) {
     return null;
@@ -54,7 +51,6 @@ async function getPlayerData(
     'playerDetail/pitcher',
     `${playerMeta.korName}.json`,
   );
-  // console.log(`filePath: ${filePath}`);
 
   try {
     const fileContents = fs.readFileSync(filePath, 'utf8');
