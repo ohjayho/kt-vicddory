@@ -75,7 +75,6 @@ export default async function PitcherDetail({ params }: PitcherPageProps) {
         position="pitcher"
         playerData={player}
       />
-      <div className="text-white">playerProfile</div>
     </>
   );
 }
