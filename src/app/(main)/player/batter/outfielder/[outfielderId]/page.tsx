@@ -93,7 +93,6 @@ export default async function OutfielderDetail({
   );
   if (!predictionRes.ok) {
     console.error('Error-Failed to fetch prediction data');
-    // console.log(predictionRes.statusText);
     return <div>Failed to fetch prediction data</div>;
   }
   const playerMetric: TInfielderMetric = await predictionRes.json();
