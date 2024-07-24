@@ -9,6 +9,8 @@ import {
   TBatterYearRecord,
   TCatcherMetric,
 } from '@/types';
+import { getDefaultMetric } from '@/utils/getDefaultMetric';
+
 interface CatcherPageProps {
   params: { catcherId: string };
 }
@@ -19,7 +21,6 @@ export async function generateStaticParams() {
     'public/data/playerFront',
     'catcher_data.json',
   );
-  // console.log(filePath);
   const jsonData = JSON.parse(fs.readFileSync(filePath, 'utf8'));
   const paths = jsonData.data.list.map((player: IPlayerFront) => ({
     catcherId: player.backNum.toString(),
@@ -36,12 +37,10 @@ async function getPlayerData(
     'public/data/playerFront',
     'catcher_data.json',
   );
-  // console.log(catcherDataPath);
   const catcherData = JSON.parse(fs.readFileSync(catcherDataPath, 'utf8'));
   const playerMeta = catcherData.data.list.find(
     (player: IPlayerFront) => player.backNum === backNum,
   );
-  // console.log(`playerMeta:${playerMeta}`);
 
   if (!playerMeta) {
     return null;
@@ -53,7 +52,6 @@ async function getPlayerData(
     'playerDetail/batter/catcher',
     `${playerMeta.korName}.json`,
   );
-  //  console.log(`filePath: ${filePath}`);
 
   try {
     const fileContents = fs.readFileSync(filePath, 'utf8');
@@ -64,13 +62,16 @@ async function getPlayerData(
   }
 }
 export default async function CatcherDetail({ params }: CatcherPageProps) {
-  // console.log('catcher page');
   const player = await getPlayerData(params.catcherId);
   if (!player) {
     return <div>Player not found</div>;
   }
   const playerProfile: IPlayerBack = player.data.gameplayer;
-  // const playerData: IBatterPlayerData = player.data.seasonsummary;
+  if (player.data.metric2023 === undefined || player.data.metric2023 === null) {
+    player.data.metric2023 = getDefaultMetric('outfielder') as TCatcherMetric;
+  }
+  const currentMetric: TCatcherMetric = player.data
+    .metric2023 as TCatcherMetric;
   const playerYearRecord: TBatterYearRecord[] = player.data.yearrecordlist;
 
   // 예측 API
@@ -87,7 +88,6 @@ export default async function CatcherDetail({ params }: CatcherPageProps) {
   );
   if (!predictionRes.ok) {
     console.error('Error-Failed to fetch prediction data');
-    // console.log(predictionRes.statusText);
     return <div>Failed to fetch prediction data</div>;
   }
   const playerMetric: TCatcherMetric = await predictionRes.json();
@@ -95,7 +95,8 @@ export default async function CatcherDetail({ params }: CatcherPageProps) {
     <>
       <PlayerDetailClient
         player={playerProfile}
-        metric={playerMetric}
+        currentMetric={currentMetric}
+        aiMetric={playerMetric}
         position="catcher"
       />
     </>
