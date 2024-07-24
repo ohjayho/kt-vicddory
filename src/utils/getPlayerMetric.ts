@@ -1,6 +1,6 @@
 import { TPitcherMetric, TCatcherMetric, TInfielderMetric } from '@/types';
 
-export function getPlayerMetric(
+export default function getPlayerMetric(
   position: string,
   metric: TPitcherMetric | TCatcherMetric | TInfielderMetric,
 ) {

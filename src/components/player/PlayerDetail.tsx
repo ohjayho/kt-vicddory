@@ -34,6 +34,8 @@ export default function PlayerDetailClient({
       const timer = setTimeout(() => setIsSpin(true), 1080); // Duration should match your CSS transition duration
       return () => clearTimeout(timer);
     }
+    if (showExpectedSeries) {
+    }
   }, [isSpin]);
 
   const handleAIButtonClick = () => {
@@ -48,13 +50,15 @@ export default function PlayerDetailClient({
   if (!player) {
     return <div>Player not found</div>;
   }
-  // console.log('Player data:', player);
 
   return (
     <>
       <div className="flex flex-col items-center bg-black/90 min-h-screen max-md:flex-wrap">
         <div className="flex w-3/4 items-center justify-center max-md:flex-wrap py-16 max-md:w-full">
-          <div className="flex h-fit mx-6 items-center justify-self-center my-10 max-md:flex max-md:flex-col max-md:justify-items-center max-md:px-0 max-md:mx-0">
+          <div
+            className="flex h-fit mx-6 items-center justify-self-center my-10 max-md:flex max-md:flex-col max-md:justify-items-center max-md:px-0 max-md:mx-0"
+            onClick={handleAIButtonClick}
+          >
             <PlayerCard player={player} size="large" checkSpin={isSpin} />
           </div>
           {/* AI 파트 */}

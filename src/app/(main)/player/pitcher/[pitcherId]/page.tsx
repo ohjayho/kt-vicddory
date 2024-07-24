@@ -1,6 +1,5 @@
 import React from 'react';
-import path from 'path';
-import fs from 'fs';
+
 import PlayerDetailClient from '@/components/player/PlayerDetail';
 import {
   IPlayerFront,
@@ -10,23 +9,12 @@ import {
   IPitcherPlayerData,
 } from '@/types';
 import { getDefaultMetric } from '@/utils/getDefaultMetric';
+import { generateStaticParams } from '@/utils/generateStaticParams';
 interface PitcherPageProps {
   params: { pitcherId: string };
 }
 
-export function generateStaticParams() {
-  const filePath = path.join(
-    process.cwd(),
-    'public/data/playerFront',
-    'pitcher_data.json',
-  );
-  const jsonData = JSON.parse(fs.readFileSync(filePath, 'utf8'));
-  const paths = jsonData.data.list.map((player: IPlayerFront) => ({
-    pitcherId: player.backNum.toString(),
-  }));
-
-  return paths;
-}
+const path = generateStaticParams('pitcher');
 
 async function getPlayerData(
   backNum: string,
@@ -60,6 +48,19 @@ async function getPlayerData(
     return null;
   }
 }
+
+export const fetchPlayerData = async (position: string) => {
+  const playerData = await (
+    await fetch(`/api/playerPredict?position=${position}`, {
+      cache: 'force-cache',
+      body: JSON.stringify({
+        player_data: playerYearRecord,
+      }),
+    })
+  ).json();
+  return playerData;
+};
+
 export default async function PitcherDetail({ params }: PitcherPageProps) {
   const player = await getPlayerData(params.pitcherId);
 
@@ -74,22 +75,7 @@ export default async function PitcherDetail({ params }: PitcherPageProps) {
     .metric2023 as TPitcherMetric;
 
   const playerYearRecord: TPitcherYearRecord[] = player.data.yearrecordlist;
-  // 예측 API
-  const predictionRes: Response = await fetch(
-    `${process.env.API_URL}/predict_player_stats`,
-    {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        position: 'pitcher',
-        player_data: playerYearRecord,
-      }),
-    },
-  );
-  if (!predictionRes.ok) {
-    console.error('Error-Failed to fetch prediction data');
-    return <div>Failed to fetch prediction data</div>;
-  }
+
   const playerMetric: TPitcherMetric = await predictionRes.json();
   return (
     <>
