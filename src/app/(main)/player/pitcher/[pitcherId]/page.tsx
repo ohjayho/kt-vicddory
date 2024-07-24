@@ -9,6 +9,7 @@ import {
   IPitcherPlayerData,
   TPitcherYearRecord,
   TBatterYearRecord,
+  TPitcherMetric,
 } from '@/types';
 import { getDefaultMetric } from '@/utils/getDefaultMetric';
 // import generateStaticParams from '@/utils/generateStaticParams';
@@ -83,18 +84,13 @@ export default async function PitcherDetail({ params }: PitcherPageProps) {
       | 'outfielder';
 
   // console.log('playerProps', player);
-  const playerYearRecord: TBatterYearRecord[] | TPitcherYearRecord[] =
-    player.data.yearrecordlist;
-  const apiInputData = {
-    position: playerPosition,
-    player_data: playerYearRecord,
-  };
-  {
-    /*
+  const currentMetric: TPitcherMetric = player.data
+    .metric2023 as TPitcherMetric;
+
   const fetchPlayerData = async (apiInputData: any): Promise<TPlayerMetric> => {
     try {
       const response = await fetch(
-        `${process.env.BASE_URL}/api/playerPredict`,
+        `${process.env.NEXT_PUBLIC_API_URL}/api/playerPredict`,
         {
           method: 'POST',
           // cache: 'force-cache',
@@ -119,7 +115,12 @@ export default async function PitcherDetail({ params }: PitcherPageProps) {
   const getExpectedMetric = async (position: string) => {
     try {
       console.log('Calling fetchPlayerData with position:', position);
-
+      const playerYearRecord: TBatterYearRecord[] | TPitcherYearRecord[] =
+        player.data.yearrecordlist;
+      const apiInputData = {
+        position: playerPosition,
+        player_data: playerYearRecord,
+      };
       const result = await fetchPlayerData(apiInputData);
       console.log('Received expected data: ', result);
       return result;
@@ -128,25 +129,30 @@ export default async function PitcherDetail({ params }: PitcherPageProps) {
       throw e;
     }
   };
-
-  (async () => {
+  {
+    /*
+  const apiResult = async () => {
     try {
       const apiresult = getExpectedMetric('pitcher');
       console.log('api result: ', apiresult);
     } catch (error) {
       console.error('Failed to get expected metric: ', error);
     }
-  })();
+  };
 */
   }
-  console.log('PlayerPage mounted');
+  const apiresult = await getExpectedMetric('pitcher');
+
+  console.log('PlayerPage mounted ', apiresult);
+  console.log(playerProfile, playerPosition, apiresult, currentMetric);
   return (
     <>
       <div className="text-white text-2xl">Player Page</div>
       <PlayerDetailClient
         player={playerProfile}
         position={playerPosition}
-        playerData={player}
+        aiMetric={apiresult}
+        currentMetric={currentMetric}
       />
       <div className="text-white">Bottom Page</div>
     </>
