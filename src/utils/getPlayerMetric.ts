@@ -1,8 +1,13 @@
-import { TPitcherMetric, TCatcherMetric, TInfielderMetric } from '@/types';
+import {
+  TPitcherMetric,
+  TCatcherMetric,
+  TInfielderMetric,
+  TPlayerMetric,
+} from '@/types';
 
 export default function getPlayerMetric(
   position: string,
-  metric: TPitcherMetric | TCatcherMetric | TInfielderMetric,
+  metric: TPlayerMetric | null,
 ) {
   if (position === 'pitcher') {
     const pitcherMetric = metric as TPitcherMetric;

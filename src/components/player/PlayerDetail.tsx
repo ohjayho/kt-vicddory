@@ -8,27 +8,57 @@ import {
   TPitcherMetric,
   TCatcherMetric,
   TInfielderMetric,
-  // IPitcherPlayerData,
-  // IBatterPlayerData,
+  IPitcherPlayerData,
+  IBatterPlayerData,
+  TPitcherYearRecord,
+  TBatterYearRecord,
+  TPlayerMetric,
 } from '@/types';
-
+import generateStaticParams from '@/utils/generateStaticParams';
+import { getDefaultMetric } from '@/utils/getDefaultMetric';
 interface PlayerDetailProps {
   player: IPlayerBack | null;
-  currentMetric: TPitcherMetric | TCatcherMetric | TInfielderMetric;
-  aiMetric: TPitcherMetric | TCatcherMetric | TInfielderMetric;
+  playerData: IPitcherPlayerData | IBatterPlayerData;
+  // currentMetric: TPitcherMetric | TCatcherMetric | TInfielderMetric;
+  // aiMetric: TPitcherMetric | TCatcherMetric | TInfielderMetric;
   position: 'pitcher' | 'catcher' | 'infielder' | 'outfielder';
 }
 
 export default function PlayerDetailClient({
   player,
-  currentMetric,
-  aiMetric,
   position,
+  playerData,
 }: PlayerDetailProps) {
-  // console.log('metric', metric);
   const [showExpectedSeries, setShowExpectedSeries] = useState(false);
   const [isSpin, setIsSpin] = useState(false);
-  // console.log('prediction', metric.reason);
+  const [getExpectedData, setGetExpectedData] = useState<TPlayerMetric | null>(
+    null,
+  );
+  // const playerProfile: IPlayerBack = playerData.data.gameplayer;
+  if (
+    playerData.data.metric2023 === undefined ||
+    playerData.data.metric2023 === null
+  ) {
+    playerData.data.metric2023 = getDefaultMetric('pitcher') as TPitcherMetric;
+  }
+  const currentMetric: TPitcherMetric = playerData.data
+    .metric2023 as TPitcherMetric;
+
+  const playerYearRecord: TBatterYearRecord[] | TPitcherYearRecord[] =
+    playerData.data.yearrecordlist;
+
+  const fetchPlayerData = async (position: string): Promise<TPlayerMetric> => {
+    const playerData = await (
+      await fetch(`/api/playerPredict?position=${position}`, {
+        cache: 'force-cache',
+        body: JSON.stringify({
+          player_data: playerYearRecord,
+        }),
+      })
+    ).json();
+    return playerData;
+  };
+
   useEffect(() => {
     if (isSpin) {
       const timer = setTimeout(() => setIsSpin(true), 1080); // Duration should match your CSS transition duration
@@ -36,11 +66,20 @@ export default function PlayerDetailClient({
     }
     if (showExpectedSeries) {
     }
-  }, [isSpin]);
+  }, [isSpin, showExpectedSeries]);
 
+  // const getExpectedMetric = async () => {
+  //   try {
+  //     const result = await fetchPlayerData(position);
+  //     setGetExpectedData(result);
+  //   } catch (e) {
+  //     console.log('Error:', e);
+  //   }
+  // };
   const handleAIButtonClick = () => {
     setShowExpectedSeries(true);
     setIsSpin(!isSpin);
+    // getExpectedMetric();
   };
 
   const PlayerChart = dynamic(() => import('@/components/player/PlayerChart'), {
@@ -50,6 +89,11 @@ export default function PlayerDetailClient({
   if (!player) {
     return <div>Player not found</div>;
   }
+  // if (!getExpectedData) {
+  //   return null;
+  // }
+  // console.log('player', player);
+  // console.log('getExpectedMetric', getExpectedMetric);
 
   return (
     <>
@@ -67,7 +111,7 @@ export default function PlayerDetailClient({
             <div className="w-full max-md:px-2 max-md:items-center">
               <PlayerChart
                 positionCurrentMetric={currentMetric}
-                positionAIMetric={aiMetric}
+                positionAIMetric={getExpectedData}
                 position={position}
                 showExpectedSeries={showExpectedSeries}
               />
@@ -84,7 +128,8 @@ export default function PlayerDetailClient({
             <div className="pl-6 mt-3">
               <div className="text-white pl-6 mt-3 ">AI 예측</div>
               <div className="flex items-center rounded-[5px] border-2 text-white border-white h-auto w-5/6 mx-6 p-4 max-md:w-11/12 max-md:flex max-md:justify-center">
-                <div className="text-white">{aiMetric.reason}</div>
+                <div className="text-white">rkskekfkakqktk</div>
+                {/* <div className="text-white">{playerData.reason}</div> */}
               </div>
             </div>
           </div>

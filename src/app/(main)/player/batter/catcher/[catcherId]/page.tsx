@@ -1,5 +1,4 @@
 import React from 'react';
-import path from 'path';
 import fs from 'fs';
 import PlayerDetailClient from '@/components/player/PlayerDetail';
 import {
@@ -10,24 +9,26 @@ import {
   TCatcherMetric,
 } from '@/types';
 import { getDefaultMetric } from '@/utils/getDefaultMetric';
+import generateStaticParams from '@/utils/generateStaticParams';
 
 interface CatcherPageProps {
   params: { catcherId: string };
 }
+const path = generateStaticParams('catcher');
 
-export async function generateStaticParams() {
-  const filePath = path.join(
-    process.cwd(),
-    'public/data/playerFront',
-    'catcher_data.json',
-  );
-  const jsonData = JSON.parse(fs.readFileSync(filePath, 'utf8'));
-  const paths = jsonData.data.list.map((player: IPlayerFront) => ({
-    catcherId: player.backNum.toString(),
-  }));
+// export async function generateStaticParams() {
+//   const filePath = path.join(
+//     process.cwd(),
+//     'public/data/playerFront',
+//     'catcher_data.json',
+//   );
+//   const jsonData = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+//   const paths = jsonData.data.list.map((player: IPlayerFront) => ({
+//     catcherId: player.backNum.toString(),
+//   }));
 
-  return paths;
-}
+//   return paths;
+// }
 
 async function getPlayerData(
   backNum: string,

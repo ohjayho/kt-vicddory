@@ -1,21 +1,32 @@
 import React from 'react';
-
+import fs from 'fs';
+import path from 'path';
 import PlayerDetailClient from '@/components/player/PlayerDetail';
 import {
   IPlayerFront,
   IPlayerBack,
   TPitcherMetric,
-  TPitcherYearRecord,
   IPitcherPlayerData,
 } from '@/types';
 import { getDefaultMetric } from '@/utils/getDefaultMetric';
-import { generateStaticParams } from '@/utils/generateStaticParams';
+// import generateStaticParams from '@/utils/generateStaticParams';
 interface PitcherPageProps {
   params: { pitcherId: string };
 }
 
-const path = generateStaticParams('pitcher');
+export async function generateStaticParams() {
+  const filePath = path.join(
+    process.cwd(),
+    'public/data/playerFront',
+    'pitcher_data.json',
+  );
+  const jsonData = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+  const paths = jsonData.data.list.map((player: IPlayerFront) => ({
+    outfielderId: player.backNum.toString(),
+  }));
 
+  return paths;
+}
 async function getPlayerData(
   backNum: string,
 ): Promise<IPitcherPlayerData | null> {
@@ -49,18 +60,6 @@ async function getPlayerData(
   }
 }
 
-export const fetchPlayerData = async (position: string) => {
-  const playerData = await (
-    await fetch(`/api/playerPredict?position=${position}`, {
-      cache: 'force-cache',
-      body: JSON.stringify({
-        player_data: playerYearRecord,
-      }),
-    })
-  ).json();
-  return playerData;
-};
-
 export default async function PitcherDetail({ params }: PitcherPageProps) {
   const player = await getPlayerData(params.pitcherId);
 
@@ -68,23 +67,15 @@ export default async function PitcherDetail({ params }: PitcherPageProps) {
     return <div>Player not found</div>;
   }
   const playerProfile: IPlayerBack = player.data.gameplayer;
-  if (player.data.metric2023 === undefined || player.data.metric2023 === null) {
-    player.data.metric2023 = getDefaultMetric('pitcher') as TPitcherMetric;
-  }
-  const currentMetric: TPitcherMetric = player.data
-    .metric2023 as TPitcherMetric;
-
-  const playerYearRecord: TPitcherYearRecord[] = player.data.yearrecordlist;
-
-  const playerMetric: TPitcherMetric = await predictionRes.json();
+  // console.log('playerProps', player);
   return (
     <>
       <PlayerDetailClient
         player={playerProfile}
-        currentMetric={currentMetric}
-        aiMetric={playerMetric}
         position="pitcher"
+        playerData={player}
       />
+      <div className="text-white">playerProfile</div>
     </>
   );
 }

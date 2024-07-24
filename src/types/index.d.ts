@@ -175,6 +175,7 @@ type TInfielderMetric = {
   WAR: number;
   reason: string;
 };
+type TPlayerMetric = TPitcherMetric | TCatcherMetric | TInfielderMetric;
 
 type TBatterYearRecord = {
   ab: number;
@@ -292,6 +293,7 @@ export {
   TCatcherMetric,
   TPitcherMetric,
   TInfielderMetric,
+  TPlayerMetric,
   TBatterYearRecord,
   TPitcherYearRecord,
   IPitcherPlayerData,

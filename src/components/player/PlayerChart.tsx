@@ -7,10 +7,11 @@ import {
   TPitcherMetric,
   TCatcherMetric,
   TInfielderMetric,
+  TPlayerMetric,
   // IPitcherPlayerData,
   // IBatterPlayerData,
 } from '@/types';
-import { getPlayerMetric } from '@/utils/getPlayerMetric';
+import getPlayerMetric from '@/utils/getPlayerMetric';
 type positionType = {
   pitcher: CategoryDescriptions;
   catcher: CategoryDescriptions;
@@ -18,7 +19,7 @@ type positionType = {
   outfielder: CategoryDescriptions;
 };
 interface PlayerChartProps {
-  positionAIMetric: TPitcherMetric | TCatcherMetric | TInfielderMetric;
+  positionAIMetric: TPlayerMetric | null;
   positionCurrentMetric: TPitcherMetric | TCatcherMetric | TInfielderMetric;
   position: keyof positionType;
   showExpectedSeries: boolean;
