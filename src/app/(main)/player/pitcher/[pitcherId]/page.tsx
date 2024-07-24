@@ -9,6 +9,7 @@ import {
   TPitcherYearRecord,
   IPitcherPlayerData,
 } from '@/types';
+import { getDefaultMetric } from '@/utils/getDefaultMetric';
 interface PitcherPageProps {
   params: { pitcherId: string };
 }
@@ -70,7 +71,12 @@ export default async function PitcherDetail({ params }: PitcherPageProps) {
     return <div>Player not found</div>;
   }
   const playerProfile: IPlayerBack = player.data.gameplayer;
-  // const playerData: IPitcherPlayerData = player.data.seasonsummary;
+  if (player.data.metric2023 === undefined || player.data.metric2023 === null) {
+    player.data.metric2023 = getDefaultMetric('pitcher') as TPitcherMetric;
+  }
+  const currentMetric: TPitcherMetric = player.data
+    .metric2023 as TPitcherMetric;
+
   const playerYearRecord: TPitcherYearRecord[] = player.data.yearrecordlist;
   // 예측 API
   const predictionRes: Response = await fetch(
@@ -90,11 +96,13 @@ export default async function PitcherDetail({ params }: PitcherPageProps) {
     return <div>Failed to fetch prediction data</div>;
   }
   const playerMetric: TPitcherMetric = await predictionRes.json();
+  console.log('playerMetric', playerMetric);
   return (
     <>
       <PlayerDetailClient
         player={playerProfile}
-        metric={playerMetric}
+        currentMetric={currentMetric}
+        aiMetric={playerMetric}
         position="pitcher"
       />
     </>

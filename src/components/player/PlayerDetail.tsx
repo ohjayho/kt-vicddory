@@ -14,14 +14,15 @@ import {
 
 interface PlayerDetailProps {
   player: IPlayerBack | null;
-  // playerData: IPitcherPlayerData | IBatterPlayerData;
-  metric: TPitcherMetric | TCatcherMetric | TInfielderMetric;
+  currentMetric: TPitcherMetric | TCatcherMetric | TInfielderMetric;
+  aiMetric: TPitcherMetric | TCatcherMetric | TInfielderMetric;
   position: 'pitcher' | 'catcher' | 'infielder' | 'outfielder';
 }
 
 export default function PlayerDetailClient({
   player,
-  metric,
+  currentMetric,
+  aiMetric,
   position,
 }: PlayerDetailProps) {
   // console.log('metric', metric);
@@ -61,7 +62,8 @@ export default function PlayerDetailClient({
             {/*그래프*/}
             <div className="w-full max-md:px-2 max-md:items-center">
               <PlayerChart
-                positionMetric={metric}
+                positionCurrentMetric={currentMetric}
+                positionAIMetric={aiMetric}
                 position={position}
                 showExpectedSeries={showExpectedSeries}
               />
@@ -78,7 +80,7 @@ export default function PlayerDetailClient({
             <div className="pl-6 mt-3">
               <div className="text-white pl-6 mt-3 ">AI 예측</div>
               <div className="flex items-center rounded-[5px] border-2 text-white border-white h-auto w-5/6 mx-6 p-4 max-md:w-11/12 max-md:flex max-md:justify-center">
-                <div className="text-white">{metric.reason}</div>
+                <div className="text-white">{aiMetric.reason}</div>
               </div>
             </div>
           </div>
