@@ -5,8 +5,10 @@ import PlayerDetailClient from '@/components/player/PlayerDetail';
 import {
   IPlayerFront,
   IPlayerBack,
-  TPitcherMetric,
+  TPlayerMetric,
   IPitcherPlayerData,
+  TPitcherYearRecord,
+  TBatterYearRecord,
 } from '@/types';
 import { getDefaultMetric } from '@/utils/getDefaultMetric';
 // import generateStaticParams from '@/utils/generateStaticParams';
@@ -68,6 +70,43 @@ export default async function PitcherDetail({ params }: PitcherPageProps) {
   }
   const playerProfile: IPlayerBack = player.data.gameplayer;
   // console.log('playerProps', player);
+  const playerYearRecord: TBatterYearRecord[] | TPitcherYearRecord[] =
+    player.data.yearrecordlist;
+  const apiInputData = {
+    position: 'pitcher',
+    player_data: playerYearRecord,
+  };
+
+  const fetchPlayerData = async (apiInputData: any): Promise<TPlayerMetric> => {
+    try {
+      const response = await fetch(
+        `${process.env.BASE_URL}/api/playerPredict`,
+        {
+          method: 'POST',
+          // cache: 'force-cache',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(apiInputData),
+        },
+      );
+      if (!response.ok) {
+        throw new Error('Failed to fetch player data');
+      }
+      const playerExpectedData = await response.json();
+      return playerExpectedData;
+    } catch (error) {
+      console.error('Error fetching player data:', error);
+      throw error;
+    }
+  };
+  const getExpectedMetric = async (position: string) => {
+    try {
+      const result = await fetchPlayerData(apiInputData);
+    } catch (e) {
+      console.log('Error:', e);
+    }
+  };
+  const apiresult = getExpectedMetric('pitcher');
+  console.log('api result: ', apiresult);
   return (
     <>
       <PlayerDetailClient

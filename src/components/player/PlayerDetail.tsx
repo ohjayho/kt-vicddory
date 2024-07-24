@@ -51,24 +51,24 @@ export default function PlayerDetailClient({
     position: position,
     player_data: playerYearRecord,
   };
-  const fetchPlayerData = async (aiInputData: any): Promise<TPlayerMetric> => {
-    try {
-      const response = await fetch('/api/playerPredict', {
-        method: 'POST',
-        cache: 'force-cache',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(apiInputData),
-      });
-      if (!response.ok) {
-        throw new Error('Failed to fetch player data');
-      }
-      const playerExpectedData = await response.json();
-      return playerExpectedData;
-    } catch (error) {
-      console.error('Error fetching player data:', error);
-      throw error;
-    }
-  };
+  // const fetchPlayerData = async (apiInputData: any): Promise<TPlayerMetric> => {
+  //   try {
+  //     const response = await fetch('/api/playerPredict', {
+  //       method: 'POST',
+  //       cache: 'force-cache',
+  //       headers: { 'Content-Type': 'application/json' },
+  //       body: JSON.stringify(apiInputData),
+  //     });
+  //     if (!response.ok) {
+  //       throw new Error('Failed to fetch player data');
+  //     }
+  //     const playerExpectedData = await response.json();
+  //     return playerExpectedData;
+  //   } catch (error) {
+  //     console.error('Error fetching player data:', error);
+  //     throw error;
+  //   }
+  // };
   useEffect(() => {
     if (isSpin) {
       const timer = setTimeout(() => setIsSpin(true), 1080); // Duration should match your CSS transition duration
@@ -78,18 +78,18 @@ export default function PlayerDetailClient({
     }
   }, [isSpin, showExpectedSeries]);
 
-  const getExpectedMetric = async (position: string) => {
-    try {
-      const result = await fetchPlayerData(apiInputData);
-      setGetExpectedData(result);
-    } catch (e) {
-      console.log('Error:', e);
-    }
-  };
+  // const getExpectedMetric = async (position: string) => {
+  //   try {
+  //     const result = await fetchPlayerData(apiInputData);
+  //     setGetExpectedData(result);
+  //   } catch (e) {
+  //     console.log('Error:', e);
+  //   }
+  // };
   const handleAIButtonClick = () => {
     setShowExpectedSeries(true);
     setIsSpin(!isSpin);
-    getExpectedMetric(position);
+    // getExpectedMetric(position);
   };
 
   const PlayerChart = dynamic(() => import('@/components/player/PlayerChart'), {
@@ -103,7 +103,7 @@ export default function PlayerDetailClient({
     return null;
   }
   console.log('player', player);
-  console.log('getExpectedMetric', getExpectedMetric);
+  // console.log('getExpectedMetric', getExpectedMetric);
 
   return (
     <>
