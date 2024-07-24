@@ -5,7 +5,7 @@ export async function POST(req: NextRequest) {
     const data = await req.json();
     const { position, player_data } = data;
     const response = await fetch(
-      '${process.env.API_URL}/predict_player_stats',
+      `${process.env.API_URL}/predict_player_stats`,
       {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -16,13 +16,13 @@ export async function POST(req: NextRequest) {
       },
     );
     if (!response.ok) {
-      throw new Error('Failed to fetch player data');
+      throw new Error('Server-Failed to fetch player data');
     }
     const expectedMetric = await response.json();
     return NextResponse.json(expectedMetric, { status: 200 });
   } catch (error) {
     return NextResponse.json(
-      { error: 'Failed to fetch player stats' },
+      { error: 'Server-Failed to fetch player stats' },
       { status: 500 },
     );
   }

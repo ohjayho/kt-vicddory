@@ -69,14 +69,28 @@ export default async function PitcherDetail({ params }: PitcherPageProps) {
     return <div>Player not found</div>;
   }
   const playerProfile: IPlayerBack = player.data.gameplayer;
+  // 첫 글자를 소문자로 변환하는 함수
+  const toLowerFirst = (str: string): string => {
+    return str.charAt(0).toLowerCase() + str.slice(1);
+  };
+
+  // playerPosition 변수 선언 및 할당
+  const playerPosition: 'pitcher' | 'catcher' | 'infielder' | 'outfielder' =
+    toLowerFirst(playerProfile.positionEng) as
+      | 'pitcher'
+      | 'catcher'
+      | 'infielder'
+      | 'outfielder';
+
   // console.log('playerProps', player);
   const playerYearRecord: TBatterYearRecord[] | TPitcherYearRecord[] =
     player.data.yearrecordlist;
   const apiInputData = {
-    position: 'pitcher',
+    position: playerPosition,
     player_data: playerYearRecord,
   };
-
+  {
+    /*
   const fetchPlayerData = async (apiInputData: any): Promise<TPlayerMetric> => {
     try {
       const response = await fetch(
@@ -88,7 +102,11 @@ export default async function PitcherDetail({ params }: PitcherPageProps) {
           body: JSON.stringify(apiInputData),
         },
       );
+      console.log('Response status:', response.status);
+
       if (!response.ok) {
+        const errorText = await response.text();
+        console.error('Error response text:', errorText);
         throw new Error('Failed to fetch player data');
       }
       const playerExpectedData = await response.json();
@@ -100,20 +118,37 @@ export default async function PitcherDetail({ params }: PitcherPageProps) {
   };
   const getExpectedMetric = async (position: string) => {
     try {
+      console.log('Calling fetchPlayerData with position:', position);
+
       const result = await fetchPlayerData(apiInputData);
+      console.log('Received expected data: ', result);
+      return result;
     } catch (e) {
       console.log('Error:', e);
+      throw e;
     }
   };
-  const apiresult = getExpectedMetric('pitcher');
-  console.log('api result: ', apiresult);
+
+  (async () => {
+    try {
+      const apiresult = getExpectedMetric('pitcher');
+      console.log('api result: ', apiresult);
+    } catch (error) {
+      console.error('Failed to get expected metric: ', error);
+    }
+  })();
+*/
+  }
+  console.log('PlayerPage mounted');
   return (
     <>
+      <div className="text-white text-2xl">Player Page</div>
       <PlayerDetailClient
         player={playerProfile}
-        position="pitcher"
+        position={playerPosition}
         playerData={player}
       />
+      <div className="text-white">Bottom Page</div>
     </>
   );
 }

@@ -31,9 +31,9 @@ export default function PlayerDetailClient({
 }: PlayerDetailProps) {
   const [showExpectedSeries, setShowExpectedSeries] = useState(false);
   const [isSpin, setIsSpin] = useState(false);
-  const [getExpectedData, setGetExpectedData] = useState<TPlayerMetric | null>(
-    null,
-  );
+  const [getExpectedData, setGetExpectedData] = useState(null);
+  const [error, setError] = useState<string | null>(null);
+
   // const playerProfile: IPlayerBack = playerData.data.gameplayer;
   if (
     playerData.data.metric2023 === undefined ||
@@ -44,6 +44,21 @@ export default function PlayerDetailClient({
   const currentMetric: TPitcherMetric = playerData.data
     .metric2023 as TPitcherMetric;
 
+  useEffect(() => {
+    console.log('PlayerDetailClient mounted');
+    console.log('player', player);
+    console.log('position', position);
+    console.log('playerData', playerData);
+  }, []);
+
+  useEffect(() => {
+    if (isSpin) {
+      const timer = setTimeout(() => setIsSpin(true), 1080); // Duration should match your CSS transition duration
+      return () => clearTimeout(timer);
+    }
+  }, [isSpin]);
+
+  // API 호출
   const playerYearRecord: TBatterYearRecord[] | TPitcherYearRecord[] =
     playerData.data.yearrecordlist;
 
@@ -51,45 +66,63 @@ export default function PlayerDetailClient({
     position: position,
     player_data: playerYearRecord,
   };
-  // const fetchPlayerData = async (apiInputData: any): Promise<TPlayerMetric> => {
-  //   try {
-  //     const response = await fetch('/api/playerPredict', {
-  //       method: 'POST',
-  //       cache: 'force-cache',
-  //       headers: { 'Content-Type': 'application/json' },
-  //       body: JSON.stringify(apiInputData),
-  //     });
-  //     if (!response.ok) {
-  //       throw new Error('Failed to fetch player data');
-  //     }
-  //     const playerExpectedData = await response.json();
-  //     return playerExpectedData;
-  //   } catch (error) {
-  //     console.error('Error fetching player data:', error);
-  //     throw error;
-  //   }
-  // };
-  useEffect(() => {
-    if (isSpin) {
-      const timer = setTimeout(() => setIsSpin(true), 1080); // Duration should match your CSS transition duration
-      return () => clearTimeout(timer);
-    }
-    if (showExpectedSeries) {
-    }
-  }, [isSpin, showExpectedSeries]);
+  const fetchPlayerData = async (
+    apiInputData: any,
+  ): Promise<TPlayerMetric | any> => {
+    try {
+      console.log('Requesting player data with input:', apiInputData);
 
-  // const getExpectedMetric = async (position: string) => {
-  //   try {
-  //     const result = await fetchPlayerData(apiInputData);
-  //     setGetExpectedData(result);
-  //   } catch (e) {
-  //     console.log('Error:', e);
-  //   }
-  // };
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/playerPredict`,
+        {
+          method: 'POST',
+          // cache: 'force-cache',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(apiInputData),
+        },
+      );
+      console.log('Response status:', response.status);
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error('Error response text:', errorText);
+        throw new Error('Failed to fetch player data');
+      }
+      const playerExpectedData = await response.json();
+      console.log('Received player expected data:', playerExpectedData);
+
+      return playerExpectedData;
+    } catch (error) {
+      console.error('Error fetching player data:', error);
+      throw error;
+    }
+  };
+
+  const getExpectedMetric = async (position: string) => {
+    try {
+      console.log('Calling fetchPlayerData with position:', position);
+      const playerYearRecord: TBatterYearRecord[] | TPitcherYearRecord[] =
+        playerData.data.yearrecordlist;
+
+      const apiInputData = {
+        position: position,
+        player_data: playerYearRecord,
+      };
+      const result = await fetchPlayerData(apiInputData);
+      console.log('Received expected data: ', result);
+      setGetExpectedData(result);
+    } catch (e) {
+      console.log('Error:', e);
+      throw e;
+    }
+  };
+  //
   const handleAIButtonClick = () => {
+    console.log('AI Button clicked');
+
     setShowExpectedSeries(true);
     setIsSpin(!isSpin);
-    // getExpectedMetric(position);
+    getExpectedMetric(position);
   };
 
   const PlayerChart = dynamic(() => import('@/components/player/PlayerChart'), {
@@ -103,22 +136,31 @@ export default function PlayerDetailClient({
     return null;
   }
   console.log('player', player);
+  console.log(getExpectedMetric);
   // console.log('getExpectedMetric', getExpectedMetric);
+  console.log('Rendering PlayerDetailClient');
 
   return (
     <>
+      <h1>Player Detail Client</h1>
       <div className="flex flex-col items-center bg-black/90 min-h-screen max-md:flex-wrap">
         <div className="flex w-3/4 items-center justify-center max-md:flex-wrap py-16 max-md:w-full">
           <div
             className="flex h-fit mx-6 items-center justify-self-center my-10 max-md:flex max-md:flex-col max-md:justify-items-center max-md:px-0 max-md:mx-0"
             onClick={handleAIButtonClick}
           >
+            {error && <div className="text-white">Error: {error}</div>}
+
             <PlayerCard player={player} size="large" checkSpin={isSpin} />
           </div>
           {/* AI 파트 */}
           <div className="flex flex-col w-1/2 px-16 pl-22 max-md:pl-0 max-md:w-full max-md:flex-wrap max-md:px-2 max-md:mx-4">
             {/*그래프*/}
             <div className="w-full max-md:px-2 max-md:items-center">
+              {getExpectedData && (
+                <pre>{JSON.stringify(getExpectedData, null, 2)}</pre>
+              )}
+
               <PlayerChart
                 positionCurrentMetric={currentMetric}
                 positionAIMetric={getExpectedData}
