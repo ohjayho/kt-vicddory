@@ -88,11 +88,9 @@ export default async function PitcherDetail({ params }: PitcherPageProps) {
   );
   if (!predictionRes.ok) {
     console.error('Error-Failed to fetch prediction data');
-    // console.log(predictionRes.statusText);
     return <div>Failed to fetch prediction data</div>;
   }
   const playerMetric: TPitcherMetric = await predictionRes.json();
-  console.log('playerMetric', playerMetric);
   return (
     <>
       <PlayerDetailClient

@@ -111,7 +111,9 @@ const CardBack: React.FC<CardBackProps> = ({ player, size = 'large' }) => {
           className={`bg-black rounded-xl overflow-hidden relative m-4 items-center justify-center transform transition-transform ${sizeClass}`}
         >
           {/* 선수 이미지 */}
-          <div className={`relative ${photoSize} mx-auto`}>
+          <div
+            className={`relative ${photoSize} mx-auto border rounded-t-2xl overflow-hidden`}
+          >
             <Image
               src={player.playerBackImg}
               alt={`${player.korName} Image`}
@@ -150,7 +152,7 @@ const CardBack: React.FC<CardBackProps> = ({ player, size = 'large' }) => {
                     src={`/images/player/playerPosition/${player.positionEng}.png`}
                     alt={`${player.positionKor} 사진`}
                     layout="fill"
-                    className="absolute left-0 object-cover rounded-0"
+                    className="absolute object-cover"
                   />
                 </div>
                 <div className="flex flex-row place-content-end items-end pt-10 mr-8">

@@ -22,7 +22,6 @@ interface PlayerChartProps {
   positionCurrentMetric: TPitcherMetric | TCatcherMetric | TInfielderMetric;
   position: keyof positionType;
   showExpectedSeries: boolean;
-  // playerData: any[];
 }
 HighchartsMore(Highcharts);
 DarkUnica(Highcharts);
@@ -109,72 +108,12 @@ const positionCategory: positionType = {
   },
 };
 
-// let currentPosition = 'pitcher';
-
 export default function PlayerChart({
   positionAIMetric,
   positionCurrentMetric,
   position,
   showExpectedSeries,
-  // playerData,
 }: PlayerChartProps) {
-  // const testData = [1, 3, 0.6, 0.3, 10];
-  // const originalData: number[] =
-  //   (() => {
-  //     if (position === 'pitcher') {
-  //       const orgData = playerData;
-  //       // const orgData = data.data.seasonsummary;
-  //       console.log(orgData);
-  //       return [
-  //         // parseFloat(orgData['era']),
-  //         // parseFloat(orgData['kbb']),
-  //         // parseFloat(orgData['whip']),
-  //         // parseFloat(orgData['oavg']),
-  //         // parseFloat(orgData['qs']),
-  //       ];
-  //     }
-  //     // 다른 포지션에 대한 처리도 필요하다면 추가
-  //     return [];
-  //   })() || []; // 항상 배열을 반환하도록 보장
-
-  const expectedData = (() => {
-    if (position === 'pitcher') {
-      const metric = positionAIMetric as TPitcherMetric;
-      //console.log(metric);
-      return [
-        metric.ERA,
-        metric['K/BB'],
-        metric.WHIP,
-        metric.피안타율,
-        metric.QS,
-      ];
-    } else if (position === 'catcher') {
-      const metric = positionAIMetric as TCatcherMetric;
-      return [metric.FPCT, metric['CS%'], metric.PB, metric.rSB, metric.CERA];
-    } else if (position === 'infielder') {
-      const metric = positionAIMetric as TInfielderMetric;
-      return [
-        metric.BA,
-        metric.OBP,
-        metric.SLG,
-        metric.OPS,
-        metric.FPCT,
-        metric.WAR,
-      ];
-    } else if (position === 'outfielder') {
-      const metric = positionAIMetric as TInfielderMetric;
-      return [
-        metric.BA,
-        metric.OBP,
-        metric.SLG,
-        metric.OPS,
-        metric.FPCT,
-        metric.WAR,
-      ];
-    } else {
-      return [];
-    }
-  })();
   const currentMetric = getPlayerMetric(position, positionCurrentMetric);
   const expectedMetric = getPlayerMetric(position, positionAIMetric);
   // Scale the data for each category based on the global maximum
@@ -277,9 +216,7 @@ export default function PlayerChart({
     },
   };
 
-  //  currentPosition = position;
   options.xAxis.categories = positionCategory[position].categories;
-  // const playerdata = playerData;
 
   return (
     <>
