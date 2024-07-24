@@ -1,8 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server';
 import clientPromise from '@/libs/mongodb';
 
-export async function POST(req: NextRequest) {
-  const { positions } = await req.json();
+export async function GET(req: NextRequest) {
+  const { searchParams } = req.nextUrl;
+  const positions: any = searchParams.get('positions');
+  let arr = positions.split(',')
+
+
+  console.log(positions);
+  console.log(typeof positions);
+  console.log(arr);
+  console.log(typeof arr);
 
   try {
     const client = await clientPromise;
@@ -14,7 +22,7 @@ export async function POST(req: NextRequest) {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ positions }),
+      body: JSON.stringify({ positions: arr }),
     });
 
     if (!response.ok) {
