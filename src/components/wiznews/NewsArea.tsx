@@ -34,9 +34,7 @@ export const useNewsListStore = create<NewsListStore>()((set) => ({
 
 export const fetchNews = async (pageNum: number) => {
   const newsData = await (
-    await fetch(`/api/news?searchMax=5&pageNum=${pageNum}`, {
-      cache: 'force-cache',
-    })
+    await fetch(`/api/news?searchMax=5&pageNum=${pageNum}`)
   ).json();
   return newsData;
 };
@@ -48,6 +46,7 @@ export default function NewsArea() {
     const getNews = async () => {
       try {
         const result = await fetchNews(1);
+        console.log(result, '리절트 뭐야');
         setNewsList(result);
       } catch (e) {
         console.log('Error:', e);
