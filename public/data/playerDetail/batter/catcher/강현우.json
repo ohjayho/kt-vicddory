@@ -347,6 +347,13 @@
       "playerHeight": "180",
       "playerWeight": "90",
       "debutYear": "2020"
+    },
+    "metric2023": {
+      "FPCT": 0.8,
+      "CS%": 35,
+      "PB": 5,
+      "rSB": 3,
+      "CERA": 3
     }
   }
 }

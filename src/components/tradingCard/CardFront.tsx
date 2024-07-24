@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { IPlayerFront } from '@/types';
+import Image from 'next/image';
 // import PlayerCardProps from '@/components/tradingCard/PlayerCard';
 interface CardFrontProps {
   player: IPlayerFront;
