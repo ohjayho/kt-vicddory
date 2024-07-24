@@ -6,12 +6,6 @@ export async function GET(req: NextRequest) {
   const positions: any = searchParams.get('positions');
   let arr = positions.split(',')
 
-
-  console.log(positions);
-  console.log(typeof positions);
-  console.log(arr);
-  console.log(typeof arr);
-
   try {
     const client = await clientPromise;
     const db = client.db('vicddory');
