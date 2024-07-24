@@ -232,7 +232,7 @@ interface IPitcherPlayerData {
     yearrecordlist: TPitcherYearRecord[];
     seasonsummaryfutures: any;
     gameplayer: IPlayerBack;
-    metric2023?: TPitcherMetric;
+    metric2023?: TPitcherMetric | null;
   };
 }
 interface IBatterPlayerData {
@@ -243,7 +243,7 @@ interface IBatterPlayerData {
     yearrecordlist: TBatterYearRecord[];
     seasonsummaryfutures: any;
     gameplayer: IPlayerBack;
-    metric2023?: TCatcherMetric | TInfielderMetric;
+    metric2023?: TCatcherMetric | TInfielderMetric | null;
   };
 }
 type TRanking = {
