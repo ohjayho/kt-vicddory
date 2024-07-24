@@ -10,6 +10,7 @@ import {
   // IPitcherPlayerData,
   // IBatterPlayerData,
 } from '@/types';
+import { getPlayerMetric } from '@/utils/getPlayerMetric';
 type positionType = {
   pitcher: CategoryDescriptions;
   catcher: CategoryDescriptions;
@@ -17,7 +18,8 @@ type positionType = {
   outfielder: CategoryDescriptions;
 };
 interface PlayerChartProps {
-  positionMetric: TPitcherMetric | TCatcherMetric | TInfielderMetric;
+  positionAIMetric: TPitcherMetric | TCatcherMetric | TInfielderMetric;
+  positionCurrentMetric: TPitcherMetric | TCatcherMetric | TInfielderMetric;
   position: keyof positionType;
   showExpectedSeries: boolean;
   // playerData: any[];
@@ -110,7 +112,8 @@ const positionCategory: positionType = {
 // let currentPosition = 'pitcher';
 
 export default function PlayerChart({
-  positionMetric,
+  positionAIMetric,
+  positionCurrentMetric,
   position,
   showExpectedSeries,
   // playerData,
@@ -136,7 +139,7 @@ export default function PlayerChart({
 
   const expectedData = (() => {
     if (position === 'pitcher') {
-      const metric = positionMetric as TPitcherMetric;
+      const metric = positionAIMetric as TPitcherMetric;
       //console.log(metric);
       return [
         metric.ERA,
@@ -146,10 +149,10 @@ export default function PlayerChart({
         metric.QS,
       ];
     } else if (position === 'catcher') {
-      const metric = positionMetric as TCatcherMetric;
+      const metric = positionAIMetric as TCatcherMetric;
       return [metric.FPCT, metric['CS%'], metric.PB, metric.rSB, metric.CERA];
     } else if (position === 'infielder') {
-      const metric = positionMetric as TInfielderMetric;
+      const metric = positionAIMetric as TInfielderMetric;
       return [
         metric.BA,
         metric.OBP,
@@ -159,7 +162,7 @@ export default function PlayerChart({
         metric.WAR,
       ];
     } else if (position === 'outfielder') {
-      const metric = positionMetric as TInfielderMetric;
+      const metric = positionAIMetric as TInfielderMetric;
       return [
         metric.BA,
         metric.OBP,
@@ -172,45 +175,31 @@ export default function PlayerChart({
       return [];
     }
   })();
-
+  const currentMetric = getPlayerMetric(position, positionCurrentMetric);
+  const expectedMetric = getPlayerMetric(position, positionAIMetric);
   // Scale the data for each category based on the global maximum
-  // const scaledData = positionCategory[position].categories.map(
-  //   (category, index) => {
-  //     const ynotExpectedValue = originalData[index]; // originalData가 배열임을 보장
-
-  //     const yValue =
-  //       ynotExpectedValue[index] /
-  //       positionCategory[position].standards[category];
-
-  //     return {
-  //       name: category,
-  //       y: Math.min(parseFloat(yValue.toFixed(2)), 1),
-  //     };
-  //   },
-  // );
 
   const scaledExpectedData = positionCategory[position].categories.map(
     (category, index) => {
       const yExpectedValue =
-        expectedData[index] / positionCategory[position].standards[category];
+        expectedMetric[index] / positionCategory[position].standards[category];
       return {
         name: category,
         y: parseFloat(yExpectedValue.toFixed(2)),
       };
     },
   );
-  /*
-  const notScaledExpectedData = positionCategory[position].categories.map(
+  const scaledCurrentData = positionCategory[position].categories.map(
     (category, index) => {
-      const yValue = expectedData[index] / 1;
-
+      const yCurrentValue =
+        currentMetric[index] / positionCategory[position].standards[category];
       return {
         name: category,
-        y: yValue,
+        y: parseFloat(yCurrentValue.toFixed(2)),
       };
     },
   );
-*/
+
   const options = {
     title: {
       text: '선수 예측 데이터',
@@ -241,7 +230,7 @@ export default function PlayerChart({
     series: [
       {
         name: 'Current',
-        data: scaledExpectedData,
+        data: scaledCurrentData,
         visible: true,
         pointPlacement: 'on',
       },
