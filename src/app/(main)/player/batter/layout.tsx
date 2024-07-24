@@ -9,7 +9,7 @@ export default function BatterLayout({
     <>
       <div className="min-h-screen bg-black">
         {' '}
-        <div className="pt-20 pb-6 bg-white">
+        <div className="pt-20 bg-white">
           <Banner />
         </div>
         {children}
