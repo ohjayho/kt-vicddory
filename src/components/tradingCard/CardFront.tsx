@@ -96,19 +96,21 @@ const CardFront: React.FC<CardFrontProps> = ({
           onClick={onClick}
         >
           {/* 선수 이미지 */}
-          <div className={`relative ${photoSize} mx-auto`}>
-            <img
+          <div className={`relative ${photoSize} mx-auto rounded-t-2xl`}>
+            <Image
               src={`/images/player/playerCardFront/${player.playerFrontImg}`}
               alt={`${player.korName} Image`}
-              className="absolute left-0 top-3 w-full h-full object-cover rounded-2xl"
+              layout="fill"
+              className="pt-4 object-cover rounded-t-2xl "
             />
           </div>
           {/*프레임 이미지*/}
           <div className="absolute inset-0">
-            <img
+            <Image
               src={'/images/frontCardFrame.png'}
               alt={'Front Card Frame'}
-              className="w-full h-full object-cover"
+              layout="fill"
+              className="object-cover"
             />
           </div>
           <div
