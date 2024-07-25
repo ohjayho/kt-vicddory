@@ -3,9 +3,10 @@ import Image from 'next/image';
 
 export default function Modal() {
   return (
-    <div className="flex justify-center flex-col items-center h-3/4 max-w-md m-auto">
-      <div className="w-96 h-4/6 rounded-t bg-[#F8A6A7] flex flex-col justify-center items-center text-center">
-        <div className="w-2/5 rounded-md bg-[#ED2024] text-white flex justify-center items-center text-base py-1 mb-2 mt-12">
+    <>
+      <div className="flex justify-center flex-col items-center h-dvh max-w-md m-auto">
+      <div className="w-[448px] h-4/6 bg-[#F8A6A7] flex flex-col justify-center items-center text-center">
+        <div className="w-2/5 rounded-md bg-[#ED2024] text-white flex justify-center items-center text-base py-1 mb-6 mt-12">
           야구 입문자를 위한
         </div>
         <Image
@@ -13,7 +14,7 @@ export default function Modal() {
           alt="watermark"
           width={200}
           height={62}
-          className="w-36"
+          className="w-40 md:w-[200px]"
         />
         <div className="w-60 h-14 text-5xl font-bold mb-3 mt-3 text-[#333333]">
           궁합테스트
@@ -26,14 +27,14 @@ export default function Modal() {
           alt="emblem"
           width={200}
           height={180}
-          className="w-36 mb-1"
+          className="w-40 md:w-[200px] mb-4"
         />
-        <Button width={32} text="xl" href="/testModal/questions/1">
+        <Button width={80} text="2xl" href="/test/questions/1">
           테스트 START
         </Button>
       </div>
-      <div className="w-96 h-2/6 rounded-b bg-[#FFFFFF] flex flex-col justify-center items-center text-center">
-        <div className="w-74 h-[95px] text-sm mt-4 text-[#333333]">
+      <div className="w-full h-2/6 bg-[#FFFFFF] flex flex-col justify-center items-center text-center">
+        <div className="w-74 h-[95px] text-sm mt-1 text-[#333333]">
           kt wiz는 2013년, 제 10구단에 대한 국민들의 강한 열망,
           <br /> 경기도 및 수원시 그리고 KT그룹의 뜨거운 유치 열정으로
           <br /> 비상한 솜씨와 비범한 재능을 가진 마법사,
@@ -43,5 +44,6 @@ export default function Modal() {
         </div>
       </div>
     </div>
+    </>
   );
 }
