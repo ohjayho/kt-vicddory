@@ -112,7 +112,7 @@ const CardBack: React.FC<CardBackProps> = ({ player, size = 'large' }) => {
         >
           {/* 선수 이미지 */}
           <div
-            className={`relative ${photoSize} mx-auto border rounded-t-2xl overflow-hidden`}
+            className={`relative ${photoSize} mx-auto  rounded-t-2xl overflow-hidden`}
           >
             <Image
               src={player.playerBackImg}
