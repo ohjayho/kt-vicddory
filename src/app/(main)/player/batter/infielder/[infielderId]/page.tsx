@@ -9,6 +9,8 @@ import {
   TBatterYearRecord,
   TInfielderMetric,
 } from '@/types';
+import { getDefaultMetric } from '@/utils/getDefaultMetric';
+
 interface InfielderPageProps {
   params: { infielderId: string };
 }
@@ -36,12 +38,10 @@ async function getPlayerData(
     'public/data/playerFront',
     'infielder_data.json',
   );
-  // console.log(infielderDataPath);
   const infielderData = JSON.parse(fs.readFileSync(infielderDataPath, 'utf8'));
   const playerMeta = infielderData.data.list.find(
     (player: IPlayerFront) => player.backNum === backNum,
   );
-  // console.log(`playerMeta:${playerMeta}`);
 
   if (!playerMeta) {
     return null;
@@ -53,7 +53,6 @@ async function getPlayerData(
     'playerDetail/batter/infielder',
     `${playerMeta.korName}.json`,
   );
-  // console.log(`filePath: ${filePath}`);
 
   try {
     const fileContents = fs.readFileSync(filePath, 'utf8');
@@ -69,7 +68,11 @@ export default async function InfielderDetail({ params }: InfielderPageProps) {
     return <div>Player not found</div>;
   }
   const playerProfile: IPlayerBack = player.data.gameplayer;
-  // const playerData: IBatterPlayerData = player.data.seasonsummary;
+  if (player.data.metric2023 === undefined || player.data.metric2023 === null) {
+    player.data.metric2023 = getDefaultMetric('infielder') as TInfielderMetric;
+  }
+  const currentMetric: TInfielderMetric = player.data
+    .metric2023 as TInfielderMetric;
   const playerYearRecord: TBatterYearRecord[] = player.data.yearrecordlist;
 
   // 예측 API
@@ -86,7 +89,6 @@ export default async function InfielderDetail({ params }: InfielderPageProps) {
   );
   if (!predictionRes.ok) {
     console.error('Error-Failed to fetch prediction data');
-    // console.log(predictionRes.statusText);
     return <div>Failed to fetch prediction data</div>;
   }
   const playerMetric: TInfielderMetric = await predictionRes.json();
@@ -94,7 +96,8 @@ export default async function InfielderDetail({ params }: InfielderPageProps) {
     <>
       <PlayerDetailClient
         player={playerProfile}
-        metric={playerMetric}
+        currentMetric={currentMetric}
+        aiMetric={playerMetric}
         position="infielder"
       />
     </>

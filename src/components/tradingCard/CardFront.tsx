@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { IPlayerFront } from '@/types';
+import Image from 'next/image';
 // import PlayerCardProps from '@/components/tradingCard/PlayerCard';
 interface CardFrontProps {
   player: IPlayerFront;
@@ -91,23 +92,27 @@ const CardFront: React.FC<CardFrontProps> = ({
         ></div>
         {/* 카드 앞면 */}
         <div
-          className={`bg-black ${sizeClass} rounded-lg overflow-visible relative m-4 items-center justify-center transform transition-transform duration-100`}
+          className={`bg-black ${sizeClass} rounded-lg overflow-hidden relative m-4 items-center justify-center transform transition-transform duration-100`}
           onClick={onClick}
         >
           {/* 선수 이미지 */}
-          <div className={`relative ${photoSize} mx-auto`}>
-            <img
+          <div
+            className={`relative ${photoSize} mx-auto rounded-t-2xl overflow-hidden`}
+          >
+            <Image
               src={`/images/player/playerCardFront/${player.playerFrontImg}`}
               alt={`${player.korName} Image`}
-              className="absolute left-0 top-3 w-full h-full object-cover rounded-2xl"
+              fill
+              className="pt-4 object-cover rounded-t-2xl "
             />
           </div>
           {/*프레임 이미지*/}
           <div className="absolute inset-0">
-            <img
+            <Image
               src={'/images/frontCardFrame.png'}
               alt={'Front Card Frame'}
-              className="w-full h-full object-cover"
+              fill
+              className="object-cover"
             />
           </div>
           <div

@@ -1,5 +1,6 @@
 import React from 'react';
 import { IPlayerBack } from '@/types';
+import Image from 'next/image';
 interface CardBackProps {
   player: IPlayerBack;
   size?: 'small' | 'medium' | 'large';
@@ -10,9 +11,16 @@ const sizeClasses = {
   medium: 'w-[252px] h-[348px]', // list
   large: 'w-[360px] h-[500px]', // detail page
 };
+const photoSizes = {
+  small: 'w-40 h-60',
+  medium: 'w-[228px] h-[136px]',
+  large: 'w-[324px] h-[196px]',
+};
 
 const CardBack: React.FC<CardBackProps> = ({ player, size = 'large' }) => {
   const sizeClass = sizeClasses[size];
+  const photoSize = photoSizes[size];
+
   if (size === 'medium') {
     return (
       <>
@@ -21,19 +29,21 @@ const CardBack: React.FC<CardBackProps> = ({ player, size = 'large' }) => {
           className={`bg-black rounded-lg overflow-hidden relative m-4 shadow-lg items-center justify-center transform transition-transform ${sizeClass}`}
         >
           {/* 선수 이미지 */}
-          <div className="relative w-[228px] h-[136px] mx-auto">
-            <img
+          <div className={`relative ${photoSize} mx-auto top-3`}>
+            <Image
               src={player.playerBackImg}
               alt={`${player.korName} Image`}
-              className="absolute left-0 top-4 w-full h-full object-cover rounded-2xl"
+              layout="fill"
+              className="pt-6 object-cover rounded-2xl"
             />
           </div>
           {/*프레임 이미지*/}
           <div className="absolute inset-0">
-            <img
+            <Image
               src={'/images/backCardFrame.png'}
               alt={'Back Card Frame'}
-              className="w-full h-full object-cover"
+              layout="fill"
+              className="object-cover"
             />
           </div>
           <div className="relative inset-0 flex px-6 text-white/80 text-sm font-bold bottom-0 h-1/3 -mt-3">
@@ -53,11 +63,11 @@ const CardBack: React.FC<CardBackProps> = ({ player, size = 'large' }) => {
               <div className="bg-pink-300/0 w-[178px] flex flex-col justify-items-center ml-2">
                 {/* 포지션 맵 */}
                 <div className="absolute ml-1 mt-1 w-[80px] h-[80px]">
-                  {' '}
-                  <img
+                  <Image
                     src={`/images/player/playerPosition/${player.positionImg}`}
                     alt={`${player.positionKor} 사진`}
-                    className="absolute left-0 object-cover rounded-0"
+                    layout="fill"
+                    className="absolute object-cover"
                   />
                 </div>
                 <div className="flex flex-row place-content-end items-end mt-6">
@@ -101,19 +111,23 @@ const CardBack: React.FC<CardBackProps> = ({ player, size = 'large' }) => {
           className={`bg-black rounded-xl overflow-hidden relative m-4 items-center justify-center transform transition-transform ${sizeClass}`}
         >
           {/* 선수 이미지 */}
-          <div className="relative w-[324px] h-[196px] mx-auto">
-            <img
+          <div
+            className={`relative ${photoSize} mx-auto  rounded-t-2xl overflow-hidden`}
+          >
+            <Image
               src={player.playerBackImg}
               alt={`${player.korName} Image`}
-              className="absolute left-0 top-4 w-full h-full object-cover rounded-2xl"
+              layout="fill"
+              className="absolute pt-4 object-cover rounded-2xl"
             />
           </div>
           {/*프레임 이미지*/}
           <div className="absolute inset-0">
-            <img
+            <Image
               src={'/images/backCardFrame.png'}
               alt={'Back Card Frame'}
-              className="w-full h-full object-cover"
+              layout="fill"
+              className="object-cover"
             />
           </div>
           <div className="relative inset-0 flex text-white/80 text-lg font-bold bottom-0 h-1/3 mx-7 -mt-5 ">
@@ -132,12 +146,13 @@ const CardBack: React.FC<CardBackProps> = ({ player, size = 'large' }) => {
               {/* 포지션 */}
               <div className="bg-pink-300/0 w-full h-full flex flex-col pt-2 justify-between">
                 {/* 포지션 맵 */}
-                <div className="absolute ml-6 mt-1 w-[120px] h-auto">
+                <div className="absolute ml-6 mt-1 w-[120px] h-[92px]">
                   {' '}
-                  <img
+                  <Image
                     src={`/images/player/playerPosition/${player.positionEng}.png`}
                     alt={`${player.positionKor} 사진`}
-                    className="absolute left-0 object-cover rounded-0"
+                    layout="fill"
+                    className="absolute object-cover"
                   />
                 </div>
                 <div className="flex flex-row place-content-end items-end pt-10 mr-8">

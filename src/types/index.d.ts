@@ -175,6 +175,7 @@ type TInfielderMetric = {
   WAR: number;
   reason: string;
 };
+type TPlayerMetric = TPitcherMetric | TCatcherMetric | TInfielderMetric;
 
 type TBatterYearRecord = {
   ab: number;
@@ -232,7 +233,7 @@ interface IPitcherPlayerData {
     yearrecordlist: TPitcherYearRecord[];
     seasonsummaryfutures: any;
     gameplayer: IPlayerBack;
-    // currentsummary?: TPitcherMetric;
+    metric2023?: TPitcherMetric | null;
   };
 }
 interface IBatterPlayerData {
@@ -243,6 +244,7 @@ interface IBatterPlayerData {
     yearrecordlist: TBatterYearRecord[];
     seasonsummaryfutures: any;
     gameplayer: IPlayerBack;
+    metric2023?: TCatcherMetric | TInfielderMetric | null;
   };
 }
 type TRanking = {
@@ -291,6 +293,7 @@ export {
   TCatcherMetric,
   TPitcherMetric,
   TInfielderMetric,
+  TPlayerMetric,
   TBatterYearRecord,
   TPitcherYearRecord,
   IPitcherPlayerData,
