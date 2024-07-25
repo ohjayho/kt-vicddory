@@ -1,23 +1,20 @@
 import React from 'react';
-import fs from 'fs';
 import path from 'path';
+import fs from 'fs';
 import PlayerDetailClient from '@/components/player/PlayerDetail';
 import {
   IPlayerFront,
   IPlayerBack,
-  TPlayerMetric,
-  IPitcherPlayerData,
-  TPitcherYearRecord,
-  TBatterYearRecord,
   TPitcherMetric,
+  TPitcherYearRecord,
+  IPitcherPlayerData,
 } from '@/types';
 import { getDefaultMetric } from '@/utils/getDefaultMetric';
-// import generateStaticParams from '@/utils/generateStaticParams';
 interface PitcherPageProps {
   params: { pitcherId: string };
 }
 
-export async function generateStaticParams() {
+export function generateStaticParams() {
   const filePath = path.join(
     process.cwd(),
     'public/data/playerFront',
@@ -25,11 +22,12 @@ export async function generateStaticParams() {
   );
   const jsonData = JSON.parse(fs.readFileSync(filePath, 'utf8'));
   const paths = jsonData.data.list.map((player: IPlayerFront) => ({
-    outfielderId: player.backNum.toString(),
+    pitcherId: player.backNum.toString(),
   }));
 
   return paths;
 }
+
 async function getPlayerData(
   backNum: string,
 ): Promise<IPitcherPlayerData | null> {
@@ -62,7 +60,6 @@ async function getPlayerData(
     return null;
   }
 }
-
 export default async function PitcherDetail({ params }: PitcherPageProps) {
   const player = await getPlayerData(params.pitcherId);
 
@@ -70,91 +67,38 @@ export default async function PitcherDetail({ params }: PitcherPageProps) {
     return <div>Player not found</div>;
   }
   const playerProfile: IPlayerBack = player.data.gameplayer;
-  // 첫 글자를 소문자로 변환하는 함수
-  const toLowerFirst = (str: string): string => {
-    return str.charAt(0).toLowerCase() + str.slice(1);
-  };
-
-  // playerPosition 변수 선언 및 할당
-  const playerPosition: 'pitcher' | 'catcher' | 'infielder' | 'outfielder' =
-    toLowerFirst(playerProfile.positionEng) as
-      | 'pitcher'
-      | 'catcher'
-      | 'infielder'
-      | 'outfielder';
-
-  // console.log('playerProps', player);
+  if (player.data.metric2023 === undefined || player.data.metric2023 === null) {
+    player.data.metric2023 = getDefaultMetric('pitcher') as TPitcherMetric;
+  }
   const currentMetric: TPitcherMetric = player.data
     .metric2023 as TPitcherMetric;
 
-  const fetchPlayerData = async (apiInputData: any): Promise<TPlayerMetric> => {
-    try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/playerPredict`,
-        {
-          method: 'POST',
-          // cache: 'force-cache',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(apiInputData),
-        },
-      );
-      console.log('Response status:', response.status);
-
-      if (!response.ok) {
-        const errorText = await response.text();
-        console.error('Error response text:', errorText);
-        throw new Error('Failed to fetch player data');
-      }
-      const playerExpectedData = await response.json();
-      return playerExpectedData;
-    } catch (error) {
-      console.error('Error fetching player data:', error);
-      throw error;
-    }
-  };
-  const getExpectedMetric = async (position: string) => {
-    try {
-      console.log('Calling fetchPlayerData with position:', position);
-      const playerYearRecord: TBatterYearRecord[] | TPitcherYearRecord[] =
-        player.data.yearrecordlist;
-      const apiInputData = {
-        position: playerPosition,
+  const playerYearRecord: TPitcherYearRecord[] = player.data.yearrecordlist;
+  // 예측 API
+  const predictionRes: Response = await fetch(
+    `${process.env.API_URL}/predict_player_stats`,
+    {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        position: 'pitcher',
         player_data: playerYearRecord,
-      };
-      const result = await fetchPlayerData(apiInputData);
-      console.log('Received expected data: ', result);
-      return result;
-    } catch (e) {
-      console.log('Error:', e);
-      throw e;
-    }
-  };
-  {
-    /*
-  const apiResult = async () => {
-    try {
-      const apiresult = getExpectedMetric('pitcher');
-      console.log('api result: ', apiresult);
-    } catch (error) {
-      console.error('Failed to get expected metric: ', error);
-    }
-  };
-*/
+      }),
+    },
+  );
+  if (!predictionRes.ok) {
+    console.error('Error-Failed to fetch prediction data');
+    return <div>Failed to fetch prediction data</div>;
   }
-  const apiresult = await getExpectedMetric('pitcher');
-
-  console.log('PlayerPage mounted ', apiresult);
-  console.log(playerProfile, playerPosition, apiresult, currentMetric);
+  const playerMetric: TPitcherMetric = await predictionRes.json();
   return (
     <>
-      <div className="text-white text-2xl">Player Page</div>
       <PlayerDetailClient
         player={playerProfile}
-        position={playerPosition}
-        aiMetric={apiresult}
         currentMetric={currentMetric}
+        aiMetric={playerMetric}
+        position="pitcher"
       />
-      <div className="text-white">Bottom Page</div>
     </>
   );
 }
