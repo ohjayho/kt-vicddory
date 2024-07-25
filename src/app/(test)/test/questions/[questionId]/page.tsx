@@ -86,6 +86,7 @@ export default function Questions({ params }: TQuestionsProps) {
       sessionStorage.removeItem('questions');
       sessionStorage.removeItem('positionArr');
     }
+    setLoading(false);
   };
 
   const progress = ((questionIndex + 1) / totalQuestions) * 100;
