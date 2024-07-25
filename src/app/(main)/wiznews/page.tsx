@@ -1,6 +1,6 @@
 import Mascot from '@/components/wiznews/Mascot';
 import NewsArea from '@/components/wiznews/NewsArea';
-import NewsSearch from '@/components/wiznews/NewsSearch';
+import NewsGenerate from '@/components/wiznews/NewsGenerate';
 
 export default function WizNews() {
   return (
@@ -9,7 +9,7 @@ export default function WizNews() {
         <Mascot src="svgs/newsMascot/ddory.svg" location="left" />
         <Mascot src="svgs/newsMascot/vic.svg" location="right" />
         <section className="w-3/4 flex flex-col justify-center items-center z-10">
-          <NewsSearch />
+          <NewsGenerate />
           <NewsArea />
         </section>
       </div>
