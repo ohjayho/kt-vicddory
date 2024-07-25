@@ -16,7 +16,7 @@ export default function MainLayout({
     <>
       <Header />
       {children}
-      {modal && <ModalWrapper>{modal}</ModalWrapper>}
+      {modal}
       {questions}
       {result}
     </>
