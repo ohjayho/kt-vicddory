@@ -23,18 +23,15 @@ export default function Questions({ params }: TQuestionsProps) {
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
-        const cachedQuestions = sessionStorage.getItem('questions');
-        if (cachedQuestions) {
-          setQuestions(JSON.parse(cachedQuestions));
+        sessionStorage.removeItem('questions');
+        sessionStorage.removeItem('positionArr');
+        const response = await fetch('/api/questions');
+        if (response.ok) {
+          const data = await response.json();
+          setQuestions(data);
+          sessionStorage.setItem('questions', JSON.stringify(data));
         } else {
-          const response = await fetch('/api/questions');
-          if (response.ok) {
-            const data = await response.json();
-            setQuestions(data);
-            sessionStorage.setItem('questions', JSON.stringify(data));
-          } else {
-            console.error('Failed to fetch questions');
-          }
+          console.error('Failed to fetch questions');
         }
       } catch (error) {
         console.error('Failed to fetch questions', error);
