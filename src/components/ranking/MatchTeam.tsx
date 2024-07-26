@@ -12,6 +12,7 @@ export default function MatchTeam({ teamName, score }: TMatchTeamProps) {
     롯데: '/svgs/teamEmblem/lotte.svg',
     NC: '/svgs/teamEmblem/nc.svg',
     SSG: '/svgs/teamEmblem/ssg.svg',
+    삼성: '/svgs/teamEmblem/samsung.svg',
   };
 
   const [ranking, ...detail] = score.split(' ');
