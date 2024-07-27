@@ -26,7 +26,7 @@ export default function PlayerDetailClient({
 
     // 선수 예상 stat api 호출
     const predictionRes = await fetch(
-      `http://localhost:3000/api/predictStats?position=${position}&yearrecordlist=${encodedYearRecordList}`,
+      `/api/predictStats?position=${position}&yearrecordlist=${encodedYearRecordList}`,
     );
 
     setPlayerMetric(await predictionRes.json());
