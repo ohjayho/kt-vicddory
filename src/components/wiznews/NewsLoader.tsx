@@ -15,7 +15,6 @@ export default function NewsLoader() {
       fetchNews(idRef.current++).then((res) => {
         setNewsList(res);
       });
-      console.log(idRef.current, ':idRef');
       setTimeout(() => {
         setLoading(false);
       }, 300);
