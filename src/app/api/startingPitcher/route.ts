@@ -10,12 +10,10 @@ export async function GET(req: NextRequest) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ day_num }),
     });
+
     const data = await response.json();
     return NextResponse.json(data, { status: 200 });
   } catch (error) {
-    return NextResponse.json(
-      { error: 'Failed at /api/startingPitcher' },
-      { status: 500 },
-    );
+    throw new Error('Server-Failed to fetch starting Data');
   }
 }

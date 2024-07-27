@@ -24,12 +24,10 @@ export async function GET(req: NextRequest) {
         },
       }),
     });
+
     const data = await response.json();
     return NextResponse.json(data.predictWinRate, { status: 200 });
   } catch (error) {
-    return NextResponse.json(
-      { error: 'Failed at /api/predict' },
-      { status: 500 },
-    );
+    throw new Error('Server-Failed to fetch predict Data');
   }
 }

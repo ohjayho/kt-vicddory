@@ -15,15 +15,10 @@ export async function POST(req: NextRequest) {
         }),
       },
     );
-    if (!response.ok) {
-      throw new Error('Server-Failed to fetch player data');
-    }
+
     const expectedMetric = await response.json();
     return NextResponse.json(expectedMetric, { status: 200 });
   } catch (error) {
-    return NextResponse.json(
-      { error: 'Server-Failed to fetch player stats' },
-      { status: 500 },
-    );
+    throw new Error('Server-Failed to fetch playerPredict Data');
   }
 }
