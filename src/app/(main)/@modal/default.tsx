@@ -8,7 +8,6 @@ import ModalWrapper from '@/components/test/ModalWrapper';
 
 export default function Default() {
   const pathname = usePathname();
-  console.log(pathname);
 
   return (
     <>
