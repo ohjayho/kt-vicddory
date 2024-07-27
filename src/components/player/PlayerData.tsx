@@ -27,7 +27,7 @@ export default function PlayerData({ player }: PlayerData) {
             className={`w-8 h-8 ${detailButton ? 'rotate-90' : 'rotate-0'}`}
           />
           <div className="text-lg">선수 기록 상세보기</div>
-          <div className="">{playerBackNum}</div>
+          <div className="hidden">{playerBackNum}</div>
         </button>
       </div>
     </>

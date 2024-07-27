@@ -17,12 +17,13 @@ export default function NewsContent({ newsId }: TNewsId) {
   const handleBacklink: MouseEventHandler<HTMLButtonElement> = () => {
     router.back();
   };
+  const trimmedArtcContents =
+    theNews && theNews.artcContents.replace(/<[^>]*>/g, '');
 
   const fetchDetailedNews = async () => {
     const detailedNews = await (
       await fetch(`/api/detailednews?params=${newsId}`)
     ).json();
-    // console.log(detailedNews, '디테일');
     return detailedNews;
   };
 
@@ -73,7 +74,7 @@ export default function NewsContent({ newsId }: TNewsId) {
                   2024-01-17
                 </h3>
               </div>
-              <DynamicTTS text={theNews.artcContents} />
+              <DynamicTTS text={trimmedArtcContents} />
             </div>
             <div className="px-8 pb-8 overflow-scroll no-scrollbar 본문 칸">
               {theNews.imgFilePath && (
@@ -86,7 +87,7 @@ export default function NewsContent({ newsId }: TNewsId) {
                 />
               )}
               <p className="h-full overflow-y-scroll no-scrollbar mt-4">
-                {theNews.artcContents}
+                {trimmedArtcContents}
               </p>
             </div>
           </div>

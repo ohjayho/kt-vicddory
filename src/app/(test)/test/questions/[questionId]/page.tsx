@@ -68,13 +68,9 @@ export default function Questions({ params }: TQuestionsProps) {
       router.push(`/test/questions/${questionIndex + 2}`);
     } else {
       try {
-        const response = await fetch('/api/testResult', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ positions: updatedPositionArr }),
-        });
+        const response = await fetch(
+          `/api/testResult?positions=${updatedPositionArr}`,
+        );
 
         if (response.ok) {
           const result = await response.json();

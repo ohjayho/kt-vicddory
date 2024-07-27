@@ -67,13 +67,13 @@ export default function Banner() {
               <div className="">
                 <div className="sticky pb-0 mt-[15px] h-auto w-full ">
                   <div className="flex sticky justify-between mt-[10px] mx-auto text-black items-center w-full h-auto bg-white">
-                    <div className="flex flex-row w-20 items-center  whitespace-nowrap">
+                    <div className="flex flex-row w-20 items-center whitespace-nowrap bg-white">
                       <BatterBanner
                         url="catcher"
                         buttonStyle={
                           pathname2 == 'catcher'
                             ? 'text-white bg-red-500'
-                            : 'hover:bg-red-500 hover:text-white'
+                            : 'bg-white hover:bg-red-500 hover:text-white'
                         }
                       >
                         포수
@@ -83,7 +83,7 @@ export default function Banner() {
                         buttonStyle={
                           pathname2 == 'infielder'
                             ? 'text-white bg-red-500'
-                            : 'hover:bg-red-500 hover:text-white'
+                            : 'bg-white hover:bg-red-500 hover:text-white'
                         }
                       >
                         내야수
@@ -93,7 +93,7 @@ export default function Banner() {
                         buttonStyle={
                           pathname2 == 'outfielder'
                             ? 'text-white bg-red-500'
-                            : 'hover:bg-red-500 hover:text-white'
+                            : 'bg-white hover:bg-red-500 hover:text-white'
                         }
                       >
                         외야수

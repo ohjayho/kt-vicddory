@@ -7,9 +7,11 @@ import {
   TPitcherMetric,
   TCatcherMetric,
   TInfielderMetric,
+  TPlayerMetric,
   // IPitcherPlayerData,
   // IBatterPlayerData,
 } from '@/types';
+import getPlayerMetric from '@/utils/getPlayerMetric';
 type positionType = {
   pitcher: CategoryDescriptions;
   catcher: CategoryDescriptions;
@@ -17,10 +19,10 @@ type positionType = {
   outfielder: CategoryDescriptions;
 };
 interface PlayerChartProps {
-  positionMetric: TPitcherMetric | TCatcherMetric | TInfielderMetric;
+  positionAIMetric: TPlayerMetric | null;
+  positionCurrentMetric: TPitcherMetric | TCatcherMetric | TInfielderMetric;
   position: keyof positionType;
   showExpectedSeries: boolean;
-  // playerData: any[];
 }
 HighchartsMore(Highcharts);
 DarkUnica(Highcharts);
@@ -107,110 +109,37 @@ const positionCategory: positionType = {
   },
 };
 
-// let currentPosition = 'pitcher';
-
 export default function PlayerChart({
-  positionMetric,
+  positionAIMetric,
+  positionCurrentMetric,
   position,
   showExpectedSeries,
-  // playerData,
 }: PlayerChartProps) {
-  // const testData = [1, 3, 0.6, 0.3, 10];
-  // const originalData: number[] =
-  //   (() => {
-  //     if (position === 'pitcher') {
-  //       const orgData = playerData;
-  //       // const orgData = data.data.seasonsummary;
-  //       console.log(orgData);
-  //       return [
-  //         // parseFloat(orgData['era']),
-  //         // parseFloat(orgData['kbb']),
-  //         // parseFloat(orgData['whip']),
-  //         // parseFloat(orgData['oavg']),
-  //         // parseFloat(orgData['qs']),
-  //       ];
-  //     }
-  //     // 다른 포지션에 대한 처리도 필요하다면 추가
-  //     return [];
-  //   })() || []; // 항상 배열을 반환하도록 보장
-
-  const expectedData = (() => {
-    if (position === 'pitcher') {
-      const metric = positionMetric as TPitcherMetric;
-      //console.log(metric);
-      return [
-        metric.ERA,
-        metric['K/BB'],
-        metric.WHIP,
-        metric.피안타율,
-        metric.QS,
-      ];
-    } else if (position === 'catcher') {
-      const metric = positionMetric as TCatcherMetric;
-      return [metric.FPCT, metric['CS%'], metric.PB, metric.rSB, metric.CERA];
-    } else if (position === 'infielder') {
-      const metric = positionMetric as TInfielderMetric;
-      return [
-        metric.BA,
-        metric.OBP,
-        metric.SLG,
-        metric.OPS,
-        metric.FPCT,
-        metric.WAR,
-      ];
-    } else if (position === 'outfielder') {
-      const metric = positionMetric as TInfielderMetric;
-      return [
-        metric.BA,
-        metric.OBP,
-        metric.SLG,
-        metric.OPS,
-        metric.FPCT,
-        metric.WAR,
-      ];
-    } else {
-      return [];
-    }
-  })();
-
+  const currentMetric = getPlayerMetric(position, positionCurrentMetric);
+  const expectedMetric = getPlayerMetric(position, positionAIMetric);
   // Scale the data for each category based on the global maximum
-  // const scaledData = positionCategory[position].categories.map(
-  //   (category, index) => {
-  //     const ynotExpectedValue = originalData[index]; // originalData가 배열임을 보장
-
-  //     const yValue =
-  //       ynotExpectedValue[index] /
-  //       positionCategory[position].standards[category];
-
-  //     return {
-  //       name: category,
-  //       y: Math.min(parseFloat(yValue.toFixed(2)), 1),
-  //     };
-  //   },
-  // );
 
   const scaledExpectedData = positionCategory[position].categories.map(
     (category, index) => {
       const yExpectedValue =
-        expectedData[index] / positionCategory[position].standards[category];
+        expectedMetric[index] / positionCategory[position].standards[category];
       return {
         name: category,
         y: parseFloat(yExpectedValue.toFixed(2)),
       };
     },
   );
-  /*
-  const notScaledExpectedData = positionCategory[position].categories.map(
+  const scaledCurrentData = positionCategory[position].categories.map(
     (category, index) => {
-      const yValue = expectedData[index] / 1;
-
+      const yCurrentValue =
+        currentMetric[index] / positionCategory[position].standards[category];
       return {
         name: category,
-        y: yValue,
+        y: parseFloat(yCurrentValue.toFixed(2)),
       };
     },
   );
-*/
+
   const options = {
     title: {
       text: '선수 예측 데이터',
@@ -241,7 +170,7 @@ export default function PlayerChart({
     series: [
       {
         name: 'Current',
-        data: scaledExpectedData,
+        data: scaledCurrentData,
         visible: true,
         pointPlacement: 'on',
       },
@@ -288,9 +217,7 @@ export default function PlayerChart({
     },
   };
 
-  //  currentPosition = position;
   options.xAxis.categories = positionCategory[position].categories;
-  // const playerdata = playerData;
 
   return (
     <>

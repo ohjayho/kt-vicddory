@@ -119,28 +119,103 @@ export default function Header() {
             <div className="w-[85px] h-[80px]"></div>
             <div className="flex min-h-20 pb-6 w-4/6 mx-auto justify-between">
               <div className="flex flex-col w-20 items-center hover:border-t-2 hover:border-t-red-500 whitespace-nowrap gap-2">
-                <Link href="/">kt wiz는?</Link>
-                <Link href="/">구단 BI</Link>
-                <Link href="/">회원 정책</Link>
-                <Link href="/">스폰서</Link>
-                <Link href="/">윌페이퍼</Link>
+                <Link
+                  href="/"
+                  className="hover:text-red-90 hover:font-extrabold"
+                >
+                  kt wiz는?
+                </Link>
+                <Link
+                  href="/"
+                  className="hover:text-red-90 hover:font-extrabold"
+                >
+                  구단 BI
+                </Link>
+                <Link
+                  href="/"
+                  className="hover:text-red-90 hover:font-extrabold"
+                >
+                  회원 정책
+                </Link>
+                <Link
+                  href="/"
+                  className="hover:text-red-90 hover:font-extrabold"
+                >
+                  스폰서
+                </Link>
+                <Link
+                  href="/"
+                  className="hover:text-red-90 hover:font-extrabold"
+                >
+                  윌페이퍼
+                </Link>
               </div>
               <div className="flex flex-col w-20 items-center hover:border-t-2 hover:border-t-red-500 whitespace-nowrap gap-2">
-                <Link href="/">wiz park</Link>
-                <Link href="/">주차 예약</Link>
-                <Link href="/">찾아오기</Link>
-                <Link href="/">익산 야구장</Link>
+                <Link
+                  href="/"
+                  className="hover:text-red-90 hover:font-extrabold"
+                >
+                  wiz park
+                </Link>
+                <Link
+                  href="/"
+                  className="hover:text-red-90 hover:font-extrabold"
+                >
+                  주차 예약
+                </Link>
+                <Link
+                  href="/"
+                  className="hover:text-red-90 hover:font-extrabold"
+                >
+                  찾아오기
+                </Link>
+                <Link
+                  href="/"
+                  className="hover:text-red-90 hover:font-extrabold"
+                >
+                  익산 야구장
+                </Link>
               </div>
               <div className="w-20"></div>
               <div className="flex flex-col w-20 items-center hover:border-t-2 hover:border-t-red-500 whitespace-nowrap gap-2">
-                <Link href="/">코칭스텝</Link>
-                <Link href="/">투수</Link>
-                <Link href="/">타자</Link>
+                <Link
+                  href="/"
+                  className="hover:text-red-90 hover:font-extrabold"
+                >
+                  코칭스텝
+                </Link>
+                <Link
+                  href="/player/pitcher"
+                  className="hover:text-red-90 hover:font-extrabold"
+                >
+                  투수
+                </Link>
+                <Link
+                  href="/player/batter"
+                  className="hover:text-red-90 hover:font-extrabold"
+                >
+                  타자
+                </Link>
               </div>
               <div className="flex flex-col w-20 items-center hover:border-t-2 hover:border-t-red-500 whitespace-nowrap gap-2">
-                <Link href="/">AI 예측</Link>
-                <Link href="/">년도별</Link>
-                <Link href="/">일자별</Link>
+                <Link
+                  href="/ranking/ai"
+                  className="hover:text-red-90 hover:font-extrabold"
+                >
+                  AI 예측
+                </Link>
+                <Link
+                  href="/ranking/daily"
+                  className="hover:text-red-90 hover:font-extrabold"
+                >
+                  년도별
+                </Link>
+                <Link
+                  href="/raning/year"
+                  className="hover:text-red-90 hover:font-extrabold"
+                >
+                  일자별
+                </Link>
               </div>
               <div className="w-20"></div>
               <div className="w-20"></div>
