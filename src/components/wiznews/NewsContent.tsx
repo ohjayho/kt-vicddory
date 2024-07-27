@@ -17,7 +17,7 @@ export default function NewsContent({ newsId }: TNewsId) {
   const handleBacklink: MouseEventHandler<HTMLButtonElement> = () => {
     router.back();
   };
-  let trimmedArtcContents =
+  const trimmedArtcContents =
     theNews && theNews.artcContents.replace(/<[^>]*>/g, '');
 
   const fetchDetailedNews = async () => {

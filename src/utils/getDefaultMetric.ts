@@ -1,8 +1,8 @@
 import { TPitcherMetric, TCatcherMetric, TInfielderMetric } from '@/types';
 
-export function getDefaultMetric(
+const getDefaultMetric = (
   position: string,
-): TPitcherMetric | TCatcherMetric | TInfielderMetric {
+): TPitcherMetric | TCatcherMetric | TInfielderMetric => {
   const randomInRange = (min: number, max: number): number => {
     return Math.random() * (max - min) + min;
   };
@@ -32,4 +32,6 @@ export function getDefaultMetric(
       WAR: randomInRange(1.1, 5.0),
     } as TInfielderMetric;
   }
-}
+};
+
+export default getDefaultMetric;

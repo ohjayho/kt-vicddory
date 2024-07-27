@@ -4,7 +4,7 @@ import clientPromise from '@/libs/mongodb';
 export async function GET(req: NextRequest) {
   const { searchParams } = req.nextUrl;
   const positions: any = searchParams.get('positions');
-  let arr = positions.split(',')
+  const arr = positions.split(',');
 
   try {
     const client = await clientPromise;
