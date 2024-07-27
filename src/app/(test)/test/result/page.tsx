@@ -25,7 +25,7 @@ const Page: React.FC = () => {
         link.click();
       })
       .catch((err) => {
-        console.log(err);
+        throw new Error(err);
       });
   }, [ref]);
 
