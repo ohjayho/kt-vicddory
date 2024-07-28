@@ -4,7 +4,7 @@ import clientPromise from '@/libs/mongodb';
 export async function GET(req: NextRequest) {
   const { searchParams } = req.nextUrl;
   const positions: any = searchParams.get('positions');
-  let arr = positions.split(',')
+  const arr = positions.split(',');
 
   try {
     const client = await clientPromise;
@@ -19,21 +19,11 @@ export async function GET(req: NextRequest) {
       body: JSON.stringify({ positions: arr }),
     });
 
-    if (!response.ok) {
-      return NextResponse.json(
-        { error: 'Failed to fetch evaluation result' },
-        { status: response.status },
-      );
-    }
-
     const result = await response.json();
     await collection.insertOne(result);
 
     return NextResponse.json(result, { status: 200 });
   } catch (error) {
-    return NextResponse.json(
-      { error: 'Failed to save result' },
-      { status: 500 },
-    );
+    throw new Error('Server-Failed to fetch testResult Data');
   }
 }

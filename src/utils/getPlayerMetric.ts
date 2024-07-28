@@ -1,17 +1,6 @@
-import {
-  TPitcherMetric,
-  TCatcherMetric,
-  TInfielderMetric,
-  TPlayerMetric,
-} from '@/types';
-
-export default function getPlayerMetric(
-  position: string,
-  metric: TPlayerMetric | null,
-) {
-  if (position === 'pitcher') {
-    const pitcherMetric = metric as TPitcherMetric;
-    //console.log(metric);
+export default function getPlayerMetric(position: string, metric: any) {
+  if (position === 'pitcher' && metric !== null) {
+    const pitcherMetric = metric;
     return [
       pitcherMetric.ERA,
       pitcherMetric['K/BB'],
@@ -19,8 +8,8 @@ export default function getPlayerMetric(
       pitcherMetric.피안타율,
       pitcherMetric.QS,
     ];
-  } else if (position === 'catcher') {
-    const catcherMetric = metric as TCatcherMetric;
+  } else if (position === 'catcher' && metric !== null) {
+    const catcherMetric = metric;
     return [
       catcherMetric.FPCT,
       catcherMetric['CS%'],
@@ -28,8 +17,8 @@ export default function getPlayerMetric(
       catcherMetric.rSB,
       catcherMetric.CERA,
     ];
-  } else if (position === 'infielder') {
-    const infielderMetric = metric as TInfielderMetric;
+  } else if (position === 'infielder' && metric !== null) {
+    const infielderMetric = metric;
     return [
       infielderMetric.BA,
       infielderMetric.OBP,
@@ -38,8 +27,8 @@ export default function getPlayerMetric(
       infielderMetric.FPCT,
       infielderMetric.WAR,
     ];
-  } else if (position === 'outfielder') {
-    const outfielderMetric = metric as TInfielderMetric;
+  } else if (position === 'outfielder' && metric !== null) {
+    const outfielderMetric = metric;
     return [
       outfielderMetric.BA,
       outfielderMetric.OBP,

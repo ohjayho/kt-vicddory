@@ -1,5 +1,4 @@
 import Header from '@/components/Header';
-import ModalWrapper from '@/components/test/ModalWrapper';
 
 export default function MainLayout({
   children,

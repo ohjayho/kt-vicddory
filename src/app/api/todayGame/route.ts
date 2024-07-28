@@ -10,12 +10,10 @@ export async function GET(req: NextRequest) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ yearmonth }),
     });
+
     const data = await response.json();
     return NextResponse.json(data.data, { status: 200 });
   } catch (error) {
-    return NextResponse.json(
-      { error: 'Failed at /api/todayGame' },
-      { status: 500 },
-    );
+    throw new Error('Server-Failed to fetch todayGame Data');
   }
 }

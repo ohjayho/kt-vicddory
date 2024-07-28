@@ -11,12 +11,10 @@ export async function GET(req: NextRequest) {
         headers: { 'Content-Type': 'application/json' },
       },
     );
+
     const detailedNews = await response.json();
     return NextResponse.json(detailedNews.data.article, { status: 200 });
   } catch (error) {
-    return NextResponse.json(
-      { error: 'Failed to fetch news' },
-      { status: 500 },
-    );
+    throw new Error('Server-Failed to fetch detailedNews Data');
   }
 }

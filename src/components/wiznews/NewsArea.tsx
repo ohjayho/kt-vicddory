@@ -39,7 +39,7 @@ export default function NewsArea() {
         const result = await fetchNews(1);
         setNewsList(result);
       } catch (e) {
-        console.log('Error:', e);
+        throw new Error('Server-Failed to fetch fetchNews Data');
       }
     };
     getNews();

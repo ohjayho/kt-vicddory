@@ -1,11 +1,10 @@
 import KakaoShare from './KakaoShare';
-import { PiPaperclipLight } from 'react-icons/pi';
 import UrlCopy from './UrlCopy';
 import React from 'react';
-import { CiCamera } from 'react-icons/ci';
+import Image from 'next/image';
 
 type TTestShareProps = {
-  onClick(): void;
+  onClick: () => void;
 };
 
 export default function TestShare({ onClick }: TTestShareProps) {
@@ -17,13 +16,23 @@ export default function TestShare({ onClick }: TTestShareProps) {
           onClick={UrlCopy}
           className="flex justify-center items-center border border-black rounded-full w-14 h-14 text-4xl bg-white hover:bg-gray-100 hover:border-0"
         >
-          <PiPaperclipLight />
+          <Image
+            src="/svgs/test/result/urlCopy.svg"
+            alt="urlCopy"
+            width={40}
+            height={40}
+          />
         </button>
         <button
           onClick={onClick}
           className="flex justify-center items-center border border-black rounded-full w-14 h-14 text-4xl bg-white hover:bg-gray-100 hover:border-0"
         >
-          <CiCamera />
+          <Image
+            src="/svgs/test/result/capture.svg"
+            alt="capture"
+            width={40}
+            height={40}
+          />
         </button>
       </div>
     </>

@@ -34,11 +34,11 @@ export default function Questions({ params }: TQuestionsProps) {
             setQuestions(data);
             sessionStorage.setItem('questions', JSON.stringify(data));
           } else {
-            console.error('Failed to fetch questions');
+            throw new Error('Server-Failed to fetch question Data');
           }
         }
       } catch (error) {
-        console.error('Failed to fetch questions', error);
+        throw new Error('Server-Failed to fetch question Data');
       }
       setLoading(false);
     };
@@ -83,11 +83,10 @@ export default function Questions({ params }: TQuestionsProps) {
           router.push('/testModal/result');
         } else {
           const errorText = await response.text();
-          console.error('Failed to fetch test result:', errorText);
+          throw new Error(errorText);
         }
       } catch (error) {
-        2;
-        console.error('Failed to fetch test result:', error);
+        throw new Error('Server-Failed to fetch testResult Data');
       }
       sessionStorage.removeItem('questions');
       sessionStorage.removeItem('positionArr');

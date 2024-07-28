@@ -1,35 +1,27 @@
 'use client';
 
-import Button from '@/components/test/Button';
 import CaptureArea from '@/components/test/result/CaptureArea';
-import { toPng } from 'html-to-image';
-import ResultPosition from '@/components/test/result/ResultPosition';
-import TestShare from '@/components/test/result/TestShare';
-import React, { useEffect, useState, useCallback, useRef } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import positionDetails from '@/data/positionDetails';
 import { TPositionStatisticProps } from '@/types';
+import captureResult from '@/utils/captureResult';
+import dynamic from 'next/dynamic';
+
+const Button = dynamic(() => import('@/components/test/Button'), {
+  ssr: false,
+});
+const ResultPosition = dynamic(
+  () => import('@/components/test/result/ResultPosition'),
+  { ssr: false },
+);
+const TestShare = dynamic(() => import('@/components/test/result/TestShare'), {
+  ssr: false,
+});
 
 const Page: React.FC = () => {
   const ref = useRef<HTMLDivElement>(null);
-
-  const onButtonClick = useCallback(() => {
-    if (ref.current === null) {
-      return;
-    }
-
-    toPng(ref.current, { cacheBust: true })
-      .then((dataUrl) => {
-        const link = document.createElement('a');
-        link.download = 'vicddory.png';
-        link.href = dataUrl;
-        link.click();
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [ref]);
-
   const [statistics, setStatistics] = useState<TPositionStatisticProps[]>([]);
+  const handleCapture = captureResult(ref);
 
   useEffect(() => {
     const fetchStatistics = async () => {
@@ -39,14 +31,15 @@ const Page: React.FC = () => {
           const data: TPositionStatisticProps[] = await response.json();
           setStatistics(data);
         } else {
-          console.error('Failed to fetch position statistics');
+          throw new Error('Server-Failed to fetch positionStatistics Data');
         }
       } catch (error) {
-        console.error('Failed to fetch position statistics', error);
+        throw new Error('Server-Failed to fetch positionStatistics Data');
       }
     };
 
     fetchStatistics();
+    sessionStorage.removeItem('testResult');
   }, []);
 
   return (
@@ -78,7 +71,7 @@ const Page: React.FC = () => {
               <span className="text-red-100">테스트</span>
               <span className="text-[#333333]">공유하기</span>
             </div>
-            <TestShare onClick={onButtonClick} />
+            <TestShare onClick={handleCapture} />
           </div>
           <div className="sticky bottom-0 w-full h-20 bg-[#FFFFFF] flex justify-center items-center pb-6">
             <Button width={80} text="2xl" href="/test">

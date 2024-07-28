@@ -48,13 +48,13 @@ export default function MobileMenu({
             handleMobileOpen={handleMobileOpen}
             title="Player"
             subtitle={['코칭 스텝', '투수', '타자']}
-            pages={['/player', '/', '/']}
+            pages={['/player', '/player/pitcher', '/player/batter']}
           />
           <MobileMenuBtn
             handleMobileOpen={handleMobileOpen}
             title="Ranking"
-            subtitle={['AI 예측', '연도별', '일자별']}
-            pages={['/ranking', '/', '/']}
+            subtitle={['AI 예측', '일자별', '년도별']}
+            pages={['/ranking/ai', '/ranking/daily', '/ranking/year']}
           />
           <MobileMenuBtn
             handleMobileOpen={handleMobileOpen}
@@ -64,12 +64,12 @@ export default function MobileMenu({
           <MobileMenuBtn
             handleMobileOpen={handleMobileOpen}
             title="Shop"
-            pages={['/']}
+            pages={['https://www.ktwizstore.co.kr']}
           />
           <MobileMenuBtn
             handleMobileOpen={handleMobileOpen}
             title="티켓 구매"
-            pages={['/']}
+            pages={['https://www.ticketlink.co.kr/home']}
           />
         </ul>
         <button
