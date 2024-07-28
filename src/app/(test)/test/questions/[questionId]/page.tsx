@@ -4,9 +4,9 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import ProgressBar from '@/components/test/ProgressBar';
 import TestAnswer from '@/components/test/TestAnswer';
-import { IoIosArrowBack } from 'react-icons/io';
 import { TQuestionHandlerProps } from '@/types';
 import Loading from '../../loading';
+import BackButton from '@/components/test/result/BackButton';
 
 type TQuestionsProps = {
   params: {
@@ -23,15 +23,18 @@ export default function Questions({ params }: TQuestionsProps) {
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
-        sessionStorage.removeItem('questions');
-        sessionStorage.removeItem('positionArr');
-        const response = await fetch('/api/questions');
-        if (response.ok) {
-          const data = await response.json();
-          setQuestions(data);
-          sessionStorage.setItem('questions', JSON.stringify(data));
+        const cachedQuestions = sessionStorage.getItem('questions');
+        if (cachedQuestions) {
+          setQuestions(JSON.parse(cachedQuestions));
         } else {
-          console.error('Failed to fetch questions');
+          const response = await fetch('/api/questions');
+          if (response.ok) {
+            const data = await response.json();
+            setQuestions(data);
+            sessionStorage.setItem('questions', JSON.stringify(data));
+          } else {
+            console.error('Failed to fetch questions');
+          }
         }
       } catch (error) {
         console.error('Failed to fetch questions', error);
@@ -112,12 +115,7 @@ export default function Questions({ params }: TQuestionsProps) {
             </TestAnswer>
           </div>
           <div className="px-4 w-full flex justify-between text-[#444444] font-semibold text-base">
-            <button
-              className="flex flex-row justify-center items-center"
-              onClick={() => router.back()}
-            >
-              <IoIosArrowBack /> 뒤로
-            </button>
+            <BackButton positionArr={positionArr} setPositionArr={setPositionArr}/>
             <div>
               {questionIndex + 1} / {totalQuestions}
             </div>
