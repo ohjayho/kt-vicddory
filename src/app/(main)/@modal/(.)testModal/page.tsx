@@ -1,3 +1,5 @@
+'use client'
+
 import Button from '@/components/test/Button';
 import ModalWrapper from '@/components/test/ModalWrapper';
 import Image from 'next/image';
@@ -6,7 +8,7 @@ export default function Modal() {
   return (
     <>
       <ModalWrapper>
-        <div className="flex justify-center flex-col items-center h-dvh max-w-md m-auto">
+        <div onClick={(e) => e.stopPropagation()} className="flex justify-center flex-col items-center h-dvh max-w-md m-auto">
           <div className="w-[448px] h-4/6 bg-[#F8A6A7] flex flex-col justify-center items-center text-center">
             <div className="w-2/5 rounded-md bg-[#ED2024] text-white flex justify-center items-center text-base py-1 mb-6 mt-12">
               야구 입문자를 위한
@@ -31,7 +33,7 @@ export default function Modal() {
               height={180}
               className="w-40 md:w-[200px] mb-4"
             />
-            <Button width={80} text="2xl" href="/testModal/questions/1">
+            <Button width={80} text="2xl" href="/questionsModal">
               테스트 START
             </Button>
           </div>
