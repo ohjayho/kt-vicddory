@@ -8,8 +8,7 @@ export default function BatterLayout({
   return (
     <>
       <div className="min-h-screen bg-black">
-        {' '}
-        <div className="pt-20 bg-white">
+        <div className="pt-20 max-lg:pt-[13vw]">
           <Banner />
         </div>
         {children}

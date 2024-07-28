@@ -272,6 +272,19 @@ type TBaseSeries = {
   visible: boolean;
 };
 
+// Wiznews
+
+type TNewsContent = {
+  artcContents: string;
+  artcTitle: string;
+  artcSeq: number;
+  regDttm: number;
+  imgFilePath?: string;
+  [key: string]: any;
+} | null;
+
+type TNewsList = TNewsContent[];
+
 export {
   TResultPositionProps,
   TQuestionHandlerProps,
@@ -304,4 +317,6 @@ export {
   TLeagueYearData,
   TLeagueDailyData,
   TBaseSeries,
+  TNewsContent,
+  TNewsList,
 };

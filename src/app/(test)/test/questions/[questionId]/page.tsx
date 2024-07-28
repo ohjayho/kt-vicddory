@@ -4,9 +4,9 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import ProgressBar from '@/components/test/ProgressBar';
 import TestAnswer from '@/components/test/TestAnswer';
-import { IoIosArrowBack } from 'react-icons/io';
 import { TQuestionHandlerProps } from '@/types';
 import Loading from '../../loading';
+import BackButton from '@/components/test/result/BackButton';
 
 type TQuestionsProps = {
   params: {
@@ -33,11 +33,11 @@ export default function Questions({ params }: TQuestionsProps) {
             setQuestions(data);
             sessionStorage.setItem('questions', JSON.stringify(data));
           } else {
-            console.error('Failed to fetch questions');
+            throw new Error('Server-Failed to fetch question Data');
           }
         }
       } catch (error) {
-        console.error('Failed to fetch questions', error);
+        throw new Error('Server-Failed to fetch question Data');
       }
       setLoading(false);
     };
@@ -78,14 +78,15 @@ export default function Questions({ params }: TQuestionsProps) {
           router.push('/test/result');
         } else {
           const errorText = await response.text();
-          console.error('Failed to fetch test result:', errorText);
+          throw new Error(errorText);
         }
       } catch (error) {
-        console.error('Failed to fetch test result:', error);
+        throw new Error('Server-Failed to fetch testResult Data');
       }
       sessionStorage.removeItem('questions');
       sessionStorage.removeItem('positionArr');
     }
+    setLoading(false);
   };
 
   const progress = ((questionIndex + 1) / totalQuestions) * 100;
@@ -114,12 +115,10 @@ export default function Questions({ params }: TQuestionsProps) {
             </TestAnswer>
           </div>
           <div className="px-4 w-full flex justify-between text-[#444444] font-semibold text-base">
-            <button
-              className="flex flex-row justify-center items-center"
-              onClick={() => router.back()}
-            >
-              <IoIosArrowBack /> 뒤로
-            </button>
+            <BackButton
+              positionArr={positionArr}
+              setPositionArr={setPositionArr}
+            />
             <div>
               {questionIndex + 1} / {totalQuestions}
             </div>

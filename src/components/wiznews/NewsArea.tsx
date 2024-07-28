@@ -4,16 +4,7 @@ import { create } from 'zustand';
 import NewsBalloon from './NewsBalloon';
 import { useEffect } from 'react';
 import NewsLoader from './NewsLoader';
-
-export type TNewsContent = {
-  artcContents: string;
-  artcTitle: string;
-  artcSeq: number;
-  imgFilePath?: string;
-  [key: string]: any;
-} | null;
-
-export type TNewsList = TNewsContent[];
+import { TNewsList } from '@/types';
 
 type NewsListStore = {
   newsList: TNewsList;
@@ -23,7 +14,7 @@ type NewsListStore = {
 export const useNewsListStore = create<NewsListStore>()((set) => ({
   newsList: [],
   setNewsList: (news) => {
-    if (news[0] && news[0].imgFilePath === undefined) {
+    if (news[0]?.imgFilePath === undefined) {
       // news null 체크, imgFilePath가 없으면 === aiNews이면
       set((state) => ({ newsList: [...news, ...state.newsList] }));
     } else {
@@ -46,17 +37,16 @@ export default function NewsArea() {
     const getNews = async () => {
       try {
         const result = await fetchNews(1);
-        console.log(result, '리절트 뭐야');
         setNewsList(result);
       } catch (e) {
-        console.log('Error:', e);
+        throw new Error('Server-Failed to fetch fetchNews Data');
       }
     };
     getNews();
   }, []);
   return (
     <>
-      <div className="w-[820px] max-lg:w-[500px] h-[600px] overflow-y-scroll no-scrollbar pt-1">
+      <div className="w-[830px] max-lg:w-[500px] h-[600px] overflow-y-scroll no-scrollbar pt-3 px-3">
         {newsList.length &&
           newsList.map(
             (news, index) =>

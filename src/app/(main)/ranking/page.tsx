@@ -1,9 +1,13 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 
 export default function RankingMain() {
   const router = useRouter();
-  router.replace('/ranking/ai');
+  useEffect(() => {
+    router.replace('/ranking/ai');
+  }, []);
+
   return null;
 }

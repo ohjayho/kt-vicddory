@@ -17,12 +17,10 @@ export async function GET(req: NextRequest) {
         }),
       },
     );
+
     const data = await response.json();
     return NextResponse.json(data, { status: 200 });
   } catch (error) {
-    return NextResponse.json(
-      { error: 'Failed at /api/predictStats' },
-      { status: 500 },
-    );
+    throw new Error('Server-Failed to fetch predictStats Data');
   }
 }
