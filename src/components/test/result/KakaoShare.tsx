@@ -3,11 +3,6 @@
 import React, { useEffect } from 'react';
 import Image from 'next/image';
 
-// type KakaoShareProps = {
-//   description: string;
-// };
-
-// const KakaoShare = ({ description }: KakaoShareProps) => {
 const KakaoShare = () => {
   const shareUrl =
     typeof window !== 'undefined'

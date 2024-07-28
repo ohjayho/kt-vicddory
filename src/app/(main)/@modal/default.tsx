@@ -2,7 +2,6 @@
 
 import Button from '@/components/test/Button';
 import Image from 'next/image';
-import { IoIosClose } from 'react-icons/io';
 import { usePathname } from 'next/navigation';
 import ModalWrapper from '@/components/test/ModalWrapper';
 
@@ -14,7 +13,9 @@ export default function Default() {
       {pathname === '/' ? (
         <ModalWrapper>
           <div className="w-[500px] h-[500px] rounded-md fixed top-1/2 left-1/2 p-5 bg-white shadow -translate-x-1/2 -translate-y-1/2">
-            <IoIosClose className="absolute text-3xl right-2 top-2 text-slate-400 hover:text-black" />
+            <button className="absolute text-2xl right-2 top-0 text-slate-400 hover:text-black">
+              x
+            </button>
             <div onClick={(e) => e.stopPropagation()}>
               <div className="flex justify-center flex-col items-center gap-2 mt-4">
                 <h1 className="text-2xl font-bold">
