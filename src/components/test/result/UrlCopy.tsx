@@ -1,7 +1,7 @@
 'use client';
 
 export default function UrlCopy() {
-  const testUrl: string = 'https://vicddory-frontend.vercel.app/test';
+  const testUrl: string = `${process.env.BASE_URL}/test`;
   // testUrl.select();
   // testUrl.setSelectionRange(0, 99999);
   navigator.clipboard.writeText(testUrl);
