@@ -4,7 +4,11 @@ import { useEffect, useState, forwardRef } from 'react';
 import Image from 'next/image';
 import Loading from '@/app/(test)/test/loading';
 
-const CaptureArea = forwardRef<HTMLDivElement>((_, ref) => {
+type TCaptureAreaProps = {
+  closeModal?: () => void;
+};
+
+const CaptureArea = forwardRef<HTMLDivElement, TCaptureAreaProps>(({ closeModal }, ref) => {
   const [result, setResult] = useState<{
     position: string;
     response: string;
@@ -28,6 +32,14 @@ const CaptureArea = forwardRef<HTMLDivElement>((_, ref) => {
       ref={ref}
       className="w-full h-[883px] bg-[#FFFFFF] flex flex-col justify-center items-center relative"
     >
+      { closeModal ? 
+        (<button
+          onClick={closeModal}
+          className="absolute text-2xl right-2 top-0 text-slate-400 hover:text-black"
+        >
+          x
+        </button>) : null
+      }
       <div className="absolute flex justify-center items-center top-10 w-72 h-9 bg-red-100 rounded-full text-white -mt-7 mb-3">
         당신의 ♥천생연분♥ 야구선수는?
       </div>
