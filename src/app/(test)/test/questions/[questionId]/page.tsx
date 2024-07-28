@@ -115,7 +115,10 @@ export default function Questions({ params }: TQuestionsProps) {
             </TestAnswer>
           </div>
           <div className="px-4 w-full flex justify-between text-[#444444] font-semibold text-base">
-            <BackButton positionArr={positionArr} setPositionArr={setPositionArr}/>
+            <BackButton
+              positionArr={positionArr}
+              setPositionArr={setPositionArr}
+            />
             <div>
               {questionIndex + 1} / {totalQuestions}
             </div>

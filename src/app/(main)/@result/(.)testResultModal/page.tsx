@@ -62,7 +62,6 @@ const Page: React.FC = () => {
       {pathname === '/testResultModal' ? (
         <ModalTestWrapper>
           <div className="bg-slate-100 h-full overflow-scroll no-scrollbar">
-            
             <div className="flex justify-center flex-col items-center w-[448px] m-auto relative">
               <CaptureArea ref={ref} closeModal={closeModal} />
               <div className="w-full h-[1900px] bg-[#F8A6A7] relative flex flex-col justify-center items-center">

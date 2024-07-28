@@ -1,15 +1,18 @@
-import { useRouter } from "next/navigation";
+import { useRouter } from 'next/navigation';
 
 type TBackButtonProps = {
   positionArr: string[];
   setPositionArr: any;
-}
+};
 
-export default function BackButton ({ positionArr, setPositionArr }: TBackButtonProps) {
+export default function BackButton({
+  positionArr,
+  setPositionArr,
+}: TBackButtonProps) {
   const router = useRouter();
 
   const onBackClick = () => {
-    router.back()
+    router.back();
     const back = positionArr.slice(0, -1);
     setPositionArr(back);
     sessionStorage.setItem('positionArr', JSON.stringify(back));
@@ -24,5 +27,5 @@ export default function BackButton ({ positionArr, setPositionArr }: TBackButton
         {'<'} 뒤로
       </button>
     </>
-  )
+  );
 }

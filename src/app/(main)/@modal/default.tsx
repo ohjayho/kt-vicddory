@@ -13,7 +13,9 @@ export default function Default() {
       {pathname === '/' ? (
         <ModalWrapper>
           <div className="w-[500px] h-[500px] rounded-md fixed top-1/2 left-1/2 p-5 bg-white shadow -translate-x-1/2 -translate-y-1/2">
-            <button className="absolute text-2xl right-2 top-0 text-slate-400 hover:text-black">x</button>
+            <button className="absolute text-2xl right-2 top-0 text-slate-400 hover:text-black">
+              x
+            </button>
             <div onClick={(e) => e.stopPropagation()}>
               <div className="flex justify-center flex-col items-center gap-2 mt-4">
                 <h1 className="text-2xl font-bold">

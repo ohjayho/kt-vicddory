@@ -7,9 +7,16 @@ import { TPositionStatisticProps } from '@/types';
 import captureResult from '@/utils/captureResult';
 import dynamic from 'next/dynamic';
 
-const Button = dynamic(() => import('@/components/test/Button'), { ssr: false });
-const ResultPosition = dynamic(() => import('@/components/test/result/ResultPosition'), { ssr: false });
-const TestShare = dynamic(() => import('@/components/test/result/TestShare'), { ssr: false });
+const Button = dynamic(() => import('@/components/test/Button'), {
+  ssr: false,
+});
+const ResultPosition = dynamic(
+  () => import('@/components/test/result/ResultPosition'),
+  { ssr: false },
+);
+const TestShare = dynamic(() => import('@/components/test/result/TestShare'), {
+  ssr: false,
+});
 
 const Page: React.FC = () => {
   const ref = useRef<HTMLDivElement>(null);

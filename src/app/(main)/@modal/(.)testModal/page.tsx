@@ -13,7 +13,7 @@ export default function Modal() {
 
   const closeModal = () => {
     setIsModalOpen(false);
-  }
+  };
 
   useEffect(() => {
     if (!isModalOpen) {
@@ -72,7 +72,7 @@ export default function Modal() {
             </div>
           </div>
         </ModalTestWrapper>
-      ) : null }
+      ) : null}
     </>
   );
 }
