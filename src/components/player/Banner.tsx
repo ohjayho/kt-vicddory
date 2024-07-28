@@ -38,17 +38,22 @@ export default function Banner() {
 
   return (
     <>
-      <div className="bg-[url('/images/bannerBg.png')] h-[252px] w-full pb-4 flex flex-col items-center text-center text-white">
+      <div className="bg-[url('/images/bannerBg.png')] h-[252px] w-full flex flex-col justify-between items-center text-center text-white">
         <div>
-          <h1 className="mt-14 text-5xl font-extrabold">
+          <h1 className="mt-14 text-5xl max-sm:text-3xl font-extrabold">
             {text[pathname]?.title}
           </h1>
-          <p className="mt-11 text-xl">{text[pathname]?.subtitle}</p>
+          <p className="mt-11 text-xl max-sm:text-lg">
+            {text[pathname]?.subtitle}
+          </p>
         </div>
-        <div className="mt-8 flex gap-[198px] text-base font-extrabold">
+        <div className="w-3/4 flex justify-between text-base font-extrabold">
           <BannerBtn
             url="/player/coach"
-            buttonStyle={pathname === 'coach' ? ' text-white border-b-4' : ''}
+            buttonStyle={`
+              ${
+                pathname === 'coach' ? ' text-white border-b-4' : ''
+              } max-sm:w-[70px]`}
           >
             코칭스탭
           </BannerBtn>
@@ -60,52 +65,50 @@ export default function Banner() {
           </BannerBtn>
           <BannerBtn
             url="/player/batter"
-            buttonStyle={pathname === 'batter' ? ' text-white border-b-4' : ''}
+            buttonStyle={`${pathname === 'batter' ? ' text-white border-b-4' : ''} flex flex-col items-center relative`}
           >
-            타자
+            <h1 className="flex justify-center items-center h-11">타자</h1>
             {pathname === 'batter' ? (
-              <div className="">
-                <div className="sticky pb-0 mt-[15px] h-auto w-full ">
-                  <div className="flex sticky justify-between mt-[10px] mx-auto text-black items-center w-full h-auto bg-white">
-                    <div className="flex flex-row w-20 items-center whitespace-nowrap bg-white">
-                      <BatterBanner
-                        url="catcher"
-                        buttonStyle={
-                          pathname2 == 'catcher'
-                            ? 'text-white bg-red-500'
-                            : 'bg-white hover:bg-red-500 hover:text-white'
-                        }
-                      >
-                        포수
-                      </BatterBanner>
-                      <BatterBanner
-                        url="infielder"
-                        buttonStyle={
-                          pathname2 == 'infielder'
-                            ? 'text-white bg-red-500'
-                            : 'bg-white hover:bg-red-500 hover:text-white'
-                        }
-                      >
-                        내야수
-                      </BatterBanner>
-                      <BatterBanner
-                        url="outfielder"
-                        buttonStyle={
-                          pathname2 == 'outfielder'
-                            ? 'text-white bg-red-500'
-                            : 'bg-white hover:bg-red-500 hover:text-white'
-                        }
-                      >
-                        외야수
-                      </BatterBanner>
-                    </div>
+              <div className="absolute top-11 h-auto w-full ">
+                <div className="flex justify-center bg-white">
+                  <div className="flex w-[300%]">
+                    <BatterBanner
+                      url="catcher"
+                      buttonStyle={
+                        pathname2 == 'catcher'
+                          ? 'text-white bg-red-500'
+                          : 'bg-white hover:bg-red-500 hover:text-white'
+                      }
+                    >
+                      포수
+                    </BatterBanner>
+                    <BatterBanner
+                      url="infielder"
+                      buttonStyle={
+                        pathname2 == 'infielder'
+                          ? 'text-white bg-red-500'
+                          : 'bg-white hover:bg-red-500 hover:text-white'
+                      }
+                    >
+                      내야수
+                    </BatterBanner>
+                    <BatterBanner
+                      url="outfielder"
+                      buttonStyle={
+                        pathname2 == 'outfielder'
+                          ? 'text-white bg-red-500'
+                          : 'bg-white hover:bg-red-500 hover:text-white'
+                      }
+                    >
+                      외야수
+                    </BatterBanner>
                   </div>
                 </div>
               </div>
             ) : (
               <></>
             )}
-          </BannerBtn>{' '}
+          </BannerBtn>
           <BannerBtn
             url="/player/cheerleader"
             buttonStyle={

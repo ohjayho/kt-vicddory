@@ -1,9 +1,8 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
-import { FaChevronDown } from 'react-icons/fa';
-import { FaChevronUp } from 'react-icons/fa';
 
 type MobileMenuBtnType = {
   title: string;
@@ -32,9 +31,21 @@ export default function MobileMenuBtn({
             </h1>
             <button className="w-[5vw] text-[#ea0114]" onClick={handleOpen}>
               {menuOpen ? (
-                <FaChevronUp className="w-full" />
+                <Image
+                  src="/svgs/mobileHeader/up.svg"
+                  width={0}
+                  height={0}
+                  alt="up"
+                  className="w-full"
+                />
               ) : (
-                <FaChevronDown className="w-full" />
+                <Image
+                  src="/svgs/mobileHeader/down.svg"
+                  width={0}
+                  height={0}
+                  alt="down"
+                  className="w-full"
+                />
               )}
             </button>
           </div>
