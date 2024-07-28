@@ -39,10 +39,10 @@ export default function Questions() {
         setQuestions(data);
         sessionStorage.setItem('questions', JSON.stringify(data));
       } else {
-        console.error('Failed to fetch questions');
+        throw new Error('Failed to fetch questions');
       }
     } catch (error) {
-      console.error('Failed to fetch questions', error);
+      throw new Error('Failed to fetch questions');
     }
     setLoading(false);
   }, []);

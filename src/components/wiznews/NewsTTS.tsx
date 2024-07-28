@@ -20,7 +20,7 @@ export default function NewsTTS({ text }: { text: string | undefined | null }) {
         const audioUrl = URL.createObjectURL(audioBlob);
         setAudioUrl(audioUrl);
       } catch (e) {
-        console.log('Error:', e);
+        throw new Error('Server-Failed to fetch tts Data');
       } finally {
         setLoading(false);
       }

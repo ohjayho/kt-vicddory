@@ -24,9 +24,6 @@ export async function GET() {
 
     return NextResponse.json(statistics);
   } catch (error) {
-    return NextResponse.json(
-      { error: 'Failed to fetch position statistics' },
-      { status: 500 },
-    );
+    throw new Error('Server-Failed to fetch positionStatistics Data');
   }
 }

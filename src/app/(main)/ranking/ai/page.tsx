@@ -22,29 +22,26 @@ export default async function RankingAi() {
   const year = new Date().getFullYear();
   const month = new Date().getMonth() + 1;
   const yearmonth = year + '0' + month;
-
   const dayOfWeek = new Date().getDay();
 
-  //선발투수 정보 API
+  // 선발투수 정보 API,오늘 경기장 API
   const day_num: number = julyScheduleJSON[today];
 
-  const pitcherRes: Response = await fetch(
-    `${process.env.BASE_URL}/api/startingPitcher?day_num=${day_num}`,
-    { cache: 'no-store' },
-  );
+  const [pitcherRes, gameRes]: [Response, Response] = await Promise.all([
+    fetch(`${process.env.BASE_URL}/api/startingPitcher?day_num=${day_num}`, {
+      cache: 'no-store',
+    }),
+    fetch(`${process.env.BASE_URL}/api/todayGame?yearmonth=${yearmonth}`),
+  ]);
+
   const pitcherData: TPitcherData = await pitcherRes.json();
+  const gameData: TGameData = await gameRes.json();
 
   const todayGame: TPitcherRecord = pitcherData['선발투수']['선발'];
   const team: string[] = Object.keys(todayGame);
   const pitcher: string[] = Object.values(todayGame);
   const score: TTeamRecord = pitcherData['상대전적']['정규시즌전적'];
   const teamScore: string[] = Object.values(score);
-
-  //오늘 경기장 API
-  const gaemRes: Response = await fetch(
-    `${process.env.BASE_URL}/api/todayGame?yearmonth=${yearmonth}`,
-  );
-  const gameData: TGameData = await gaemRes.json();
 
   const gameDetail: TGameInfo[] = gameData.list.filter(
     (item: TGameInfo): boolean => {
@@ -56,11 +53,11 @@ export default async function RankingAi() {
     (item: TGameInfo): string => item.stadium,
   );
 
-  //전체 승률 및 예상 승률
+  // 전체 승률 및 예상 승률
   const total: number = +winlossDataJSON.total[team[1]].winningPercentage;
   const last: number = +winlossDataJSON.recent[team[1]].winningPercentage;
 
-  //승리 예측 API
+  // 승리 예측 API
   const gamePredict: Response = await fetch(
     `${process.env.BASE_URL}/api/predict?opponentTeam=${team[1]}&pastWinRate=${total}&recentWinRate=${last}&stadiumInformatio=${stadiums}&startingPitcherInformation=${pitcher[1]}&weather=`,
     { cache: 'no-store' },

@@ -31,10 +31,10 @@ const Page: React.FC = () => {
           const data: TPositionStatisticProps[] = await response.json();
           setStatistics(data);
         } else {
-          console.error('Failed to fetch position statistics');
+          throw new Error('Server-Failed to fetch positionStatistics Data');
         }
       } catch (error) {
-        console.error('Failed to fetch position statistics', error);
+        throw new Error('Server-Failed to fetch positionStatistics Data');
       }
     };
 

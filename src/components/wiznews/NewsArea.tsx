@@ -46,10 +46,9 @@ export default function NewsArea() {
     const getNews = async () => {
       try {
         const result = await fetchNews(1);
-        console.log(result, '리절트 뭐야');
         setNewsList(result);
       } catch (e) {
-        console.log('Error:', e);
+        throw new Error('Server-Failed to fetch fetchNews Data');
       }
     };
     getNews();
