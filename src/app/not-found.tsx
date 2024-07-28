@@ -23,9 +23,7 @@ export default function NotFound() {
       <p className="text-xl mb-8">요청하신 페이지를 찾을 수 없습니다</p>
       <div>
         <Link href="/" className="text-red-60 hover:cursor-pointer">
-          {/* <button type="button" className=""> */}
           홈으로 돌아가기
-          {/* </button> */}
         </Link>
       </div>
     </div>
