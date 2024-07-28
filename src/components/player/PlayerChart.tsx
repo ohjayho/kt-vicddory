@@ -8,9 +8,9 @@ import {
   TCatcherMetric,
   TInfielderMetric,
   TPlayerMetric,
-  // IPitcherPlayerData,
-  // IBatterPlayerData,
 } from '@/types';
+import { useState } from 'react';
+import Image from 'next/image';
 import getPlayerMetric from '@/utils/getPlayerMetric';
 type positionType = {
   pitcher: CategoryDescriptions;
@@ -139,7 +139,10 @@ export default function PlayerChart({
       };
     },
   );
-
+  const [descriptionButton, setDescriptionButton] = useState(false);
+  const onDescriptionHandler = () => {
+    setDescriptionButton(!descriptionButton);
+  };
   const options = {
     title: {
       text: '선수 예측 데이터',
@@ -217,13 +220,49 @@ export default function PlayerChart({
     },
   };
 
-  options.xAxis.categories = positionCategory[position].categories;
-
   return (
     <>
       <div className="p-4">
         <HighchartsReact highcharts={Highcharts} options={options} />
+
+        <div className="absolute bg-white/80 p-4 w-52 border rounded-lg z-auto">
+          {positionCategory[position].categories.map((category, index) => (
+            <div
+              key={index}
+              className="category-description text-justify"
+              id={`description-${index + 1}`}
+            ></div>
+          ))}
+        </div>
         <div className="hidden"></div>
+      </div>
+      <div className="">
+        <button
+          className="h-8 w-fit mx-2 flex flex-row"
+          onClick={onDescriptionHandler}
+        >
+          <Image
+            src={'/svgs/arrow-right.svg'}
+            alt=">"
+            width={32}
+            height={32}
+            className={`${descriptionButton ? 'rotate-90' : 'rotate-0'}`}
+          />
+          <div className="text-lg">지표별 설명 보기</div>{' '}
+        </button>
+        {descriptionButton && (
+          <div className="mt-4 bg-white/90">
+            {positionCategory[position].categories.map((category, index) => (
+              <div
+                key={index}
+                className="category-description text-justify mt-2"
+                id={`description-${index + 1}`}
+              >
+                {`${category}: ${positionCategory[position].descriptions[category]}`}
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </>
   );
