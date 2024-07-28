@@ -77,7 +77,7 @@ export default function MobileMenu({
           className={`absolute top-0 right-0 transition-opacity duration-300 ${isAnimated ? 'opacity-100' : 'opacity-0'}`}
         >
           <Image
-            src="/images/mobileHeader/close.svg"
+            src="/svgs/mobileHeader/close.svg"
             width={0}
             height={0}
             alt="close_btn"

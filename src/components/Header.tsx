@@ -55,7 +55,7 @@ export default function Header() {
             onClick={handleMobileOpen}
           >
             <Image
-              src="/images/mobileHeader/hamburger.svg"
+              src="/svgs/mobileHeader/hamburger.svg"
               width={0}
               height={0}
               alt="menu"
@@ -73,7 +73,7 @@ export default function Header() {
           </Link>
           <Link href="/" className="hidden max-lg:flex items-center h-full">
             <Image
-              src="/images/mobileHeader/ticket.svg"
+              src="/svgs/mobileHeader/ticket.svg"
               width={0}
               height={0}
               alt="menu"
