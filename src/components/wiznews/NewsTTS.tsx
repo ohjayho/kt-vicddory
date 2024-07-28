@@ -1,9 +1,8 @@
 'use client';
-import { PiUserSound } from 'react-icons/pi';
+import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
 export default function NewsTTS({ text }: { text: string | undefined | null }) {
-  const [audioUrl, setAudioUrl] = useState<string | null>(null);
   const [audio, setAudio] = useState<HTMLAudioElement | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -18,7 +17,7 @@ export default function NewsTTS({ text }: { text: string | undefined | null }) {
         });
         const audioBlob = await response.blob();
         const audioUrl = URL.createObjectURL(audioBlob);
-        setAudioUrl(audioUrl);
+        setAudio(new Audio(audioUrl));
       } catch (e) {
         console.log('Error:', e);
       } finally {
@@ -33,14 +32,10 @@ export default function NewsTTS({ text }: { text: string | undefined | null }) {
         audio.currentTime = 0;
       }
     };
-  }, [audio, text]);
+  }, [text]);
 
   const handleAudioPlay = () => {
-    if (audioUrl) {
-      const newAudio = new Audio(audioUrl);
-      setAudio(newAudio);
-      newAudio.play();
-    }
+    audio?.play();
   };
 
   if (loading) {
@@ -52,14 +47,15 @@ export default function NewsTTS({ text }: { text: string | undefined | null }) {
         className="flex justify-center items-center text-[#ed2024]"
         onClick={handleAudioPlay}
       >
-        <PiUserSound size="50px" />
+        <Image
+          src="/svgs/wiznews/tts.svg"
+          width={0}
+          height={0}
+          alt="tts_img"
+          className="w-[50px] h-auto"
+        />
         <h1 className="ml-4">음성 뉴스 듣기</h1>
       </button>
-      {/* {audioUrl && (
-        <audio controls>
-          <source src={audioUrl} type="audio/mpeg" />
-        </audio>
-      )} */}
     </>
   );
 }
