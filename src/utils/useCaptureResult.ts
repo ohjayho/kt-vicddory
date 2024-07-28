@@ -1,7 +1,7 @@
 import { useCallback, RefObject } from 'react';
 import { toPng } from 'html-to-image';
 
-const captureResult = (ref: RefObject<HTMLDivElement>) => {
+const useCaptureResult = (ref: RefObject<HTMLDivElement>) => {
   const handleCapture = useCallback(() => {
     if (ref.current === null) {
       return;
@@ -22,4 +22,4 @@ const captureResult = (ref: RefObject<HTMLDivElement>) => {
   return handleCapture;
 };
 
-export default captureResult;
+export default useCaptureResult;

@@ -4,7 +4,7 @@ import CaptureArea from '@/components/test/result/CaptureArea';
 import { useRef, useEffect, useState, useCallback } from 'react';
 import positionDetails from '@/data/positionDetails';
 import { TPositionStatisticProps } from '@/types';
-import captureResult from '@/utils/captureResult';
+import useCaptureResult from '@/utils/useCaptureResult';
 import dynamic from 'next/dynamic';
 import ModalTestWrapper from '@/components/test/ModalTestWrapper';
 import { usePathname, useRouter } from 'next/navigation';
@@ -23,7 +23,7 @@ const TestShare = dynamic(() => import('@/components/test/result/TestShare'), {
 const Page: React.FC = () => {
   const ref = useRef<HTMLDivElement>(null);
   const [statistics, setStatistics] = useState<TPositionStatisticProps[]>([]);
-  const handleCapture = captureResult(ref);
+  const handleCapture = useCaptureResult(ref);
   const [isModalOpen, setIsModalOpen] = useState(true);
   const router = useRouter();
   const pathname = usePathname();
