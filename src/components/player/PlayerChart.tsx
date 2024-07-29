@@ -222,37 +222,40 @@ export default function PlayerChart({
 
   return (
     <>
-      <div className="pt-4">
-        <HighchartsReact highcharts={Highcharts} options={options} />
-      </div>
-      <div className="">
-        <button
-          className="h-8 w-fit mx-4 mb-4 pl-6 flex flex-row"
-          onClick={onDescriptionHandler}
-        >
-          <Image
-            src={'/svgs/Alertcircle.svg'}
-            alt=">"
-            width={32}
-            height={32}
-            className="pr-2 fill-white"
-          />
-          <div className="text-lg text-white">지표별 설명 보기</div>{' '}
-        </button>
-        {descriptionButton && (
-          <div className="absolute bottom-auto w-1/3 left-1/2 transform -translate-x-2 -translate-y-2 p-4 bg-white/90 z-10 rounded-lg">
-            {positionCategory[position].categories.map((category, index) => (
-              <div
-                key={index}
-                className="category-description text-justify mt-2"
-                id={`description-${index + 1}`}
-              >
-                <span className="font-bold">{category}: </span>
-                {positionCategory[position].descriptions[category]}
-              </div>
-            ))}
-          </div>
-        )}
+      <div className="bg-black">
+        {' '}
+        <div className="pt-4">
+          <HighchartsReact highcharts={Highcharts} options={options} />
+        </div>
+        <div className="bg-black max-md:min-h-screen">
+          <button
+            className="h-8 w-fit mx-4 mb-4 pl-6 flex flex-row"
+            onClick={onDescriptionHandler}
+          >
+            <Image
+              src={'/svgs/Alertcircle.svg'}
+              alt=">"
+              width={32}
+              height={32}
+              className="pr-2 fill-white"
+            />
+            <div className="text-lg text-white">지표별 설명 보기</div>{' '}
+          </button>
+          {descriptionButton && (
+            <div className="absolute bottom-auto w-1/3 max-md:w-2/3 max-md:transform max-md:-translate-x-16 max-md:text-wrap max-md:left-1/4 left-1/2 transform -translate-x-2 -translate-y-2 p-4 bg-white/90 z-10 rounded-lg">
+              {positionCategory[position].categories.map((category, index) => (
+                <div
+                  key={index}
+                  className="category-description text-justify mt-2"
+                  id={`description-${index + 1}`}
+                >
+                  <span className="font-bold">{category}: </span>
+                  {positionCategory[position].descriptions[category]}
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </>
   );
