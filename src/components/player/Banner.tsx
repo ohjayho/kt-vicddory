@@ -47,16 +47,7 @@ export default function Banner() {
             {text[pathname]?.subtitle}
           </p>
         </div>
-        <div className="w-3/4 flex justify-between text-base font-extrabold">
-          <BannerBtn
-            url="/player/coach"
-            buttonStyle={`
-              ${
-                pathname === 'coach' ? ' text-white border-b-4' : ''
-              } max-sm:w-[70px]`}
-          >
-            코칭스탭
-          </BannerBtn>
+        <div className="w-3/4 flex justify-around text-base font-extrabold">
           <BannerBtn
             url="/player/pitcher"
             buttonStyle={pathname === 'pitcher' ? ' text-white border-b-4' : ''}
@@ -108,14 +99,6 @@ export default function Banner() {
             ) : (
               <></>
             )}
-          </BannerBtn>
-          <BannerBtn
-            url="/player/cheerleader"
-            buttonStyle={
-              pathname === 'cheerleader' ? ' text-white border-b-4' : ''
-            }
-          >
-            응원단
           </BannerBtn>
         </div>
       </div>
