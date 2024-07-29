@@ -229,7 +229,7 @@ export default function PlayerChart({
         </div>
         <div className="bg-black max-md:min-h-screen">
           <button
-            className="h-8 w-fit mx-4 mb-4 pl-6 flex flex-row"
+            className={`h-8 w-fit mx-4 mb-4 ml-6 flex flex-row `}
             onClick={onDescriptionHandler}
           >
             <Image
@@ -237,9 +237,11 @@ export default function PlayerChart({
               alt=">"
               width={32}
               height={32}
-              className="pr-2 fill-white"
+              className={`fill-white ${descriptionButton ? 'bg-red-50 pr-0 rounded-lg' : ''}`}
             />
-            <div className="text-lg text-white">지표별 설명 보기</div>{' '}
+            <div className="text-lg text-white pl-2 pt-0.5">
+              지표별 설명 보기
+            </div>{' '}
           </button>
           {descriptionButton && (
             <div className="absolute bottom-auto w-1/3 max-md:w-2/3 max-md:transform max-md:-translate-x-16 max-md:text-wrap max-md:left-1/4 left-1/2 transform -translate-x-2 -translate-y-2 p-4 bg-white/90 z-10 rounded-lg">
