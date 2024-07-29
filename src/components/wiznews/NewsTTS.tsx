@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
 export default function NewsTTS({ text }: { text: string | undefined | null }) {
+  const [audioUrl, setAudioUrl] = useState<string | null>(null);
   const [audio, setAudio] = useState<HTMLAudioElement | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -17,14 +18,16 @@ export default function NewsTTS({ text }: { text: string | undefined | null }) {
         });
         const audioBlob = await response.blob();
         const audioUrl = URL.createObjectURL(audioBlob);
-        setAudio(new Audio(audioUrl));
-      } catch (e) {
+        setAudioUrl(audioUrl);
+      } catch {
         throw new Error('Server-Failed to fetch tts Data');
       } finally {
         setLoading(false);
       }
     };
-    fetchAudioUrl();
+    if (!audio) {
+      fetchAudioUrl();
+    }
     return () => {
       // 다른 페이지로 이동했을 때 오디오 멈춤
       if (audio) {
@@ -32,11 +35,13 @@ export default function NewsTTS({ text }: { text: string | undefined | null }) {
         audio.currentTime = 0;
       }
     };
-  }, [text, audio]);
+  }, [audio]);
 
   const handleAudioPlay = () => {
-    if (audio) {
-      audio.play();
+    if (audioUrl) {
+      const newAudio = new Audio(audioUrl);
+      setAudio(newAudio);
+      newAudio.play();
     }
   };
 
