@@ -1,6 +1,6 @@
 import Graph from '@/components/ranking/Graph';
 import MatchTeam from '@/components/ranking/MatchTeam';
-import dateFormat from '@/utils/dateFormat';
+// import dateFormat from '@/utils/dateFormat';
 import winlossData from '#/data/winlossdata.json';
 import july_schedule from '#/data/july_schedule.json';
 import Image from 'next/image';
@@ -18,69 +18,85 @@ import {
 export default async function RankingAi() {
   const julyScheduleJSON: { [key: string]: number } = july_schedule;
   const winlossDataJSON: TWinLossData = winlossData;
-  const today = dateFormat();
+  const koreaTime = new Date(
+    new Date().toLocaleString('en-US', { timeZone: 'Asia/Seoul' }),
+  );
+  const today = koreaTime.toISOString().split('T')[0];
   const year = new Date().getFullYear();
   const month = new Date().getMonth() + 1;
   const yearmonth = year + '0' + month;
-  const dayOfWeek = new Date().getDay();
 
-  // 선발투수 정보 API,오늘 경기장 API
+  const dayOfWeek = koreaTime.getDay();
   const day_num: number = julyScheduleJSON[today];
 
-  const [pitcherRes, gameRes]: [Response, Response] = await Promise.all([
-    fetch(`${process.env.BASE_URL}/api/startingPitcher?day_num=${day_num}`, {
-      cache: 'no-store',
-    }),
-    fetch(`${process.env.BASE_URL}/api/todayGame?yearmonth=${yearmonth}`),
-  ]);
+  let todayGame: TPitcherRecord | null = null;
+  let stadiums: string[] = [];
+  let teamScore: string[] = [];
+  let total: number = 0;
+  let last: number = 0;
+  let winPercent: number = 0;
+  let pitcher: string[] = [];
+  let team: string[] = [];
 
-  const pitcherData: TPitcherData = await pitcherRes.json();
-  const gameData: TGameData = await gameRes.json();
+  if (dayOfWeek !== 1) {
+    const pitcherRes: Response = await fetch(
+      `${process.env.BASE_URL}/api/startingPitcher?day_num=${day_num}`,
+      { cache: 'no-store' },
+    );
+    const pitcherData: TPitcherData = await pitcherRes.json();
 
-  const todayGame: TPitcherRecord = pitcherData['선발투수']['선발'];
-  const team: string[] = Object.keys(todayGame);
-  const pitcher: string[] = Object.values(todayGame);
-  const score: TTeamRecord = pitcherData['상대전적']['정규시즌전적'];
-  const teamScore: string[] = Object.values(score);
+    todayGame = pitcherData['선발투수']['선발'];
+    team = Object.keys(todayGame);
+    pitcher = Object.values(todayGame);
 
-  const gameDetail: TGameInfo[] = gameData.list.filter(
-    (item: TGameInfo): boolean => {
-      const gameDate: string = item.gameDate.toString();
-      return gameDate === today && (item.home === 'KT' || item.visit === 'KT');
-    },
-  );
-  const stadiums: string[] = gameDetail.map(
-    (item: TGameInfo): string => item.stadium,
-  );
+    const score: TTeamRecord = pitcherData['상대전적']['정규시즌전적'];
+    teamScore = Object.values(score);
 
-  // 전체 승률 및 예상 승률
-  const total: number = +winlossDataJSON.total[team[1]].winningPercentage;
-  const last: number = +winlossDataJSON.recent[team[1]].winningPercentage;
+    // 오늘 경기장 API
+    const gaemRes: Response = await fetch(
+      `${process.env.BASE_URL}/api/todayGame?yearmonth=${yearmonth}`,
+    );
+    const gameData: TGameData = await gaemRes.json();
 
-  // 승리 예측 API
-  const gamePredict: Response = await fetch(
-    `${process.env.BASE_URL}/api/predict?opponentTeam=${team[1]}&pastWinRate=${total}&recentWinRate=${last}&stadiumInformatio=${stadiums}&startingPitcherInformation=${pitcher[1]}&weather=`,
-    { cache: 'no-store' },
-  );
-  const gamePredictData: TGamePredictData = await gamePredict.json();
-  const winPercent = parseInt(gamePredictData.toString().replace('%', ''));
+    const gameDetail: TGameInfo[] = gameData.list.filter(
+      (item: TGameInfo): boolean => {
+        const gameDate: string = item.gameDate.toString();
+        return (
+          gameDate === today && (item.home === 'KT' || item.visit === 'KT')
+        );
+      },
+    );
+    stadiums = gameDetail.map((item: TGameInfo): string => item.stadium);
+
+    // 전체 승률 및 예상 승률
+    total = +winlossDataJSON.total[team[1]].winningPercentage;
+    last = +winlossDataJSON.recent[team[1]].winningPercentage;
+
+    // 승리 예측 API
+    const gamePredict: Response = await fetch(
+      `${process.env.BASE_URL}/api/predict?opponentTeam=${team[1]}&pastWinRate=${total}&recentWinRate=${last}&stadiumInformatio=${stadiums}&startingPitcherInformation=${pitcher[1]}&weather=`,
+      { cache: 'no-store' },
+    );
+    const gamePredictData: TGamePredictData = await gamePredict.json();
+    winPercent = parseInt(gamePredictData.toString().replace('%', ''));
+  }
 
   return (
     <>
       <div className="flex flex-1 bg-[url('/images/mainBg.png')] bg-cover relative items-center overflow-hidden">
         <div className="w-3/4 mx-auto text-white">
-          {dayOfWeek === 1 ? (
+          {dayOfWeek === 1 || !todayGame ? (
             <div className="flex flex-col justify-center items-center font-semibold text-xl gap-4 h-3/4 max-sm:gap-0">
               <div className="flex justify-center h-64 mb-4 max-sm:h-1/4">
                 <Image
-                  src="/svgs/newsMascot/ddory.svg"
+                  src="/svgs/wiznews/newsMascot/ddory.svg"
                   alt="ticket"
                   width={0}
                   height={0}
                   className="w-auto h-[100%] "
                 />
                 <Image
-                  src="/svgs/newsMascot/vic.svg"
+                  src="/svgs/wiznews/newsMascot/vic.svg"
                   alt="ticket"
                   width={0}
                   height={0}

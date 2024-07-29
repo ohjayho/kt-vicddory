@@ -18,10 +18,10 @@ export default function Banner() {
   const pathname = usePathname().split('/')[2];
   const pathname2 = usePathname().split('/')[3];
   const text: TPathNameText = {
-    coach: {
-      title: '코칭스탭',
-      subtitle: '최고의 kt wiz 코칭스탭을 소개합니다.',
-    },
+    // coach: {
+    //   title: '코칭스탭',
+    //   subtitle: '최고의 kt wiz 코칭스탭을 소개합니다.',
+    // },
     pitcher: {
       title: '투수',
       subtitle: 'kt wiz의 자랑스런 ‘첫 번째 선수단’을 소개합니다',
@@ -30,10 +30,10 @@ export default function Banner() {
       title: '타자',
       subtitle: 'kt wiz의 자랑스런 ‘첫 번째 선수단’을 소개합니다',
     },
-    cheerleader: {
-      title: '응원단',
-      subtitle: 'kt wiz꽃! kt wiz의 응원단',
-    },
+    // cheerleader: {
+    //   title: '응원단',
+    //   subtitle: 'kt wiz꽃! kt wiz의 응원단',
+    // },
   };
 
   return (
