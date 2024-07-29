@@ -17,7 +17,7 @@ export default function Test() {
             className="w-40 md:w-[200px]"
           />
           <div className="w-60 h-14 text-5xl font-bold mb-3 mt-3 text-[#333333]">
-            궁합테스트
+            성향테스트
           </div>
           <div className="w-60 text-sm font-bold text-[#444444] my-4">
             나와 어울리는 KT Wiz 선수 알아보기!

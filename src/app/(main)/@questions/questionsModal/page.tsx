@@ -17,11 +17,11 @@ export default function Questions() {
   const [isModalOpen, setIsModalOpen] = useState(true);
   const pathname = usePathname();
 
-  const closeModal = useCallback(() => {
+  const closeModal = () => {
     setIsModalOpen(false);
     sessionStorage.removeItem('questions');
     sessionStorage.removeItem('positionArr');
-  }, []);
+  };
 
   useEffect(() => {
     if (!isModalOpen) {
