@@ -1,11 +1,10 @@
 'use client';
 import React, { useState } from 'react';
-
-import { IPlayerBack } from '@/types';
-// import { MdOutlineArrowRight } from 'react-icons/md';
+import Image from 'next/image';
+import { IBatterPlayerData, IPitcherPlayerData, IPlayerBack } from '@/types';
 
 interface PlayerData {
-  player: IPlayerBack | null;
+  player: IPitcherPlayerData | IBatterPlayerData | null;
 }
 
 export default function PlayerData({ player }: PlayerData) {
@@ -13,7 +12,11 @@ export default function PlayerData({ player }: PlayerData) {
   const onDetailHandler = () => {
     setDetailButton(!detailButton);
   };
-  const playerBackNum = player?.backNum;
+  const playerRecentRecord = player?.data.recentgamerecordlist;
+  const playerRecentFuturesRecord = player?.data.recentgamerecordlistfutures;
+  const playerSeason = player?.data.seasonsummary;
+  const playerSeasonFutures = player?.data.seasonsummaryfutures;
+  const playerYearRecord = player?.data.yearrecordlist;
   return (
     <>
       <div className="flex text-white justify-center align-middle">
@@ -24,9 +27,14 @@ export default function PlayerData({ player }: PlayerData) {
           {/* <MdOutlineArrowRight
             className={`w-8 h-8 ${detailButton ? 'rotate-90' : 'rotate-0'}`}
           /> */}
+          <Image
+            src={'/svgs/arrow-right.svg'}
+            alt="> "
+            className={`${detailButton ? 'rotate-90' : 'rotate-0'}`}
+          />
           <div className="text-lg">선수 기록 상세보기</div>
-          <div className="hidden">{playerBackNum}</div>
         </button>
+        {detailButton && <div></div>}
       </div>
     </>
   );

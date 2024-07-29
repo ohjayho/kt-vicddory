@@ -16,7 +16,6 @@ export default function PlayerDetailClient({
   const [playerMetric, setPlayerMetric] = useState<any | null>(null);
 
   const playerProfile = player.data.gameplayer;
-
   const currentMetric = player.data.metric2023;
   const handleAIButtonClick = async () => {
     const playerYearRecord = JSON.stringify(player.data.yearrecordlist);

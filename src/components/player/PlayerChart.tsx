@@ -118,7 +118,6 @@ export default function PlayerChart({
   const currentMetric = getPlayerMetric(position, positionCurrentMetric);
   const expectedMetric = getPlayerMetric(position, positionAIMetric);
   // Scale the data for each category based on the global maximum
-
   const scaledExpectedData = positionCategory[position].categories.map(
     (category, index) => {
       const yExpectedValue =
@@ -214,9 +213,6 @@ export default function PlayerChart({
     },
     tooltip: {
       shared: true,
-      // formatter: function () {
-      //   return `<b>${this.x}</b>: ${positionCategory[position].descriptions[this.x]}`;
-      // },
     },
   };
 
