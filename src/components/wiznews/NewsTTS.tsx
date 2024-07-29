@@ -32,10 +32,12 @@ export default function NewsTTS({ text }: { text: string | undefined | null }) {
         audio.currentTime = 0;
       }
     };
-  }, [text]);
+  }, [text, audio]);
 
   const handleAudioPlay = () => {
-    audio?.play();
+    if (audio) {
+      audio.play();
+    }
   };
 
   if (loading) {
