@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import PlayerCard from '@/components/tradingCard/PlayerCard';
 import dynamic from 'next/dynamic';
-import PlayerData from './PlayerData';
+// import PlayerData from './PlayerData';
 
 export default function PlayerDetailClient({
   player,

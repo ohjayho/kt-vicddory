@@ -1,7 +1,12 @@
 'use client';
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { IBatterPlayerData, IPitcherPlayerData, IPlayerBack } from '@/types';
+import {
+  IBatterPlayerData,
+  IPitcherPlayerData,
+  TBatterYearRecord,
+  TPitcherYearRecord,
+} from '@/types';
 
 interface PlayerData {
   player: IPitcherPlayerData | IBatterPlayerData | null;
@@ -12,11 +17,14 @@ export default function PlayerData({ player }: PlayerData) {
   const onDetailHandler = () => {
     setDetailButton(!detailButton);
   };
-  const playerRecentRecord = player?.data.recentgamerecordlist;
-  const playerRecentFuturesRecord = player?.data.recentgamerecordlistfutures;
-  const playerSeason = player?.data.seasonsummary;
-  const playerSeasonFutures = player?.data.seasonsummaryfutures;
-  const playerYearRecord = player?.data.yearrecordlist;
+  //v const playerRecentRecord = player?.data.recentgamerecordlist;
+  // const playerRecentFuturesRecord = player?.data.recentgamerecordlistfutures;
+  // const playerSeason = player?.data.seasonsummary;
+  // const playerSeasonFutures = player?.data.seasonsummaryfutures;
+  const playerYearRecord:
+    | TPitcherYearRecord[]
+    | TBatterYearRecord[]
+    | undefined = player?.data.yearrecordlist;
   return (
     <>
       <div className="flex text-white justify-center align-middle">
@@ -34,7 +42,15 @@ export default function PlayerData({ player }: PlayerData) {
           />
           <div className="text-lg">선수 기록 상세보기</div>
         </button>
-        {detailButton && <div></div>}
+        {detailButton && (
+          <div>
+            {playerYearRecord?.map((player, index) => (
+              <tr key={index} className="text-center">
+                <td className="py-2 px-4 border-b">{}</td>
+              </tr>
+            ))}
+          </div>
+        )}
       </div>
     </>
   );
