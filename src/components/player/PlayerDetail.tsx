@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import PlayerCard from '@/components/tradingCard/PlayerCard';
 import dynamic from 'next/dynamic';
-import PlayerData from './PlayerData';
+// import PlayerData from './PlayerData';
 
 export default function PlayerDetailClient({
   player,
@@ -16,7 +16,6 @@ export default function PlayerDetailClient({
   const [playerMetric, setPlayerMetric] = useState<any | null>(null);
 
   const playerProfile = player.data.gameplayer;
-
   const currentMetric = player.data.metric2023;
   const handleAIButtonClick = async () => {
     const playerYearRecord = JSON.stringify(player.data.yearrecordlist);
@@ -94,7 +93,6 @@ export default function PlayerDetailClient({
             </div>
           </div>
         </div>
-        <PlayerData player={playerProfile} />
       </div>
     </>
   );

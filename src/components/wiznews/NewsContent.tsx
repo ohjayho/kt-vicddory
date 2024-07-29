@@ -5,6 +5,7 @@ import { useNewsListStore } from './NewsArea';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { TNewsContent } from '@/types';
+import Link from 'next/link';
 
 type TNewsId = {
   newsId: string;
@@ -12,6 +13,7 @@ type TNewsId = {
 
 export default function NewsContent({ newsId }: TNewsId) {
   const [foundNews, setFoundNews] = useState<TNewsContent | undefined>(null);
+  const [error, setError] = useState(false);
   const newsList = useNewsListStore((state) => state.newsList);
   const router = useRouter();
   const handleBacklink: MouseEventHandler<HTMLButtonElement> = () => {
@@ -53,11 +55,29 @@ export default function NewsContent({ newsId }: TNewsId) {
       );
     } else {
       const getDetailedNews = async () => {
-        setFoundNews(await fetchDetailedNews());
+        try {
+          setFoundNews(await fetchDetailedNews());
+        } catch {
+          setError(true);
+          throw new Error('Failed to fetch detailed news.');
+        }
       };
       getDetailedNews();
     }
   }, []);
+
+  if (error) {
+    return (
+      <div className="flex flex-col justify-center items-center mt-32">
+        <p className="text-xl mb-8 text-white">해당 뉴스를 찾을 수 없습니다.</p>
+        <div>
+          <Link href="/wiznews" className="text-red-60 hover:cursor-pointer">
+            뉴스 홈으로 돌아가기
+          </Link>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <>
