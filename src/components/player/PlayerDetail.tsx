@@ -94,7 +94,6 @@ export default function PlayerDetailClient({
             </div>
           </div>
         </div>
-        <PlayerData player={playerProfile} />
       </div>
     </>
   );

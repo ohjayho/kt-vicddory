@@ -222,43 +222,33 @@ export default function PlayerChart({
 
   return (
     <>
-      <div className="p-4">
+      <div className="pt-4">
         <HighchartsReact highcharts={Highcharts} options={options} />
-
-        <div className="absolute bg-white/80 p-4 w-52 border rounded-lg z-auto">
-          {positionCategory[position].categories.map((category, index) => (
-            <div
-              key={index}
-              className="category-description text-justify"
-              id={`description-${index + 1}`}
-            ></div>
-          ))}
-        </div>
-        <div className="hidden"></div>
       </div>
       <div className="">
         <button
-          className="h-8 w-fit mx-2 flex flex-row"
+          className="h-8 w-fit mx-4 mb-4 pl-6 flex flex-row"
           onClick={onDescriptionHandler}
         >
           <Image
-            src={'/svgs/arrow-right.svg'}
+            src={'/svgs/Alertcircle.svg'}
             alt=">"
             width={32}
             height={32}
-            className={`${descriptionButton ? 'rotate-90' : 'rotate-0'}`}
+            className="pr-2 fill-white"
           />
-          <div className="text-lg">지표별 설명 보기</div>{' '}
+          <div className="text-lg text-white">지표별 설명 보기</div>{' '}
         </button>
         {descriptionButton && (
-          <div className="mt-4 bg-white/90">
+          <div className="absolute bottom-auto w-1/3 left-1/2 transform -translate-x-2 -translate-y-2 p-4 bg-white/90 z-10 rounded-lg">
             {positionCategory[position].categories.map((category, index) => (
               <div
                 key={index}
                 className="category-description text-justify mt-2"
                 id={`description-${index + 1}`}
               >
-                {`${category}: ${positionCategory[position].descriptions[category]}`}
+                <span className="font-bold">{category}: </span>
+                {positionCategory[position].descriptions[category]}
               </div>
             ))}
           </div>
