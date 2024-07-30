@@ -2,6 +2,7 @@
 import NewsContent from '@/components/wiznews/NewsContent';
 import { useRouter } from 'next/navigation';
 import { useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
 
 export type TParams = {
   params: { newsId: string };
@@ -23,7 +24,7 @@ export default function InterceptedWizNewsDetail({ params }: TParams) {
     return () => window.removeEventListener('click', clickHandler);
   }, []);
 
-  return (
+  return createPortal(
     <>
       <div
         className="w-full h-full bg-black bg-opacity-30 z-20 fixed top-0 flex justify-center items-center"
@@ -31,6 +32,7 @@ export default function InterceptedWizNewsDetail({ params }: TParams) {
       >
         <NewsContent newsId={newsId} />
       </div>
-    </>
+    </>,
+    document.body,
   );
 }
