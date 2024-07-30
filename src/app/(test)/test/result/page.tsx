@@ -5,18 +5,9 @@ import { useRef, useEffect, useState } from 'react';
 import positionDetails from '@/data/positionDetails';
 import { TPositionStatisticProps } from '@/types';
 import useCaptureResult from '@/utils/useCaptureResult';
-import dynamic from 'next/dynamic';
-
-const Button = dynamic(() => import('@/components/test/Button'), {
-  ssr: false,
-});
-const ResultPosition = dynamic(
-  () => import('@/components/test/result/ResultPosition'),
-  { ssr: false },
-);
-const TestShare = dynamic(() => import('@/components/test/result/TestShare'), {
-  ssr: false,
-});
+import Button from '@/components/test/Button';
+import ResultPosition from '@/components/test/result/ResultPosition';
+import TestShare from '@/components/test/result/TestShare';
 
 const Page: React.FC = () => {
   const ref = useRef<HTMLDivElement>(null);
