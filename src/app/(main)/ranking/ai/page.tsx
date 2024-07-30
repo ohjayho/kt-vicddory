@@ -21,7 +21,7 @@ export default async function RankingAi() {
   const koreaTime = new Date(
     new Date().toLocaleString('en-US', { timeZone: 'Asia/Seoul' }),
   );
-  const today = koreaTime.toISOString().split('T')[0];
+  const today = koreaTime.toISOString().split('T')[0].split('-').join('');
   const year = new Date().getFullYear();
   const month = new Date().getMonth() + 1;
   const yearmonth = year + '0' + month;

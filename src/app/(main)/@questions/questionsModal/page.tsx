@@ -1,21 +1,22 @@
 'use client';
 
+import { TQuestionHandlerProps } from '@/types';
+import TestAnswer from '@/components/test/TestAnswer';
+import ProgressBar from '@/components/test/ProgressBar';
 import { useCallback, useEffect, useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
-import ProgressBar from '@/components/test/ProgressBar';
-import TestAnswer from '@/components/test/TestAnswer';
-import { TQuestionHandlerProps } from '@/types';
 import ModalLoading from '@/components/test/ModalLoading';
 import ModalTestWrapper from '@/components/test/ModalTestWrapper';
 
 export default function Questions() {
   const router = useRouter();
-  const [questions, setQuestions] = useState<TQuestionHandlerProps[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [positionArr, setPositionArr] = useState<string[]>([]);
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>(0);
-  const [isModalOpen, setIsModalOpen] = useState(true);
   const pathname = usePathname();
+
+  const [loading, setLoading] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(true);
+  const [positionArr, setPositionArr] = useState<string[]>([]);
+  const [questions, setQuestions] = useState<TQuestionHandlerProps[]>([]);
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>(0);
 
   const closeModal = () => {
     setIsModalOpen(false);
