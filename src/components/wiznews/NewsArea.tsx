@@ -25,7 +25,7 @@ export const useNewsListStore = create<NewsListStore>()((set) => ({
 
 export const fetchNews = async (pageNum: number) => {
   const newsData = await (
-    await fetch(`/api/news?searchMax=5&pageNum=${pageNum}`)
+    await fetch(`/api/news?searchMax=10&pageNum=${pageNum}`)
   ).json();
   return newsData;
 };
