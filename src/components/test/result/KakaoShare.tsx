@@ -5,9 +5,7 @@ import Image from 'next/image';
 
 const KakaoShare = () => {
   const shareUrl =
-    typeof window !== 'undefined'
-      ? 'https://vicddory-frontend.vercel.app/test'
-      : '';
+    typeof window !== 'undefined' ? `${process.env.BASE_URL}/test` : '';
 
   useEffect(() => {
     if (typeof window !== 'undefined') {

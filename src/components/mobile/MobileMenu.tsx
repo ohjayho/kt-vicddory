@@ -47,8 +47,8 @@ export default function MobileMenu({
           <MobileMenuBtn
             handleMobileOpen={handleMobileOpen}
             title="Player"
-            subtitle={['코칭 스텝', '투수', '타자']}
-            pages={['/player', '/player/pitcher', '/player/batter']}
+            subtitle={['투수', '타자']}
+            pages={['/player/pitcher', '/player/batter']}
           />
           <MobileMenuBtn
             handleMobileOpen={handleMobileOpen}
