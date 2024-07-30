@@ -1,18 +1,19 @@
 'use client';
 
-import CaptureArea from '@/components/test/result/CaptureArea';
+import Button from '@/components/test/Button';
+import { TPositionStatisticProps } from '@/types';
 import { useRef, useEffect, useState } from 'react';
 import positionDetails from '@/data/positionDetails';
-import { TPositionStatisticProps } from '@/types';
 import useCaptureResult from '@/utils/useCaptureResult';
-import Button from '@/components/test/Button';
-import ResultPosition from '@/components/test/result/ResultPosition';
 import TestShare from '@/components/test/result/TestShare';
+import CaptureArea from '@/components/test/result/CaptureArea';
+import ResultPosition from '@/components/test/result/ResultPosition';
 
 const Page: React.FC = () => {
   const ref = useRef<HTMLDivElement>(null);
-  const [statistics, setStatistics] = useState<TPositionStatisticProps[]>([]);
   const handleCapture = useCaptureResult(ref);
+  const [playerHref, setPlayerHref] = useState<string>('/');
+  const [statistics, setStatistics] = useState<TPositionStatisticProps[]>([]);
 
   useEffect(() => {
     const fetchStatistics = async () => {
@@ -33,11 +34,15 @@ const Page: React.FC = () => {
     sessionStorage.removeItem('testResult');
   }, []);
 
+  const handlePlayerHrefChange = (href: string) => {
+    setPlayerHref(href);
+  };
+
   return (
     <>
       <div className="bg-slate-100">
         <div className="flex justify-center flex-col items-center h-full max-w-md m-auto">
-          <CaptureArea ref={ref} />
+          <CaptureArea ref={ref} onPlayerHrefChange={handlePlayerHrefChange} />
           <div className="w-full h-[1900px] bg-[#F8A6A7] relative flex flex-col justify-center items-center">
             <div className="absolute text-[#333333] font-bold top-10">
               가장 많은 포지션은 뭘까요?
@@ -65,7 +70,7 @@ const Page: React.FC = () => {
             <TestShare onClick={handleCapture} />
           </div>
           <div className="sticky bottom-0 w-full h-20 bg-[#FFFFFF] flex justify-center items-center pb-6">
-            <Button width={80} text="2xl" href="/test">
+            <Button width={80} text="2xl" href={playerHref}>
               👉🏻선수 알아보러 가기👈🏻
             </Button>
           </div>
