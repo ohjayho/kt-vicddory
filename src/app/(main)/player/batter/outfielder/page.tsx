@@ -15,14 +15,16 @@ export default function Outfielder() {
   return (
     <>
       <div className="bg-white pt-8 flex justify-center items-center h-min flex-wrap ">
-        <div className="flex flex-wrap flex-row gap-6 p-6 justify-start items-center object-center w-3/4">
+        <div className="flex flex-wrap flex-row justify-center md:justify-start p-6 w-3/4 mx-auto">
           {outfielderData.map((outfielder, index) => (
-            <CardFront
-              key={index}
-              player={outfielder}
-              size="medium"
-              onClick={() => handleCardClick(outfielder.backNum)}
-            />
+            <div key={index} className="flex-1 md:flex-none md:w-1/4 p-2">
+              <CardFront
+                key={index}
+                player={outfielder}
+                size="medium"
+                onClick={() => handleCardClick(outfielder.backNum)}
+              />
+            </div>
           ))}
         </div>
       </div>
