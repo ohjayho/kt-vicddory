@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useCallback, useState } from 'react';
+import React, { useState } from 'react';
 
 export default function ModalWrapper({
   children,
@@ -9,9 +9,9 @@ export default function ModalWrapper({
 }) {
   const [isModalOpen, setIsModalOpen] = useState(true);
 
-  const closeModal = useCallback(() => {
+  const closeModal = () => {
     setIsModalOpen(false);
-  }, []);
+  };
 
   if (!isModalOpen) return null;
 

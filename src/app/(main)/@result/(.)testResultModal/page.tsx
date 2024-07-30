@@ -1,7 +1,7 @@
 'use client';
 
 import CaptureArea from '@/components/test/result/CaptureArea';
-import { useRef, useEffect, useState, useCallback } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import positionDetails from '@/data/positionDetails';
 import { TPositionStatisticProps } from '@/types';
 import useCaptureResult from '@/utils/useCaptureResult';
@@ -28,9 +28,9 @@ const Page: React.FC = () => {
   const router = useRouter();
   const pathname = usePathname();
 
-  const closeModal = useCallback(() => {
+  const closeModal = () => {
     setIsModalOpen(false);
-  }, []);
+  };
 
   useEffect(() => {
     if (!isModalOpen) {
