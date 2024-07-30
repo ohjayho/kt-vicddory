@@ -15,7 +15,7 @@ export default function Catcher() {
   return (
     <>
       <div className="bg-white pt-8 flex justify-center items-center h-min flex-wrap ">
-        <div className="flex flex-wrap flex-row gap-6 p-6 justify-start items-center object-center w-3/4">
+        <div className="flex flex-wrap flex-row justify-center md:justify-start p-6 w-3/4 mx-auto">
           {catcherData.map((catcher, index) => (
             <div key={index} className="flex-1 max-md:w-1/4 max-sm:w-auto p-2">
               <CardFront
