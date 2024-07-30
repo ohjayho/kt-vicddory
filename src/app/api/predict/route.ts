@@ -23,10 +23,15 @@ export async function GET(req: NextRequest) {
           weather: '',
         },
       }),
+      cache: 'no-store',
     });
 
     const data = await response.json();
-    return NextResponse.json(data.predictWinRate, { status: 200 });
+    return NextResponse.json(data.predictWinRate, {
+      headers: {
+        'Cache-Control': 'no-store',
+      },
+    });
   } catch (error) {
     throw new Error('Server-Failed to fetch predict Data');
   }

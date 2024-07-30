@@ -15,7 +15,7 @@ const useCaptureResult = (ref: RefObject<HTMLDivElement>) => {
         link.click();
       })
       .catch((err) => {
-        console.error('Failed to download image', err);
+        throw new Error('Failed to download image', err);
       });
   }, [ref]);
 
