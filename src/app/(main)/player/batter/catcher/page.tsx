@@ -17,12 +17,14 @@ export default function Catcher() {
       <div className="bg-white pt-8 flex justify-center items-center h-min flex-wrap ">
         <div className="flex flex-wrap flex-row gap-6 p-6 justify-start items-center object-center w-3/4">
           {catcherData.map((catcher, index) => (
-            <CardFront
-              key={index}
-              player={catcher}
-              size="medium"
-              onClick={() => handleCardClick(catcher.backNum)}
-            />
+            <div key={index} className="flex-1 max-md:w-1/4 max-sm:w-auto p-2">
+              <CardFront
+                key={index}
+                player={catcher}
+                size="medium"
+                onClick={() => handleCardClick(catcher.backNum)}
+              />
+            </div>
           ))}
         </div>
       </div>
