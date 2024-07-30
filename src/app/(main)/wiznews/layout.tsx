@@ -1,7 +1,5 @@
-// 'use client';
 import NewsBanner from '@/components/wiznews/NewsBanner';
 import { ReactNode } from 'react';
-import { createPortal } from 'react-dom';
 
 export const metadata = {
   title: '위즈 뉴스',
@@ -21,7 +19,7 @@ export default function NewsLayout({
       <div className="min-h-screen bg-black">
         <NewsBanner />
         {children}
-        {/* {typeof document !== 'undefined' && createPortal(news, document.body)} */}
+        {news}
       </div>
     </>
   );
