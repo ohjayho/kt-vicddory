@@ -3,10 +3,12 @@
 import Image from 'next/image';
 import { useState } from 'react';
 import { useNewsListStore } from './NewsArea';
+import NewsGenerateError from './NewsGenerateError';
 
 export default function NewsGenerate() {
   const [date, setDate] = useState('2024-07-11');
   const [loading, setLoading] = useState(false);
+  const [isErrorVisible, setIsErrorVisible] = useState(false);
   const setNewsList = useNewsListStore((state) => state.setNewsList);
 
   const fetchAiNews = async () => {
@@ -22,15 +24,19 @@ export default function NewsGenerate() {
     setLoading(true);
     try {
       const aiNewsData = await fetchAiNews();
-      const aiNews = [
-        {
-          artcContents: aiNewsData.content,
-          artcTitle: aiNewsData.title,
-          artcSeq: Date.now(),
-          regDttm: new Date(date).getTime(),
-        },
-      ];
-      setNewsList(aiNews);
+      if (aiNewsData.content === undefined) {
+        setIsErrorVisible(true);
+      } else {
+        const aiNews = [
+          {
+            artcContents: aiNewsData.content,
+            artcTitle: aiNewsData.title,
+            artcSeq: Date.now(),
+            regDttm: new Date(date).getTime(),
+          },
+        ];
+        setNewsList(aiNews);
+      }
     } catch (e: any) {
       if (e.response.status === 500 && retries > 0) {
         await handleGenerate(retries - 1); // 500코드 발생 시 시도 가능 횟수 1회 줄이고 재 실행
@@ -75,6 +81,10 @@ export default function NewsGenerate() {
             )}
           </div>
         </button>
+        <NewsGenerateError
+          isErrorVisible={isErrorVisible}
+          setIsErrorVisible={setIsErrorVisible}
+        />
       </div>
     </>
   );
