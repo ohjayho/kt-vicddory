@@ -200,6 +200,85 @@ type TBatterYearRecord = {
   teamName: string;
 }[];
 
+interface IBatterGameRecord {
+  ab: number;
+  bb: number;
+  cs: number;
+  displayDate: string;
+  gd: number;
+  h2: number;
+  h3: number;
+  hit: number;
+  hp: number;
+  hr: number;
+  hra: string;
+  kk: number;
+  matchTeamCode: string;
+  matchTeamName: string;
+  rbi: number;
+  run: number;
+  sb: number;
+}
+[];
+
+interface IBatterGameRecordFutures extends IBatterGameRecord {
+  bra: string;
+}
+[];
+
+interface IBatterSeasonSummaryFutures {
+  ab: number;
+  babip: string;
+  bb: number;
+  bbkk: string;
+  bra: string;
+  cs: number;
+  finalHit: number;
+  gamenum: number;
+  gd: number;
+  gyear: string;
+  h2: number;
+  h3: number;
+  hit: number;
+  hp: number;
+  hr: number;
+  hra: string;
+  ib: number;
+  kk: number;
+  ops: string;
+  opsPlus: string;
+  pa: number;
+  pcode: string;
+  rbi: number;
+  run: number;
+  sb: number;
+  sbTryCn: number;
+  sba: string;
+  sf: number;
+  sh: number;
+  slg: string;
+  spHra: string;
+  war: string;
+  winShares: string;
+  woba: string;
+  wrHit: string;
+  wraa: string;
+  xbhrun: string;
+}
+[];
+
+interface IBatterSeasonSummary extends IBatterSeasonSummaryFutures {
+  babip: string;
+  bbkk: string;
+  finalHit: number;
+  ib: number;
+  sbTryCn: number;
+  sba: string;
+  spHra: string;
+  winShares: string;
+}
+[];
+
 type TPitcherYearRecord = {
   bb: number;
   bf: number;
@@ -225,24 +304,122 @@ type TPitcherYearRecord = {
   wra: string;
 }[];
 
+interface IPitcherGameRecordFutures {
+  bb: number;
+  displayDate: string;
+  er: number;
+  hit: number;
+  hp: number;
+  hr: number;
+  inn2: number;
+  innDisplay: string;
+  kk: number;
+  matchTeamCode: string;
+  matchTeamName: string;
+  pa: number;
+  r: number;
+  sv: number;
+  wl: string;
+  wls: string;
+}
+[];
+
+interface IPitcherGameRecord extends IPitcherGameRecordFutures {
+  oavg: string;
+}
+[];
+
+type TPitcherSeasonSummary = {
+  babip: string;
+  bb: number;
+  bf: number;
+  bk: number;
+  bs: number;
+  er: number;
+  era: string;
+  err: number;
+  fip: string;
+  fo: number;
+  gamenum: number;
+  go: number;
+  gyear: string;
+  havg: string;
+  hit: number;
+  hold: number;
+  hp: number;
+  hr: number;
+  ib: number;
+  inn2: number;
+  innDisplay: string;
+  kbb: string;
+  kk: number;
+  l: number;
+  oavg: string;
+  pcode: string;
+  playerName: string;
+  qs: number;
+  qsPlus: number;
+  r: number;
+  ravg: string;
+  sf: number;
+  sh: number;
+  sho: number;
+  start: number;
+  sv: number;
+  svo: number;
+  tugucount: number;
+  turfSave: number;
+  w: number;
+  wCg: number;
+  war: string;
+  whip: string;
+  winShares: string;
+  wl: string;
+  wp: number;
+  wra: string;
+}[];
+
+type TPitcherSeasonSummaryFutures = {
+  bb: number;
+  er: number;
+  era: string;
+  err: number;
+  gamenum: number;
+  gyear: string;
+  hit: number;
+  hold: number;
+  hp: number;
+  hr: number;
+  inn2: number;
+  innDisplay: string;
+  kk: number;
+  l: number;
+  pcode: string;
+  playerName: string;
+  r: number;
+  sv: number;
+  w: number;
+  wl: string;
+  wra: string;
+}[];
 interface IPitcherPlayerData {
   data: {
-    recentgamerecordlist: any[];
-    recentgamerecordlistfutures: any[];
-    seasonsummary: any;
-    yearrecordlist: TPitcherYearRecord[];
-    seasonsummaryfutures: any;
+    recentgamerecordlist: IPitcherGameRecord[];
+    recentgamerecordlistfutures: IPitcherGameRecordFutures[];
+    seasonsummary: TPitcherSeasonSummary[];
+    yearrecordlist: TPitcherYearRecord[] | null;
+    seasonsummaryfutures: TPitcherSeasonSummaryFutures[];
     gameplayer: IPlayerBack;
     metric2023?: TPitcherMetric | null;
   };
 }
 interface IBatterPlayerData {
   data: {
-    recentgamerecordlist: any[];
-    recentgamerecordlistfutures: any[];
-    seasonsummary: any;
+    recentgamerecordlist: IBatterGameRecord[];
+    recentgamerecordlistfutures: IBatterGameRecordFutures[];
+    seasonsummary: IBatterSeasonSummary[];
     yearrecordlist: TBatterYearRecord[];
-    seasonsummaryfutures: any;
+    seasonsummaryfutures: IBatterSeasonSummaryFutures[];
     gameplayer: IPlayerBack;
     metric2023?: TCatcherMetric | TInfielderMetric | null;
   };
@@ -309,6 +486,15 @@ export {
   TPlayerMetric,
   TBatterYearRecord,
   TPitcherYearRecord,
+  TBatterYearRecord,
+  IBatterGameRecord,
+  IBatterGameRecordFutures,
+  IBatterSeasonSummaryFutures,
+  IBatterSeasonSummary,
+  IPitcherGameRecordFutures,
+  IPitcherGameRecord,
+  TPitcherSeasonSummary,
+  TPitcherSeasonSummaryFutures,
   IPitcherPlayerData,
   IBatterPlayerData,
   TRanking,
