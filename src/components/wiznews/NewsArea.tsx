@@ -5,6 +5,7 @@ import NewsBalloon from './NewsBalloon';
 import { useEffect } from 'react';
 import NewsLoader from './NewsLoader';
 import { TNewsList } from '@/types';
+import Image from 'next/image';
 
 type NewsListStore = {
   newsList: TNewsList;
@@ -25,7 +26,7 @@ export const useNewsListStore = create<NewsListStore>()((set) => ({
 
 export const fetchNews = async (pageNum: number) => {
   const newsData = await (
-    await fetch(`/api/news?searchMax=5&pageNum=${pageNum}`)
+    await fetch(`/api/news?searchMax=10&pageNum=${pageNum}`)
   ).json();
   return newsData;
 };
@@ -60,7 +61,18 @@ export default function NewsArea() {
                 />
               ),
           )}
-        <NewsLoader />
+        {!newsList.length && (
+          <div className="flex w-full justify-center">
+            <Image
+              src="/svgs/baseball.svg"
+              width={0}
+              height={0}
+              alt="baseball"
+              className="w-[80px] h-auto animate-spin"
+            />
+          </div>
+        )}
+        {newsList.length && <NewsLoader />}
       </div>
     </>
   );

@@ -223,7 +223,7 @@ export default function PlayerChart({
         <div className="pt-4">
           <HighchartsReact highcharts={Highcharts} options={options} />
         </div>
-        <div className="bg-black max-md:min-h-screen">
+        <div className="bg-black ">
           <button
             className={`h-8 w-fit mx-4 mb-4 ml-6 flex flex-row `}
             onClick={onDescriptionHandler}
@@ -240,7 +240,7 @@ export default function PlayerChart({
             </div>{' '}
           </button>
           {descriptionButton && (
-            <div className="absolute bottom-auto w-1/3 max-md:w-2/3 max-md:transform max-md:-translate-x-16 max-md:text-wrap max-md:left-1/4 left-1/2 transform -translate-x-2 -translate-y-2 p-4 bg-white/90 z-10 rounded-lg">
+            <div className="absolute bottom-auto w-1/3 max-md:w-2/3 max-md:transform max-md:-translate-x-4 max-md:-translate-y-60 max-md:text-wrap max-md:left-1/4 left-1/2 transform translate-x-28 -translate-y-12 p-4 bg-white/90 z-10 rounded-lg">
               {positionCategory[position].categories.map((category, index) => (
                 <div
                   key={index}

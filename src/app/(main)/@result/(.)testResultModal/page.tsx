@@ -1,13 +1,13 @@
 'use client';
 
-import CaptureArea from '@/components/test/result/CaptureArea';
+import dynamic from 'next/dynamic';
+import { TPositionStatisticProps } from '@/types';
 import { useRef, useEffect, useState } from 'react';
 import positionDetails from '@/data/positionDetails';
-import { TPositionStatisticProps } from '@/types';
 import useCaptureResult from '@/utils/useCaptureResult';
-import dynamic from 'next/dynamic';
-import ModalTestWrapper from '@/components/test/ModalTestWrapper';
 import { usePathname, useRouter } from 'next/navigation';
+import CaptureArea from '@/components/test/result/CaptureArea';
+import ModalTestWrapper from '@/components/test/ModalTestWrapper';
 
 const Button = dynamic(() => import('@/components/test/Button'), {
   ssr: false,
@@ -27,6 +27,7 @@ const Page: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(true);
   const router = useRouter();
   const pathname = usePathname();
+  const [playerHref, setPlayerHref] = useState<string>('/');
 
   const closeModal = () => {
     setIsModalOpen(false);
@@ -57,13 +58,21 @@ const Page: React.FC = () => {
     sessionStorage.removeItem('testResult');
   }, []);
 
+  const handlePlayerHrefChange = (href: string) => {
+    setPlayerHref(href);
+  };
+
   return (
     <>
       {pathname === '/testResultModal' ? (
         <ModalTestWrapper>
           <div className="bg-slate-100 h-full overflow-scroll no-scrollbar">
             <div className="flex justify-center flex-col items-center w-[448px] m-auto relative">
-              <CaptureArea ref={ref} closeModal={closeModal} />
+              <CaptureArea
+                ref={ref}
+                closeModal={closeModal}
+                onPlayerHrefChange={handlePlayerHrefChange}
+              />
               <div className="w-full h-[1900px] bg-[#F8A6A7] relative flex flex-col justify-center items-center">
                 <div className="absolute text-[#333333] font-bold top-10">
                   가장 많은 포지션은 뭘까요?
@@ -91,7 +100,7 @@ const Page: React.FC = () => {
                 <TestShare onClick={handleCapture} />
               </div>
               <div className="sticky bottom-0 w-full h-20 bg-[#FFFFFF] flex justify-center items-center pb-6">
-                <Button width={80} text="2xl" href="/test">
+                <Button width={80} text="2xl" href={playerHref}>
                   👉🏻선수 알아보러 가기👈🏻
                 </Button>
               </div>
