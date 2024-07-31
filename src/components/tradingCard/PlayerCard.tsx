@@ -103,6 +103,7 @@ export default function PlayerCard({
                 size={size}
                 onClick={() => handleImageClick()}
               />
+              {!isFlipped && <div className="hologram-layer"></div>}
             </div>
             <div
               className={`${sizeClass} absolute inset-0 object-cover [transform:rotateY(180deg)] [backface-visibility:hidden]`}
