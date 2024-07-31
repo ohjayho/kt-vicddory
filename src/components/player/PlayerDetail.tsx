@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import PlayerCard from '@/components/tradingCard/PlayerCard';
 import dynamic from 'next/dynamic';
-// import PlayerData from './PlayerData';
+import PlayerData from './PlayerData';
 
 export default function PlayerDetailClient({
   player,
@@ -93,6 +93,7 @@ export default function PlayerDetailClient({
             </div>
           </div>
         </div>
+        <PlayerData player={player} />
       </div>
     </>
   );
