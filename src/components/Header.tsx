@@ -189,12 +189,6 @@ export default function Header() {
               <div className="w-20"></div>
               <div className="flex flex-col w-20 items-center hover:border-t-2 hover:border-t-red-500 whitespace-nowrap gap-2">
                 <Link
-                  href="/"
-                  className="hover:text-red-90 hover:font-extrabold"
-                >
-                  코칭스텝
-                </Link>
-                <Link
                   href="/player/pitcher"
                   className="hover:text-red-90 hover:font-extrabold"
                 >
@@ -218,13 +212,13 @@ export default function Header() {
                   href="/ranking/daily"
                   className="hover:text-red-90 hover:font-extrabold"
                 >
-                  년도별
+                  일자별
                 </Link>
                 <Link
-                  href="/raning/year"
+                  href="/ranking/year"
                   className="hover:text-red-90 hover:font-extrabold"
                 >
-                  일자별
+                  년도별
                 </Link>
               </div>
               <div className="w-20"></div>

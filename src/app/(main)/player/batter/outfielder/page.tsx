@@ -15,7 +15,7 @@ export default function Outfielder() {
   return (
     <>
       <div className="bg-white pt-8 flex justify-center items-center h-min flex-wrap ">
-        <div className="flex flex-wrap flex-row gap-6 p-6 justify-center items-center object-center w-3/4">
+        <div className="flex flex-wrap flex-row gap-6 p-6 justify-start items-center object-center w-3/4">
           {outfielderData.map((outfielder, index) => (
             <CardFront
               key={index}
