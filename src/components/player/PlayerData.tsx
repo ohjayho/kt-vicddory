@@ -108,7 +108,10 @@ export default function PlayerData({ player }: PlayerData) {
                             <td
                               key={valueIndex}
                               className="p-2 md:border md:border-gray-300 text-left block md:table-cell"
-                            ></td>
+                            >
+                              <div className="hidden">{key}</div>
+                              <div className="hidden">{value}</div>
+                            </td>
                           ))}
                       </tr>
                     </tbody>
@@ -170,6 +173,8 @@ export default function PlayerData({ player }: PlayerData) {
                                 key={valueIndex}
                                 className="p-2 md:border md:border-gray-300 text-left block md:table-cell"
                               >
+                                {' '}
+                                <div className="hidden">{key}</div>
                                 {typeof value === 'object'
                                   ? JSON.stringify(value)
                                   : value}
@@ -239,6 +244,8 @@ export default function PlayerData({ player }: PlayerData) {
                                 key={valueIndex}
                                 className="p-2 md:border md:border-gray-300 text-left block md:table-cell"
                               >
+                                {' '}
+                                <div className="hidden">{key}</div>
                                 {typeof value === 'object'
                                   ? JSON.stringify(value)
                                   : value}
@@ -290,7 +297,10 @@ export default function PlayerData({ player }: PlayerData) {
                             <td
                               key={valueIndex}
                               className="p-2 md:border md:border-gray-300 text-left block md:table-cell"
-                            ></td>
+                            >
+                              <div className="hidden">{key}</div>
+                              <div className="hidden">{value}</div>
+                            </td>
                           ))}
                       </tr>
                     </tbody>
@@ -357,6 +367,7 @@ export default function PlayerData({ player }: PlayerData) {
                                     key={valueIndex}
                                     className="p-2 md:border md:border-gray-300 text-left block md:table-cell"
                                   >
+                                    <div className="hidden">{key}</div>
                                     {typeof value === 'object'
                                       ? JSON.stringify(value)
                                       : value}
