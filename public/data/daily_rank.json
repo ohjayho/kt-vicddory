@@ -531,9 +531,9 @@
       { "rank": 2, "team": "LG" },
       { "rank": 3, "team": "삼성" },
       { "rank": 4, "team": "두산" },
-      { "rank": 5, "team": "SSG" },
-      { "rank": 6, "team": "NC" },
-      { "rank": 7, "team": "KT" },
+      { "rank": 5, "team": "KT" },
+      { "rank": 5, "team": "NC" },
+      { "rank": 7, "team": "SSG" },
       { "rank": 8, "team": "롯데" },
       { "rank": 9, "team": "한화" },
       { "rank": 10, "team": "키움" }
@@ -581,6 +581,36 @@
       { "rank": 7, "team": "NC" },
       { "rank": 8, "team": "롯데" },
       { "rank": 9, "team": "한화" },
+      { "rank": 10, "team": "키움" }
+    ]
+  },
+  {
+    "day": 20240729,
+    "data": [
+      { "rank": 1, "team": "KIA" },
+      { "rank": 2, "team": "LG" },
+      { "rank": 3, "team": "삼성" },
+      { "rank": 4, "team": "KT" },
+      { "rank": 4, "team": "SSG" },
+      { "rank": 6, "team": "두산" },
+      { "rank": 7, "team": "NC" },
+      { "rank": 8, "team": "롯데" },
+      { "rank": 9, "team": "한화" },
+      { "rank": 10, "team": "키움" }
+    ]
+  },
+  {
+    "day": 20240730,
+    "data": [
+      { "rank": 1, "team": "KIA" },
+      { "rank": 2, "team": "LG" },
+      { "rank": 3, "team": "삼성" },
+      { "rank": 4, "team": "SSG" },
+      { "rank": 5, "team": "두산" },
+      { "rank": 6, "team": "KT" },
+      { "rank": 7, "team": "NC" },
+      { "rank": 8, "team": "한화" },
+      { "rank": 9, "team": "롯데" },
       { "rank": 10, "team": "키움" }
     ]
   }
