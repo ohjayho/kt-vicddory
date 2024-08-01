@@ -50,7 +50,7 @@ export default function PlayerDetailClient({
 
   return (
     <>
-      <div className="flex flex-col items-center bg-black/90 min-h-screen max-md:flex-wrap">
+      <div className="flex flex-col items-center bg-black/90 min-h-screen max-md:flex-wrap no-scrollbar">
         <div className="flex w-3/4 items-center justify-center max-md:flex-wrap py-16 max-md:w-full">
           <div className="flex h-fit mx-6 items-center justify-self-center my-10 max-md:flex max-md:flex-col max-md:justify-items-center max-md:px-0 max-md:mx-0">
             <PlayerCard

@@ -83,7 +83,7 @@ export default async function RankingAi() {
 
   return (
     <>
-      <div className="flex flex-1 bg-[url('/images/mainBg.png')] bg-cover relative items-center overflow-hidden">
+      <div className="flex flex-1 bg-[url('/images/mainBg.png')] bg-cover relative items-center overflow-hidden no-scrollbar">
         <div className="w-3/4 mx-auto text-white">
           {dayOfWeek === 1 || !todayGame ? (
             <div className="flex flex-col justify-center items-center font-semibold text-xl gap-4 h-3/4 max-sm:gap-0">
