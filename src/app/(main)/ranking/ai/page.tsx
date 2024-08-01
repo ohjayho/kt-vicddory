@@ -1,6 +1,5 @@
 import Graph from '@/components/ranking/Graph';
 import MatchTeam from '@/components/ranking/MatchTeam';
-// import dateFormat from '@/utils/dateFormat';
 import winlossData from '#/data/winlossdata.json';
 import july_schedule from '#/data/july_schedule.json';
 import Image from 'next/image';
@@ -41,7 +40,6 @@ export default async function RankingAi() {
   if (dayOfWeek !== 1) {
     const pitcherRes: Response = await fetch(
       `${process.env.BASE_URL}/api/startingPitcher?day_num=${day_num}`,
-      { cache: 'no-store' },
     );
     const pitcherData: TPitcherData = await pitcherRes.json();
 
@@ -75,7 +73,6 @@ export default async function RankingAi() {
     // 승리 예측 API
     const gamePredict: Response = await fetch(
       `${process.env.BASE_URL}/api/predict?opponentTeam=${team[1]}&pastWinRate=${total}&recentWinRate=${last}&stadiumInformatio=${stadiums}&startingPitcherInformation=${pitcher[1]}&weather=`,
-      { cache: 'no-store' },
     );
     const gamePredictData: TGamePredictData = await gamePredict.json();
     winPercent = parseInt(gamePredictData.toString().replace('%', ''));
