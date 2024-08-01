@@ -14,7 +14,7 @@ export default function Outfielder() {
   };
   return (
     <>
-      <div className="bg-white pt-8 flex justify-center items-center h-min flex-wrap ">
+      <div className="bg-white pt-8 flex justify-center items-center h-min flex-wrap no-scrollbar">
         <div className="flex flex-wrap flex-row justify-center md:justify-start p-6 w-3/4 mx-auto">
           {outfielderData.map((outfielder, index) => (
             <div key={index} className="flex-1 max-md:w-1/4 max-sm:w-auto p-2">

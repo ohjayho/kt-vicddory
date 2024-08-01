@@ -30,30 +30,36 @@ const CaptureArea = forwardRef<HTMLDivElement, TCaptureAreaProps>(
 
         const selectRandomPlayer = (position: string) => {
           let playerData: any[];
+          let playerPath: string;
+
           switch (position) {
             case '포수':
               playerData = catcherData.data.list;
+              playerPath = '/player/batter/catcher/';
               break;
             case '내야수':
               playerData = infielderData.data.list;
+              playerPath = '/player/batter/infielder/';
               break;
             case '외야수':
               playerData = outfielderData.data.list;
+              playerPath = '/player/batter/outfielder/';
               break;
             case '투수':
               playerData = pitcherData.data.list;
+              playerPath = '/player/pitcher/';
               break;
             default:
               playerData = [];
+              playerPath = '';
           }
 
           const randomPlayer =
             playerData[Math.floor(Math.random() * playerData.length)];
           setPlayer(randomPlayer);
-          if (onPlayerHrefChange) {
-            onPlayerHrefChange(
-              `/player/batter/catcher/${randomPlayer.backNum}`,
-            );
+
+          if (onPlayerHrefChange && playerPath) {
+            onPlayerHrefChange(`${playerPath}${randomPlayer.backNum}`);
           }
         };
 
