@@ -1,5 +1,5 @@
 export default function UrlCopy() {
-  const testUrl: string = `${process.env.BASE_URL}/test`;
+  const testUrl: string = `https://kt-vicddory-fe.vercel.app/test`;
   navigator.clipboard.writeText(testUrl);
   alert('링크가 복사 되었습니다.');
 
