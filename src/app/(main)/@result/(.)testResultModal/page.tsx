@@ -90,7 +90,7 @@ const Page: React.FC = () => {
                 })}
               </div>
               <div className="w-full h-[250px] bg-[#FFFFFF] flex flex-col justify-center items-center">
-                <Button width={80} text="2xl" href="/test/questions/1">
+                <Button width={80} text="2xl" href="/test">
                   테스트 다시하기
                 </Button>
                 <div className="text-xl font-bold mt-10 mb-3">
