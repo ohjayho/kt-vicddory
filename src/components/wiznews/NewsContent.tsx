@@ -20,7 +20,8 @@ export default function NewsContent({ newsId }: TNewsId) {
     router.back();
   };
   const trimmedArtcContents =
-    foundNews && foundNews.artcContents.replace(/<[^>]*>/g, '');
+    foundNews &&
+    foundNews.artcContents.replace(/<[^>]*>/g, '').replace(/&nbsp;/g, ' ');
 
   const newsDate = () => {
     const date = foundNews && new Date(foundNews.regDttm);
