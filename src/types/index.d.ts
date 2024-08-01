@@ -177,7 +177,7 @@ type TInfielderMetric = {
 };
 type TPlayerMetric = TPitcherMetric | TCatcherMetric | TInfielderMetric;
 
-type TBatterYearRecord = {
+interface TBatterYearRecord {
   ab: number;
   bb: number;
   bra: string;
@@ -198,7 +198,8 @@ type TBatterYearRecord = {
   slg: string;
   teamCode: string;
   teamName: string;
-}[];
+}
+[];
 
 interface IBatterGameRecord {
   ab: number;
@@ -265,8 +266,6 @@ interface IBatterSeasonSummaryFutures {
   wraa: string;
   xbhrun: string;
 }
-[];
-
 interface IBatterSeasonSummary extends IBatterSeasonSummaryFutures {
   babip: string;
   bbkk: string;
@@ -277,9 +276,7 @@ interface IBatterSeasonSummary extends IBatterSeasonSummaryFutures {
   spHra: string;
   winShares: string;
 }
-[];
-
-type TPitcherYearRecord = {
+interface TPitcherYearRecord {
   bb: number;
   bf: number;
   er: number;
@@ -302,7 +299,8 @@ type TPitcherYearRecord = {
   w: number;
   wCg: number;
   wra: string;
-}[];
+}
+[];
 
 interface IPitcherGameRecordFutures {
   bb: number;
@@ -377,7 +375,7 @@ type TPitcherSeasonSummary = {
   wl: string;
   wp: number;
   wra: string;
-}[];
+};
 
 type TPitcherSeasonSummaryFutures = {
   bb: number;
@@ -401,14 +399,14 @@ type TPitcherSeasonSummaryFutures = {
   w: number;
   wl: string;
   wra: string;
-}[];
+};
 interface IPitcherPlayerData {
   data: {
     recentgamerecordlist: IPitcherGameRecord[];
     recentgamerecordlistfutures: IPitcherGameRecordFutures[];
-    seasonsummary: TPitcherSeasonSummary[];
+    seasonsummary: TPitcherSeasonSummary;
     yearrecordlist: TPitcherYearRecord[] | null;
-    seasonsummaryfutures: TPitcherSeasonSummaryFutures[];
+    seasonsummaryfutures: TPitcherSeasonSummaryFutures;
     gameplayer: IPlayerBack;
     metric2023?: TPitcherMetric | null;
   };
@@ -417,9 +415,9 @@ interface IBatterPlayerData {
   data: {
     recentgamerecordlist: IBatterGameRecord[];
     recentgamerecordlistfutures: IBatterGameRecordFutures[];
-    seasonsummary: IBatterSeasonSummary[];
+    seasonsummary: IBatterSeasonSummary;
     yearrecordlist: TBatterYearRecord[];
-    seasonsummaryfutures: IBatterSeasonSummaryFutures[];
+    seasonsummaryfutures: IBatterSeasonSummaryFutures;
     gameplayer: IPlayerBack;
     metric2023?: TCatcherMetric | TInfielderMetric | null;
   };

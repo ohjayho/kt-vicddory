@@ -33,18 +33,18 @@ export default function PlayerData({ player }: PlayerData) {
     | IBatterGameRecordFutures[]
     | IPitcherGameRecordFutures[]
     | undefined = player?.data.recentgamerecordlistfutures || [];
-  const playerSeason:
-    | TPitcherSeasonSummary[]
-    | IBatterSeasonSummary[]
-    | undefined = player?.data.seasonsummary || [];
+  const playerSeason: TPitcherSeasonSummary | IBatterSeasonSummary | undefined =
+    player?.data.seasonsummary || undefined;
   const playerSeasonFutures:
-    | TPitcherSeasonSummaryFutures[]
-    | IBatterSeasonSummaryFutures[]
-    | undefined = player?.data.seasonsummaryfutures || [];
+    | TPitcherSeasonSummaryFutures
+    | IBatterSeasonSummaryFutures
+    | undefined = player?.data.seasonsummaryfutures || undefined;
   const playerYearRecord:
     | TPitcherYearRecord[]
     | TBatterYearRecord[]
     | undefined = player?.data.yearrecordlist || [];
+
+  // 데이터 나누기
 
   if (!playerYearRecord || playerYearRecord.length === 0) {
     return <div>No data available</div>;
@@ -70,44 +70,50 @@ export default function PlayerData({ player }: PlayerData) {
         {detailButton && (
           <div>
             <div className="container mx-auto p-4">
-              {playerSeason && playerSeason.length > 0 && (
+              {!playerSeason && (
                 <>
                   <h2 className="text-lg font-bold my-4">
                     2024 시즌 정규리그 기록
                   </h2>
-                  <table className="min-w-full border-collapse block md:table text-black text-sm">
+                  <table className="min-w-full border-collapse block md:table text-center text-black text-sm">
                     <thead className="block md:table-header-group">
                       <tr className="border border-gray-300 md:border-none block md:table-row">
-                        {Object.keys(playerSeason[0]).map((key, index) => (
-                          <th
-                            key={index}
-                            className="bg-orange-300 p-2 text-gray-600 font-bold md:border md:border-gray-300 text-left block md:table-cell"
-                          >
-                            {key.toUpperCase()}
-                          </th>
-                        ))}
+                        {Object.keys(!playerSeason)
+                          .filter(
+                            (key) =>
+                              !['playerName', 'pcode', 'gyear'].includes(key),
+                          )
+                          .map((key, index) => (
+                            <th
+                              key={index}
+                              className="bg-orange-300 p-2 text-gray-600 font-bold md:border md:border-gray-300 text-center block md:table-cell"
+                            >
+                              {key === 'innDisplay'
+                                ? '이닝'
+                                : key === 'gamenum'
+                                  ? '경기'
+                                  : key.toUpperCase()}
+                            </th>
+                          ))}
                       </tr>
                     </thead>
                     <tbody className="block md:table-row-group">
-                      {playerSeason.map((record, recordIndex) => (
-                        <tr
-                          key={recordIndex}
-                          className="bg-gray-100 border border-gray-300 md:border-none block md:table-row"
-                        >
-                          {Object.entries(record).map(
-                            ([key, value], valueIndex) => (
-                              <td
-                                key={valueIndex}
-                                className="p-2 md:border md:border-gray-300 text-left block md:table-cell"
-                              >
-                                {typeof value === 'object'
-                                  ? JSON.stringify(value)
-                                  : value}
-                              </td>
-                            ),
-                          )}
-                        </tr>
-                      ))}
+                      <tr className="bg-gray-100 border border-gray-300 md:border-none block md:table-row">
+                        {Object.entries(!playerSeason)
+                          .filter(
+                            ([key]) =>
+                              !['playerName', 'pcode', 'gyear'].includes(key),
+                          )
+                          .map(([key, value], valueIndex) => (
+                            <td
+                              key={valueIndex}
+                              className="p-2 md:border md:border-gray-300 text-center block md:table-cell"
+                            >
+                              <div className="hidden">{key}</div>
+                              <div className="hidden">{value}</div>
+                            </td>
+                          ))}
+                      </tr>
                     </tbody>
                   </table>
                 </>
@@ -115,20 +121,30 @@ export default function PlayerData({ player }: PlayerData) {
               {playerRecentRecord && playerRecentRecord.length > 0 && (
                 <>
                   <h2 className="text-lg font-bold my-4">최근 5경기 기록</h2>
-                  <table className="min-w-full border-collapse block md:table text-black text-sm">
+                  <table className="min-w-full border-collapse block md:table text-black text-center text-sm">
                     <thead className="block md:table-header-group">
                       <tr className="border border-gray-300 md:border-none block md:table-row">
-                        <th className="bg-orange-300 p-2 text-gray-600 font-bold md:border md:border-gray-300 text-left block md:table-cell">
+                        <th className="bg-orange-300 p-2 text-gray-600 font-bold md:border md:border-gray-300 text-center block md:table-cell">
                           날짜
                         </th>
+                        <th className="bg-orange-300 p-2 text-gray-600 font-bold md:border md:border-gray-300 text-center block md:table-cell">
+                          상대 팀
+                        </th>
                         {Object.keys(playerRecentRecord[0])
-                          .filter((key) => key !== 'displayDate')
+                          .filter(
+                            (key) =>
+                              key !== 'displayDate' &&
+                              key !== 'matchTeamCode' &&
+                              key !== 'matchTeamName',
+                          )
                           .map((key, index) => (
                             <th
                               key={index}
-                              className="bg-orange-300 p-2 text-gray-600 font-bold md:border md:border-gray-300 text-left block md:table-cell"
+                              className="bg-orange-300 p-2 text-gray-600 font-bold md:border md:border-gray-300 text-center block md:table-cell"
                             >
-                              {key.toUpperCase()}
+                              {key === 'innDisplay'
+                                ? '이닝'
+                                : key.toUpperCase()}
                             </th>
                           ))}
                       </tr>
@@ -139,16 +155,26 @@ export default function PlayerData({ player }: PlayerData) {
                           key={recordIndex}
                           className="bg-gray-100 border border-gray-300 md:border-none block md:table-row"
                         >
-                          <td className="p-2 md:border md:border-gray-300 text-left block md:table-cell">
+                          <td className="p-2 md:border md:border-gray-300 text-center block md:table-cell">
                             {record.displayDate}
                           </td>
+                          <td className="p-2 md:border md:border-gray-300 text-center block md:table-cell">
+                            {record.matchTeamName}
+                          </td>
                           {Object.entries(record)
-                            .filter(([key]) => key !== 'displayDate')
+                            .filter(
+                              ([key]) =>
+                                key !== 'displayDate' &&
+                                key !== 'matchTeamCode' &&
+                                key !== 'matchTeamName',
+                            )
                             .map(([key, value], valueIndex) => (
                               <td
                                 key={valueIndex}
-                                className="p-2 md:border md:border-gray-300 text-left block md:table-cell"
+                                className="p-2 md:border md:border-gray-300 text-center block md:table-cell"
                               >
+                                {' '}
+                                <div className="hidden">{key}</div>
                                 {typeof value === 'object'
                                   ? JSON.stringify(value)
                                   : value}
@@ -164,17 +190,33 @@ export default function PlayerData({ player }: PlayerData) {
               {playerYearRecord && playerYearRecord.length > 0 && (
                 <>
                   <h2 className="text-lg font-bold my-4">kt wiz 통산 기록</h2>
-                  <table className="min-w-full border-collapse block md:table text-black text-sm">
+                  <table className="min-w-full border-collapse block md:table text-black text-center text-sm">
                     <thead className="block md:table-header-group">
                       <tr className="border border-gray-300 md:border-none block md:table-row">
-                        {Object.keys(playerYearRecord[0]).map((key, index) => (
-                          <th
-                            key={index}
-                            className="bg-orange-300 p-2 text-gray-600 font-bold md:border md:border-gray-300 text-left block md:table-cell"
-                          >
-                            {key.toUpperCase()}
-                          </th>
-                        ))}
+                        <th className="bg-orange-300 p-2 text-gray-600 font-bold md:border md:border-gray-300 text-center block md:table-cell">
+                          연도
+                        </th>
+                        <th className="bg-orange-300 p-2 text-gray-600 font-bold md:border md:border-gray-300 text-center block md:table-cell">
+                          경기
+                        </th>
+                        {Object.keys(playerYearRecord[0])
+                          .filter(
+                            (key) =>
+                              key !== 'teamCode' &&
+                              key !== 'teamName' &&
+                              key !== 'gyear' &&
+                              key !== 'gamenum',
+                          )
+                          .map((key, index) => (
+                            <th
+                              key={index}
+                              className="bg-orange-300 p-2 text-gray-600 font-bold md:border md:border-gray-300 text-center block md:table-cell"
+                            >
+                              {key === 'innDisplay'
+                                ? '이닝'
+                                : key.toUpperCase()}
+                            </th>
+                          ))}
                       </tr>
                     </thead>
                     <tbody className="block md:table-row-group">
@@ -183,18 +225,32 @@ export default function PlayerData({ player }: PlayerData) {
                           key={recordIndex}
                           className="bg-gray-100 border border-gray-300 md:border-none block md:table-row"
                         >
-                          {Object.entries(record).map(
-                            ([key, value], valueIndex) => (
+                          <td className="p-2 md:border md:border-gray-300 text-center block md:table-cell">
+                            {record.gyear}
+                          </td>
+                          <td className="p-2 md:border md:border-gray-300 text-center block md:table-cell">
+                            {record.gamenum}
+                          </td>
+                          {Object.entries(record)
+                            .filter(
+                              ([key]) =>
+                                key !== 'teamCode' &&
+                                key !== 'teamName' &&
+                                key !== 'gyear' &&
+                                key !== 'gamenum',
+                            )
+                            .map(([key, value], valueIndex) => (
                               <td
                                 key={valueIndex}
-                                className="p-2 md:border md:border-gray-300 text-left block md:table-cell"
+                                className="p-2 md:border md:border-gray-300 text-center block md:table-cell"
                               >
+                                {' '}
+                                <div className="hidden">{key}</div>
                                 {typeof value === 'object'
                                   ? JSON.stringify(value)
                                   : value}
                               </td>
-                            ),
-                          )}
+                            ))}
                         </tr>
                       ))}
                     </tbody>
@@ -203,46 +259,50 @@ export default function PlayerData({ player }: PlayerData) {
               )}
               <h1 className="text-xl font-bold m-4">퓨처스리그 </h1>
 
-              {playerSeasonFutures && playerSeasonFutures.length > 0 && (
+              {!playerSeasonFutures && (
                 <>
                   <h2 className="text-lg font-bold my-4">
                     2024 시즌 퓨처스리그 기록
                   </h2>
-                  <table className="min-w-full border-collapse block md:table text-black text-sm">
+                  <table className="min-w-full border-collapse block md:table text-black text-center text-sm">
                     <thead className="block md:table-header-group">
                       <tr className="border border-gray-300 md:border-none block md:table-row">
-                        {Object.keys(playerSeasonFutures[0]).map(
-                          (key, index) => (
+                        {Object.keys(!playerSeasonFutures)
+                          .filter(
+                            (key) =>
+                              !['playerName', 'pcode', 'gyear'].includes(key),
+                          )
+                          .map((key, index) => (
                             <th
                               key={index}
-                              className="bg-orange-300 p-2 text-gray-600 font-bold md:border md:border-gray-300 text-left block md:table-cell"
+                              className="bg-orange-300 p-2 text-gray-600 font-bold md:border md:border-gray-300 text-center block md:table-cell"
                             >
-                              {key.toUpperCase()}
+                              {key === 'innDisplay'
+                                ? '이닝'
+                                : key === 'gamenum'
+                                  ? '경기'
+                                  : key.toUpperCase()}
                             </th>
-                          ),
-                        )}
+                          ))}
                       </tr>
                     </thead>
                     <tbody className="block md:table-row-group">
-                      {playerSeasonFutures.map((record, recordIndex) => (
-                        <tr
-                          key={recordIndex}
-                          className="bg-gray-100 border border-gray-300 md:border-none block md:table-row"
-                        >
-                          {Object.entries(record).map(
-                            ([key, value], valueIndex) => (
-                              <td
-                                key={valueIndex}
-                                className="p-2 md:border md:border-gray-300 text-left block md:table-cell"
-                              >
-                                {typeof value === 'object'
-                                  ? JSON.stringify(value)
-                                  : value}
-                              </td>
-                            ),
-                          )}
-                        </tr>
-                      ))}
+                      <tr className="bg-gray-100 border border-gray-300 md:border-none block md:table-row">
+                        {Object.entries(!playerSeason)
+                          .filter(
+                            ([key]) =>
+                              !['playerName', 'pcode', 'gyear'].includes(key),
+                          )
+                          .map(([key, value], valueIndex) => (
+                            <td
+                              key={valueIndex}
+                              className="p-2 md:border md:border-gray-300 text-center block md:table-cell"
+                            >
+                              <div className="hidden">{key}</div>
+                              <div className="hidden">{value}</div>
+                            </td>
+                          ))}
+                      </tr>
                     </tbody>
                   </table>
                 </>
@@ -254,19 +314,32 @@ export default function PlayerData({ player }: PlayerData) {
                     <h2 className="text-lg font-bold my-4">
                       퓨처스리그 최근 5경기 기록
                     </h2>
-                    <table className="min-w-full border-collapse block md:table text-black text-sm">
-                      <thead className="block md:table-header-group">
-                        <tr className="border border-gray-300 md:border-none block md:table-row">
-                          {Object.keys(playerRecentFuturesRecord[0]).map(
-                            (key, index) => (
+                    <table className="min-w-full border-collapse block md:table text-black items-center text-center text-sm">
+                      <thead className="block md:table-header-group text-center">
+                        <tr className="border border-gray-300 md:border-none block md:table-row text-center">
+                          <th className="bg-orange-300 p-2 text-gray-600 font-bold md:border md:border-gray-300 text-center block md:table-cell">
+                            날짜
+                          </th>
+                          <th className="bg-orange-300 p-2 text-gray-600 font-bold md:border md:border-gray-300 text-center block md:table-cell">
+                            상대 팀
+                          </th>
+                          {Object.keys(playerRecentFuturesRecord[0])
+                            .filter(
+                              (key) =>
+                                key !== 'displayDate' &&
+                                key !== 'matchTeamCode' &&
+                                key !== 'matchTeamName',
+                            )
+                            .map((key, index) => (
                               <th
                                 key={index}
-                                className="bg-orange-300 p-2 text-gray-600 font-bold md:border md:border-gray-300 text-left block md:table-cell"
+                                className="bg-orange-300 p-2 text-gray-600 font-bold md:border md:border-gray-300 text-center block md:table-cell"
                               >
-                                {key.toUpperCase()}
+                                {key === 'innDisplay'
+                                  ? '이닝'
+                                  : key.toUpperCase()}
                               </th>
-                            ),
-                          )}
+                            ))}
                         </tr>
                       </thead>
                       <tbody className="block md:table-row-group">
@@ -276,18 +349,30 @@ export default function PlayerData({ player }: PlayerData) {
                               key={recordIndex}
                               className="bg-gray-100 border border-gray-300 md:border-none block md:table-row"
                             >
-                              {Object.entries(record).map(
-                                ([key, value], valueIndex) => (
+                              <td className="p-2 md:border md:border-gray-300 text-center block md:table-cell">
+                                {record.displayDate}
+                              </td>
+                              <td className="p-2 md:border md:border-gray-300 text-center block md:table-cell">
+                                {record.matchTeamName}
+                              </td>
+                              {Object.entries(record)
+                                .filter(
+                                  ([key]) =>
+                                    key !== 'displayDate' &&
+                                    key !== 'matchTeamCode' &&
+                                    key !== 'matchTeamName',
+                                )
+                                .map(([key, value], valueIndex) => (
                                   <td
                                     key={valueIndex}
-                                    className="p-2 md:border md:border-gray-300 text-left block md:table-cell"
+                                    className="p-2 md:border md:border-gray-300 text-center block md:table-cell"
                                   >
+                                    <div className="hidden">{key}</div>
                                     {typeof value === 'object'
                                       ? JSON.stringify(value)
                                       : value}
                                   </td>
-                                ),
-                              )}
+                                ))}
                             </tr>
                           ),
                         )}

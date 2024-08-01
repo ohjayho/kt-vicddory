@@ -19,7 +19,7 @@ export default function RankingDaily() {
 
   return (
     <>
-      <div className="w-3/4 mx-auto text-white pb-16">
+      <div className="w-3/4 mx-auto text-white pb-16 no-scrollbar">
         <div className="h-8 mt-[51px] text-lg max-sm:text-base border-l-4 border-red-100 flex items-center max-sm:flex-col max-sm:items-start">
           <p className="ml-3.5 max-sm:mb-3">비교 분석 구간:</p>
           <DateRangePicker onDateChange={handleDateChange} />
