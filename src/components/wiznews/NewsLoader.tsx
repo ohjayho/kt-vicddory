@@ -22,18 +22,6 @@ export default function NewsLoader() {
   }, [inView, newsList]);
   return (
     <>
-      {/* {newsList.length &&
-        newsList.map(
-          (news, index) =>
-            news && (
-              <NewsBalloon
-                key={news.artcTitle}
-                direction={index % 2 === 0 ? 'right' : 'left'}
-                content={news.artcTitle}
-                id={news.artcSeq}
-              />
-            ),
-        )} */}
       <div ref={ref} className="flex w-full justify-center">
         <Image
           src="/svgs/baseball.svg"

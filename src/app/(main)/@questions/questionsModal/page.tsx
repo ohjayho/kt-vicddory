@@ -85,7 +85,7 @@ export default function Questions() {
         router.push('/testResultModal');
       } else {
         const errorText = await response.text();
-        console.error('Failed to fetch test result:', errorText);
+        throw new Error(errorText);
       }
       sessionStorage.removeItem('questions');
       sessionStorage.removeItem('positionArr');
@@ -96,7 +96,6 @@ export default function Questions() {
   const onBackClick = () => {
     setCurrentQuestionIndex((prevIndex) => prevIndex - 1);
     const back = positionArr.slice(0, -1);
-    console.log(back);
     setPositionArr(back);
     sessionStorage.setItem('positionArr', JSON.stringify(back));
   };

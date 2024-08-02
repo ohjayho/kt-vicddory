@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
 const images = [
@@ -51,7 +52,7 @@ export default function Loading() {
     <div className="relative flex justify-center flex-col items-center h-dvh max-w-md m-auto bg-white">
       <div className="w-60 h-60">
         {images.map((image, index) => (
-          <img
+          <Image
             key={index}
             src={image}
             alt={`슬라이드 이미지 ${index}`}

@@ -26,11 +26,7 @@ export async function GET(req: NextRequest) {
     });
 
     const data = await response.json();
-    return NextResponse.json(data.predictWinRate, {
-      // headers: {
-      //   'Cache-Control': 'no-store',
-      // },
-    });
+    return NextResponse.json(data.predictWinRate, {});
   } catch (error) {
     throw new Error('Server-Failed to fetch predict Data');
   }

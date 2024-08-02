@@ -117,6 +117,7 @@ export default function PlayerChart({
 }: PlayerChartProps) {
   const currentMetric = getPlayerMetric(position, positionCurrentMetric);
   const expectedMetric = getPlayerMetric(position, positionAIMetric);
+
   // Scale the data for each category based on the global maximum
   const scaledExpectedData = positionCategory[position].categories.map(
     (category, index) => {
