@@ -15,7 +15,7 @@ It's a project for revamping the Korean baseball team's website with interactive
 - News Detail in Modal: View detailed news articles within a modal window.
 - Shareable Modal URLs: Share news modals with unique URLs using parallel and intercepting routes.
 - AI-Generated Sports News: Automatically generate sports news based on box scores from the official baseball team website, using AI trained with example sports articles.
-- Text-To-Speech: Convert news articles into speech for auditory consumption.
+- Text-To-Speech: Convert news articles into speech with TTS API.
 - Responsive Design: Optimized for use on any device, allowing users to access the website seamlessly, even while watching a baseball game.
 
 ## Demo
