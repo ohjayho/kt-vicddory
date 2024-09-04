@@ -1,89 +1,70 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+﻿# Vicddory
 
-## Getting Started
+It's a project for revamping the Korean baseball team's website with interactive content to boost fan loyalty and attract new fans.
 
-First, run the development server:
+## Table of content
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- [Features](#features)
+- [Demo](#demo)
+- [Tech Stack](#tech-stack)
+- [Design and Mock up](#design-and-mockup)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Infinite Scroll for News Feed: Seamless, endless news feed scrolling.
+- News Detail in Modal: View detailed news articles within a modal window.
+- Shareable Modal URLs: Share news modals with unique URLs using parallel and intercepting routes.
+- AI-Generated Sports News: Automatically generate sports news based on box scores from the official baseball team website, using AI trained with example sports articles.
+- Text-To-Speech: Convert news articles into speech for auditory consumption.
+- Responsive Design: Optimized for use on any device, allowing users to access the website seamlessly, even while watching a baseball game.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Demo
 
-## Learn More
+**Infinite Scroll for News Feed**
 
-To learn more about Next.js, take a look at the following resources:
+<p></p>
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+<p></p>
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+**News Detail in Modal**
 
-## Deploy on Vercel
+<p></p>
+<img src="./README_assets/Dashboard.gif" alt="Dashboard demo">
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**Shareable Modal URLs**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+<p></p>
+<img src="./README_assets/Project.gif" alt="Project demo">
 
-```
-frontend
-├─ .cz-config.js
-├─ .eslintignore
-├─ .eslintrc.json
-├─ .prettierignore
-├─ .prettierrc
-├─ .vscode
-│  └─ setting.json
-├─ next.config.mjs
-├─ package-lock.json
-├─ package.json
-├─ postcss.config.mjs
-├─ public
-│  ├─ images
-│  │  ├─ frontCardFrame.png
-│  │  └─ kt11.png
-│  └─ svgs
-│     ├─ next.svg
-│     └─ vercel.svg
-├─ README.md
-├─ src
-│  ├─ app
-│  │  ├─ (main)
-│  │  │  ├─ layout.tsx
-│  │  │  ├─ page.tsx
-│  │  │  └─ player
-│  │  │     ├─ catcher
-│  │  │     │  └─ page.tsx
-│  │  │     ├─ page.tsx
-│  │  │     └─ pitcher
-│  │  │        ├─ page.tsx
-│  │  │        └─ [id]
-│  │  │           └─ page.tsx
-│  │  ├─ (test)
-│  │  │  ├─ layout.tsx
-│  │  │  └─ test
-│  │  │     └─ page.tsx
-│  │  └─ globals.css
-│  ├─ components
-│  │  ├─ Index.tsx
-│  │  └─ tradingCard
-│  │     ├─ CardBack.tsx
-│  │     └─ CardFront.tsx
-│  ├─ types
-│  │  └─ index.d.ts
-│  └─ utils
-│     └─ index.ts
-├─ tailwind.config.ts
-└─ tsconfig.json
+**AI-Generated Sports News**
 
-```
+<p></p>
+<img src="./README_assets/Project.gif" alt="Project demo">
+
+**Text-To-Speech**
+
+<p></p>
+https://github.com/user-attachments/assets/786bd663-dd50-44cf-afc0-171103d52833
+
+
+## Tech Stack
+
+- <img src="https://img.shields.io/badge/Next.js-%230E0E0E?style=plastic&logo=Next.js">
+- <img src="https://img.shields.io/badge/tailwind-%230E0E0E?style=plastic&logo=tailwindcss">
+
+## Design
+
+**Figma**
+
+<a href="https://ovenapp.io/project/uguAGCinHwVXvQ71vQQ1jzvfHR48S24p#PYkVh?target=_blank">Kakao Oven link</a>
+
+**Before**
+
+<p></p>
+<img src="./README_assets/Before.png" width="400px">
+<p></p>
+
+**After**
+
+<p></p>
+<img src="./README_assets/After.png" width="400px">
