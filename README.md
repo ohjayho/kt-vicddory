@@ -63,4 +63,4 @@ https://github.com/user-attachments/assets/786bd663-dd50-44cf-afc0-171103d52833
 ## Tech Stack
 
 - <img src="https://img.shields.io/badge/Next.js-%230E0E0E?style=plastic&logo=Next.js">
-- <img src="https://img.shields.io/badge/tailwind-%230E0E0E?style=plastic&logo=tailwindcss">
+- <img src="https://img.shields.io/badge/tailwind-%230E0E0E?style=plastic&logo=Tailwindcss">
